@@ -41,7 +41,7 @@
       ]
     },
     "path": "@PROJECT_PATH@",
-    "name": "wine 1o1",
+    "name": "wine1O1",
     "versionFirst": "5.9.6",
     "siteFonts": [
       {
@@ -62,7 +62,7 @@
     "siteUrl": "https://www.wine1o1.com",
     "sitemapSwitcherAuto": "on",
     "favicon": false,
-    "mbrsiteDomain": "ml4by0kcxd",
+    "mbrsiteDomain": "hxwypdsfbh",
     "imageResize": false,
     "cookiesAlert": false,
     "gdpr": false,
@@ -72,7 +72,8 @@
     "uniqCompNum": 12,
     "versionPublish": "5.9.6",
     "screenshot": "screenshot.png",
-    "site_lang": "en"
+    "site_lang": "en",
+    "google-analytics": "<!-- Google tag (gtag.js) -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-VJZV2CC3H7\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'G-VJZV2CC3H7');\n</script>"
   },
   "pages": {
     "index.html": {
