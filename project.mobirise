@@ -62,7 +62,7 @@
     "siteUrl": "https://www.wine1o1.com",
     "sitemapSwitcherAuto": "on",
     "favicon": false,
-    "mbrsiteDomain": "o6yqy9ffqt",
+    "mbrsiteDomain": "lb2xfyeasn",
     "imageResize": false,
     "cookiesAlert": false,
     "gdpr": false,
@@ -73,7 +73,8 @@
     "versionPublish": "5.9.6",
     "screenshot": "screenshot.png",
     "site_lang": "en",
-    "google-analytics": ""
+    "google-analytics": "",
+    "global_header_custom": "<!-- Google tag (gtag.js) -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-VJZV2CC3H7\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'G-VJZV2CC3H7');\n</script>"
   },
   "pages": {
     "index.html": {
@@ -81,7 +82,7 @@
         "main": true,
         "title": "Wine 1O1 - Where we begin to wine",
         "meta_descr": "Wine 101 - “not entirely sure about wine but i guess we’re figuring it out together” | The beginning to drinking wine. We're here to help explore wine and find out what you really like. A simple, friendly, no-pressure, educational, fun community.",
-        "header_custom": "<!-- Google tag (gtag.js) -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-VJZV2CC3H7\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'G-VJZV2CC3H7');\n</script>",
+        "header_custom": "",
         "footer_custom": "",
         "html_before": "",
         "socialSharingUrl": "",
