@@ -80,9 +80,9 @@
     "index.html": {
       "settings": {
         "main": true,
-        "title": "Wine 1O1 - Where we begin to wine",
-        "meta_descr": "Wine 101 - “not entirely sure about wine but i guess we’re figuring it out together” | The beginning to drinking wine. We're here to help explore wine and find out what you really like. A simple, friendly, no-pressure, educational, fun community.",
-        "header_custom": "",
+        "title": "Wine1O1 - Where we begin to wine",
+        "meta_descr": "Wine 1O1 - “not entirely sure about wine but i guess we’re figuring it out together” | The beginning to drinking wine. We're here to help explore wine and find out what you really like. A simple, friendly, no-pressure, educational, fun community. | Wine 101",
+        "header_custom": "<link rel=\"canonical\" href=\"https://wine1o1.com/\">",
         "footer_custom": "",
         "html_before": "",
         "socialSharingUrl": "",
