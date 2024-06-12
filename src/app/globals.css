@@ -31,3 +31,21 @@
     text-wrap: balance;
   }
 }
+
+@font-face {
+  font-family: "lazy_dog";
+  src: url("../../public/fonts/lazy_dog.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ukijqol_yantu";
+  src: url("../../public/fonts/ukijqol_yantu.ttf") format("truetype");
+}
+
+* {
+  font-family: "lazy_dog", sans-serif;
+}
+
+.font-UQY {
+  font-family: "ukijqol_yantu", sans-serif;
+}
