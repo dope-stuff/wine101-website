@@ -2,7 +2,7 @@ import { Link } from "@nextui-org/react";
 
 export default function Banner() {
   return (
-    <div className="bg-primary flex flex-col items-center justify-center text-white gap-8 p-10">
+    <div className="bg-primary flex flex-col items-center justify-center text-white gap-8 p-10 text-center">
       <div className="text-[56px] font-bold">QUOTE SOMETHING</div>
       <div className="text-[20px] font-medium max-w-[60%]">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, excepturi

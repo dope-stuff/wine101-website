@@ -1,13 +1,9 @@
-import { Button, Link } from "@nextui-org/react";
-import Banner from "../../components/home/banner";
+import Home from "../../components/home";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <Banner />
-      <Link href="https://dope-stuff.github.io/wine101-landing-page">
-        <Button>next button</Button>
-      </Link>
+    <main className="flex min-h-screen flex-col items-center gap-4">
+      <Home />
     </main>
   );
 }
