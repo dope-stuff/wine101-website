@@ -1,9 +1,9 @@
 "use client";
 import Banner from "../../components/home/banner";
-import OurHighLightsIcon from "../../components/common/icons/our-highlights";
+import OurHighLightsIcon from "../common/images/our-highlights";
 import Carousel from "../../components/carousel";
 import WineCard from "../../components/card/wine";
-import OurServiceIcon from "../../components/common/icons/our-service";
+import OurServiceIcon from "../common/images/our-service";
 import ServiceCard from "../../components/card/service";
 import Footer from "../../components/footer";
 
@@ -135,10 +135,12 @@ export default function Home() {
       <div>
         <OurHighLightsIcon height={110} />
       </div>
-      <Carousel
-        elements={elements}
-        slidesPerView={innerWidth >= 1440 ? 7 : innerWidth > 640 ? 4 : 2}
-      />
+      <div className="w-full px-4 py-2">
+        <Carousel
+          elements={elements}
+          slidesPerView={innerWidth >= 1440 ? 7 : innerWidth > 640 ? 4 : 2}
+        />
+      </div>
       <div>
         <OurServiceIcon width={200} height={110} />
       </div>

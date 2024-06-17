@@ -23,12 +23,12 @@ const Headers = () => {
       </NavbarBrand>
       <NavbarContent className="hidden md:flex gap-10" justify="end">
         <NavbarItem>
-          <Link className="text-white font-bold text-[18px] " href="#">
+          <Link className="text-white font-bold text-[18px] " href="/">
             ABOUT US
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-white font-bold text-[18px]" href="#">
+          <Link className="text-white font-bold text-[18px]" href="/service/wine-profile-workshop">
             OUR SERVICE
           </Link>
         </NavbarItem>
@@ -75,6 +75,7 @@ const Headers = () => {
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Button
+            href="/service/wine-profile-workshop"
             radius="full"
             variant="light"
             className={`${

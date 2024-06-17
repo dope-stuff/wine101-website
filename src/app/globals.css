@@ -34,7 +34,12 @@
 
 @font-face {
   font-family: "lazy_dog";
-  src: url("../../public/fonts/lazy_dog.ttf") format("truetype");
+  src: url("../../public/fonts/lazy_dog.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "iannnnn-DOG-Regular";
+  src: url("../../public/fonts/iannnnn-DOG-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -44,6 +49,10 @@
 
 * {
   font-family: "lazy_dog", sans-serif;
+}
+
+.font-doggy {
+  font-family: "iannnnn-DOG-Regular", sans-serif;
 }
 
 .font-UQY {

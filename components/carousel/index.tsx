@@ -1,13 +1,20 @@
 "use client";
 import { useState, useEffect, ReactElement, useRef } from "react";
-import ArrowRightIcon from "../common/icons/arrow-right";
+import ArrowRightIcon from "../common/images/arrow-right";
 
 interface CarouselProps {
   elements: ReactElement[];
   slidesPerView?: number;
+  arrowColor?: string;
+  gap?: string;
 }
 
-const Carousel = ({ elements, slidesPerView = 7.5 }: CarouselProps) => {
+const Carousel = ({
+  elements,
+  slidesPerView = 7.5,
+  arrowColor,
+  gap = "1rem",
+}: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -28,21 +35,22 @@ const Carousel = ({ elements, slidesPerView = 7.5 }: CarouselProps) => {
           className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10"
           onClick={prevSlide}
         >
-          <ArrowRightIcon className="rotate-180" />
+          <ArrowRightIcon className="rotate-180" color={arrowColor} />
         </button>
       )}
-      <div className="relative w-full mx-auto overflow-hidden px-4 py-2">
+      <div className="relative w-full mx-auto overflow-hidden">
         <div
           ref={containerRef}
-          className="flex transition-transform duration-500 gap-4"
+          className="flex transition-transform duration-500"
           style={{
             transform: `translateX(-${(currentIndex / slidesPerView) * 100}%)`,
+            gap: gap,
           }}
         >
           {elements.map((element, index) => (
             <div
               key={index}
-              className="w-full flex-shrink-0"
+              className="w-full flex-shrink-0 relative"
               style={{ flex: `0 0 ${100 / slidesPerView}%` }}
             >
               {element}
@@ -55,7 +63,7 @@ const Carousel = ({ elements, slidesPerView = 7.5 }: CarouselProps) => {
           className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
           onClick={nextSlide}
         >
-          <ArrowRightIcon />
+          <ArrowRightIcon color={arrowColor} />
         </button>
       )}
     </div>

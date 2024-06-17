@@ -1,6 +1,6 @@
 "use client";
 
-import SocialGroupIcon from "../common/icons/social-group";
+import SocialGroupIcon from "../common/images/social-group";
 
 const List = ({
   title,

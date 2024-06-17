@@ -1,5 +1,5 @@
 import { Image } from "@nextui-org/react";
-import BagIcon from "../common/icons/bag";
+import BagIcon from "../common/images/bag";
 
 interface WineCardProps {
   data: {
