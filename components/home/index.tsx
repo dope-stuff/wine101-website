@@ -10,7 +10,7 @@ import WineCard from "../../components/card/wine";
 import OurServiceIcon from "../common/images/our-service";
 import ServiceCard from "../../components/card/service";
 import Footer from "../../components/footer";
-import { IHome } from "../../services/types/home";
+import { IHome, IService } from "../../services/types/home";
 import { workshopService } from "../../services/workshop.service";
 import Event from "./event";
 import { IWorkshop } from "../../services/types/workshop";
@@ -128,13 +128,13 @@ export default function Home() {
       color: "#FFD2DE",
     },
   ];
-  const services = [
-    { name: "wine profile workshop", background: "#ECF2CB" },
-    { name: "wine event private event", background: "#F9E4C0" },
-    { name: "collaboration", background: "#FFD2DE" },
-    { name: "wine wedding", background: "#E3E9FF" },
-    { name: "pop-up booth", background: "#F9E4C0" },
-  ];
+  // [
+  //   { name: "wine profile workshop", background: "#ECF2CB" },
+  //   { name: "wine event private event", background: "#F9E4C0" },
+  //   { name: "collaboration", background: "#FFD2DE" },
+  //   { name: "wine wedding", background: "#E3E9FF" },
+  //   { name: "pop-up booth", background: "#F9E4C0" },
+  // ];
   const elements = data.map((e, i) => <WineCard key={i} data={e} />);
 
   const [pageData, setPageData] = useState<IHome>();
@@ -176,8 +176,8 @@ export default function Home() {
           <OurServiceIcon width={200} height={110} />
         </div>
         <div className="w-full min-h-[300px] h-full grid grid-cols-2 md:grid-cols-5 gap-4 px-4 mb-4">
-          {services.map(({ name, background }, i) => (
-            <ServiceCard key={i} name={name} background={background} />
+          {pageData.services.map((data, i) => (
+            <ServiceCard key={i} data={data} />
           ))}
         </div>
         <Footer />
