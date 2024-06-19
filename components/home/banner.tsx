@@ -1,18 +1,21 @@
 import { Link } from "@nextui-org/react";
+import { IHeader } from "../../services/types/home";
 
-export default function Banner() {
+type BannerProps = {
+  data: IHeader;
+};
+export default function Banner({ data }: BannerProps) {
   return (
-    <div className="bg-primary flex flex-col items-center justify-center text-white gap-8 p-10 text-center">
-      <div className="text-[56px] font-bold">QUOTE SOMETHING</div>
-      <div className="text-[20px] font-medium max-w-[60%]">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, excepturi
-        iure? Sequi omnis eveniet est nesciunt. Commodi excepturi quibusdam
-        molestias sint hic incidunt soluta quisquam ratione a? Qui aperiam
-        debitis eaque necessitatibus cumque incidunt, minus sed porro sit
-        facilis tenetur itaque tempore laborum, commodi fugiat consectetur non
-        vero veritatis provident!
+    data && (
+      <div className="w-full flex flex-col items-center justify-center gap-8 text-center">
+        <div className="text-[56px] font-bold uppercase">{data.heading}</div>
+        <div className="text-[20px] font-medium max-w-[60%] font-doggy">
+          {data.subheading}
+        </div>
+        <Link className="bg-primary rounded-full px-4 text-[30px] text-white border border-black">
+          {data.buttonTitle}
+        </Link>
       </div>
-      <Link className="bg-white rounded-full px-4 text-[30px] text-primary">GET TO KNOW US</Link>
-    </div>
+    )
   );
 }
