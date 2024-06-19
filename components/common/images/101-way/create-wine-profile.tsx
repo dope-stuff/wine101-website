@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProps } from "../../../../types/icons";
 
-const BagIcon: React.FC<IconProps> = ({
+const CreateWineProfileIcon: React.FC<IconProps> = ({
   width = "230",
   height = "218",
   color = "white",
@@ -47,4 +47,4 @@ const BagIcon: React.FC<IconProps> = ({
   );
 };
 
-export default BagIcon;
+export default CreateWineProfileIcon;
