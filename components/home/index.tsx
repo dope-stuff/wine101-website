@@ -143,14 +143,12 @@ export default function Home() {
   const getData = async () => {
     const { data } = await homeService.get();
     if (data) {
-      console.log(data.data);
       setPageData(data.data);
     }
   };
   const getEventData = async () => {
     const { data } = await workshopService.get(dayjs().format("YYYY-MM-DD"));
     if (data) {
-      console.log(data.data[0]);
       setEvents(data.data[0]);
     }
   };

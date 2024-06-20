@@ -1,12 +1,14 @@
-import { Image, Link } from "@nextui-org/react";
+import { Image } from "@nextui-org/react";
 import Carousel from "../../../../components/carousel";
-import SmartPhoneImage from "../../../../components/common/images/smart-phone";
 import Way1O1Icon from "../../../../components/common/images/way-1o1";
 import BeginnerFriendlyIcon from "../../../../components/common/images/101-way/beginner-friendly";
 import ExploreTastebudsIcon from "../../../../components/common/images/101-way/explore-tastebuds";
 import CreateWineProfileIcon from "../../../../components/common/images/101-way/create-wine-profile";
 import EnjoyBeingYourselfIcon from "../../../../components/common/images/101-way/enjoy-being-yourself";
 import WorkShopCard from "../../../../components/card/workshop";
+import WineProfileWorkshopHeader from "../../../../components/services/wine-profile-workshop/header";
+import Comments from "../../../../components/services/wine-profile-workshop/comments";
+import Footer from "../../../../components/footer";
 
 export default function WineProfileWorkshop() {
   const banners = [
@@ -103,73 +105,85 @@ export default function WineProfileWorkshop() {
       createdAt: "29 october 2023",
     },
   ];
+
+  const comments = [
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+    "คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที",
+  ];
+
+  const splitArray = (arr: string[]): string[][] => {
+    return arr.reduce((acc, curr, index) => {
+      if (index % 4 === 0) {
+        acc.push(arr.slice(index, index + 4));
+      }
+      return acc;
+    }, [] as string[][]);
+  };
+
+  console.log("bbb", splitArray(comments));
+
   return (
-    <div className="w-full max-w-screen-2xl justify-center flex-col flex items-center mx-auto">
-      <Carousel
-        elements={banners}
-        slidesPerView={1}
-        arrowColor="white"
-        gap="0"
-      />
-      <div className="w-full flex-col lg:flex-row items-center flex justify-center mt-8 gap-12">
-        <div className="max-w-[70%] flex-col flex items-center text-[30px] text-center pl-4">
-          <div className="text-[78px] font-doggy">ที่แรกและที่เดียว กับ</div>
-          <div className="text-[65px] font-semibold uppercase">
-            ‘wine profile workshop’
-          </div>
-          <div className="text-[48px] font-doggy">
-            เปิดประตูสู่โลกของไวน์ ตามหาไวน์ที่ตัวเองชอบ
-          </div>
-          <div className="text-[24px] text-center mt-4 px-4">
-            <p className="font-doggy mx-auto">
-              เมื่อโลกของไวน์ทั้งซับซ้อนและน่าสับสน พันธุ์องุ่น ชื่อไวน์
-              เขตที่ผลิต ไหนจะศัพท์เฉพาะทางที่ทั้งยาก ทั้งอ่านไม่ออก
-              ยิ่งฟังยิ่งไม่เข้าใจ จึงเกิดเป็น Wine Workshop ของ wine101
-              ที่เราจะพาทุกคนไป Explore และ เรียนรู้ Basic ของไวน์
-              ในบรรยากาศที่สนุกและเป็นกันเองแบบสุดๆ
-            </p>
-            <p className="font-doggy">
-              “เพราะเราเชื่อว่า คำว่าอร่อยแต่ละคนไม่เหมือนกัน
-              และไวน์ที่ดีที่สุดคือไวน์ที่อร่อยสำหรับตัวเราเอง
-            </p>
-          </div>
-          <Link className="bg-[#81CF8A] rounded-full px-8 py-1 text-[30px] text-black mt-6 font-doggy border-black border-2">
-            จองที่นั่ง
-          </Link>
-        </div>
-        <SmartPhoneImage className="lg:max-w-[22.5%] max-w-[500px] h-full rotate-6 lg:pr-10" />
-      </div>
-      <div className="w-[90%] flex-col flex mt-4">
-        <Way1O1Icon />
-        {data.map((e, i) => (
-          <div
-            key={i}
-            className={`flex-row flex items-center gap-4 ${
-              i % 2 !== 0 ? "justify-end" : ""
-            }`}
-          >
-            <div className="max-h-[280px]">{e.image}</div>
-            <div className="flex-col flex">
-              <div className="text-[44px]">{e.name}</div>
-              <div
-                className="font-doggy text-[27px]"
-                style={{ maxWidth: e.maxWidth }}
-              >
-                {e.description}
+    <>
+      <div className="w-full max-w-screen-2xl justify-center flex-col flex items-center mx-auto">
+        <Carousel
+          elements={banners}
+          slidesPerView={1}
+          arrowColor="white"
+          gap="0"
+        />
+        <WineProfileWorkshopHeader />
+        <div className="w-[90%] flex-col flex mt-4">
+          <Way1O1Icon />
+          {data.map((e, i) => (
+            <div
+              key={i}
+              className={`flex-row flex items-center gap-4 ${
+                i % 2 !== 0 ? "justify-end" : ""
+              }`}
+            >
+              <div className="max-h-[280px]">{e.image}</div>
+              <div className="flex-col flex">
+                <div className="text-[44px]">{e.name}</div>
+                <div
+                  className="font-doggy text-[27px]"
+                  style={{ maxWidth: e.maxWidth }}
+                >
+                  {e.description}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex flex-col w-full pl-10">
-        <div className="uppercase text-[36px] my-2">our workshop</div>
-        <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-          {workshops.map((ws, i) => (
-            <WorkShopCard key={i} data={ws} />
           ))}
         </div>
+        <div className="flex flex-col w-full pl-10">
+          <div className="uppercase text-[36px] my-2">our workshop</div>
+          <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+            {workshops.map((ws, i) => (
+              <WorkShopCard key={i} data={ws} />
+            ))}
+          </div>
+        </div>
+        <div className="uppercase text-[60px] my-4">
+          how people talk about us
+        </div>
+        <Carousel
+          elements={splitArray(comments).map((e, i) => (
+            <Comments key={i} comments={e} />
+          ))}
+          slidesPerView={1}
+          gap="0"
+        />
+        <div className="mb-10" />
       </div>
-      <div className="uppercase text-[60px] my-4">how people talk about us</div>
-    </div>
+      <Footer />
+    </>
   );
 }
