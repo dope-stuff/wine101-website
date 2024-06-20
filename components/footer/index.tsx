@@ -1,24 +1,19 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import SocialGroupIcon from "../common/images/social-group";
+import { navbarService } from "../../services/navbar.service";
+import { IFooter, IMenu } from "../../services/types/navbar";
+import { Image, Link } from "@nextui-org/react";
 
-const List = ({
-  title,
-  list,
-}: {
-  title: string;
-  list: { label: string; value: string }[];
-}) => {
-  const handleClick = (value: string) => {
-    console.log(value);
-  };
+const List = ({ title, list }: { title: string; list: IMenu[] }) => {
   return (
     <div>
       <div className="text-[24px]">{title.toUpperCase()}</div>
       <div className="flex-col flex">
         {list.map((e, i) => (
-          <a key={i} href="#" onClick={() => handleClick(e.value)}>
-            {e.label}
+          <a key={i} href={e.linkTo}>
+            {e.buttonTitle}
           </a>
         ))}
       </div>
@@ -58,19 +53,59 @@ const Footer = () => {
       ],
     },
   ];
+  const [footerData, setFooterData] = useState<IFooter>();
+  const getData = async () => {
+    const { data } = await navbarService.getFooter().then(({ data }) => data);
+    if (data) {
+      setFooterData(data);
+    }
+  };
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onNewTab = (url: string) => {
+    window.open(url, "_blank");
+  };
   return (
-    <div className="bg-[#BE1C2D] text-white w-full flex-row flex items-center justify-evenly gap-4 flex-wrap p-4">
-      <p className="font-UQY text-[32px]">Wine101</p>
-      {data.map((e, i) => (
+    footerData && (
+      <div className="bg-[#BE1C2D] text-white w-full flex-row flex justify-evenly gap-4 flex-wrap p-4">
+        {footerData.logo.mediaUrl ? (
+          <Image
+            width={150}
+            removeWrapper
+            src={footerData.logo.mediaUrl}
+            alt={footerData.logo.alt}
+          />
+        ) : (
+          <p className="font-UQY text-[40px] my-auto">Wine101</p>
+        )}
+        {/* {data.map((e, i) => (
         <List key={i} title={e.title} list={e.list} />
-      ))}
-      <div className="flex-col flex items-center">
-        <div>101 talk</div>
-        <div>wine101.wine@gmail.com</div>
-        <div>Bangkok, Thailand</div>
-        <SocialGroupIcon />
+      ))} */}
+        <List title={footerData.aboutTitle} list={footerData.about} />
+        <List title={footerData.serviceTitle} list={footerData.service} />
+        <List title={footerData.winesTitle} list={footerData.wines} />
+        <div className="flex-col flex items-center">
+          <div>{footerData.contact.heading}</div>
+          <div>{footerData.contact.subheading}</div>
+          <div>{footerData.contact.description}</div>
+          <div className="flex-row flex items-center mt-2">
+            {footerData.social.map((e) => (
+              <button key={e.id} onClick={() => onNewTab(e.linkTo)}>
+                <Image
+                  width={40}
+                  src={e.mediaUrl}
+                  alt={e.alt}
+                  className="max-h-[30px] object-contain"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 

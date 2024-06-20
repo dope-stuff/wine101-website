@@ -3,6 +3,7 @@ import { IWorkshop } from "../../services/types/workshop";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import EventDialog from "./dialog";
+import BookNowButton from "../booknow/button";
 
 type EventProps = {
   data: IWorkshop;
@@ -46,17 +47,18 @@ export default function Event({ data }: EventProps) {
 
     return () => clearInterval(timer);
   }, [data.event_date]);
+
   setTime;
   return (
     data && (
-      <div className="w-full flex-row flex justify-between items-center bg-[#E8C85E] px-10 py-4">
+      <div className="w-full flex-col lg:flex-row flex justify-between items-center bg-[#E8C85E] px-10 py-4 gap-4">
         <div className="flex-col flex text-center">
           <div className="uppercase text-[40px]">{data.name}</div>
           <div className="text-[28px]">
             {dayjs(data.event_date).format("DD MMM YYYY")}
           </div>
         </div>
-        <div className="w-[50%] flex-row flex justify-evenly items-center gap-10 text-[24px] text-center">
+        <div className="flex-1 lg:max-w-[50%] flex-row flex justify-evenly items-center gap-10 text-[24px] text-center mx-auto">
           <div className="flex-col flex">
             <div className="text-[48px]">{time.days}</div>
             <div>Day</div>
@@ -74,9 +76,7 @@ export default function Event({ data }: EventProps) {
             <div>Second</div>
           </div>
         </div>
-        <Link className="bg-primary max-h-[50px] rounded-full px-4 text-[30px] text-white border border-black">
-          Book Now!
-        </Link>
+        <BookNowButton />
         <EventDialog data={data} time={time} />
       </div>
     )

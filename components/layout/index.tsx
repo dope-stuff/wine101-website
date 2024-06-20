@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -13,22 +13,60 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
+import { navbarService } from "../../services/navbar.service";
+import { INavbar } from "../../services/types/navbar";
 
 const Headers = () => {
   const pathname = usePathname();
+
+  const [layoutData, setLayoutData] = useState<INavbar>();
+  const getData = async () => {
+    const { data } = await navbarService.getNavbar().then(({ data }) => data);
+    if (data) {
+      setLayoutData(data);
+      localStorage.setItem("bookNowLinkTo", data.bookNowLinkTo);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <Navbar maxWidth="full" style={{ background: "#BE1C2D", color: "#fff" }}>
       <NavbarBrand>
-        <p className="font-UQY text-[32px]">Wine101</p>
+        {layoutData && layoutData.logo.mediaUrl ? (
+          <Image
+            width={100}
+            removeWrapper
+            src={layoutData.logo.mediaUrl}
+            alt={layoutData.logo.alt}
+          />
+        ) : (
+          <p className="font-UQY text-[32px]">Wine101</p>
+        )}
       </NavbarBrand>
       <NavbarContent className="hidden md:flex gap-10" justify="end">
-        <NavbarItem>
+        {layoutData &&
+          layoutData.menu &&
+          layoutData.menu.map((e) => (
+            <NavbarItem key={e.id}>
+              <Link
+                className="text-white font-bold text-[18px] uppercase"
+                href={!!e.linkTo ? e.linkTo : "#"}
+              >
+                {e.buttonTitle}
+              </Link>
+            </NavbarItem>
+          ))}
+        {/* <NavbarItem>
           <Link className="text-white font-bold text-[18px] " href="/">
             ABOUT US
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-white font-bold text-[18px]" href="/service/wine-profile-workshop">
+          <Link
+            className="text-white font-bold text-[18px]"
+            href="/service/wine-profile-workshop"
+          >
             OUR SERVICE
           </Link>
         </NavbarItem>
@@ -56,7 +94,7 @@ const Headers = () => {
               alt="Shopping bag"
             />
           </div>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
       <NavbarContent className="flex lg:hidden p-2">
         <NavbarMenuToggle className="text-[#6B7E60] ml-auto" />

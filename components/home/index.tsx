@@ -10,14 +10,12 @@ import WineCard from "../../components/card/wine";
 import OurServiceIcon from "../common/images/our-service";
 import ServiceCard from "../../components/card/service";
 import Footer from "../../components/footer";
-import { IHome, IService } from "../../services/types/home";
+import { IHome } from "../../services/types/home";
 import { workshopService } from "../../services/workshop.service";
 import Event from "./event";
 import { IWorkshop } from "../../services/types/workshop";
 
 export default function Home() {
-  const { innerWidth } = window;
-
   const data = [
     {
       name: "test",
@@ -128,13 +126,6 @@ export default function Home() {
       color: "#FFD2DE",
     },
   ];
-  // [
-  //   { name: "wine profile workshop", background: "#ECF2CB" },
-  //   { name: "wine event private event", background: "#F9E4C0" },
-  //   { name: "collaboration", background: "#FFD2DE" },
-  //   { name: "wine wedding", background: "#E3E9FF" },
-  //   { name: "pop-up booth", background: "#F9E4C0" },
-  // ];
   const elements = data.map((e, i) => <WineCard key={i} data={e} />);
 
   const [pageData, setPageData] = useState<IHome>();
@@ -155,6 +146,7 @@ export default function Home() {
   useEffect(() => {
     getData();
     getEventData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     pageData && (
@@ -164,11 +156,14 @@ export default function Home() {
         <div>
           <OurHighLightsIcon height={110} />
         </div>
-        <div className="w-full px-4 py-2">
-          <Carousel
-            elements={elements}
-            slidesPerView={innerWidth >= 1440 ? 7 : innerWidth > 640 ? 4 : 2}
-          />
+        <div className="w-full hidden 2xl:block px-4 py-2">
+          <Carousel elements={elements} slidesPerView={7} />
+        </div>
+        <div className="w-full hidden sm:block 2xl:hidden px-4 py-2">
+          <Carousel elements={elements} slidesPerView={4} />
+        </div>
+        <div className="w-full sm:hidden px-4 py-2">
+          <Carousel elements={elements} slidesPerView={4} />
         </div>
         <div>
           <OurServiceIcon width={200} height={110} />

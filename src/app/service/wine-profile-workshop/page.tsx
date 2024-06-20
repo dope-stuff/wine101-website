@@ -129,8 +129,6 @@ export default function WineProfileWorkshop() {
     }, [] as string[][]);
   };
 
-  console.log("bbb", splitArray(comments));
-
   return (
     <>
       <div className="w-full max-w-screen-2xl justify-center flex-col flex items-center mx-auto">

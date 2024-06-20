@@ -1,3 +1,4 @@
+import { Link } from "@nextui-org/react";
 import { IService } from "../../services/types/home";
 
 export default function ServiceCard({ data }: { data: IService }) {
@@ -9,9 +10,12 @@ export default function ServiceCard({ data }: { data: IService }) {
       }}
     >
       <div className="text-[28px] font-bold text-white">{data.heading}</div>
-      <button className="bg-[#BE1C2D] text-white rounded-full px-4 py-1 text-[18px]">
+      <Link
+        href={data.linkTo}
+        className="bg-[#BE1C2D] text-white rounded-full px-4 py-1 text-[18px]"
+      >
         See more
-      </button>
+      </Link>
     </div>
   );
 }
