@@ -33,6 +33,19 @@ export interface IProduct {
     handle: string;
     metadata: Metadata;
   };
+  categories: {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    name: string;
+    description: string;
+    handle: string;
+    is_active: boolean;
+    is_internal: boolean;
+    parent_category_id: string;
+    rank: number;
+    metadata: Metadata;
+  }[];
   images: any[];
   options: {
     id: string;

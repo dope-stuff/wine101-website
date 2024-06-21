@@ -16,38 +16,27 @@ import { usePathname } from "next/navigation";
 import { navbarService } from "../../services/navbar.service";
 import { INavbar } from "../../services/types/navbar";
 
-const Headers = () => {
+const Headers = ({ data }: { data?: INavbar }) => {
   const pathname = usePathname();
 
-  const [layoutData, setLayoutData] = useState<INavbar>();
-  const getData = async () => {
-    const { data } = await navbarService.getNavbar().then(({ data }) => data);
-    if (data) {
-      setLayoutData(data);
-      localStorage.setItem("bookNowLinkTo", data.bookNowLinkTo);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
   return (
     <Navbar maxWidth="full" style={{ background: "#BE1C2D", color: "#fff" }}>
       <NavbarBrand>
-        {layoutData && layoutData.logo.mediaUrl ? (
+        {data && data.logo.mediaUrl ? (
           <Image
             width={100}
             removeWrapper
-            src={layoutData.logo.mediaUrl}
-            alt={layoutData.logo.alt}
+            src={data.logo.mediaUrl}
+            alt={data.logo.alt}
           />
         ) : (
           <p className="font-UQY text-[32px]">Wine101</p>
         )}
       </NavbarBrand>
       <NavbarContent className="hidden md:flex gap-10" justify="end">
-        {layoutData &&
-          layoutData.menu &&
-          layoutData.menu.map((e) => (
+        {data &&
+          data.menu &&
+          data.menu.map((e) => (
             <NavbarItem key={e.id}>
               <Link
                 className="text-white font-bold text-[18px] uppercase"
@@ -152,12 +141,14 @@ const Headers = () => {
 
 export default function CustomLayout({
   children,
+  data,
 }: {
   children: React.ReactNode;
+  data?: INavbar;
 }) {
   return (
     <div className="w-screen h-screen flex flex-col overflow-auto">
-      <Headers />
+      <Headers data={data} />
       {children}
     </div>
   );

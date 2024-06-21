@@ -16,121 +16,10 @@ import Event from "./event";
 import { IWorkshop } from "../../services/types/workshop";
 import { productService } from "../../services/product.service";
 import { IProduct } from "../../services/types/product";
+import FlasksIcon from "../common/images/flasks";
 
 export default function Home() {
-  const data = [
-    {
-      name: "test",
-      image_url: "test",
-      type: "test",
-      country: "test",
-      wine_type: "test",
-      price: 1200,
-      color: "#ECF2CB",
-    },
-    {
-      name: "test2",
-      image_url: "test2",
-      type: "test2",
-      country: "test2",
-      wine_type: "test2",
-      price: 1100,
-      color: "#F9E4C0",
-    },
-    {
-      name: "test3",
-      image_url: "test3",
-      type: "test3",
-      country: "test3",
-      wine_type: "test3",
-      price: 1200,
-      color: "#FFD2DE",
-    },
-    {
-      name: "test",
-      image_url: "test",
-      type: "test",
-      country: "test",
-      wine_type: "test",
-      price: 1200,
-      color: "#ECF2CB",
-    },
-    {
-      name: "test2",
-      image_url: "test2",
-      type: "test2",
-      country: "test2",
-      wine_type: "test2",
-      price: 1100,
-      color: "#F9E4C0",
-    },
-    {
-      name: "test3",
-      image_url: "test3",
-      type: "test3",
-      country: "test3",
-      wine_type: "test3",
-      price: 1200,
-      color: "#FFD2DE",
-    },
-    {
-      name: "test",
-      image_url: "test",
-      type: "test",
-      country: "test",
-      wine_type: "test",
-      price: 1200,
-      color: "#ECF2CB",
-    },
-    {
-      name: "test2",
-      image_url: "test2",
-      type: "test2",
-      country: "test2",
-      wine_type: "test2",
-      price: 1100,
-      color: "#F9E4C0",
-    },
-    {
-      name: "test3",
-      image_url: "test3",
-      type: "test3",
-      country: "test3",
-      wine_type: "test3",
-      price: 1200,
-      color: "#FFD2DE",
-    },
-    {
-      name: "test",
-      image_url: "test",
-      type: "test",
-      country: "test",
-      wine_type: "test",
-      price: 1200,
-      color: "#ECF2CB",
-    },
-    {
-      name: "test2",
-      image_url: "test2",
-      type: "test2",
-      country: "test2",
-      wine_type: "test2",
-      price: 1100,
-      color: "#F9E4C0",
-    },
-    {
-      name: "test3",
-      image_url: "test3",
-      type: "test3",
-      country: "test3",
-      wine_type: "test3",
-      price: 1200,
-      color: "#FFD2DE",
-    },
-  ];
-  const [wines,setWines] = useState([])
-  // data.map((e, i) => <WineCard key={i} data={e} />);
-
+  const [wines, setWines] = useState([]);
   const [pageData, setPageData] = useState<IHome>();
   const [events, setEvents] = useState<IWorkshop>();
 
@@ -147,15 +36,68 @@ export default function Home() {
     }
   };
   const getWineData = async () => {
-    const {data} = await productService.getProduct()
+    const { data } = await productService.getProduct();
     if (data) {
-      setWines(data.products.map((e:IProduct, i:number) => <WineCard key={i} data={e} />));
+      setWines(
+        data.products.map((e: IProduct, i: number) => {
+          let theme = {
+            textColor: "#B23A57",
+            bgColor: "#961937",
+            type: "red",
+          };
+          switch (e.categories[0].name) {
+            case "Red Wine":
+              theme = {
+                textColor: "#B23A57",
+                bgColor: "#961937",
+                type: "red",
+              };
+              break;
+            case "White Wine":
+              theme = {
+                textColor: "#AEC5A4",
+                bgColor: "#90AD83",
+                type: "white",
+              };
+              break;
+            case "Sparkling Wine (Champagne)":
+              theme = {
+                textColor: "#ECCB7B",
+                bgColor: "#D3AF61",
+                type: "sparkling",
+              };
+              break;
+            case "Rosé Wine":
+              theme = {
+                textColor: "#F88D97",
+                bgColor: "#F16471",
+                type: "rose",
+              };
+              break;
+            case "Ice Wine":
+              theme = {
+                textColor: "#8AB5CD",
+                bgColor: "#6690A7",
+                type: "ice",
+              };
+              break;
+            default:
+              theme = {
+                textColor: "#5C5C5C",
+                bgColor: "#2F2F2F",
+                type: "other",
+              };
+              break;
+          }
+          return <WineCard key={i} data={e} theme={theme} />;
+        })
+      );
     }
   };
   useEffect(() => {
     getData();
     getEventData();
-    getWineData()
+    getWineData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -164,7 +106,7 @@ export default function Home() {
         {events && <Event data={events} />}
         <Banner data={pageData.header} />
         <div>
-          <OurHighLightsIcon height={110} />
+          <OurHighLightsIcon width={500} height={200} />
         </div>
         <div className="w-full hidden 2xl:block px-4 py-2">
           <Carousel elements={wines} slidesPerView={7} />
@@ -175,8 +117,10 @@ export default function Home() {
         <div className="w-full sm:hidden px-4 py-2">
           <Carousel elements={wines} slidesPerView={4} />
         </div>
-        <div>
-          <OurServiceIcon width={200} height={110} />
+        <div className="flex-row flex items-center flex-nowrap gap-8 text-[50px] my-4">
+          <FlasksIcon />
+          {pageData.servicesTitle}
+          <FlasksIcon />
         </div>
         <div className="w-full min-h-[300px] h-full grid grid-cols-2 md:grid-cols-5 gap-4 px-4 mb-4">
           {pageData.services.map((data, i) => (
