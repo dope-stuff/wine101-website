@@ -14,6 +14,8 @@ import { IHome } from "../../services/types/home";
 import { workshopService } from "../../services/workshop.service";
 import Event from "./event";
 import { IWorkshop } from "../../services/types/workshop";
+import { productService } from "../../services/product.service";
+import { IProduct } from "../../services/types/product";
 
 export default function Home() {
   const data = [
@@ -126,7 +128,8 @@ export default function Home() {
       color: "#FFD2DE",
     },
   ];
-  const elements = data.map((e, i) => <WineCard key={i} data={e} />);
+  const [wines,setWines] = useState([])
+  // data.map((e, i) => <WineCard key={i} data={e} />);
 
   const [pageData, setPageData] = useState<IHome>();
   const [events, setEvents] = useState<IWorkshop>();
@@ -143,9 +146,16 @@ export default function Home() {
       setEvents(data.data[0]);
     }
   };
+  const getWineData = async () => {
+    const {data} = await productService.getProduct()
+    if (data) {
+      setWines(data.products.map((e:IProduct, i:number) => <WineCard key={i} data={e} />));
+    }
+  };
   useEffect(() => {
     getData();
     getEventData();
+    getWineData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -157,13 +167,13 @@ export default function Home() {
           <OurHighLightsIcon height={110} />
         </div>
         <div className="w-full hidden 2xl:block px-4 py-2">
-          <Carousel elements={elements} slidesPerView={7} />
+          <Carousel elements={wines} slidesPerView={7} />
         </div>
         <div className="w-full hidden sm:block 2xl:hidden px-4 py-2">
-          <Carousel elements={elements} slidesPerView={4} />
+          <Carousel elements={wines} slidesPerView={4} />
         </div>
         <div className="w-full sm:hidden px-4 py-2">
-          <Carousel elements={elements} slidesPerView={4} />
+          <Carousel elements={wines} slidesPerView={4} />
         </div>
         <div>
           <OurServiceIcon width={200} height={110} />
