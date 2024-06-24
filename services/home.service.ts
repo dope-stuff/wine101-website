@@ -2,5 +2,5 @@ import axios from "axios";
 
 export const homeService = {
   get: () =>
-    axios.get("/wine-home?populate=*"),
+    axios.get("https://backend.petswayhome.co/api/wine-home?populate=*"),
 };

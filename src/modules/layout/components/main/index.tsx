@@ -15,7 +15,6 @@ import {navbarService} from '@/lib/data/navbar.service'
 
 const MainLayout = async ({children}: {children: React.ReactNode}) => {
   const {data: navbar} = await navbarService.getNavbar().then((res) => res.data)
-  console.log('[E] ~ MainLayout ~ data:', navbar)
 
   return (
     <>

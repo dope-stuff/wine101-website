@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const navbarService = {
   getNavbar: () =>
-    axios.get("/wine-navbar?populate=*"),
+    axios.get("https://backend.petswayhome.co/api/wine-navbar?populate=*"),
   getFooter: () =>
-    axios.get("/wine-footer?populate=*"),
+    axios.get("https://backend.petswayhome.co/api/wine-footer?populate=*"),
 };

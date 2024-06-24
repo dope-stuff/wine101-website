@@ -1,28 +1,28 @@
 import { Image } from "@nextui-org/react";
 import Carousel from "../../../../components/carousel";
-import Way1O1Icon from "../../../../components/common/images/way-1o1";
-import BeginnerFriendlyIcon from "../../../../components/common/images/101-way/beginner-friendly";
-import ExploreTastebudsIcon from "../../../../components/common/images/101-way/explore-tastebuds";
-import CreateWineProfileIcon from "../../../../components/common/images/101-way/create-wine-profile";
-import EnjoyBeingYourselfIcon from "../../../../components/common/images/101-way/enjoy-being-yourself";
+import BeginnerFriendlyIcon from "../../../../components/common/images/service/beginner-friendly";
+import ExploreTastebudsIcon from "../../../../components/common/images/service/explore-tastebuds";
+import CreateWineProfileIcon from "../../../../components/common/images/service/create-wine-profile";
+import EnjoyBeingYourselfIcon from "../../../../components/common/images/service/enjoy-being-yourself";
 import WorkShopCard from "../../../../components/card/workshop";
 import WineProfileWorkshopHeader from "../../../../components/services/wine-profile-workshop/header";
 import Comments from "../../../../components/services/wine-profile-workshop/comments";
 import Footer from "../../../../components/footer";
+import Way1O1Icon from "../../../../components/common/images/service/way-1o1";
 
 export default function WineProfileWorkshop() {
   const banners = [
     <Image
       key="1"
       removeWrapper
-      className="max-h-[40vh] w-full rounded-none"
+      className="max-h-[50vh] w-full rounded-none"
       src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
       alt=""
     />,
     <Image
       key="2"
       removeWrapper
-      className="max-h-[40vh] w-full rounded-none"
+      className="max-h-[50vh] w-full rounded-none"
       src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
       alt=""
     />,
@@ -150,7 +150,7 @@ export default function WineProfileWorkshop() {
             >
               <div className="max-h-[280px]">{e.image}</div>
               <div className="flex-col flex">
-                <div className="text-[44px]">{e.name}</div>
+                <div className="text-[44px] uppercase">{e.name}</div>
                 <div
                   className="font-doggy text-[27px]"
                   style={{ maxWidth: e.maxWidth }}
