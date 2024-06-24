@@ -1,7 +1,7 @@
 import {axios} from '@/lib/data'
-import {Navbar} from '@/lib/data/models/navbar'
+import {Navbar, Footer} from '@/lib/data/models/navbar'
 
 export const navbarService = {
-  getNavbar: () => axios.get<{data: Navbar}>('/wine-navbar?populate=*'),
-  getFooter: () => axios.get('/wine-footer?populate=*'),
+  getNavbar: () => axios.get<{data: Navbar}>('/wine-navbar?populate=*').then((res) => res.data),
+  getFooter: () => axios.get<{data: Footer}>('/wine-footer?populate=*').then((res) => res.data),
 }

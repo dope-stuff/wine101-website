@@ -5,7 +5,7 @@ import {Image} from '@nextui-org/react'
 import {navbarService} from '@/lib/data/navbar.service'
 import {IMenu, IFooter} from '@/lib/data/models/navbar'
 
-const List = ({title, list}: {title: string; list: IMenu[]}) => {
+const List = ({title, list}: {title: string; list: {buttonTitle: string; linkTo: string}[]}) => {
   return (
     <div>
       <div className="text-[24px]">{title.toUpperCase()}</div>
@@ -54,7 +54,7 @@ const Footer = () => {
   ]
   const [footerData, setFooterData] = useState<IFooter>()
   const getData = async () => {
-    const {data} = await navbarService.getFooter().then(({data}) => data)
+    const {data} = await navbarService.getFooter()
     if (data) {
       setFooterData(data)
     }
@@ -91,8 +91,8 @@ const Footer = () => {
           <div>{footerData.contact.subheading}</div>
           <div>{footerData.contact.description}</div>
           <div className="flex-row flex items-center mt-2">
-            {footerData.social.map((e) => (
-              <button key={e.id} onClick={() => onNewTab(e.linkTo)}>
+            {footerData.social.map((e, i) => (
+              <button key={i} onClick={() => onNewTab(e.linkTo)}>
                 <Image
                   width={40}
                   src={e.mediaUrl}

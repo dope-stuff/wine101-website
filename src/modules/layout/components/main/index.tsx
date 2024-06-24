@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Link,
   Image,
@@ -10,14 +9,18 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from '@nextui-org/react'
-import {NavbarMenu as INavbarMenu} from '@/lib/data/models/navbar'
 import {navbarService} from '@/lib/data/navbar.service'
+import {NavbarMenu as INavbarMenu} from '@/lib/data/models/navbar'
 
 const MainLayout = async ({children}: {children: React.ReactNode}) => {
-  const {data: navbar} = await navbarService.getNavbar().then((res) => res.data)
+  const [{data: navbar}, {data: footer}] = await Promise.all([
+    navbarService.getNavbar(),
+    navbarService.getFooter(),
+  ])
+  console.log('[E] ~ MainLayout ~ footer:', footer)
 
   return (
-    <>
+    <div className="w-screen h-screen flex flex-col">
       <Navbar maxWidth="full" style={{background: '#BE1C2D', color: '#fff'}}>
         <NavbarContent className="flex" justify="start">
           <NavbarBrand>
@@ -66,7 +69,35 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
         </NavbarMenu>
       </Navbar>
       {children}
-    </>
+      <div className="grid grid-cols-5 py-4 px-6 mt-auto text-white bg-primary-1">
+        <Image src={footer.logo.mediaUrl} alt={navbar.logo.alt} />
+        <div className="flex flex-col justify-start items-start px-4">
+          <div className="text-[24px]">{footer.aboutTitle}</div>
+          {footer.about.map((item, index: number) => (
+            <Link href={item.linkTo} key={index} className='text-white font-inter'>
+              {item.buttonTitle}
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-col justify-start items-start px-4">
+          <div className="text-[24px]">{footer.serviceTitle}</div>
+          {footer.service.map((item, index: number) => (
+            <Link href={item.linkTo} key={index} className='text-white font-inter'>
+              {item.buttonTitle}
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-col justify-start items-start px-4">
+          <div className="text-[24px]">{footer.winesTitle}</div>
+          {footer.wines.map((item, index: number) => (
+            <Link href={item.linkTo} key={index} className='text-white font-inter'>
+              {item.buttonTitle}
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-col justify-start items-start"></div>
+      </div>
+    </div>
   )
 }
 
