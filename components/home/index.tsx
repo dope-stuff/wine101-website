@@ -127,7 +127,7 @@ export default function Home() {
             <ServiceCard key={i} data={data} />
           ))}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     )
   );

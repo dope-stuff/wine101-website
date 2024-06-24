@@ -18,7 +18,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="en">
       <body className={inter.className}>
         <NextUIProvider>
-          <MainLayout>{children}</MainLayout>
+          <MainLayout>
+            <main>{children}</main>
+          </MainLayout>
         </NextUIProvider>
       </body>
     </html>
