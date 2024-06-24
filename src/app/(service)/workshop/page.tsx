@@ -134,7 +134,7 @@ export default function WineProfileWorkshop() {
         <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
         <WorkshopHeader />
         <div className="w-[90%] flex-col flex mt-4">
-          <Way1O1Icon />
+          <Way1O1Icon className="mx-auto" />
           {data.map((e, i) => (
             <div
               key={i}
@@ -159,13 +159,15 @@ export default function WineProfileWorkshop() {
           </div>
         </div>
         <div className="uppercase text-[60px] my-4">how people talk about us</div>
-        <Carousel
-          elements={splitArray(comments).map((e, i) => (
-            <Comments key={i} comments={e} />
-          ))}
-          slidesPerView={1}
-          gap="0"
-        />
+        <div className='w-[90%]'>
+          <Carousel
+            elements={splitArray(comments).map((e, i) => (
+              <Comments key={i} comments={e} />
+            ))}
+            slidesPerView={1}
+            gap="0"
+          />
+        </div>
         <div className="mb-10" />
       </div>
       <Footer />

@@ -34,7 +34,7 @@ export default function Home() {
   const getEventData = async () => {
     const {data} = await workshopService.get(dayjs().format('YYYY-MM-DD'))
     if (data) {
-      setEvents(data.data[0])
+      setEvents(data[0])
     }
   }
   const getWineData = async () => {
@@ -114,7 +114,7 @@ export default function Home() {
           <Carousel elements={wines} slidesPerView={7} />
         </div>
         <div className="w-full hidden sm:block 2xl:hidden px-4 py-2">
-          <Carousel elements={wines} slidesPerView={4} />
+          <Carousel elements={wines} slidesPerView={5} />
         </div>
         <div className="w-full sm:hidden px-4 py-2">
           <Carousel elements={wines} slidesPerView={4} />

@@ -8,10 +8,10 @@ const Headers = () => {
   const pathname = usePathname()
 
   const tabs = [
-    {name: 'wine profile workshop', path: 'wine-profile-workshop'},
-    {name: 'wine event / private event', path: 'wine-event'},
+    {name: 'wine profile workshop', path: 'workshop'},
+    {name: 'wine event / private event', path: 'event'},
     {name: 'collaboration', path: 'collaboration'},
-    {name: 'wine wedding', path: 'wine-wedding'},
+    {name: 'wine wedding', path: 'wedding'},
     {name: 'pop-up booth', path: 'booth'},
   ]
   return (
@@ -21,7 +21,7 @@ const Headers = () => {
           <div key={i}>
             <Link
               // href="/"
-              href={`/service/${tab.path}`}
+              href={`/${tab.path}`}
               className="flex-row flex items-center gap-2 text-center"
             >
               <PouringWineIcon />
