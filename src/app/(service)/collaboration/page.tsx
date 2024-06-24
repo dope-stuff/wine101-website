@@ -1,13 +1,15 @@
 import {Image} from '@nextui-org/react'
+import Carousel from '../../../modules/carousel/template'
 import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
 import VarietyOfServiceIcon from '@/modules/common/images/service/variety-of-service'
 import FullSupportServiceIcon from '@/modules/common/images/service/full-support-service'
 import ClientCard from '../../../modules/card/template/client'
 import Service1O1ContactUsIcon from '@/modules/common/images/service/service-1o1-contact-us'
 import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
-import Footer from '@/modules/layout/components/footer'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
-import Carousel from '@/modules/carousel/template'
+import Footer from '@/modules/layout/components/footer'
+import InteractiveExperienceIcon from '@/modules/common/images/service/interactive-experience'
+import ContentAndStoryIcon from '@/modules/common/images/service/content-and-story'
 
 export default function Collaboration() {
   const banners = [
@@ -28,31 +30,22 @@ export default function Collaboration() {
   ]
   const data = [
     {
-      name: 'help you choose quality wines',
-      image: <BeginnerFriendlyIcon />,
+      name: 'Content and storytelling',
+      image: <ContentAndStoryIcon />,
       maxWidth: '70%',
-      description:
-        'มากกว่า 70 ไวน์ลิสต์ที่มี เราช่วยคัดสรรไวน์คุณภาพจากทั่วทุกมุมโลกให้คุ้มค่ากับงบประมาณ',
+      description: 'สร้างสรรค์เรื่องไวน์ให้เข้ากับเรื่องราวของแบรนด์',
     },
     {
-      name: 'Customize for Your Event ',
-      image: <ExploreTastebudsIcon />,
-      maxWidth: 580,
-      description:
-        'ยกระดับอีเวนต์ให้พิเศษยิ่งขึ้น ด้วย Wine Activity ที่ match กับ theme อีเว้นต์ของงาน',
+      name: 'Interactive experience for community building',
+      image: <InteractiveExperienceIcon />,
+      description: 'เปิดพื้นที่การมีส่วนร่วม เสริมสร้างแบรนด์ให้แข็งแกร่ง',
     },
     {
       name: 'Full Support & Service',
       image: <FullSupportServiceIcon />,
-      maxWidth: '80%',
+      maxWidth: '90%',
       description:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
-    },
-    {
-      name: 'variety of service',
-      image: <VarietyOfServiceIcon />,
-      maxWidth: 560,
-      description: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
   ]
 
@@ -71,7 +64,7 @@ export default function Collaboration() {
         <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
         <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
           <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
-            <div className="text-[78px] font-semibold uppercase">Collaboration</div>
+            <div className="text-[78px] font-semibold uppercase">collaboration</div>
             <div className="text-[48px] font-doggy w-[80%]">
               ร่วมสร้างประสบการณ์พิเศษให้กับ Community เพิ่มความแข็งแกร่งให้แบรนด์ของคุณ
             </div>
@@ -83,11 +76,15 @@ export default function Collaboration() {
           {data.map((e, i) => (
             <div
               key={i}
-              className={`flex-row flex items-center gap-4 ${i % 2 !== 0 ? 'justify-end' : ''}`}
+              className={`w-[80%] flex-row flex items-center gap-4 ${
+                i % 2 !== 0 ? 'justify-end ml-auto' : ''
+              }`}
             >
-              <div className="max-h-[280px]">{e.image}</div>
+              <div className="max-h-[270px]">{e.image}</div>
               <div className="flex-col flex">
-                <div className="text-[44px] uppercase">{e.name}</div>
+                <div className={`text-[44px] uppercase ${i % 2 !== 0 ? 'ml-[-50px]' : ''}`}>
+                  {e.name}
+                </div>
                 <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
                   {e.description}
                 </div>
