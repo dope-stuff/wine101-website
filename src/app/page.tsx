@@ -1,4 +1,4 @@
-import Home from "../../components/home";
+import Home from "../modules/home/components";
 
 import type { Metadata } from "next";
 
