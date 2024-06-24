@@ -1,14 +1,14 @@
 import React from 'react'
 import {
   Link,
+  Image,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Image,
-  NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  NavbarMenuToggle,
 } from '@nextui-org/react'
 import {NavbarMenu as INavbarMenu} from '@/lib/data/models/navbar'
 import {navbarService} from '@/lib/data/navbar.service'
