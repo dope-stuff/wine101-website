@@ -1,5 +1,5 @@
 import React from "react";
-import { IconProps } from "../../../types/icons";
+import { IconProps } from "../../../../types/icons";
 
 const Way1O1Icon: React.FC<IconProps> = ({
   width = "685",

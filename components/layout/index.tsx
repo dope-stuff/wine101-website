@@ -22,7 +22,7 @@ const Headers = ({ data }: { data?: INavbar }) => {
   return (
     <Navbar maxWidth="full" style={{ background: "#BE1C2D", color: "#fff" }}>
       <NavbarBrand>
-        {data && data.logo.mediaUrl ? (
+        {data && data.logo ? (
           <Image
             width={100}
             removeWrapper
@@ -141,11 +141,19 @@ const Headers = ({ data }: { data?: INavbar }) => {
 
 export default function CustomLayout({
   children,
-  data,
-}: {
+}: // data,
+{
   children: React.ReactNode;
-  data?: INavbar;
+  // data?: INavbar;
 }) {
+  const [data, setData] = useState<INavbar>();
+  const getData = async () => {
+    const { data } = await navbarService.getNavbar().then(({ data }) => data);
+    setData(data);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className="w-screen h-screen flex flex-col overflow-auto">
       <Headers data={data} />
