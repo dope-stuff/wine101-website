@@ -8,21 +8,20 @@ import WorkshopHeader from '@/modules/services/components/workshop-header'
 import WorkShopCard from '../../../modules/card/template/workshop'
 import Way1O1Icon from '@/modules/common/images/service/way-1o1'
 import Comments from '@/modules/services/components/comments'
-import Footer from '@/modules/layout/components/footer'
 
 export default function WineProfileWorkshop() {
   const banners = [
     <Image
       key="1"
       removeWrapper
-      className="max-h-[50vh] w-full rounded-none"
+      className="max-h-[70vh] w-full rounded-none object-cover"
       src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
       alt=""
     />,
     <Image
       key="2"
       removeWrapper
-      className="max-h-[50vh] w-full rounded-none"
+      className="max-h-[70vh] w-full rounded-none object-cover"
       src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
       alt=""
     />,
@@ -130,7 +129,7 @@ export default function WineProfileWorkshop() {
 
   return (
     <>
-      <div className="w-full max-w-screen-2xl justify-center flex-col flex items-center mx-auto">
+      <div className="w-full justify-center flex-col flex items-center mx-auto">
         <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
         <WorkshopHeader />
         <div className="w-[90%] flex-col flex mt-4">

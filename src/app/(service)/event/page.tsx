@@ -7,21 +7,20 @@ import ClientCard from '../../../modules/card/template/client'
 import Service1O1ContactUsIcon from '@/modules/common/images/service/service-1o1-contact-us'
 import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
-import Footer from '@/modules/layout/components/footer'
 
 export default function WineEvent() {
   const banners = [
     <Image
       key="1"
       removeWrapper
-      className="max-h-[50vh] w-full rounded-none"
+      className="max-h-[70vh] w-full rounded-none object-cover"
       src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
       alt=""
     />,
     <Image
       key="2"
       removeWrapper
-      className="max-h-[50vh] w-full rounded-none"
+      className="max-h-[70vh] w-full rounded-none object-cover"
       src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
       alt=""
     />,
@@ -67,7 +66,7 @@ export default function WineEvent() {
   ]
   return (
     <>
-      <div className="w-full max-w-screen-2xl justify-center flex-col flex items-center mx-auto">
+      <div className="w-full justify-center flex-col flex items-center mx-auto">
         <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
         <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
           <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">

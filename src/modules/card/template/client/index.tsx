@@ -24,7 +24,8 @@ export default function ClientCard({data, withDetail}: ClientCardProps) {
             <div className="text-[12px] leading-4">
               <div className="!font-sans">Guest : {data.guest}</div>
               <div className="!font-sans">
-                Wine : {data.order.map((o, i) => o + (i !== data.order.length - 1 && '/'))}
+                Wine :{' '}
+                {data.order && data.order.map((o, i) => o + (i !== data.order!.length - 1 && '/'))}
               </div>
               <div className="!font-sans">Guest : {data.venue}</div>
             </div>

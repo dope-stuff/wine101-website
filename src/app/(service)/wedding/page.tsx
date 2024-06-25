@@ -1,13 +1,8 @@
 import {Image} from '@nextui-org/react'
 import Carousel from '../../../modules/carousel/template'
-import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
 import VarietyOfServiceIcon from '@/modules/common/images/service/variety-of-service'
-import FullSupportServiceIcon from '@/modules/common/images/service/full-support-service'
 import ClientCard from '../../../modules/card/template/client'
-import Service1O1ContactUsIcon from '@/modules/common/images/service/service-1o1-contact-us'
-import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
-import Footer from '@/modules/layout/components/footer'
 import HandpickQualityWinesIcon from '@/modules/common/images/service/handpick-quality-wines'
 import FullSupportService2Icon from '@/modules/common/images/service/full-support-service-2'
 import WorryFreeIcon from '@/modules/common/images/service/worry-free'
@@ -16,20 +11,21 @@ import Way1O1Icon from '@/modules/common/images/service/way-1o1'
 import PackageInfoIcon from '@/modules/common/images/package-info'
 import WineBottlesIcon from '@/modules/common/images/wine-bottles'
 import WineCornerIcon from '@/modules/common/images/wine-corner'
+import Consultant from '@/modules/services/components/consultant'
 
 export default function WineWedding() {
   const banners = [
     <Image
       key="1"
       removeWrapper
-      className="max-h-[50vh] w-full rounded-none"
-      src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
+      className="max-h-[70vh] w-full rounded-none object-cover"
+      src="https://i.ibb.co/w0NxDHW/wine-101-wedding-banner.webp?fbclid=IwZXh0bgNhZW0CMTAAAR2GzdhiaAYtcKZqTMll9rGGrfXXAK-tu6yt-WJFSNASM7nGRW6XvryAYWg_aem_EUCHip8obqTKU-q9OuFWyA"
       alt=""
     />,
     <Image
       key="2"
       removeWrapper
-      className="max-h-[50vh] w-full rounded-none"
+      className="max-h-[70vh] w-full rounded-none object-cover"
       src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
       alt=""
     />,
@@ -131,13 +127,15 @@ export default function WineWedding() {
 
   const panels = ['101 wedding guide', 'our package', 'quick consult', 'our client’s review']
 
-  const guestNumbers = ['150', '200', '250', '300', '300++']
   return (
     <>
-      <div className="w-full max-w-screen-2xl justify-center flex-col flex items-center mx-auto">
-        <div className='flex-row flex flex-nowrap gap-4 text-[24px] p-4'>
+      <div className="w-full justify-center flex-col flex items-center mx-auto">
+        <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-[24px] p-4">
           {panels.map((panel, i) => (
-            <div key={i}>{panel}</div>
+            <>
+              <div key={i}>{panel}</div>
+              {i !== panels.length - 1 && <div className="w-[2px] h-8 bg-black" />}
+            </>
           ))}
         </div>
         <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
@@ -163,7 +161,7 @@ export default function WineWedding() {
             >
               <div className="max-h-[280px]">{e.image}</div>
               <div className="flex-col flex">
-                <div className="text-[44px] uppercase  xl:max-w-[650px]">{e.name}</div>
+                <div className="text-[44px] uppercase xl:max-w-[650px]">{e.name}</div>
                 <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
                   {e.description}
                 </div>
@@ -193,37 +191,7 @@ export default function WineWedding() {
           </div>
         </div>
       </div>
-      <div className="w-full h-full flex-row flex items-center flex-wrap md:flex-nowrap justify-evenly gap-10 text-center bg-[#81CF8A] p-8 pb-12 mb-10 md:mb-4 relative">
-        <div className="flex-col flex text-center text-[54px]">
-          <div>1o1 wedding</div>
-          <div>consultant</div>
-        </div>
-        <div className="flex flex-col items-center justify-center my-4">
-          <div className="text-[30px] mb-4 uppercase">How many guests?</div>
-          <div className="flex-row flex gap-x-8 gap-y-4 max-w-[500px] flex-wrap justify-center">
-            {guestNumbers.map((g, i) => (
-              <div
-                key={i}
-                className="bg-white uppercase border border-black rounded-full py-1 px-10 text-[18px]"
-              >
-                {g}
-              </div>
-            ))}
-          </div>
-          <div className="text-[30px] mb-4 uppercase">venue style</div>
-          <div className="flex-row flex gap-x-8 gap-y-4 max-w-[500px] flex-wrap justify-center">
-            <div className="bg-white uppercase border border-black rounded-full py-1 px-10 text-[18px]">
-              indoor
-            </div>
-            <div className="bg-white uppercase border border-black rounded-full py-1 px-10 text-[18px]">
-              outdoor
-            </div>
-          </div>
-          <button className="uppercase border border-black bg-primary px-4 py-1 text-white text-[48px] rounded-full absolute bottom-[-2.7rem]">
-            consult
-          </button>
-        </div>
-      </div>
+      <Consultant />
       <div className="flex flex-col w-full pl-10">
         <div className="uppercase text-[36px] my-2">our clients</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">

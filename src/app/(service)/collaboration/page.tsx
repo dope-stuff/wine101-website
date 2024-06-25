@@ -1,13 +1,9 @@
 import {Image} from '@nextui-org/react'
 import Carousel from '../../../modules/carousel/template'
-import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
-import VarietyOfServiceIcon from '@/modules/common/images/service/variety-of-service'
 import FullSupportServiceIcon from '@/modules/common/images/service/full-support-service'
 import ClientCard from '../../../modules/card/template/client'
 import Service1O1ContactUsIcon from '@/modules/common/images/service/service-1o1-contact-us'
-import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
-import Footer from '@/modules/layout/components/footer'
 import InteractiveExperienceIcon from '@/modules/common/images/service/interactive-experience'
 import ContentAndStoryIcon from '@/modules/common/images/service/content-and-story'
 
@@ -16,14 +12,14 @@ export default function Collaboration() {
     <Image
       key="1"
       removeWrapper
-      className="max-h-[50vh] w-full rounded-none"
+      className="max-h-[70vh] w-full rounded-none object-cover"
       src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
       alt=""
     />,
     <Image
       key="2"
       removeWrapper
-      className="max-h-[50vh] w-full rounded-none"
+      className="max-h-[70vh] w-full rounded-none object-cover"
       src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
       alt=""
     />,
@@ -60,7 +56,7 @@ export default function Collaboration() {
   ]
   return (
     <>
-      <div className="w-full max-w-screen-2xl justify-center flex-col flex items-center mx-auto">
+      <div className="w-full justify-center flex-col flex items-center mx-auto">
         <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
         <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
           <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
@@ -82,7 +78,7 @@ export default function Collaboration() {
             >
               <div className="max-h-[270px]">{e.image}</div>
               <div className="flex-col flex">
-                <div className={`text-[44px] uppercase ${i % 2 !== 0 ? 'ml-[-50px]' : ''}`}>
+                <div className={`text-[44px] uppercase max-w-[650px] ${i % 2 !== 0 ? 'ml-[-50px]' : ''}`}>
                   {e.name}
                 </div>
                 <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
