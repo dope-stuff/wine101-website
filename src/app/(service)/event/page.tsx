@@ -108,7 +108,7 @@ export default function WineEvent() {
         </div>
         <div className="mb-10" />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

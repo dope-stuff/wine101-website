@@ -202,15 +202,15 @@ const Service1O1ContactUsIcon: React.FC<IconProps> = ({
       <g clipPath="url(#61c6f38483)">
         <g clipPath="url(#490e55a1e7)">
           <path
-            stroke-linecap="butt"
+            strokeLinecap="butt"
             transform="matrix(0.74794, 0, 0, 0.74794, 57.204241, 34.936394)"
             fill="none"
             stroke-linejoin="miter"
             d="M 78.359622 0.00147852 L 591.070274 0.00147852 C 634.345413 0.00147852 669.431388 35.082231 669.431388 78.35737 C 669.431388 121.637733 634.345413 156.718485 591.070274 156.718485 L 78.359622 156.718485 C 35.084482 156.718485 -0.0014925 121.637733 -0.0014925 78.35737 C -0.0014925 35.082231 35.084482 0.00147852 78.359622 0.00147852 Z M 78.359622 0.00147852 "
             stroke="#000000"
-            stroke-width="4"
-            stroke-opacity="1"
-            stroke-miterlimit="4"
+            strokeWidth="4"
+            strokeOpacity="1"
+            strokeMiterlimit="4"
           />
         </g>
       </g>

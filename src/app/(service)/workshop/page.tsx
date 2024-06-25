@@ -170,7 +170,7 @@ export default function WineProfileWorkshop() {
         </div>
         <div className="mb-10" />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
