@@ -2,10 +2,10 @@ import dayjs from 'dayjs'
 import {useEffect, useState} from 'react'
 import EventDialog from '../dialog'
 import BookNowButton from '../../../button/components/booknow'
-import {IWorkshop} from '@/lib/data/models/workshop'
+import {IWorkshopEvent} from '@/lib/data/models/workshop'
 
 type EventProps = {
-  data: IWorkshop
+  data: IWorkshopEvent
 }
 export default function Event({data}: EventProps) {
   const [time, setTime] = useState({

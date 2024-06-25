@@ -1,13 +1,19 @@
+'use client'
+import {useEffect, useState} from 'react'
+
 import {Image} from '@nextui-org/react'
+import {workshopService} from '@/lib/data/workshop.service'
+
 import Carousel from '../../../modules/carousel/template'
+import Comments from '@/modules/services/components/comments'
+import Way1O1Icon from '@/modules/common/images/service/way-1o1'
+import WorkShopCard from '../../../modules/card/template/workshop'
+import WorkshopHeader from '@/modules/services/components/workshop-header'
 import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
 import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
 import CreateWineProfileIcon from '@/modules/common/images/service/create-wine-profile'
 import EnjoyBeingYourselfIcon from '@/modules/common/images/service/enjoy-being-yourself'
-import WorkshopHeader from '@/modules/services/components/workshop-header'
-import WorkShopCard from '../../../modules/card/template/workshop'
-import Way1O1Icon from '@/modules/common/images/service/way-1o1'
-import Comments from '@/modules/services/components/comments'
+import {IWorkshop} from '@/lib/data/models/workshop'
 
 export default function WineProfileWorkshop() {
   const banners = [
@@ -56,53 +62,54 @@ export default function WineProfileWorkshop() {
     },
   ]
 
-  const workshops = [
-    {
-      title: 'workshop 1 ',
-      subtitle: 'halloween night',
-      createdAt: '29 october 2023',
-    },
-    {
-      title: 'workshop 1 ',
-      subtitle: 'halloween night',
-      createdAt: '29 october 2023',
-    },
-    {
-      title: 'workshop 2 ',
-      subtitle: 'halloween night',
-      createdAt: '29 october 2023',
-    },
-    {
-      title: 'workshop 3 ',
-      subtitle: 'halloween night',
-      createdAt: '29 october 2023',
-    },
-    {
-      title: 'workshop 4 ',
-      subtitle: 'halloween night',
-      createdAt: '29 october 2023',
-    },
-    {
-      title: 'workshop 5 ',
-      subtitle: 'halloween night',
-      createdAt: '29 october 2023',
-    },
-    {
-      title: 'workshop 6 ',
-      subtitle: 'halloween night',
-      createdAt: '29 october 2023',
-    },
-    {
-      title: 'workshop 7 ',
-      subtitle: 'halloween night',
-      createdAt: '29 october 2023',
-    },
-    {
-      title: 'workshop 8 ',
-      subtitle: 'halloween night',
-      createdAt: '29 october 2023',
-    },
-  ]
+  const [workshops, setWorkshops] = useState<IWorkshop[]>([])
+  //  [
+  //   {
+  //     title: 'workshop 1 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 1 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 2 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 3 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 4 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 5 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 6 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 7 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 8 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  // ]
 
   const comments = [
     'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
@@ -127,11 +134,21 @@ export default function WineProfileWorkshop() {
     }, [] as string[][])
   }
 
+  const getData = async () => {
+    const {data: workshop} = await workshopService.getWorkshop()
+    if (data) {
+      setWorkshops(workshop)
+    }
+  }
+  useEffect(() => {
+    getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <>
       <div className="w-full justify-center flex-col flex items-center mx-auto">
         <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
-        <WorkshopHeader />
+        {workshops[0] && <WorkshopHeader thumbnail={workshops[0].videos} />}
         <div className="w-[90%] flex-col flex mt-4">
           <Way1O1Icon className="mx-auto" />
           {data.map((e, i) => (
@@ -158,7 +175,7 @@ export default function WineProfileWorkshop() {
           </div>
         </div>
         <div className="uppercase text-[60px] my-4">how people talk about us</div>
-        <div className='w-[90%]'>
+        <div className="w-[90%]">
           <Carousel
             elements={splitArray(comments).map((e, i) => (
               <Comments key={i} comments={e} />

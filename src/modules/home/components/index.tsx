@@ -18,30 +18,29 @@ import {workshopService} from '@/lib/data/workshop.service'
 
 import {IProduct} from '@/lib/data/models/product'
 import {IHome} from '@/lib/data/models/home'
-import {IWorkshop} from '@/lib/data/models/workshop'
+import {IWorkshopEvent} from '@/lib/data/models/workshop'
 
 export default function Home() {
   const [wines, setWines] = useState([])
   const [pageData, setPageData] = useState<IHome>()
-  const [events, setEvents] = useState<IWorkshop>()
+  const [events, setEvents] = useState<IWorkshopEvent>()
 
   const getData = async () => {
-    const {data} = await homeService.get()
-    if (data) {
-      setPageData(data.data)
+    const [{data: home}, {data: event}, products] = await Promise.all([
+      homeService.get(),
+      workshopService.getWorkshopEvent(dayjs().format('YYYY-MM-DD')),
+      productService.getProduct(),
+    ])
+
+    if (home) {
+      setPageData(home)
     }
-  }
-  const getEventData = async () => {
-    const {data} = await workshopService.get(dayjs().format('YYYY-MM-DD'))
-    if (data) {
-      setEvents(data[0])
+    if (event) {
+      setEvents(event[0])
     }
-  }
-  const getWineData = async () => {
-    const {data} = await productService.getProduct()
-    if (data) {
+    if (products) {
       setWines(
-        data.products.map((e: IProduct, i: number) => {
+        products.products.map((e: IProduct, i: number) => {
           let theme = {
             textColor: '#B23A57',
             bgColor: '#961937',
@@ -96,10 +95,9 @@ export default function Home() {
       )
     }
   }
+
   useEffect(() => {
     getData()
-    getEventData()
-    getWineData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (

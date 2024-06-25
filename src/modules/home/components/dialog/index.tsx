@@ -11,11 +11,11 @@ import {
 } from '@nextui-org/react'
 import dayjs from 'dayjs'
 import {useEffect, useRef} from 'react'
-import {IWorkshop} from '@/lib/data/models/workshop'
+import {IWorkshopEvent} from '@/lib/data/models/workshop'
 import FlasksIcon from '@/modules/common/images/flasks'
 
 type EventDialogProps = {
-  data: IWorkshop
+  data: IWorkshopEvent
   time: {
     days: number
     hours: number
