@@ -1,3 +1,4 @@
+import {Inter} from 'next/font/google'
 import {
   Link,
   Image,
@@ -12,12 +13,13 @@ import {
 import {navbarService} from '@/lib/data/navbar.service'
 import {NavbarMenu as INavbarMenu} from '@/lib/data/models/navbar'
 
+const inter = Inter({subsets: ['latin']})
+
 const MainLayout = async ({children}: {children: React.ReactNode}) => {
   const [{data: navbar}, {data: footer}] = await Promise.all([
     navbarService.getNavbar(),
     navbarService.getFooter(),
   ])
-  console.log('[E] ~ MainLayout ~ footer:', footer)
 
   return (
     <div className="w-screen h-screen flex flex-col">
@@ -72,30 +74,41 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
       <div className="grid grid-cols-5 py-4 px-6 mt-auto text-white bg-primary-1">
         <Image src={footer.logo.mediaUrl} alt={navbar.logo.alt} />
         <div className="flex flex-col justify-start items-start px-4">
-          <div className="text-[24px]">{footer.aboutTitle}</div>
+          <div className="text-[24px] mb-2">{footer.aboutTitle}</div>
           {footer.about.map((item, index: number) => (
-            <Link href={item.linkTo} key={index} className='text-white font-inter'>
+            <Link href={item.linkTo} key={index} className={`text-white ${inter.className}`}>
               {item.buttonTitle}
             </Link>
           ))}
         </div>
         <div className="flex flex-col justify-start items-start px-4">
-          <div className="text-[24px]">{footer.serviceTitle}</div>
+          <div className="text-[24px] mb-2">{footer.serviceTitle}</div>
           {footer.service.map((item, index: number) => (
-            <Link href={item.linkTo} key={index} className='text-white font-inter'>
+            <Link href={item.linkTo} key={index} className={`text-white ${inter.className}`}>
               {item.buttonTitle}
             </Link>
           ))}
         </div>
         <div className="flex flex-col justify-start items-start px-4">
-          <div className="text-[24px]">{footer.winesTitle}</div>
+          <div className="text-[24px] mb-2">{footer.winesTitle}</div>
           {footer.wines.map((item, index: number) => (
-            <Link href={item.linkTo} key={index} className='text-white font-inter'>
+            <Link href={item.linkTo} key={index} className={`text-white ${inter.className}`}>
               {item.buttonTitle}
             </Link>
           ))}
         </div>
-        <div className="flex flex-col justify-start items-start"></div>
+        <div className="flex flex-col justify-center items-center">
+          <div className="text-[24px] mb-2">{footer.contact.heading}</div>
+          <div className={`text-white ${inter.className}`}>{footer.contact.subheading}</div>
+          <div className={`text-white ${inter.className}`}>{footer.contact.description}</div>
+          <div className='flex flex-row items-center gap-2 mt-4'>
+            {footer.social.map((item, index: number) => (
+              <Link href={item.linkTo} key={index}>
+                <Image className='w-[40px] h-[40px]' src={item.mediaUrl} alt={item.alt} />
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
