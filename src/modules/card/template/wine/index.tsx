@@ -18,7 +18,7 @@ export default function WineCard({ data, theme }: WineCardProps) {
   ];
 
   return (
-    <div className="min-w-[250px] w-full h-full flex-col flex gap-2 p-2 border border-[#CFCFCF]">
+    <div className="w-[250px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF]">
       <div
         className="relative w-full h-[160px] flex-row flex justify-center items-center"
         style={{ backgroundColor: theme.bgColor }}
@@ -36,7 +36,7 @@ export default function WineCard({ data, theme }: WineCardProps) {
         {categories.map((c, index) => (
           <div
             key={index}
-            className="px-2 py-1 rounded-full whitespace-nowrap"
+            className="text-[14px] px-2 py-1 rounded-full whitespace-nowrap"
             style={{ backgroundColor: theme.bgColor }}
           >
             {c}

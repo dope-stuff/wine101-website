@@ -13,19 +13,17 @@ const Carousel = ({elements, slidesPerView = 8, arrowColor, gap = 16}: CarouselP
   const [currentIndex, setCurrentIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
   const [elementWidth, setElementWidth] = useState(0)
-  const [gapValue, setGapValue] = useState(0)
 
   useEffect(() => {
     if (containerRef.current) {
       const containerWidth = containerRef.current.offsetWidth
-      const gapNumber = gap
-      setElementWidth(containerWidth)
-      setGapValue(gapNumber)
+      const elementWidth = containerWidth / slidesPerView
+      setElementWidth(elementWidth)
     }
-  }, [slidesPerView, gap])
+  }, [slidesPerView])
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, elements.length - slidesPerView))
+    setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, elements.length + 1))
   }
 
   const prevSlide = () => {
@@ -45,28 +43,20 @@ const Carousel = ({elements, slidesPerView = 8, arrowColor, gap = 16}: CarouselP
       <div className="relative w-full mx-auto overflow-hidden">
         <div
           ref={containerRef}
-          className="flex transition-transform duration-500"
+          className="flex-row flex transition-transform duration-500"
           style={{
-            transform: `translateX(-${(currentIndex / slidesPerView) * 100}%)`,
+            transform: `translateX(-${currentIndex * elementWidth}px)`,
+            gap,
           }}
         >
           {elements.map((element, index) => (
-            <div
-              key={index}
-              className="w-full flex-shrink-0 relative"
-              style={{
-                flex: `0 0 ${
-                  (elementWidth - (elements.length - 1) * (gapValue || 1)) / slidesPerView
-                }px`,
-                paddingRight: gap,
-              }}
-            >
+            <div key={index} className="flex-1 flex-shrink-0" style={{width: elementWidth}}>
               {element}
             </div>
           ))}
         </div>
       </div>
-      {currentIndex < elements.length - slidesPerView && (
+      {slidesPerView > 6 && currentIndex <= elements.length - slidesPerView && (
         <button
           className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
           onClick={nextSlide}
