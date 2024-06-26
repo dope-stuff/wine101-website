@@ -1,5 +1,10 @@
-import Home from '../modules/home/components'
+import {homeService} from '@/lib/data/home.service'
+import NextEvent from '@/modules/home/components/next-event'
 
-export default function HomePage() {
-  return <Home />
+export default async function Page() {
+  return (
+    <>
+      <NextEvent />
+    </>
+  )
 }

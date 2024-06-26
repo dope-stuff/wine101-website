@@ -1,5 +1,5 @@
 import {axios} from '@/lib/data'
 
 export const homeService = {
-  get: () => axios.get('https://backend.petswayhome.co/api/wine-home?populate=*').then(({data})=>data),
+  get: () => axios.get('/wine-home?populate=*').then(({data}) => data),
 }
