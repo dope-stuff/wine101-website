@@ -1,5 +1,5 @@
 import {axios} from '@/lib/data'
-import {IService} from '@/lib/data/models/home'
+import {IService} from '@/lib/data/models/common'
 
 interface HomePage {
   productsTitle: string

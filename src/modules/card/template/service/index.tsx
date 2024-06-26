@@ -1,4 +1,4 @@
-import {IService} from '@/lib/data/models/home'
+import {IService} from '@/lib/data/models/common'
 import {Link} from '@nextui-org/react'
 
 export default function ServiceCard({data}: {data: IService}) {
