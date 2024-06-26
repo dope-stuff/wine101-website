@@ -22,7 +22,7 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
   ])
 
   return (
-    <div className="w-screen h-screen flex flex-col">
+    <div className="h-screen flex flex-col">
       <Navbar maxWidth="full" style={{background: '#BE1C2D', color: '#fff'}}>
         <NavbarContent className="flex" justify="start">
           <NavbarBrand>
@@ -71,8 +71,10 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
         </NavbarMenu>
       </Navbar>
       {children}
-      <div className="grid grid-cols-5 py-4 px-6 mt-auto text-white bg-primary-1">
-        <Image src={footer.logo.mediaUrl} alt={navbar.logo.alt} />
+      <div className="flex flex-row flex-wrap justify-between md:grid md:grid-cols-5 items-start py-4 px-6 mt-auto text-white bg-primary-1">
+        <div className="md:h-full w-full flex items-center justify-center">
+          <Image width={200} src={footer.logo.mediaUrl} alt={navbar.logo.alt} />
+        </div>
         <div className="flex flex-col justify-start items-start px-4">
           <div className="text-[24px] mb-2">{footer.aboutTitle}</div>
           {footer.about.map((item, index: number) => (
@@ -97,14 +99,14 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
             </Link>
           ))}
         </div>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col w-full justify-center items-center">
           <div className="text-[24px] mb-2">{footer.contact.heading}</div>
           <div className={`text-white ${inter.className}`}>{footer.contact.subheading}</div>
           <div className={`text-white ${inter.className}`}>{footer.contact.description}</div>
-          <div className='flex flex-row items-center gap-2 mt-4'>
+          <div className="flex flex-row items-center gap-2 mt-4">
             {footer.social.map((item, index: number) => (
               <Link href={item.linkTo} key={index}>
-                <Image className='w-[40px] h-[40px]' src={item.mediaUrl} alt={item.alt} />
+                <Image className="w-[40px] h-[40px]" src={item.mediaUrl} alt={item.alt} />
               </Link>
             ))}
           </div>

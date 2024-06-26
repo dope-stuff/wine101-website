@@ -13,7 +13,7 @@ import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-frien
 import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
 import CreateWineProfileIcon from '@/modules/common/images/service/create-wine-profile'
 import EnjoyBeingYourselfIcon from '@/modules/common/images/service/enjoy-being-yourself'
-import {IWorkshop} from '@/lib/data/models/workshop'
+import {Workshop} from '@/lib/data/models/workshop'
 
 export default function WineProfileWorkshop() {
   const banners = [
@@ -62,7 +62,54 @@ export default function WineProfileWorkshop() {
     },
   ]
 
-  const [workshops, setWorkshops] = useState<IWorkshop[]>([])
+  const [workshops, setWorkshops] = useState<Workshop[]>([])
+  //  [
+  //   {
+  //     title: 'workshop 1 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 1 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 2 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 3 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 4 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 5 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 6 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 7 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  //   {
+  //     title: 'workshop 8 ',
+  //     subtitle: 'halloween night',
+  //     createdAt: '29 october 2023',
+  //   },
+  // ]
 
   const comments = [
     'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',

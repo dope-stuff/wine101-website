@@ -1,16 +1,4 @@
-export interface IWorkshopEvent {
-  id: number
-  name: string
-  createdAt: string
-  updatedAt: string
-  description: string
-  event_date: string
-  number_of_guests: number
-  price: number
-  location: string
-}
-
-export interface IWorkshop {
+export interface Workshop {
   id: string
   name: string
   createdAt: string

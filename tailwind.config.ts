@@ -20,7 +20,8 @@ const config: Config = {
       screens: {},
       colors: {
         primary: '#BE1C2D',
-        'primary-1': '#BE1C2D',
+        'primary-1': '#be1c2d',
+        'primary-2': '#e8c85e',
       },
     },
   },

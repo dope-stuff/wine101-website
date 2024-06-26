@@ -1,12 +1,10 @@
 import {axios} from '@/lib/data'
+import {StrapiParams, StrapiPagination} from '@/lib/data/models/strapi'
+import {Workshop} from './models/workshop'
 
 export const workshopService = {
-  getWorkshopEvent: (event_date: string) =>
-    axios
-      .get(
-        `/workshops?filters[event_date][$gte]=${event_date}&pagination[limit]=1&pagination[withCount]=false`
-      )
-      .then(({data}) => data),
+  get: (params: StrapiParams) =>
+    axios.get<StrapiPagination<Workshop[]>>('/workshops', {params}).then(({data}) => data),
   getWorkshop: () =>
     axios.get('/workshops?pagination[limit]=10&pagination[withCount]=false').then(({data}) => data),
 }
