@@ -9,7 +9,6 @@ import ServiceCard from '../../card/template/service'
 import Event from './event'
 
 import OurHighLightsIcon from '@/modules/common/images/our-highlights'
-import Footer from '@/modules/layout/components/footer'
 import FlasksIcon from '@/modules/common/images/flasks'
 
 import {homeService} from '@/lib/data/home.service'
@@ -127,7 +126,6 @@ export default function Home() {
             <ServiceCard key={i} data={data} />
           ))}
         </div>
-        {/* <Footer /> */}
       </div>
     )
   )
