@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 
 import {Image} from '@nextui-org/react'
 import {workshopService} from '@/lib/data/workshop.service'
+import {iannDog} from '@/styles/fonts'
 
 import Carousel from '../../../modules/carousel/template'
 import Comments from '@/modules/services/components/comments'
@@ -111,7 +112,7 @@ export default function WineProfileWorkshop() {
               <div className="max-h-[280px]">{e.image}</div>
               <div className="flex-col flex">
                 <div className="text-[44px] uppercase">{e.name}</div>
-                <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
+                <div className={`${iannDog.className} text-[27px]`} style={{maxWidth: e.maxWidth}}>
                   {e.description}
                 </div>
               </div>

@@ -6,6 +6,7 @@ import Service1O1ContactUsIcon from '@/modules/common/images/service/service-1o1
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
 import InteractiveExperienceIcon from '@/modules/common/images/service/interactive-experience'
 import ContentAndStoryIcon from '@/modules/common/images/service/content-and-story'
+import {iannDog} from '@/styles/fonts'
 
 export default function Collaboration() {
   const banners = [
@@ -61,7 +62,7 @@ export default function Collaboration() {
         <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
           <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
             <div className="text-[78px] font-semibold uppercase">collaboration</div>
-            <div className="text-[48px] font-doggy w-[80%]">
+            <div className={`text-[48px] w-[80%] ${iannDog.className}`}>
               ร่วมสร้างประสบการณ์พิเศษให้กับ Community เพิ่มความแข็งแกร่งให้แบรนด์ของคุณ
             </div>
             <Service1O1ContactUsIcon className="cursor-pointer" />
@@ -81,7 +82,7 @@ export default function Collaboration() {
                 <div className={`text-[44px] uppercase max-w-[650px] ${i % 2 !== 0 ? 'ml-[-50px]' : ''}`}>
                   {e.name}
                 </div>
-                <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
+                <div className={`${iannDog.className} text-[27px]`} style={{maxWidth: e.maxWidth}}>
                   {e.description}
                 </div>
               </div>

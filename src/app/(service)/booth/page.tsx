@@ -4,6 +4,7 @@ import FlasksIcon from '@/modules/common/images/flasks'
 import AffordableFunIcon from '@/modules/common/images/service/affordable-fun'
 import ExploreVarietyWinesIcon from '@/modules/common/images/service/explore-variety-wines'
 import WineByGlassIcon from '@/modules/common/images/service/wine-by-glass'
+import {iannDog} from '@/styles/fonts'
 
 export default function Booth() {
   const banners = [
@@ -51,7 +52,7 @@ export default function Booth() {
         <div className="w-full flex-col flex items-center justify-center mt-8 relative">
           <FlasksIcon width={100} height={100} className="absolute left-10 top-4" />
           <div className="text-[78px] font-semibold uppercase">pop-up booth</div>
-          <div className="text-[48px] font-doggy">
+          <div className={`text-[48px] ${iannDog.className}`}>
             อัพความสนุกกับ wine101 pop-up booth ค้นหาไวน์ที่ชอบ รสชาติที่ใช่
           </div>
         </div>
@@ -64,7 +65,7 @@ export default function Booth() {
               <div className="max-h-[270px]">{e.image}</div>
               <div className="flex-col flex">
                 <div className="text-[44px] uppercase">{e.name}</div>
-                <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
+                <div className={`${iannDog.className} text-[27px]`} style={{maxWidth: e.maxWidth}}>
                   {e.description}
                 </div>
               </div>
@@ -73,8 +74,8 @@ export default function Booth() {
         </div>
         <div className="flex-row flex items-center justify-center gap-10">
           <div className="text-[44px] flex flex-col">
-            <div className="font-doggy">ติดตามอัพเดท Pop-up booth</div>
-            <div className="font-doggy">ของพวกเราได้ที่ หน้า Instagram</div>
+            <div className={iannDog.className}>ติดตามอัพเดท Pop-up booth</div>
+            <div className={iannDog.className}>ของพวกเราได้ที่ หน้า Instagram</div>
           </div>
           <button className="uppercase border border-black bg-[#81CF8A] px-4 py-1 text-[48px] rounded-full">
             click!

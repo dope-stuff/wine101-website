@@ -12,6 +12,7 @@ import PackageInfoIcon from '@/modules/common/images/package-info'
 import WineBottlesIcon from '@/modules/common/images/wine-bottles'
 import WineCornerIcon from '@/modules/common/images/wine-corner'
 import Consultant from '@/modules/services/components/consultant'
+import {iannDog} from '@/styles/fonts'
 
 export default function WineWedding() {
   const banners = [
@@ -144,7 +145,7 @@ export default function WineWedding() {
             <div className="text-[44px] font-semibold uppercase">
               It’s not just about wine—it’s about creating cherished moments.
             </div>
-            <div className="text-[36px] font-doggy w-full">
+            <div className={`text-[36px] ${iannDog.className} w-full`}>
               สร้างความทรงจำให้วันพิเศษกับ wine101 thewedding
             </div>
             <Way1O1Icon className="my-4" />
@@ -162,7 +163,7 @@ export default function WineWedding() {
               <div className="max-h-[280px]">{e.image}</div>
               <div className="flex-col flex">
                 <div className="text-[44px] uppercase xl:max-w-[650px]">{e.name}</div>
-                <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
+                <div className={`${iannDog.className} text-[27px]`} style={{maxWidth: e.maxWidth}}>
                   {e.description}
                 </div>
               </div>
@@ -174,7 +175,7 @@ export default function WineWedding() {
           <div className="flex-1 flex-col flex items-center">
             <WineBottlesIcon />
             <div className="font-bold text-[48px]">3 types of wine</div>
-            <div className="font-doggy text-[24px] max-w-[600px]">
+            <div className={`${iannDog.className} text-[24px] max-w-[600px]`}>
               พร้อมคำแนะนำเรื่อง จำนวนปริมาณของไวน์แต่ละชนิดที่เหมาะสมกับรูปแบบงาน ปริมาณแขก
               และวัยของแขกที่มา
             </div>
@@ -182,7 +183,7 @@ export default function WineWedding() {
           <div className="flex-1 flex-col flex items-center">
             <WineCornerIcon />
             <div className="font-bold text-[48px]">wine corner</div>
-            <div className="font-doggy text-[24px] max-w-[600px]">
+            <div className={`${iannDog.className} text-[24px] max-w-[600px]`}>
               รองรับแขกในงาน ถึง 4 ชั่วโมง ไม่รวมการติดตั้งบูธ แก้วไวน์ทีมบ่าว
               ทีมสาวสำหรับแขกมาให้สนุกกับงานแต่ง
               กิจกรรมแนะนำชิมไวน์สำหรับแขกในช่วงก่อนงานเริ่มและหลังงานจบ

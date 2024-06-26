@@ -12,6 +12,7 @@ import {eventService} from '@/lib/data/event.service'
 import {useEffect, useState} from 'react'
 import {IMenu} from '@/lib/data/models/navbar'
 import {IEvent} from '@/lib/data/models/common'
+import {iannDog} from '@/styles/fonts'
 
 export default function WineEvent() {
   // const banners = [
@@ -30,7 +31,7 @@ export default function WineEvent() {
   //     alt=""
   //   />,
   // ]
-  const [content, setContent] = useState([
+  const content = [
     {
       heading: 'help you choose quality wines',
       image: <BeginnerFriendlyIcon />,
@@ -58,7 +59,8 @@ export default function WineEvent() {
       maxWidth: 560,
       subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
-  ])
+  ]
+  const [contents, setContents] = useState(content)
 
   const clients = [
     {title: 'ascott bangkok', image: ''},
@@ -76,10 +78,10 @@ export default function WineEvent() {
     const {data: events} = await eventService.getEvent()
     if (events) {
       setEvent(events)
-      setContent(
+      setContents(
         content.map((c, i) => ({
           ...c,
-          subheading: events.details[i].heading,
+          subheading: events.details[i].subheading,
           heading: events.details[i].heading,
         }))
       )
@@ -113,13 +115,15 @@ export default function WineEvent() {
           <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
             <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
               <div className="text-[78px] font-semibold uppercase">{event.header.heading}</div>
-              <div className="text-[48px] font-doggy w-[80%]">{event.header.subheading}</div>
+              <div className={`text-[48px] w-[80%] ${iannDog.className}`}>
+                {event.header.subheading}
+              </div>
               <Service1O1ContactUsIcon className="cursor-pointer" />
             </div>
             <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
           </div>
           <div className="w-[90%] flex-col flex">
-            {content.map((e, i) => (
+            {contents.map((e, i) => (
               <div
                 key={i}
                 className={`flex-row flex items-center gap-4 ${i % 2 !== 0 ? 'justify-end' : ''}`}
@@ -127,7 +131,10 @@ export default function WineEvent() {
                 <div className="max-h-[280px]">{e.image}</div>
                 <div className="flex-col flex">
                   <div className="text-[44px] uppercase">{e.heading}</div>
-                  <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
+                  <div
+                    className={`${iannDog.className} text-[27px]`}
+                    style={{maxWidth: e.maxWidth}}
+                  >
                     {e.subheading}
                   </div>
                 </div>

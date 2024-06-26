@@ -23,18 +23,14 @@
 }
 
 @font-face {
-  font-family: "lazy_dog";
-  src: url("../../public/fonts/lazy_dog.otf") format("opentype");
+  font-family: 'lazy_dog';
+  src: url('../../public/fonts/lazy_dog.otf') format('opentype');
 }
 
 * {
-  font-family: "lazy_dog", sans-serif;
-}
-
-.font-doggy {
-  font-family: "iannnnn-DOG-Regular", sans-serif;
+  font-family: 'lazy_dog', sans-serif;
 }
 
 .font-UQY {
-  font-family: "ukijqol_yantu", sans-serif;
+  font-family: 'ukijqol_yantu', sans-serif;
 }
