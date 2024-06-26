@@ -1,3 +1,4 @@
+'use client'
 import {Image} from '@nextui-org/react'
 import Carousel from '../../../modules/carousel/template'
 import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
@@ -7,24 +8,28 @@ import ClientCard from '../../../modules/card/template/client'
 import Service1O1ContactUsIcon from '@/modules/common/images/service/service-1o1-contact-us'
 import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
+import {eventService} from '@/lib/data/event.service'
+import {useEffect, useState} from 'react'
+import {IMenu} from '@/lib/data/models/navbar'
+import {IEvent} from '@/lib/data/models/common'
 
 export default function WineEvent() {
-  const banners = [
-    <Image
-      key="1"
-      removeWrapper
-      className="max-h-[70vh] w-full rounded-none object-cover"
-      src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
-      alt=""
-    />,
-    <Image
-      key="2"
-      removeWrapper
-      className="max-h-[70vh] w-full rounded-none object-cover"
-      src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
-      alt=""
-    />,
-  ]
+  // const banners = [
+  //   <Image
+  //     key="1"
+  //     removeWrapper
+  //     className="max-h-[70vh] w-full rounded-none object-cover"
+  //     src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
+  //     alt=""
+  //   />,
+  //   <Image
+  //     key="2"
+  //     removeWrapper
+  //     className="max-h-[70vh] w-full rounded-none object-cover"
+  //     src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
+  //     alt=""
+  //   />,
+  // ]
   const data = [
     {
       name: 'help you choose quality wines',
@@ -64,50 +69,76 @@ export default function WineEvent() {
     {title: 'urukela bangkok', image: ''},
     {title: 'toktok bangkok', image: ''},
   ]
+
+  const [event, setEvent] = useState<IEvent>()
+
+  const getData = async () => {
+    const {data: events} = await eventService.getEvent()
+    if (data) {
+      setEvent(events)
+    }
+  }
+
+  useEffect(() => {
+    getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
-    <>
-      <div className="w-full justify-center flex-col flex items-center mx-auto">
-        <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
-        <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
-          <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
-            <div className="text-[78px] font-semibold uppercase">
-              <div>wine event</div>
-              <div>private event</div>
+    event && (
+      <>
+        <div className="w-full justify-center flex-col flex items-center mx-auto">
+          {
+            <Carousel
+              elements={event.banner.map((b: IMenu) => (
+                <Image
+                  key={b.id}
+                  removeWrapper
+                  className="max-h-[70vh] w-full rounded-none object-cover"
+                  src={b.mediaUrl}
+                  alt={b.alt}
+                />
+              ))}
+              slidesPerView={1}
+              arrowColor="white"
+              gap="0"
+            />
+          }
+          <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
+            <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
+              <div className="text-[78px] font-semibold uppercase">{event.header.heading}</div>
+              <div className="text-[48px] font-doggy w-[80%]">{event.header.subheading}</div>
+              <Service1O1ContactUsIcon className="cursor-pointer" />
             </div>
-            <div className="text-[48px] font-doggy w-[80%]">
-              สร้างประสบการณ์ใหม่ให้กับอีเวนต์ด้วยไวน์ ครบจบในที่เดียว
-            </div>
-            <Service1O1ContactUsIcon className="cursor-pointer" />
+            <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
           </div>
-          <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
-        </div>
-        <div className="w-[90%] flex-col flex">
-          {data.map((e, i) => (
-            <div
-              key={i}
-              className={`flex-row flex items-center gap-4 ${i % 2 !== 0 ? 'justify-end' : ''}`}
-            >
-              <div className="max-h-[280px]">{e.image}</div>
-              <div className="flex-col flex">
-                <div className="text-[44px] uppercase">{e.name}</div>
-                <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
-                  {e.description}
+          <div className="w-[90%] flex-col flex">
+            {data.map((e, i) => (
+              <div
+                key={i}
+                className={`flex-row flex items-center gap-4 ${i % 2 !== 0 ? 'justify-end' : ''}`}
+              >
+                <div className="max-h-[280px]">{e.image}</div>
+                <div className="flex-col flex">
+                  <div className="text-[44px] uppercase">{e.name}</div>
+                  <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
+                    {e.description}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-col w-full pl-10">
-          <div className="uppercase text-[36px] my-2">our clients</div>
-          <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-            {clients.map((c, i) => (
-              <ClientCard data={c} key={i} />
             ))}
           </div>
+          <div className="flex flex-col w-full pl-10">
+            <div className="uppercase text-[36px] my-2">our clients</div>
+            <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+              {clients.map((c, i) => (
+                <ClientCard data={c} key={i} />
+              ))}
+            </div>
+          </div>
+          <div className="mb-10" />
         </div>
-        <div className="mb-10" />
-      </div>
-      {/* <Footer /> */}
-    </>
+        {/* <Footer /> */}
+      </>
+    )
   )
 }
