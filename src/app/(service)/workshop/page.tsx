@@ -63,53 +63,6 @@ export default function WineProfileWorkshop() {
   ]
 
   const [workshops, setWorkshops] = useState<IWorkshop[]>([])
-  //  [
-  //   {
-  //     title: 'workshop 1 ',
-  //     subtitle: 'halloween night',
-  //     createdAt: '29 october 2023',
-  //   },
-  //   {
-  //     title: 'workshop 1 ',
-  //     subtitle: 'halloween night',
-  //     createdAt: '29 october 2023',
-  //   },
-  //   {
-  //     title: 'workshop 2 ',
-  //     subtitle: 'halloween night',
-  //     createdAt: '29 october 2023',
-  //   },
-  //   {
-  //     title: 'workshop 3 ',
-  //     subtitle: 'halloween night',
-  //     createdAt: '29 october 2023',
-  //   },
-  //   {
-  //     title: 'workshop 4 ',
-  //     subtitle: 'halloween night',
-  //     createdAt: '29 october 2023',
-  //   },
-  //   {
-  //     title: 'workshop 5 ',
-  //     subtitle: 'halloween night',
-  //     createdAt: '29 october 2023',
-  //   },
-  //   {
-  //     title: 'workshop 6 ',
-  //     subtitle: 'halloween night',
-  //     createdAt: '29 october 2023',
-  //   },
-  //   {
-  //     title: 'workshop 7 ',
-  //     subtitle: 'halloween night',
-  //     createdAt: '29 october 2023',
-  //   },
-  //   {
-  //     title: 'workshop 8 ',
-  //     subtitle: 'halloween night',
-  //     createdAt: '29 october 2023',
-  //   },
-  // ]
 
   const comments = [
     'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
@@ -145,9 +98,8 @@ export default function WineProfileWorkshop() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <>
       <div className="w-full justify-center flex-col flex items-center mx-auto">
-        <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
+        <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
         {workshops[0] && <WorkshopHeader thumbnail={workshops[0].videos} />}
         <div className="w-[90%] flex-col flex mt-4">
           <Way1O1Icon className="mx-auto" />
@@ -181,12 +133,10 @@ export default function WineProfileWorkshop() {
               <Comments key={i} comments={e} />
             ))}
             slidesPerView={1}
-            gap="0"
+            gap={0}
           />
         </div>
         <div className="mb-10" />
       </div>
-      {/* <Footer /> */}
-    </>
   )
 }

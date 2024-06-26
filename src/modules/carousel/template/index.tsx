@@ -1,17 +1,28 @@
 'use client'
 import ArrowRightIcon from '@/modules/common/images/arrow-right'
-import {useState, ReactElement, useRef} from 'react'
+import {useState, ReactElement, useRef, useEffect} from 'react'
 
 interface CarouselProps {
   elements: ReactElement[]
   slidesPerView?: number
   arrowColor?: string
-  gap?: string
+  gap?: number
 }
 
-const Carousel = ({elements, slidesPerView = 7.5, arrowColor, gap = '1rem'}: CarouselProps) => {
+const Carousel = ({elements, slidesPerView = 8, arrowColor, gap = 16}: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
+  const [elementWidth, setElementWidth] = useState(0)
+  const [gapValue, setGapValue] = useState(0)
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const containerWidth = containerRef.current.offsetWidth
+      const gapNumber = gap
+      setElementWidth(containerWidth)
+      setGapValue(gapNumber)
+    }
+  }, [slidesPerView, gap])
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, elements.length - slidesPerView))
@@ -37,14 +48,18 @@ const Carousel = ({elements, slidesPerView = 7.5, arrowColor, gap = '1rem'}: Car
           className="flex transition-transform duration-500"
           style={{
             transform: `translateX(-${(currentIndex / slidesPerView) * 100}%)`,
-            gap: gap,
           }}
         >
           {elements.map((element, index) => (
             <div
               key={index}
               className="w-full flex-shrink-0 relative"
-              style={{flex: `0 0 ${100 / slidesPerView}%`}}
+              style={{
+                flex: `0 0 ${
+                  (elementWidth - (elements.length - 1) * (gapValue || 1)) / slidesPerView
+                }px`,
+                paddingRight: gap,
+              }}
             >
               {element}
             </div>

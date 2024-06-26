@@ -138,7 +138,7 @@ export default function WineWedding() {
             </>
           ))}
         </div>
-        <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
+        <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
         <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
           <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
             <div className="text-[44px] font-semibold uppercase">

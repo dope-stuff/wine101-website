@@ -30,35 +30,35 @@ export default function WineEvent() {
   //     alt=""
   //   />,
   // ]
-  const data = [
+  const [content, setContent] = useState([
     {
-      name: 'help you choose quality wines',
+      heading: 'help you choose quality wines',
       image: <BeginnerFriendlyIcon />,
       maxWidth: '70%',
-      description:
+      subheading:
         'มากกว่า 70 ไวน์ลิสต์ที่มี เราช่วยคัดสรรไวน์คุณภาพจากทั่วทุกมุมโลกให้คุ้มค่ากับงบประมาณ',
     },
     {
-      name: 'Customize for Your Event ',
+      heading: 'Customize for Your Event ',
       image: <ExploreTastebudsIcon />,
       maxWidth: 580,
-      description:
+      subheading:
         'ยกระดับอีเวนต์ให้พิเศษยิ่งขึ้น ด้วย Wine Activity ที่ match กับ theme อีเว้นต์ของงาน',
     },
     {
-      name: 'Full Support & Service',
+      heading: 'Full Support & Service',
       image: <FullSupportServiceIcon />,
       maxWidth: '80%',
-      description:
+      subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
     },
     {
-      name: 'variety of service',
+      heading: 'variety of service',
       image: <VarietyOfServiceIcon />,
       maxWidth: 560,
-      description: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
+      subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
-  ]
+  ])
 
   const clients = [
     {title: 'ascott bangkok', image: ''},
@@ -74,8 +74,15 @@ export default function WineEvent() {
 
   const getData = async () => {
     const {data: events} = await eventService.getEvent()
-    if (data) {
+    if (events) {
       setEvent(events)
+      setContent(
+        content.map((c, i) => ({
+          ...c,
+          subheading: events.details[i].heading,
+          heading: events.details[i].heading,
+        }))
+      )
     }
   }
 
@@ -100,7 +107,7 @@ export default function WineEvent() {
               ))}
               slidesPerView={1}
               arrowColor="white"
-              gap="0"
+              gap={0}
             />
           }
           <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
@@ -112,16 +119,16 @@ export default function WineEvent() {
             <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
           </div>
           <div className="w-[90%] flex-col flex">
-            {data.map((e, i) => (
+            {content.map((e, i) => (
               <div
                 key={i}
                 className={`flex-row flex items-center gap-4 ${i % 2 !== 0 ? 'justify-end' : ''}`}
               >
                 <div className="max-h-[280px]">{e.image}</div>
                 <div className="flex-col flex">
-                  <div className="text-[44px] uppercase">{e.name}</div>
+                  <div className="text-[44px] uppercase">{e.heading}</div>
                   <div className="font-doggy text-[27px]" style={{maxWidth: e.maxWidth}}>
-                    {e.description}
+                    {e.subheading}
                   </div>
                 </div>
               </div>

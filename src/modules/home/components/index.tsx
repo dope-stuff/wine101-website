@@ -16,8 +16,8 @@ import {productService} from '@/lib/data/product.service'
 import {workshopService} from '@/lib/data/workshop.service'
 
 import {IProduct} from '@/lib/data/models/product'
-import {IHome} from '@/lib/data/models/home'
 import {IWorkshopEvent} from '@/lib/data/models/workshop'
+import { IHome } from '@/lib/data/models/common'
 
 export default function Home() {
   const [wines, setWines] = useState([])

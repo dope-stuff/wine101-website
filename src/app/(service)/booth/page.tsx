@@ -47,7 +47,7 @@ export default function Booth() {
   return (
     <>
       <div className="w-full justify-center flex-col flex items-center mx-auto">
-        <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap="0" />
+        <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
         <div className="w-full flex-col flex items-center justify-center mt-8 relative">
           <FlasksIcon width={100} height={100} className="absolute left-10 top-4" />
           <div className="text-[78px] font-semibold uppercase">pop-up booth</div>
