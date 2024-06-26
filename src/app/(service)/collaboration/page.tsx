@@ -11,24 +11,9 @@ import {iannDog} from '@/styles/fonts'
 import {collaborationService} from '@/lib/data/collaboration.service'
 import {useEffect, useState} from 'react'
 import {IEvent} from '@/lib/data/models/common'
+import {IMenu} from '@/lib/data/models/navbar'
 
 export default function Collaboration() {
-  const banners = [
-    <Image
-      key="1"
-      removeWrapper
-      className="max-h-[70vh] w-full rounded-none object-cover"
-      src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
-      alt=""
-    />,
-    <Image
-      key="2"
-      removeWrapper
-      className="max-h-[70vh] w-full rounded-none object-cover"
-      src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
-      alt=""
-    />,
-  ]
   const content = [
     {
       heading: 'Content and storytelling',
@@ -84,7 +69,20 @@ export default function Collaboration() {
     pageData && (
       <>
         <div className="w-full justify-center flex-col flex items-center mx-auto">
-          <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
+          <Carousel
+            elements={pageData.banner.map((b: IMenu) => (
+              <Image
+                key={b.id}
+                removeWrapper
+                className="max-h-[70vh] w-full rounded-none object-cover"
+                src={b.mediaUrl}
+                alt={b.alt}
+              />
+            ))}
+            slidesPerView={1}
+            arrowColor="white"
+            gap={0}
+          />
           <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
             <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
               <div className="text-[78px] font-semibold uppercase">{pageData.header.heading}</div>

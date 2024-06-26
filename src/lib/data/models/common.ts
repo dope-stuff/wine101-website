@@ -52,3 +52,12 @@ export interface IEvent {
   header: IMenu
   details: IMenu[]
 }
+
+export interface Wedding extends IEvent {
+  packages: IMenu[]
+  packagesTitle: IMenu
+}
+
+export interface PopUpBooth extends IEvent {
+  cta: IMenu
+}

@@ -1,3 +1,4 @@
+'use client'
 import {Image} from '@nextui-org/react'
 import Carousel from '../../../modules/carousel/template'
 import VarietyOfServiceIcon from '@/modules/common/images/service/variety-of-service'
@@ -9,61 +10,48 @@ import WorryFreeIcon from '@/modules/common/images/service/worry-free'
 import FreeWeddingWineAdviceIcon from '@/modules/common/images/service/free-wedding-wine-advice'
 import Way1O1Icon from '@/modules/common/images/service/way-1o1'
 import PackageInfoIcon from '@/modules/common/images/package-info'
-import WineBottlesIcon from '@/modules/common/images/wine-bottles'
-import WineCornerIcon from '@/modules/common/images/wine-corner'
 import Consultant from '@/modules/services/components/consultant'
 import {iannDog} from '@/styles/fonts'
+import {useEffect, useState} from 'react'
+import {Wedding} from '@/lib/data/models/common'
+import {weddingService} from '@/lib/data/wedding.service'
+import {IMenu} from '@/lib/data/models/navbar'
+import FlasksIcon from '@/modules/common/images/flasks'
 
 export default function WineWedding() {
-  const banners = [
-    <Image
-      key="1"
-      removeWrapper
-      className="max-h-[70vh] w-full rounded-none object-cover"
-      src="https://i.ibb.co/w0NxDHW/wine-101-wedding-banner.webp?fbclid=IwZXh0bgNhZW0CMTAAAR2GzdhiaAYtcKZqTMll9rGGrfXXAK-tu6yt-WJFSNASM7nGRW6XvryAYWg_aem_EUCHip8obqTKU-q9OuFWyA"
-      alt=""
-    />,
-    <Image
-      key="2"
-      removeWrapper
-      className="max-h-[70vh] w-full rounded-none object-cover"
-      src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
-      alt=""
-    />,
-  ]
-  const data = [
+  const content = [
     {
-      name: 'Free Wedding Wine Advice',
+      heading: 'Free Wedding Wine Advice',
       image: <FreeWeddingWineAdviceIcon />,
       maxWidth: '70%',
-      description:
+      subheading:
         'มากกว่า 70 ไวน์ลิสต์ที่มี เราช่วยคัดสรรไวน์คุณภาพจากทั่วทุกมุมโลกให้คุ้มค่ากับงบประมาณ',
     },
     {
-      name: 'Handpick quality wines to match your special day ',
+      heading: 'Handpick quality wines to match your special day ',
       image: <HandpickQualityWinesIcon />,
       maxWidth: 580,
-      description:
+      subheading:
         'ยกระดับอีเวนต์ให้พิเศษยิ่งขึ้น ด้วย Wine Activity ที่ match กับ theme อีเว้นต์ของงาน',
     },
     {
-      name: 'Worry-Free',
+      heading: 'Worry-Free',
       image: <WorryFreeIcon />,
       maxWidth: '80%',
-      description:
+      subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
     },
     {
-      name: 'Add on Special Wine Corner with Personalized service ',
+      heading: 'Add on Special Wine Corner with Personalized service ',
       image: <VarietyOfServiceIcon />,
       maxWidth: 560,
-      description: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
+      subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
     {
-      name: 'Full Support & Service',
+      heading: 'Full Support & Service',
       image: <FullSupportService2Icon />,
       maxWidth: 560,
-      description: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
+      subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
   ]
 
@@ -128,81 +116,114 @@ export default function WineWedding() {
 
   const panels = ['101 wedding guide', 'our package', 'quick consult', 'our client’s review']
 
+  const [pageData, setPageData] = useState<Wedding>()
+
+  const getData = async () => {
+    const {data: collaborations} = await weddingService.getWedding()
+    if (collaborations) {
+      setPageData({
+        ...collaborations,
+        details: content.map((c, i) => ({
+          ...c,
+          subheading: collaborations.details[i].subheading,
+          heading: collaborations.details[i].heading,
+        })),
+      })
+    }
+  }
+
+  useEffect(() => {
+    getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
-    <>
-      <div className="w-full justify-center flex-col flex items-center mx-auto">
-        <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-[24px] p-4">
-          {panels.map((panel, i) => (
-            <>
-              <div key={i}>{panel}</div>
-              {i !== panels.length - 1 && <div className="w-[2px] h-8 bg-black" />}
-            </>
-          ))}
-        </div>
-        <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
-        <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
-          <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
-            <div className="text-[44px] font-semibold uppercase">
-              It’s not just about wine—it’s about creating cherished moments.
-            </div>
-            <div className={`text-[36px] ${iannDog.className} w-full`}>
-              สร้างความทรงจำให้วันพิเศษกับ wine101 thewedding
-            </div>
-            <Way1O1Icon className="my-4" />
+    pageData && (
+      <>
+        <div className="w-full justify-center flex-col flex items-center mx-auto">
+          <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-[24px] p-4">
+            {panels.map((panel, i) => (
+              <>
+                <div key={i}>{panel}</div>
+                {i !== panels.length - 1 && <div className="w-[2px] h-8 bg-black" />}
+              </>
+            ))}
           </div>
-          <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
-        </div>
-        <div className="w-[90%] flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
-          {data.map((e, i) => (
-            <div
-              key={i}
-              className={`w-[80%] flex-row flex items-center gap-4 ${
-                i % 2 !== 0 ? 'justify-end ml-auto' : ''
-              }`}
-            >
-              <div className="max-h-[280px]">{e.image}</div>
-              <div className="flex-col flex">
-                <div className="text-[44px] uppercase xl:max-w-[650px]">{e.name}</div>
-                <div className={`${iannDog.className} text-[27px]`} style={{maxWidth: e.maxWidth}}>
-                  {e.description}
+          <Carousel
+            elements={pageData.banner.map((b: IMenu) => (
+              <Image
+                key={b.id}
+                removeWrapper
+                className="max-h-[70vh] w-full rounded-none object-cover"
+                src={b.mediaUrl}
+                alt={b.alt}
+              />
+            ))}
+            slidesPerView={1}
+            arrowColor="white"
+            gap={0}
+          />
+          <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
+            <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
+              <div className="text-[44px] font-semibold uppercase">{pageData.header.heading}</div>
+              <div className={`text-[36px] ${iannDog.className} w-full`}>
+                {pageData.header.subheading}
+              </div>
+              <Way1O1Icon className="my-4" />
+            </div>
+            <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
+          </div>
+          <div className="w-[90%] flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
+            {pageData.details.map((e, i) => (
+              <div
+                key={i}
+                className={`w-[80%] flex-row flex items-center gap-4 ${
+                  i % 2 !== 0 ? 'justify-end ml-auto' : ''
+                }`}
+              >
+                <div className="max-h-[280px]">{e.image}</div>
+                <div className="flex-col flex">
+                  <div className="text-[44px] uppercase xl:max-w-[650px]">{e.heading}</div>
+                  <div
+                    className={`${iannDog.className} text-[27px]`}
+                    style={{maxWidth: e.maxWidth}}
+                  >
+                    {e.subheading}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <PackageInfoIcon />
-        <div className="w-full flex-row flex gap-10 text-center my-8">
-          <div className="flex-1 flex-col flex items-center">
-            <WineBottlesIcon />
-            <div className="font-bold text-[48px]">3 types of wine</div>
-            <div className={`${iannDog.className} text-[24px] max-w-[600px]`}>
-              พร้อมคำแนะนำเรื่อง จำนวนปริมาณของไวน์แต่ละชนิดที่เหมาะสมกับรูปแบบงาน ปริมาณแขก
-              และวัยของแขกที่มา
-            </div>
+            ))}
           </div>
-          <div className="flex-1 flex-col flex items-center">
-            <WineCornerIcon />
-            <div className="font-bold text-[48px]">wine corner</div>
-            <div className={`${iannDog.className} text-[24px] max-w-[600px]`}>
-              รองรับแขกในงาน ถึง 4 ชั่วโมง ไม่รวมการติดตั้งบูธ แก้วไวน์ทีมบ่าว
-              ทีมสาวสำหรับแขกมาให้สนุกกับงานแต่ง
-              กิจกรรมแนะนำชิมไวน์สำหรับแขกในช่วงก่อนงานเริ่มและหลังงานจบ
-              ตกแต่งตามธีมงานแต่งของแต่ละคู่
-            </div>
+          <button className="relative px-8 leading-14 text-[64px] max-w-[650px] bg-[#E8C85E] border-[2px] border-black rounded-full">
+            <FlasksIcon width={150} height={150} className="absolute left-[-4rem] bottom-0" />
+            {pageData.packagesTitle.buttonTitle}
+            <FlasksIcon width={150} height={150} className="absolute right-[-4rem] top-0" />
+          </button>
+          <div className="w-full flex-row flex gap-10 text-center my-8">
+            {pageData.packages.map((pkg) => (
+              <div key={pkg.id} className="flex-1 flex-col flex items-center">
+                {/* <WineBottlesIcon /> */}
+                <Image width={400} height={300} src={pkg.mediaUrl} alt={pkg.alt} />
+                <div className="font-bold text-[48px]">{pkg.heading}</div>
+                <div className={`${iannDog.className} text-[24px] max-w-[600px]`}>
+                  {pkg.subheading}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-      <Consultant />
-      <div className="flex flex-col w-full pl-10">
-        <div className="uppercase text-[36px] my-2">our clients</div>
-        <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-          {clients.map((c, i) => (
-            <ClientCard data={c} key={i} withDetail />
-          ))}
+        <Consultant />
+        <div className="flex flex-col w-full pl-10">
+          <div className="uppercase text-[36px] my-2">our clients</div>
+          <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+            {clients.map((c, i) => (
+              <ClientCard data={c} key={i} withDetail />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="mb-10" />
-      {/* <Footer /> */}
-    </>
+        <div className="mb-10" />
+        {/* <Footer /> */}
+      </>
+    )
   )
 }
