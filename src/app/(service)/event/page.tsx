@@ -72,12 +72,12 @@ export default function WineEvent() {
     {title: 'toktok bangkok', image: ''},
   ]
 
-  const [event, setEvent] = useState<IEvent>()
+  const [pageData, setPageData] = useState<IEvent>()
 
   const getData = async () => {
     const {data: events} = await eventService.getEvent()
     if (events) {
-      setEvent(events)
+      setPageData(events)
       setContents(
         content.map((c, i) => ({
           ...c,
@@ -93,12 +93,12 @@ export default function WineEvent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    event && (
+    pageData && (
       <>
         <div className="w-full justify-center flex-col flex items-center mx-auto">
           {
             <Carousel
-              elements={event.banner.map((b: IMenu) => (
+              elements={pageData.banner.map((b: IMenu) => (
                 <Image
                   key={b.id}
                   removeWrapper
@@ -114,9 +114,9 @@ export default function WineEvent() {
           }
           <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
             <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
-              <div className="text-[78px] font-semibold uppercase">{event.header.heading}</div>
+              <div className="text-[78px] font-semibold uppercase">{pageData.header.heading}</div>
               <div className={`text-[48px] w-[80%] ${iannDog.className}`}>
-                {event.header.subheading}
+                {pageData.header.subheading}
               </div>
               <Service1O1ContactUsIcon className="cursor-pointer" />
             </div>

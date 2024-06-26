@@ -63,7 +63,7 @@ export default function WineProfileWorkshop() {
     },
   ]
 
-  const [workshops, setWorkshops] = useState<Workshop[]>([])
+  const [pageData, setPageData] = useState<Workshop[]>([])
 
   const comments = [
     'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
@@ -91,7 +91,7 @@ export default function WineProfileWorkshop() {
   const getData = async () => {
     const {data: workshop} = await workshopService.getWorkshop()
     if (data) {
-      setWorkshops(workshop)
+      setPageData(workshop)
     }
   }
   useEffect(() => {
@@ -101,7 +101,7 @@ export default function WineProfileWorkshop() {
   return (
       <div className="w-full justify-center flex-col flex items-center mx-auto">
         <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
-        {workshops[0] && <WorkshopHeader thumbnail={workshops[0].videos} />}
+        {pageData[0] && <WorkshopHeader thumbnail={pageData[0].videos} />}
         <div className="w-[90%] flex-col flex mt-4">
           <Way1O1Icon className="mx-auto" />
           {data.map((e, i) => (
@@ -122,7 +122,7 @@ export default function WineProfileWorkshop() {
         <div className="flex flex-col w-full pl-10">
           <div className="uppercase text-[36px] my-2">our workshop</div>
           <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-            {workshops.map((ws, i) => (
+            {pageData.map((ws, i) => (
               <WorkShopCard key={i} data={ws} />
             ))}
           </div>

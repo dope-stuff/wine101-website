@@ -24,6 +24,8 @@ export interface IMenu {
   buttonTitle: string
   linkTo: string
   mediaUrl: string
+  maxWidth?: string | number
+  image?: JSX.Element
 }
 
 export interface IFooter {
