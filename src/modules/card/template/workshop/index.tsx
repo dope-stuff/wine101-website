@@ -1,9 +1,9 @@
-import {IWorkshop} from '@/lib/data/models/workshop'
+import {Workshop} from '@/lib/data/models/workshop'
 import {Image} from '@nextui-org/react'
 import dayjs from 'dayjs'
 
 interface WorkShopCardProps {
-  data: IWorkshop
+  data: Workshop
 }
 export default function WorkShopCard({data}: WorkShopCardProps) {
   const {name, description, event_date, posters} = data
