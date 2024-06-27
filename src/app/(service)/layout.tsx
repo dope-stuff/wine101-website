@@ -26,7 +26,7 @@ const Headers = () => {
             >
               <PouringWineIcon />
               <div
-                className={`max-w-[150px] font-bold text-[18px] leading-4 uppercase ${
+                className={`max-w-[150px] font-bold text-lg leading-4 uppercase ${
                   pathname.toLowerCase().includes(tab.path.toLowerCase())
                     ? 'text-black'
                     : 'text-primary'

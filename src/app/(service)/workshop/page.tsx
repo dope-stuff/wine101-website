@@ -117,7 +117,7 @@ export default function WineProfileWorkshop() {
           ))}
         </div>
       </div>
-      <div className="uppercase text-[60px] my-4">how people talk about us</div>
+      <div className="uppercase text-6xl my-4">how people talk about us</div>
       <div className="w-[90%]">
         <Carousel
           elements={splitArray(comments).map((e, i) => (

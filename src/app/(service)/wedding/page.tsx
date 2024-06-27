@@ -8,8 +8,6 @@ import HandpickQualityWinesIcon from '@/modules/common/images/service/handpick-q
 import FullSupportService2Icon from '@/modules/common/images/service/full-support-service-2'
 import WorryFreeIcon from '@/modules/common/images/service/worry-free'
 import FreeWeddingWineAdviceIcon from '@/modules/common/images/service/free-wedding-wine-advice'
-import Way1O1Icon from '@/modules/common/images/service/way-1o1'
-import PackageInfoIcon from '@/modules/common/images/package-info'
 import Consultant from '@/modules/services/components/consultant'
 import {iannDog} from '@/styles/fonts'
 import {useEffect, useState} from 'react'
@@ -202,7 +200,6 @@ export default function WineWedding() {
           <div className="w-full flex-row flex gap-10 text-center my-8">
             {pageData.packages.map((pkg) => (
               <div key={pkg.id} className="flex-1 flex-col flex items-center">
-                {/* <WineBottlesIcon /> */}
                 <Image width={400} height={300} src={pkg.mediaUrl} alt={pkg.alt} />
                 <div className="font-bold text-5xl">{pkg.heading}</div>
                 <div className={`${iannDog.className} text-2xl max-w-[600px]`}>

@@ -90,7 +90,7 @@ export default function Booth() {
           </div>
           <div className="flex-row flex items-center justify-center gap-10">
             <div className={`text-5xl max-w-2xl ${iannDog.className}`}>{pageData.cta.heading}</div>
-            <button className="uppercase border border-black bg-[#81CF8A] px-4 py-1 text-[48px] rounded-full">
+            <button className="uppercase border border-black bg-[#81CF8A] px-4 py-1 text-5xl rounded-full">
               {pageData.cta.buttonTitle}
             </button>
           </div>

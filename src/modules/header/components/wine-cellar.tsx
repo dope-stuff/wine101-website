@@ -36,14 +36,14 @@ export default function WineCellarHeader() {
         <div className="flex-1 flex-col flex">
           <div className="flex-row flex flex-nowrap items-center gap-2">
             <BlackWineGlassIcon />
-            <div className="text-[32px]">about wines</div>
+            <div className="text-3xl">about wines</div>
           </div>
           <div className="font-sans">All wine</div>
         </div>
         <div className="flex-1 flex-col flex">
           <div className="flex-row flex flex-nowrap items-center gap-2">
             <BlackWineGlassIcon />
-            <div className="text-[32px]">country</div>
+            <div className="text-3xl">country</div>
           </div>
           <div className="grid grid-cols-2">
             {country.map((c) => (
@@ -56,7 +56,7 @@ export default function WineCellarHeader() {
         <div className="flex-1 flex-col flex">
           <div className="flex-row flex flex-nowrap items-center gap-2">
             <BlackWineGlassIcon />
-            <div className="text-[32px]">colour</div>
+            <div className="text-3xl">colour</div>
           </div>
           <div>
             {wineTypes.map((type, i) => (
@@ -73,7 +73,7 @@ export default function WineCellarHeader() {
         <div className="flex-1 flex-col flex">
           <div className="flex-row flex flex-nowrap items-center gap-2">
             <BlackWineGlassIcon />
-            <div className="text-[32px]">wine price</div>
+            <div className="text-3xl">wine price</div>
           </div>
           <div className="font-sans">
             {priceList.map((p) => (
@@ -92,7 +92,7 @@ export default function WineCellarHeader() {
           placeholder="SEARCH"
           className="flex-1 h-full border border-black "
           classNames={{
-            input: ['text-[40px] !text-black', 'bg-transparent', 'placeholder:text-black'],
+            input: ['text-4xl !text-black', 'bg-transparent', 'placeholder:text-black'],
             innerWrapper: 'bg-transparent h-full',
             inputWrapper: 'h-full',
           }}

@@ -26,7 +26,7 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
       <Navbar maxWidth="full" style={{background: '#BE1C2D', color: '#fff'}}>
         <NavbarContent className="flex" justify="start">
           <NavbarBrand>
-            <Link className="flex justify-center text-white text-[18px] uppercase" href="/">
+            <Link className="flex justify-center text-white text-lg uppercase" href="/">
               <Image width={100} src={navbar.logo.mediaUrl} alt={navbar.logo.alt} />
             </Link>
           </NavbarBrand>
@@ -37,7 +37,7 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
               {index == 4 && <div className="h-[25px] w-[1px] bg-white" />}
               <NavbarItem key={index}>
                 <Link
-                  className="flex justify-center text-white text-[18px] uppercase cursor-pointer"
+                  className="flex justify-center text-white text-lg uppercase cursor-pointer"
                   href={item.linkTo}
                 >
                   {item.mediaUrl && (
@@ -56,7 +56,7 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
           {navbar.menu.map((item: INavbarMenu, index: number) => (
             <NavbarMenuItem key={index}>
               <Link
-                className="flex justify-center text-[18px] uppercase cursor-pointer"
+                className="flex justify-center text-lg uppercase cursor-pointer"
                 href={item.linkTo}
               >
                 {item.mediaUrl && (

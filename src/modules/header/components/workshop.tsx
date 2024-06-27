@@ -5,7 +5,7 @@ import {iannDog} from '@/styles/fonts'
 export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: string}) {
   return (
     <div className="w-full flex-col lg:flex-row lg:flex-nowrap flex-wrap items-center flex justify-center mt-8 gap-12">
-      <div className="flex-1 flex-col flex items-center text-[30px] text-center pl-4 gap-4">
+      <div className="flex-1 flex-col flex items-center text-3xl text-center pl-4 gap-4">
         <div className={`text-6xl md:text-7xl ${iannDog.className}`}>ที่แรกและที่เดียว กับ</div>
         <div className="text-5xl md:text-6xl font-semibold uppercase">‘wine profile workshop’</div>
         <div className={`text-4xl md:text-5xl ${iannDog.className}`}>
@@ -24,7 +24,7 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
           </p>
         </div>
         <Link
-          className={`bg-[#81CF8A] rounded-full px-8 py-1 text-[30px] text-black mt-6 border-black border-2 ${iannDog.className}`}
+          className={`bg-[#81CF8A] rounded-full px-8 py-1 text-3xl text-black mt-6 border-black border-2 ${iannDog.className}`}
         >
           จองที่นั่ง
         </Link>

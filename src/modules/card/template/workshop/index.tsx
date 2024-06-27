@@ -18,7 +18,7 @@ export default function WorkShopCard({data}: WorkShopCardProps) {
         />
       </div>
       <div className="text-[14px]">
-        <div className="text-[18px]">{name}</div>
+        <div className="text-lg]">{name}</div>
         <div>{description}</div>
         <div>{dayjs(event_date).format('DD MMMM YYYY')}</div>
       </div>
