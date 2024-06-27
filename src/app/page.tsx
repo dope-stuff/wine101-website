@@ -8,6 +8,7 @@ import ServiceCard from '@/modules/card/template/service'
 import WineCard from '@/modules/card/template/wine'
 import {productService} from '@/lib/data/product.service'
 import {getProductTheme} from '@/lib/utils/getProductTheme'
+import GetToKnowUsButton from '@/modules/button/components/get-to-know-us'
 
 export default async function Page() {
   const [{data: pageData}, {products}] = await Promise.all([
@@ -23,13 +24,13 @@ export default async function Page() {
     <>
       <NextEvent />
       <div className="flex flex-col items-center gap-6">
-        <div className="w-[300px] text-4xl md:text-5xl text-center mt-4">{pageData.header.heading}</div>
+        <div className="w-[300px] text-4xl md:text-5xl text-center mt-4">
+          {pageData.header.heading}
+        </div>
         <div className={`max-w-[100vw] w-[500px] text-2xl text-center px-4 ${iannDog.className}`}>
           {pageData.header.subheading}
         </div>
-        <button className="h-[50px] rounded-full pt-2 pb-4 px-6 text-[24px] leading-5 text-white bg-primary-1 border-2 border-black">
-          {pageData.header.buttonTitle}
-        </button>
+        <GetToKnowUsButton title={pageData.header.buttonTitle} linkTo={pageData.header.linkTo} />
         {/** products */}
         <div className="max-w-[100vw] flex flex-row items-center justify-center gap-8">
           <Image width={100} height={100} src="/images/common/wine-2.svg" alt="" />

@@ -1,14 +1,11 @@
 import {axios} from '@/lib/data'
 import {IService} from '@/lib/data/models/common'
+import {IMenu} from './models/navbar'
 
 interface HomePage {
   productsTitle: string
   servicesTitle: string
-  header: {
-    heading: string
-    subheading: string
-    buttonTitle: string
-  }
+  header: IMenu
   services: IService[]
 }
 
