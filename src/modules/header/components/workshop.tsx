@@ -33,13 +33,13 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
         {/* <SmartPhoneImage className="w-full h-full object-cover" /> */}
         <Image
           removeWrapper
-          className="w-[400px] h-full"
+          className="w-[400px] h-full skew-x-[0] skew-y-1"
           src="https://i.ibb.co/RcZKwKB/wine-101-phone-outline.webp"
           alt=""
         />
         {thumbnail && (
           <iframe
-            className="!absolute origin-top-left rotate-[5.8deg] top-[29px] left-[72px] w-[314px] h-[90%] rounded-bl-[2.6rem] rounded-br-[3rem] rounded-t-[1rem] z-10"
+            className="!absolute origin-top-left rotate-[6deg] top-[29px] left-[72px] w-[315px] h-[90%] rounded-b-[2.6rem] rounded-t-[1rem] z-10"
             src="https://www.youtube.com/embed/kIoGU-JO9tM"
             title="Wine1O1 - 2024 Winelentines Workshop @ Picolo Vicolo"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
