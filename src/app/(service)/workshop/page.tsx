@@ -9,12 +9,12 @@ import Carousel from '../../../modules/carousel/template'
 import Comments from '@/modules/services/components/comments'
 import Way1O1Icon from '@/modules/common/images/service/way-1o1'
 import WorkShopCard from '../../../modules/card/template/workshop'
-import WorkshopHeader from '@/modules/services/components/workshop-header'
 import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
 import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
 import CreateWineProfileIcon from '@/modules/common/images/service/create-wine-profile'
 import EnjoyBeingYourselfIcon from '@/modules/common/images/service/enjoy-being-yourself'
 import {Workshop} from '@/lib/data/models/workshop'
+import WineProfileWorkshopHeader from '@/modules/header/components/workshop'
 
 export default function WineProfileWorkshop() {
   const banners = [
@@ -101,7 +101,7 @@ export default function WineProfileWorkshop() {
   return (
       <div className="w-full justify-center flex-col flex items-center mx-auto">
         <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
-        {pageData[0] && <WorkshopHeader thumbnail={pageData[0].videos} />}
+        {pageData[0] && <WineProfileWorkshopHeader thumbnail={pageData[0].videos} />}
         <div className="w-[90%] flex-col flex mt-4">
           <Way1O1Icon className="mx-auto" />
           {data.map((e, i) => (
