@@ -12,6 +12,7 @@ import {collaborationService} from '@/lib/data/collaboration.service'
 import {useEffect, useState} from 'react'
 import {IEvent} from '@/lib/data/models/common'
 import {IMenu} from '@/lib/data/models/navbar'
+import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 
 export default function Collaboration() {
   const content = [
@@ -84,12 +85,19 @@ export default function Collaboration() {
             gap={0}
           />
           <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
-            <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
-              <div className="text-[78px] font-semibold uppercase">{pageData.header.heading}</div>
-              <div className={`text-[48px] w-[80%] ${iannDog.className}`}>
+            <div className="max-w-[60%] h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
+              <div className="text-6xl md:text-7xlfont-semibold uppercase">
+                {pageData.header.heading}
+              </div>
+              <div className={`text-4xl md:text-5xl w-[80%] ${iannDog.className}`}>
                 {pageData.header.subheading}
               </div>
-              <Service1O1ContactUsIcon className="cursor-pointer" />
+              <div className="my-auto">
+                <ContactFlasksButton
+                  title={pageData.header.buttonTitle}
+                  linkTo={pageData.header.linkTo}
+                />
+              </div>
             </div>
             <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
           </div>
@@ -102,16 +110,16 @@ export default function Collaboration() {
                 }`}
               >
                 <div className="max-h-[270px]">{e.image}</div>
-                <div className="flex-col flex">
+                <div className="flex-col flex gap-2">
                   <div
-                    className={`text-[44px] uppercase max-w-[650px] ${
+                    className={`text-3xl md:text-4xl uppercase max-w-[650px] ${
                       i % 2 !== 0 ? 'ml-[-50px]' : ''
                     }`}
                   >
                     {e.heading}
                   </div>
                   <div
-                    className={`${iannDog.className} text-[27px]`}
+                    className={`${iannDog.className} text-xl md:text-2xl`}
                     style={{maxWidth: e.maxWidth}}
                   >
                     {e.subheading}
@@ -120,8 +128,8 @@ export default function Collaboration() {
               </div>
             ))}
           </div>
-          <div className="flex flex-col w-full pl-10">
-            <div className="uppercase text-[36px] my-2">our clients</div>
+          <div className="flex flex-col w-full pl-10 mt-4">
+            <div className="uppercase text-4xl my-2">our clients</div>
             <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
               {clients.map((c, i) => (
                 <ClientCard data={c} key={i} />

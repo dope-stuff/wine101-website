@@ -15,6 +15,7 @@ import CreateWineProfileIcon from '@/modules/common/images/service/create-wine-p
 import EnjoyBeingYourselfIcon from '@/modules/common/images/service/enjoy-being-yourself'
 import {Workshop} from '@/lib/data/models/workshop'
 import WineProfileWorkshopHeader from '@/modules/header/components/workshop'
+import ServiceContentCard from '@/modules/card/template/service-content'
 
 export default function WineProfileWorkshop() {
   const banners = [
@@ -35,30 +36,30 @@ export default function WineProfileWorkshop() {
   ]
   const data = [
     {
-      name: '101 beginner friendly',
+      heading: '101 beginner friendly',
       image: <BeginnerFriendlyIcon />,
-      maxWidth: 440,
-      description:
+      maxWidth: 450,
+      subheading:
         'เหมาะสำหรับมือใหม่ Beginner Friendly ไม่เป็นก็เริ่มได้ เรียนรู้พื้นฐานไวน์ เริ่มจาก 0 ง่ายกว่านี้ไม่มีแล้ว',
     },
     {
-      name: 'explore your tastebuds',
+      heading: 'explore your tastebuds',
       image: <ExploreTastebudsIcon />,
-      maxWidth: 600,
-      description:
+      maxWidth: 650,
+      subheading:
         'เพราะอร่อยแต่ละคนไม่เหมือนกัน เราจัดมาให้กับ ไวน์ 4 ประเภท 7 ขวด ต่างรส ต่างองุ่น จากหลากหลายประเทศ ให้ทุกคนได้ลองและค้นหาไวน์ที่ตัวเองชอบ',
     },
     {
-      name: 'create your wine profile',
+      heading: 'create your wine profile',
       image: <CreateWineProfileIcon />,
-      maxWidth: 460,
-      description: 'เลิกงงเวลาเลือกซื้อไวน์ ทำ wine profile ของตัวเอง ครั้งหน้ารู้เลยต้องสั่งยังไง',
+      maxWidth: 520,
+      subheading: 'เลิกงงเวลาเลือกซื้อไวน์ ทำ wine profile ของตัวเอง ครั้งหน้ารู้เลยต้องสั่งยังไง',
     },
     {
-      name: 'enjoy being yourself',
+      heading: 'enjoy being yourself',
       image: <EnjoyBeingYourselfIcon />,
-      maxWidth: 450,
-      description:
+      maxWidth: 480,
+      subheading:
         'บรรยากาศเหมือนนั่งชิมกับเพื่อน ปิดมู้ดการชิมไวน์แบบซีเรียส Workshop บรรยากาศ สนุก เป็นกันเอง',
     },
   ]
@@ -99,45 +100,34 @@ export default function WineProfileWorkshop() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-      <div className="w-full justify-center flex-col flex items-center mx-auto">
-        <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
-        {pageData[0] && <WineProfileWorkshopHeader thumbnail={pageData[0].videos} />}
-        <div className="w-[90%] flex-col flex mt-4">
-          <Way1O1Icon className="mx-auto" />
-          {data.map((e, i) => (
-            <div
-              key={i}
-              className={`flex-row flex items-center gap-4 ${i % 2 !== 0 ? 'justify-end' : ''}`}
-            >
-              <div className="max-h-[280px]">{e.image}</div>
-              <div className="flex-col flex">
-                <div className="text-[44px] uppercase">{e.name}</div>
-                <div className={`${iannDog.className} text-[27px]`} style={{maxWidth: e.maxWidth}}>
-                  {e.description}
-                </div>
-              </div>
-            </div>
+    <div className="w-full justify-center flex-col flex items-center mx-auto">
+      <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
+      {pageData[0] && <WineProfileWorkshopHeader thumbnail={pageData[0].videos} />}
+      <div className="w-[90%] flex-col flex mt-4">
+        <Way1O1Icon className="mx-auto" />
+        {data.map((e, i) => (
+          <ServiceContentCard key={i} index={i} data={e} />
+        ))}
+      </div>
+      <div className="flex flex-col w-full pl-10">
+        <div className="uppercase text-4xl my-2">our workshop</div>
+        <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+          {pageData.map((ws, i) => (
+            <WorkShopCard key={i} data={ws} />
           ))}
         </div>
-        <div className="flex flex-col w-full pl-10">
-          <div className="uppercase text-[36px] my-2">our workshop</div>
-          <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-            {pageData.map((ws, i) => (
-              <WorkShopCard key={i} data={ws} />
-            ))}
-          </div>
-        </div>
-        <div className="uppercase text-[60px] my-4">how people talk about us</div>
-        <div className="w-[90%]">
-          <Carousel
-            elements={splitArray(comments).map((e, i) => (
-              <Comments key={i} comments={e} />
-            ))}
-            slidesPerView={1}
-            gap={0}
-          />
-        </div>
-        <div className="mb-10" />
       </div>
+      <div className="uppercase text-[60px] my-4">how people talk about us</div>
+      <div className="w-[90%]">
+        <Carousel
+          elements={splitArray(comments).map((e, i) => (
+            <Comments key={i} comments={e} />
+          ))}
+          slidesPerView={1}
+          gap={0}
+        />
+      </div>
+      <div className="mb-10" />
+    </div>
   )
 }

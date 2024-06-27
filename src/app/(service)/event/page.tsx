@@ -14,6 +14,8 @@ import {IMenu} from '@/lib/data/models/navbar'
 import {IEvent} from '@/lib/data/models/common'
 import {iannDog} from '@/styles/fonts'
 import FlasksIcon from '@/modules/common/images/flasks'
+import ServiceContentCard from '@/modules/card/template/service-content'
+import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 
 export default function WineEvent() {
   const content = [
@@ -34,7 +36,7 @@ export default function WineEvent() {
     {
       heading: 'Full Support & Service',
       image: <FullSupportServiceIcon />,
-      maxWidth: '80%',
+      maxWidth: 730,
       subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
     },
@@ -100,43 +102,37 @@ export default function WineEvent() {
             gap={0}
           />
           <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
-            <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
-              <div className="text-[78px] font-semibold uppercase">{pageData.header.heading}</div>
-              <div className={`text-[48px] w-[80%] ${iannDog.className}`}>
+            <div className="max-w-[60%] h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
+              <div className="text-6xl md:text-7xl font-semibold uppercase max-w-[600px]">
+                {pageData.header.heading}
+              </div>
+              <div className={`text-4xl md:text-5xl max-w-[700px] ${iannDog.className}`}>
                 {pageData.header.subheading}
               </div>
-              <button
-                className="relative px-8 leading-14 text-[60px] max-w-[650px] bg-[#E8C85E] border-[2px] border-black rounded-full"
+              {/* <button
+                className="relative my-auto py-4 px-8 text-5xl md:text-6xl max-w-[650px] bg-[#81CF8A] border-[2px] border-black rounded-full"
                 onClick={() => onOpenLink(pageData.header.linkTo)}
               >
-                <FlasksIcon width={150} height={150} className="absolute left-[-4rem] bottom-0" />
+                <FlasksIcon width={150} height={150} className="absolute left-[-4rem] bottom-[-3rem]" />
                 {pageData.header.buttonTitle}
-                <FlasksIcon width={150} height={150} className="absolute right-[-4rem] top-0" />
-              </button>
+                <FlasksIcon width={150} height={150} className="absolute right-[-4rem] top-[-3rem]" />
+              </button> */}
+              <div className="my-auto">
+                <ContactFlasksButton
+                  title={pageData.header.buttonTitle}
+                  linkTo={pageData.header.linkTo}
+                />
+              </div>
             </div>
             <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
           </div>
           <div className="w-[90%] flex-col flex">
             {contents.map((e, i) => (
-              <div
-                key={i}
-                className={`flex-row flex items-center gap-4 ${i % 2 !== 0 ? 'justify-end' : ''}`}
-              >
-                <div className="max-h-[280px]">{e.image}</div>
-                <div className="flex-col flex">
-                  <div className="text-[44px] uppercase">{e.heading}</div>
-                  <div
-                    className={`${iannDog.className} text-[27px]`}
-                    style={{maxWidth: e.maxWidth}}
-                  >
-                    {e.subheading}
-                  </div>
-                </div>
-              </div>
+              <ServiceContentCard key={i} index={i} data={e} />
             ))}
           </div>
           <div className="flex flex-col w-full pl-10">
-            <div className="uppercase text-[36px] my-2">our clients</div>
+            <div className="uppercase text-4xl my-2">our clients</div>
             <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
               {clients.map((c, i) => (
                 <ClientCard data={c} key={i} />

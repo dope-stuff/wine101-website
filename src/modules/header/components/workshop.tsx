@@ -5,13 +5,13 @@ import {iannDog} from '@/styles/fonts'
 export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: string}) {
   return (
     <div className="w-full flex-col lg:flex-row lg:flex-nowrap flex-wrap items-center flex justify-center mt-8 gap-12">
-      <div className="flex-1 flex-col flex items-center text-[30px] text-center pl-4">
-        <div className={`text-[78px] ${iannDog.className}`}>ที่แรกและที่เดียว กับ</div>
-        <div className="text-[65px] font-semibold uppercase">‘wine profile workshop’</div>
-        <div className={`text-[48px] ${iannDog.className}`}>
+      <div className="flex-1 flex-col flex items-center text-[30px] text-center pl-4 gap-4">
+        <div className={`text-6xl md:text-7xl ${iannDog.className}`}>ที่แรกและที่เดียว กับ</div>
+        <div className="text-5xl md:text-6xl font-semibold uppercase">‘wine profile workshop’</div>
+        <div className={`text-4xl md:text-5xl ${iannDog.className}`}>
           เปิดประตูสู่โลกของไวน์ ตามหาไวน์ที่ตัวเองชอบ
         </div>
-        <div className="text-[24px] text-center mt-4 px-4">
+        <div className="text-2xl text-center mt-4 px-4">
           <p className={`${iannDog.className} mx-auto`}>
             เมื่อโลกของไวน์ทั้งซับซ้อนและน่าสับสน พันธุ์องุ่น ชื่อไวน์ เขตที่ผลิต
             ไหนจะศัพท์เฉพาะทางที่ทั้งยาก ทั้งอ่านไม่ออก ยิ่งฟังยิ่งไม่เข้าใจ จึงเกิดเป็น Wine
@@ -29,7 +29,7 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
           จองที่นั่ง
         </Link>
       </div>
-      <div className="lg:min-w-[22.5%] min-w-[22.5%] min-h-[650px] h-[650px] flex relative xl:pr-10">
+      <div className="lg:min-w-[25%] min-w-[25%] min-h-[650px] h-[650px] flex relative xl:pr-10">
         {/* <SmartPhoneImage className="w-full h-full object-cover" /> */}
         <Image
           removeWrapper

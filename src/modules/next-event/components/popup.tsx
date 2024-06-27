@@ -65,7 +65,7 @@ export default function NextEventPopup({date, countDown}: NextEventPopupProps) {
                   src="/images/common/glitter-1.svg"
                   alt=""
                 />
-                <button className="h-[50px] pt-2 pb-4 px-6 text-[24px] leading-8 text-white bg-black">
+                <button className="h-[50px] pt-2 pb-4 px-6 text-2xl leading-8 text-white bg-black">
                   Book!
                 </button>
                 <Image

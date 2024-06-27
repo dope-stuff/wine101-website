@@ -26,7 +26,7 @@ export default function WineCellarHeader() {
   const priceList = ['Less than 1,000', '1,000-1,500', '1,500-3,000', '3,000+']
   return (
     <>
-      <div className="flex-row flex justify-evenly text-[24px] py-2 px-10 gap-10">
+      <div className="flex-row flex justify-evenly text-2xl py-2 px-10 gap-10">
         <Image
           width={180}
           removeWrapper

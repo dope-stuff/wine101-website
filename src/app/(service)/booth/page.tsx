@@ -6,10 +6,11 @@ import AffordableFunIcon from '@/modules/common/images/service/affordable-fun'
 import ExploreVarietyWinesIcon from '@/modules/common/images/service/explore-variety-wines'
 import WineByGlassIcon from '@/modules/common/images/service/wine-by-glass'
 import {iannDog} from '@/styles/fonts'
-import {IEvent, PopUpBooth} from '@/lib/data/models/common'
+import {PopUpBooth} from '@/lib/data/models/common'
 import {useEffect, useState} from 'react'
 import {popUpBoothService} from '@/lib/data/booth.service'
 import {IMenu} from '@/lib/data/models/navbar'
+import ServiceContentCard from '@/modules/card/template/service-content'
 
 export default function Booth() {
   const content = [
@@ -73,36 +74,22 @@ export default function Booth() {
             arrowColor="white"
             gap={0}
           />
-          <div className="w-full flex-col flex items-center justify-center mt-8 relative">
+          <div className="w-full flex-col flex items-center justify-center mt-8 relative gap-4">
             <FlasksIcon width={100} height={100} className="absolute left-10 top-4" />
-            <div className="text-[78px] font-semibold uppercase">{pageData.header.heading}</div>
-            <div className={`text-[48px] ${iannDog.className}`}>{pageData.header.subheading}</div>
+            <div className="text-6xl md:text-7xl font-semibold uppercase">
+              {pageData.header.heading}
+            </div>
+            <div className={`text-4xl md:text-5xl ${iannDog.className}`}>
+              {pageData.header.subheading}
+            </div>
           </div>
           <div className="w-[90%] flex-col flex mt-8">
             {pageData.details.map((e, i) => (
-              <div
-                key={i}
-                className={`flex-row flex items-center gap-4 ${
-                  i === 1 ? 'justify-end ml-auto' : ''
-                }`}
-              >
-                <div className="max-h-[270px]">{e.image}</div>
-                <div className="flex-col flex">
-                  <div className="text-[44px] uppercase">{e.heading}</div>
-                  <div
-                    className={`${iannDog.className} text-[27px]`}
-                    style={{maxWidth: e.maxWidth}}
-                  >
-                    {e.subheading}
-                  </div>
-                </div>
-              </div>
+              <ServiceContentCard key={i} index={i} data={e} />
             ))}
           </div>
           <div className="flex-row flex items-center justify-center gap-10">
-            <div className={`text-[44px] max-w-[640px] ${iannDog.className}`}>
-              {pageData.cta.heading}
-            </div>
+            <div className={`text-5xl max-w-2xl ${iannDog.className}`}>{pageData.cta.heading}</div>
             <button className="uppercase border border-black bg-[#81CF8A] px-4 py-1 text-[48px] rounded-full">
               {pageData.cta.buttonTitle}
             </button>

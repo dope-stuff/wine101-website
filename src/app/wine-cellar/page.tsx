@@ -20,7 +20,7 @@ export default async function WineCellarPage() {
       <div className="w-full flex-col flex">
         <WineCellarHeader />
         <div className="w-[90%] mx-auto">
-          <div className="uppercase text-[56px]">ฺBest Sellers</div>
+          <div className="uppercase text-4xl md:text-5xl">ฺBest Sellers</div>
           <div className="w-full h-full flex-row flex flex-wrap gap-4">
             {products.products.map((product, index) => (
               <WineCard

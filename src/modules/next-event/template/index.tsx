@@ -27,7 +27,7 @@ export default async function NextEvent() {
         <div className="w-full flex flex-1 flex-row justify-evenly">
           <NextEventCountDown date={workshop.event_date} />
         </div>
-        <button className="h-[50px] rounded-full pt-2 pb-4 px-6 text-[24px] leading-8 text-white bg-primary-1">
+        <button className="h-[50px] rounded-full pt-2 pb-4 px-6 text-2xl leading-8 text-white bg-primary-1">
           Book Now!
         </button>
       </div>

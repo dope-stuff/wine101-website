@@ -76,7 +76,7 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
           <Image width={200} src={footer.logo.mediaUrl} alt={navbar.logo.alt} />
         </div>
         <div className="flex flex-col justify-start items-start px-4">
-          <div className="text-[24px] mb-2">{footer.aboutTitle}</div>
+          <div className="text-2xl mb-2">{footer.aboutTitle}</div>
           {footer.about.map((item, index: number) => (
             <Link href={item.linkTo} key={index} className={`text-white ${inter.className}`}>
               {item.buttonTitle}
@@ -84,7 +84,7 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
           ))}
         </div>
         <div className="flex flex-col justify-start items-start px-4">
-          <div className="text-[24px] mb-2">{footer.serviceTitle}</div>
+          <div className="text-2xl mb-2">{footer.serviceTitle}</div>
           {footer.service.map((item, index: number) => (
             <Link href={item.linkTo} key={index} className={`text-white ${inter.className}`}>
               {item.buttonTitle}
@@ -92,7 +92,7 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
           ))}
         </div>
         <div className="flex flex-col justify-start items-start px-4">
-          <div className="text-[24px] mb-2">{footer.winesTitle}</div>
+          <div className="text-2xl mb-2">{footer.winesTitle}</div>
           {footer.wines.map((item, index: number) => (
             <Link href={item.linkTo} key={index} className={`text-white ${inter.className}`}>
               {item.buttonTitle}
@@ -100,7 +100,7 @@ const MainLayout = async ({children}: {children: React.ReactNode}) => {
           ))}
         </div>
         <div className="flex flex-col w-full justify-center items-center">
-          <div className="text-[24px] mb-2">{footer.contact.heading}</div>
+          <div className="text-2xl mb-2">{footer.contact.heading}</div>
           <div className={`text-white ${inter.className}`}>{footer.contact.subheading}</div>
           <div className={`text-white ${inter.className}`}>{footer.contact.description}</div>
           <div className="flex flex-row items-center gap-2 mt-4">

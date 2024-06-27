@@ -17,6 +17,8 @@ import {Wedding} from '@/lib/data/models/common'
 import {weddingService} from '@/lib/data/wedding.service'
 import {IMenu} from '@/lib/data/models/navbar'
 import FlasksIcon from '@/modules/common/images/flasks'
+import ServiceContentCard from '@/modules/card/template/service-content'
+import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 
 export default function WineWedding() {
   const content = [
@@ -37,7 +39,7 @@ export default function WineWedding() {
     {
       heading: 'Worry-Free',
       image: <WorryFreeIcon />,
-      maxWidth: '80%',
+      maxWidth: 600,
       subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
     },
@@ -141,7 +143,7 @@ export default function WineWedding() {
     pageData && (
       <>
         <div className="w-full justify-center flex-col flex items-center mx-auto">
-          <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-[24px] p-4">
+          <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-2xl p-4">
             {panels.map((panel, i) => (
               <>
                 <div key={i}>{panel}</div>
@@ -163,49 +165,47 @@ export default function WineWedding() {
             arrowColor="white"
             gap={0}
           />
-          <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
-            <div className="max-w-[60%] flex-col flex items-center text-[30px] text-center pl-4">
-              <div className="text-[44px] font-semibold uppercase">{pageData.header.heading}</div>
-              <div className={`text-[36px] ${iannDog.className} w-full`}>
+          <div className="w-full h-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
+            <div className="max-w-[60%] flex-col flex items-center text-3xl text-center pl-4">
+              <div className="text-6xl md:text-7xl font-semibold uppercase">
+                {pageData.header.heading}
+              </div>
+              <div className={`text-4xl md:text-5xl ${iannDog.className} w-full`}>
                 {pageData.header.subheading}
               </div>
-              <Way1O1Icon className="my-4" />
+              <div className="flex-row flex items-center flex-nowrap gap-8 text-6xl md:text-7xl text-center my-16">
+                <FlasksIcon width={150} height={150} />
+                {pageData.detailsTitle}
+                <FlasksIcon width={150} height={150} />
+              </div>
             </div>
             <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
           </div>
           <div className="w-[90%] flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
-            {pageData.details.map((e, i) => (
-              <div
-                key={i}
-                className={`w-[80%] flex-row flex items-center gap-4 ${
-                  i % 2 !== 0 ? 'justify-end ml-auto' : ''
-                }`}
-              >
-                <div className="max-h-[280px]">{e.image}</div>
-                <div className="flex-col flex">
-                  <div className="text-[44px] uppercase xl:max-w-[650px]">{e.heading}</div>
-                  <div
-                    className={`${iannDog.className} text-[27px]`}
-                    style={{maxWidth: e.maxWidth}}
-                  >
-                    {e.subheading}
-                  </div>
-                </div>
-              </div>
-            ))}
+            {pageData.details.map((e, i) => {
+              const data = {
+                heading: e.heading,
+                subheading: e.subheading,
+                image: e.image,
+                maxWidth: e.maxWidth,
+              }
+              return <ServiceContentCard key={i} index={i} data={data} />
+            })}
           </div>
-          <button className="relative px-8 leading-14 text-[64px] max-w-[650px] bg-[#E8C85E] border-[2px] border-black rounded-full">
-            <FlasksIcon width={150} height={150} className="absolute left-[-4rem] bottom-0" />
-            {pageData.packagesTitle.buttonTitle}
-            <FlasksIcon width={150} height={150} className="absolute right-[-4rem] top-0" />
-          </button>
+          <div className="my-auto">
+            <ContactFlasksButton
+              title={pageData.packagesTitle.buttonTitle}
+              linkTo={pageData.packagesTitle.linkTo}
+              bgColor='#E8C85E'
+            />
+          </div>
           <div className="w-full flex-row flex gap-10 text-center my-8">
             {pageData.packages.map((pkg) => (
               <div key={pkg.id} className="flex-1 flex-col flex items-center">
                 {/* <WineBottlesIcon /> */}
                 <Image width={400} height={300} src={pkg.mediaUrl} alt={pkg.alt} />
-                <div className="font-bold text-[48px]">{pkg.heading}</div>
-                <div className={`${iannDog.className} text-[24px] max-w-[600px]`}>
+                <div className="font-bold text-5xl">{pkg.heading}</div>
+                <div className={`${iannDog.className} text-2xl max-w-[600px]`}>
                   {pkg.subheading}
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default function WineWedding() {
         </div>
         <Consultant />
         <div className="flex flex-col w-full pl-10">
-          <div className="uppercase text-[36px] my-2">our clients</div>
+          <div className="uppercase text-4xl my-2">our clients</div>
           <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
             {clients.map((c, i) => (
               <ClientCard data={c} key={i} withDetail />
