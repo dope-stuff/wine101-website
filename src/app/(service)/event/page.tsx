@@ -13,6 +13,7 @@ import {useEffect, useState} from 'react'
 import {IMenu} from '@/lib/data/models/navbar'
 import {IEvent} from '@/lib/data/models/common'
 import {iannDog} from '@/styles/fonts'
+import FlasksIcon from '@/modules/common/images/flasks'
 
 export default function WineEvent() {
   const content = [
@@ -76,6 +77,10 @@ export default function WineEvent() {
     getData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const onOpenLink = (linkto: string) => {
+    window.open(linkto, '_blank')
+  }
   return (
     pageData && (
       <>
@@ -100,7 +105,14 @@ export default function WineEvent() {
               <div className={`text-[48px] w-[80%] ${iannDog.className}`}>
                 {pageData.header.subheading}
               </div>
-              <Service1O1ContactUsIcon className="cursor-pointer" />
+              <button
+                className="relative px-8 leading-14 text-[60px] max-w-[650px] bg-[#E8C85E] border-[2px] border-black rounded-full"
+                onClick={() => onOpenLink(pageData.header.linkTo)}
+              >
+                <FlasksIcon width={150} height={150} className="absolute left-[-4rem] bottom-0" />
+                {pageData.header.buttonTitle}
+                <FlasksIcon width={150} height={150} className="absolute right-[-4rem] top-0" />
+              </button>
             </div>
             <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
           </div>
