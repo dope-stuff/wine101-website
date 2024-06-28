@@ -3,11 +3,9 @@ import {useEffect, useState} from 'react'
 
 import {Image} from '@nextui-org/react'
 import {workshopService} from '@/lib/data/workshop.service'
-import {iannDog} from '@/styles/fonts'
 
 import Carousel from '../../../modules/carousel/template'
 import Comments from '@/modules/services/components/comments'
-import Way1O1Icon from '@/modules/common/images/service/way-1o1'
 import WorkShopCard from '../../../modules/card/template/workshop'
 import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
 import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
@@ -16,6 +14,7 @@ import EnjoyBeingYourselfIcon from '@/modules/common/images/service/enjoy-being-
 import {Workshop} from '@/lib/data/models/workshop'
 import WineProfileWorkshopHeader from '@/modules/header/components/workshop'
 import ServiceContentCard from '@/modules/card/template/service-content'
+import FlasksIcon from '@/modules/common/images/flasks'
 
 export default function WineProfileWorkshop() {
   const banners = [
@@ -37,27 +36,27 @@ export default function WineProfileWorkshop() {
   const data = [
     {
       heading: '101 beginner friendly',
-      image: <BeginnerFriendlyIcon />,
+      image: <BeginnerFriendlyIcon height={200} />,
       maxWidth: 450,
       subheading:
         'เหมาะสำหรับมือใหม่ Beginner Friendly ไม่เป็นก็เริ่มได้ เรียนรู้พื้นฐานไวน์ เริ่มจาก 0 ง่ายกว่านี้ไม่มีแล้ว',
     },
     {
       heading: 'explore your tastebuds',
-      image: <ExploreTastebudsIcon />,
+      image: <ExploreTastebudsIcon height={200} />,
       maxWidth: 650,
       subheading:
         'เพราะอร่อยแต่ละคนไม่เหมือนกัน เราจัดมาให้กับ ไวน์ 4 ประเภท 7 ขวด ต่างรส ต่างองุ่น จากหลากหลายประเทศ ให้ทุกคนได้ลองและค้นหาไวน์ที่ตัวเองชอบ',
     },
     {
       heading: 'create your wine profile',
-      image: <CreateWineProfileIcon />,
+      image: <CreateWineProfileIcon height={200} />,
       maxWidth: 520,
       subheading: 'เลิกงงเวลาเลือกซื้อไวน์ ทำ wine profile ของตัวเอง ครั้งหน้ารู้เลยต้องสั่งยังไง',
     },
     {
       heading: 'enjoy being yourself',
-      image: <EnjoyBeingYourselfIcon />,
+      image: <EnjoyBeingYourselfIcon height={200} />,
       maxWidth: 480,
       subheading:
         'บรรยากาศเหมือนนั่งชิมกับเพื่อน ปิดมู้ดการชิมไวน์แบบซีเรียส Workshop บรรยากาศ สนุก เป็นกันเอง',
@@ -104,12 +103,16 @@ export default function WineProfileWorkshop() {
       <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
       {pageData[0] && <WineProfileWorkshopHeader thumbnail={pageData[0].videos} />}
       <div className="w-[90%] flex-col flex mt-4">
-        <Way1O1Icon className="mx-auto" />
+        <div className="flex-row flex items-center flex-nowrap gap-8 text-7xl md:text-8xl text-center my-4 mx-auto">
+          <FlasksIcon className="mt-[-1rem]" />
+          101Way
+          <FlasksIcon className="mt-[-1rem]" />
+        </div>
         {data.map((e, i) => (
           <ServiceContentCard key={i} index={i} data={e} />
         ))}
       </div>
-      <div className="flex flex-col w-full pl-10">
+      <div className="flex flex-col w-full px-10">
         <div className="uppercase text-4xl my-2">our workshop</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
           {pageData.map((ws, i) => (
@@ -117,7 +120,7 @@ export default function WineProfileWorkshop() {
           ))}
         </div>
       </div>
-      <div className="uppercase text-6xl my-4">how people talk about us</div>
+      <div className="uppercase text-4xl my-4">how people talk about us</div>
       <div className="w-[90%]">
         <Carousel
           elements={splitArray(comments).map((e, i) => (

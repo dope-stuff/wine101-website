@@ -17,13 +17,13 @@ export default function ContactFlasksButton({
   }
   return (
     <button
-      className="relative py-4 px-8 text-5xl md:text-6xl max-w-[650px] bg-[#81CF8A] border-[2px] border-black rounded-full"
+      className="relative py-4 px-8 text-2xl md:text-3xl max-w-[360px] bg-[#81CF8A] border-[2px] border-black rounded-full"
       style={{backgroundColor: bgColor, color: textColor}}
       onClick={() => onOpenLink(linkTo)}
     >
-      <FlasksIcon width={150} height={150} className="absolute left-[-4rem] bottom-[-3rem]" />
+      <FlasksIcon className="absolute left-[-1rem] bottom-[-1rem]" />
       {title}
-      <FlasksIcon width={150} height={150} className="absolute right-[-4rem] top-[-3rem]" />
+      <FlasksIcon className="absolute right-[-1rem] top-[-1rem]" />
     </button>
   )
 }

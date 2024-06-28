@@ -22,35 +22,35 @@ export default function WineWedding() {
   const content = [
     {
       heading: 'Free Wedding Wine Advice',
-      image: <FreeWeddingWineAdviceIcon />,
-      maxWidth: '70%',
+      image: <FreeWeddingWineAdviceIcon height={200} />,
+      maxWidth: 400,
       subheading:
         'มากกว่า 70 ไวน์ลิสต์ที่มี เราช่วยคัดสรรไวน์คุณภาพจากทั่วทุกมุมโลกให้คุ้มค่ากับงบประมาณ',
     },
     {
       heading: 'Handpick quality wines to match your special day ',
-      image: <HandpickQualityWinesIcon />,
-      maxWidth: 580,
+      image: <HandpickQualityWinesIcon height={200} />,
+      maxWidth: 450,
       subheading:
         'ยกระดับอีเวนต์ให้พิเศษยิ่งขึ้น ด้วย Wine Activity ที่ match กับ theme อีเว้นต์ของงาน',
     },
     {
       heading: 'Worry-Free',
-      image: <WorryFreeIcon />,
-      maxWidth: 600,
+      image: <WorryFreeIcon height={200} />,
+      maxWidth: 450,
       subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
     },
     {
       heading: 'Add on Special Wine Corner with Personalized service ',
-      image: <VarietyOfServiceIcon />,
-      maxWidth: 560,
+      image: <VarietyOfServiceIcon height={200} />,
+      maxWidth: 450,
       subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
     {
       heading: 'Full Support & Service',
-      image: <FullSupportService2Icon />,
-      maxWidth: 560,
+      image: <FullSupportService2Icon height={200} />,
+      maxWidth: 450,
       subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
   ]
@@ -141,7 +141,7 @@ export default function WineWedding() {
     pageData && (
       <>
         <div className="w-full justify-center flex-col flex items-center mx-auto">
-          <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-2xl p-4">
+          <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-xl p-4">
             {panels.map((panel, i) => (
               <>
                 <div key={i}>{panel}</div>
@@ -164,20 +164,20 @@ export default function WineWedding() {
             gap={0}
           />
           <div className="w-full h-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
-            <div className="max-w-[60%] flex-col flex items-center text-3xl text-center pl-4">
-              <div className="text-6xl md:text-7xl font-semibold uppercase">
+            <div className="max-w-[60%] flex-col flex items-center text-3xl text-center pl-4 gap-4">
+              <div className="text-2xl md:text-3xl font-semibold uppercase">
                 {pageData.header.heading}
               </div>
-              <div className={`text-4xl md:text-5xl ${iannDog.className} w-full`}>
+              <div className={`text-2xl md:text-3xl ${iannDog.className} w-full`}>
                 {pageData.header.subheading}
               </div>
-              <div className="flex-row flex items-center flex-nowrap gap-8 text-6xl md:text-7xl text-center my-16">
-                <FlasksIcon width={150} height={150} />
+              <div className="flex-row flex items-center flex-nowrap gap-8 text-5xl md:text-6xl text-center my-16">
+                <FlasksIcon width={100} height={100} />
                 {pageData.detailsTitle}
-                <FlasksIcon width={150} height={150} />
+                <FlasksIcon width={100} height={100} />
               </div>
             </div>
-            <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
+            <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
           </div>
           <div className="w-[90%] flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
             {pageData.details.map((e, i) => {
@@ -194,17 +194,15 @@ export default function WineWedding() {
             <ContactFlasksButton
               title={pageData.packagesTitle.buttonTitle}
               linkTo={pageData.packagesTitle.linkTo}
-              bgColor='#E8C85E'
+              bgColor="#E8C85E"
             />
           </div>
           <div className="w-full flex-row flex gap-10 text-center my-8">
             {pageData.packages.map((pkg) => (
-              <div key={pkg.id} className="flex-1 flex-col flex items-center">
+              <div key={pkg.id} className="flex-1 flex-col flex items-center gap-2">
                 <Image width={400} height={300} src={pkg.mediaUrl} alt={pkg.alt} />
-                <div className="font-bold text-5xl">{pkg.heading}</div>
-                <div className={`${iannDog.className} text-2xl max-w-[600px]`}>
-                  {pkg.subheading}
-                </div>
+                <div className="font-bold text-4xl">{pkg.heading}</div>
+                <div className={`${iannDog.className} text-xl max-w-[600px]`}>{pkg.subheading}</div>
               </div>
             ))}
           </div>

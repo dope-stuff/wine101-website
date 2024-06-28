@@ -21,7 +21,7 @@ export default async function WineCellarPage() {
       <div className="w-full flex-col flex">
         <WineCellarHeader />
         <div className="w-[90%] mx-auto">
-          <div className="uppercase text-4xl md:text-5xl my-4">ฺBest Sellers</div>
+          <div className="uppercase text-2xl md:text-3xl my-4">ฺBest Sellers</div>
           <div className="w-full flex-shrink-0 flex-row flex flex-wrap gap-4">
             {products.products.map((product, index) => (
               <div key={index}>
@@ -32,7 +32,7 @@ export default async function WineCellarPage() {
               </div>
             ))}
           </div>
-          <div className="uppercase text-4xl md:text-5xl my-4">explore more</div>
+          <div className="uppercase text-2xl md:text-3xl my-4">explore more</div>
           <div className="w-full flex-shrink-0 flex-row flex flex-wrap gap-4">
             {products.products.map((product, index) => (
               <div key={index}>

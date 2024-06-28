@@ -21,29 +21,29 @@ export default function WineEvent() {
   const content = [
     {
       heading: 'help you choose quality wines',
-      image: <BeginnerFriendlyIcon />,
-      maxWidth: '70%',
+      image: <BeginnerFriendlyIcon height={200} />,
+      maxWidth: 450,
       subheading:
         'มากกว่า 70 ไวน์ลิสต์ที่มี เราช่วยคัดสรรไวน์คุณภาพจากทั่วทุกมุมโลกให้คุ้มค่ากับงบประมาณ',
     },
     {
       heading: 'Customize for Your Event ',
-      image: <ExploreTastebudsIcon />,
-      maxWidth: 580,
+      image: <ExploreTastebudsIcon height={200} />,
+      maxWidth: 500,
       subheading:
         'ยกระดับอีเวนต์ให้พิเศษยิ่งขึ้น ด้วย Wine Activity ที่ match กับ theme อีเว้นต์ของงาน',
     },
     {
       heading: 'Full Support & Service',
-      image: <FullSupportServiceIcon />,
-      maxWidth: 730,
+      image: <FullSupportServiceIcon height={200} />,
+      maxWidth: 640,
       subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
     },
     {
       heading: 'variety of service',
-      image: <VarietyOfServiceIcon />,
-      maxWidth: 560,
+      image: <VarietyOfServiceIcon height={200} />,
+      maxWidth: 450,
       subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
   ]
@@ -101,22 +101,14 @@ export default function WineEvent() {
             arrowColor="white"
             gap={0}
           />
-          <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
+          <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
             <div className="max-w-[60%] h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
-              <div className="text-6xl md:text-7xl font-semibold uppercase max-w-[600px]">
+              <div className="text-2xl md:text-3xl font-semibold uppercase max-w-[600px]">
                 {pageData.header.heading}
               </div>
-              <div className={`text-4xl md:text-5xl max-w-[700px] ${iannDog.className}`}>
+              <div className={`text-xl md:text-2xl max-w-[700px] ${iannDog.className}`}>
                 {pageData.header.subheading}
               </div>
-              {/* <button
-                className="relative my-auto py-4 px-8 text-5xl md:text-6xl max-w-[650px] bg-[#81CF8A] border-[2px] border-black rounded-full"
-                onClick={() => onOpenLink(pageData.header.linkTo)}
-              >
-                <FlasksIcon width={150} height={150} className="absolute left-[-4rem] bottom-[-3rem]" />
-                {pageData.header.buttonTitle}
-                <FlasksIcon width={150} height={150} className="absolute right-[-4rem] top-[-3rem]" />
-              </button> */}
               <div className="my-auto">
                 <ContactFlasksButton
                   title={pageData.header.buttonTitle}
@@ -124,7 +116,7 @@ export default function WineEvent() {
                 />
               </div>
             </div>
-            <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
+            <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
           </div>
           <div className="w-[90%] flex-col flex">
             {contents.map((e, i) => (

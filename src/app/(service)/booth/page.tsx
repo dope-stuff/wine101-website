@@ -16,21 +16,21 @@ export default function Booth() {
   const content = [
     {
       heading: 'Wine by the Glass',
-      image: <WineByGlassIcon />,
-      maxWidth: '70%',
+      image: <WineByGlassIcon height={200} />,
+      maxWidth: 300,
       subheading: 'เปิดโลกไวน์ได้โดยไม่ต้องเปิดขวด เปิดแค่ใจแล้วชิมไวน์เป็นแก้วกับเรา',
     },
     {
       heading: 'Explore a Variety of Wines',
-      image: <ExploreVarietyWinesIcon />,
-      maxWidth: '600px',
+      image: <ExploreVarietyWinesIcon height={200} />,
+      maxWidth: 450,
       subheading:
         'จัดมาให้กับ ไวน์หลากหลายประเภท ทั้ง Sparkling , White , Rosé and Red ต่างรส ต่างองุ่น จากหลากหลายประเทศ ให้ทุกคนได้ค้นหาไวน์ที่ตัวเองชอบ',
     },
     {
       heading: 'Affordable Fun',
-      image: <AffordableFunIcon />,
-      maxWidth: '80%',
+      image: <AffordableFunIcon height={200} />,
+      maxWidth: 300,
       subheading: 'ไวน์คุณภาพดี ราคาเป็นกันเอง สนุกกับไวน์ได้ สบายกระเป๋าด้วย ',
     },
   ]
@@ -76,10 +76,10 @@ export default function Booth() {
           />
           <div className="w-full flex-col flex items-center justify-center mt-8 relative gap-4">
             <FlasksIcon width={100} height={100} className="absolute left-10 top-4" />
-            <div className="text-6xl md:text-7xl font-semibold uppercase">
+            <div className="text-2xl md:text-3xl font-semibold uppercase">
               {pageData.header.heading}
             </div>
-            <div className={`text-4xl md:text-5xl ${iannDog.className}`}>
+            <div className={`text-2xl md:text-3xl ${iannDog.className}`}>
               {pageData.header.subheading}
             </div>
           </div>
@@ -89,8 +89,8 @@ export default function Booth() {
             ))}
           </div>
           <div className="flex-row flex items-center justify-center gap-10">
-            <div className={`text-5xl max-w-2xl ${iannDog.className}`}>{pageData.cta.heading}</div>
-            <button className="uppercase border border-black bg-[#81CF8A] px-4 py-1 text-5xl rounded-full">
+            <div className={`text-4xl max-w-lg text-center ${iannDog.className}`}>{pageData.cta.heading}</div>
+            <button className="uppercase border border-black bg-[#81CF8A] px-4 py-1 text-4xl rounded-full">
               {pageData.cta.buttonTitle}
             </button>
           </div>

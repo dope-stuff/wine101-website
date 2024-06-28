@@ -18,19 +18,19 @@ export default function Collaboration() {
   const content = [
     {
       heading: 'Content and storytelling',
-      image: <ContentAndStoryIcon />,
-      maxWidth: '70%',
+      image: <ContentAndStoryIcon height={200} />,
+      maxWidth: 400,
       subheading: 'สร้างสรรค์เรื่องไวน์ให้เข้ากับเรื่องราวของแบรนด์',
     },
     {
       heading: 'Interactive experience for community building',
-      image: <InteractiveExperienceIcon />,
+      image: <InteractiveExperienceIcon height={200} />,
       subheading: 'เปิดพื้นที่การมีส่วนร่วม เสริมสร้างแบรนด์ให้แข็งแกร่ง',
     },
     {
       heading: 'Full Support & Service',
-      image: <FullSupportServiceIcon />,
-      maxWidth: '90%',
+      image: <FullSupportServiceIcon height={200} />,
+      maxWidth: 520,
       subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
     },
@@ -84,12 +84,12 @@ export default function Collaboration() {
             arrowColor="white"
             gap={0}
           />
-          <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
+          <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
             <div className="max-w-[60%] h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
-              <div className="text-6xl md:text-7xlfont-semibold uppercase">
+              <div className="text-2xl md:text-3xl font-semibold uppercase">
                 {pageData.header.heading}
               </div>
-              <div className={`text-4xl md:text-5xl w-[80%] ${iannDog.className}`}>
+              <div className={`text-2xl md:text-3xl w-[80%] ${iannDog.className}`}>
                 {pageData.header.subheading}
               </div>
               <div className="my-auto">
@@ -99,7 +99,7 @@ export default function Collaboration() {
                 />
               </div>
             </div>
-            <SmartPhoneImage className="max-w-[320px] flex-1 h-full" />
+            <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
           </div>
           <div className="w-[90%] flex-col flex">
             {pageData.details.map((e, i) => (
@@ -110,16 +110,10 @@ export default function Collaboration() {
                 }`}
               >
                 <div className="max-h-[270px]">{e.image}</div>
-                <div className="flex-col flex gap-2">
+                <div className={`flex-col flex gap-2 ${i % 2 !== 0 ? 'ml-[-50px]' : ''}`}>
+                  <div className={`text-2xl md:text-3xl uppercase max-w-[420px] `}>{e.heading}</div>
                   <div
-                    className={`text-3xl md:text-4xl uppercase max-w-[650px] ${
-                      i % 2 !== 0 ? 'ml-[-50px]' : ''
-                    }`}
-                  >
-                    {e.heading}
-                  </div>
-                  <div
-                    className={`${iannDog.className} text-xl md:text-2xl`}
+                    className={`${iannDog.className} text-lg md:text-xl`}
                     style={{maxWidth: e.maxWidth}}
                   >
                     {e.subheading}
