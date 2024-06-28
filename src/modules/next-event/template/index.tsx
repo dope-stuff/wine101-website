@@ -19,7 +19,7 @@ export default async function NextEvent() {
       withCount: false,
     },
   })
-  const eventDate = dayjs(workshop.event_date).subtract(1, 'hour')
+  const eventDate = dayjs(workshop.event_date)
 
   return (
     <div className="w-full flex items-center justify-center bg-primary-2">
