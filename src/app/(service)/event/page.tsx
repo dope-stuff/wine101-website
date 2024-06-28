@@ -20,28 +20,28 @@ export default function WineEvent() {
   const content = [
     {
       heading: 'help you choose quality wines',
-      image: <BeginnerFriendlyIcon height={200} />,
+      image: <BeginnerFriendlyIcon height={150} className="max-w-[150px]" />,
       maxWidth: 450,
       subheading:
         'มากกว่า 70 ไวน์ลิสต์ที่มี เราช่วยคัดสรรไวน์คุณภาพจากทั่วทุกมุมโลกให้คุ้มค่ากับงบประมาณ',
     },
     {
       heading: 'Customize for Your Event ',
-      image: <ExploreTastebudsIcon height={200} />,
+      image: <ExploreTastebudsIcon height={150} className="max-w-[150px]" />,
       maxWidth: 500,
       subheading:
         'ยกระดับอีเวนต์ให้พิเศษยิ่งขึ้น ด้วย Wine Activity ที่ match กับ theme อีเว้นต์ของงาน',
     },
     {
       heading: 'Full Support & Service',
-      image: <FullSupportServiceIcon height={200} />,
+      image: <FullSupportServiceIcon height={150} className="max-w-[150px]" />,
       maxWidth: 640,
       subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
     },
     {
       heading: 'variety of service',
-      image: <VarietyOfServiceIcon height={200} />,
+      image: <VarietyOfServiceIcon height={150} className="max-w-[150px]" />,
       maxWidth: 450,
       subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
@@ -85,7 +85,7 @@ export default function WineEvent() {
   return (
     pageData && (
       <>
-        <div className="w-full justify-center flex-col flex items-center mx-auto">
+        <div className="w-full justify-center flex-col flex items-center mx-auto gap-4">
           <Carousel
             elements={pageData.banner.map((b: IMenu) => (
               <Image
@@ -101,7 +101,7 @@ export default function WineEvent() {
             gap={0}
           />
           <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
-            <div className="max-w-[60%] h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
+            <div className="max-w-[60%] lg:h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
               <div className="text-2xl md:text-3xl font-semibold uppercase max-w-[600px]">
                 {pageData.header.heading}
               </div>
@@ -123,7 +123,7 @@ export default function WineEvent() {
             ))}
           </div>
           <div className="flex flex-col w-full pl-10">
-            <div className="uppercase text-4xl my-2 text-center my-4">our clients</div>
+            <div className="uppercase text-4xl text-center my-4">our clients</div>
             <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
               {clients.map((c, i) => (
                 <ClientCard data={c} key={i} />

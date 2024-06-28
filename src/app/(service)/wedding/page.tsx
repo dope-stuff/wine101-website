@@ -22,34 +22,34 @@ export default function WineWedding() {
   const content = [
     {
       heading: 'Free Wedding Wine Advice',
-      image: <FreeWeddingWineAdviceIcon height={200} />,
+      image: <FreeWeddingWineAdviceIcon height={150} className="max-w-[150px]" />,
       maxWidth: 400,
       subheading:
         'มากกว่า 70 ไวน์ลิสต์ที่มี เราช่วยคัดสรรไวน์คุณภาพจากทั่วทุกมุมโลกให้คุ้มค่ากับงบประมาณ',
     },
     {
       heading: 'Handpick quality wines to match your special day ',
-      image: <HandpickQualityWinesIcon height={200} />,
+      image: <HandpickQualityWinesIcon height={150} className="max-w-[150px]" />,
       maxWidth: 450,
       subheading:
         'ยกระดับอีเวนต์ให้พิเศษยิ่งขึ้น ด้วย Wine Activity ที่ match กับ theme อีเว้นต์ของงาน',
     },
     {
       heading: 'Worry-Free',
-      image: <WorryFreeIcon height={200} />,
+      image: <WorryFreeIcon height={150} className="max-w-[150px]" />,
       maxWidth: 450,
       subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
     },
     {
       heading: 'Add on Special Wine Corner with Personalized service ',
-      image: <VarietyOfServiceIcon height={200} />,
+      image: <VarietyOfServiceIcon height={150} className="max-w-[150px]" />,
       maxWidth: 450,
       subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
     {
       heading: 'Full Support & Service',
-      image: <FullSupportService2Icon height={200} />,
+      image: <FullSupportService2Icon height={150} className="max-w-[150px]" />,
       maxWidth: 450,
       subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
     },
@@ -114,7 +114,15 @@ export default function WineWedding() {
     },
   ]
 
-  const panels = ['101 wedding guide', 'our package', 'quick consult', 'our client’s review']
+  const panels = [
+    '101 wedding guide',
+    '',
+    'our package',
+    '',
+    'quick consult',
+    '',
+    'our client’s review',
+  ]
 
   const [pageData, setPageData] = useState<Wedding>()
 
@@ -140,14 +148,15 @@ export default function WineWedding() {
   return (
     pageData && (
       <>
-        <div className="w-full justify-center flex-col flex items-center mx-auto">
-          <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-xl p-4">
-            {panels.map((panel, i) => (
-              <>
+        <div className="w-full justify-center flex-col flex items-center mx-auto gap-4">
+          <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center p-4">
+            {panels.map((panel, i) =>
+              i % 2 !== 0 ? (
+                i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black" />
+              ) : (
                 <div key={i}>{panel}</div>
-                {i !== panels.length - 1 && <div className="w-[2px] h-8 bg-black" />}
-              </>
-            ))}
+              )
+            )}
           </div>
           <Carousel
             elements={pageData.banner.map((b: IMenu) => (
@@ -163,8 +172,8 @@ export default function WineWedding() {
             arrowColor="white"
             gap={0}
           />
-          <div className="w-full h-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-12">
-            <div className="max-w-[60%] flex-col flex items-center text-3xl text-center pl-4 gap-4">
+          <div className="w-full h-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
+            <div className="max-w-[60%] lg:h-full flex-col flex items-center text-3xl text-center pl-4 gap-4">
               <div className="text-2xl md:text-3xl font-semibold uppercase">
                 {pageData.header.heading}
               </div>
@@ -190,16 +199,14 @@ export default function WineWedding() {
               return <ServiceContentCard key={i} index={i} data={data} />
             })}
           </div>
-          <div className="my-auto">
             <ContactFlasksButton
               title={pageData.packagesTitle.buttonTitle}
               linkTo={pageData.packagesTitle.linkTo}
               bgColor="#E8C85E"
             />
-          </div>
-          <div className="w-full flex-row flex gap-10 text-center my-8">
+          <div className="w-full flex-row flex flex-wrap gap-4 text-center my-8">
             {pageData.packages.map((pkg) => (
-              <div key={pkg.id} className="flex-1 flex-col flex items-center gap-2">
+              <div key={pkg.id} className="flex-1 min-w-[400px] flex-col flex items-center gap-4">
                 <Image width={400} height={300} src={pkg.mediaUrl} alt={pkg.alt} />
                 <div className="font-bold text-4xl">{pkg.heading}</div>
                 <div className={`${iannDog.className} text-xl max-w-[600px]`}>{pkg.subheading}</div>

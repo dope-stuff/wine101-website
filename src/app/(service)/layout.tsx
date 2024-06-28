@@ -16,17 +16,16 @@ const Headers = () => {
   ]
   return (
     <Navbar maxWidth="full" style={{background: 'white'}}>
-      <div className="flex flex-row w-full justify-between p-2">
+      <div className="flex flex-row w-full justify-between mx-auto overflow-auto gap-4">
         {tabs.map((tab, i) => (
           <div key={i}>
             <Link
-              // href="/"
               href={`/${tab.path}`}
               className="flex-row flex items-center gap-2 text-center"
             >
               <PouringWineIcon />
               <div
-                className={`max-w-[150px] font-bold text-lg leading-4 uppercase ${
+                className={`max-w-[150px] font-bold leading-4 uppercase min-w-[100px] ${
                   pathname.toLowerCase().includes(tab.path.toLowerCase())
                     ? 'text-black'
                     : 'text-primary'

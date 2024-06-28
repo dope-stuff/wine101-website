@@ -2,7 +2,7 @@ import React from 'react'
 import {IconProps} from '@/lib/data/models/icon'
 
 const InteractiveExperienceIcon: React.FC<IconProps> = ({
-  width = '360',
+  width = '300',
   height = '218',
   color = 'white',
   ...attributes

@@ -18,18 +18,18 @@ export default function Collaboration() {
   const content = [
     {
       heading: 'Content and storytelling',
-      image: <ContentAndStoryIcon height={200} />,
+      image: <ContentAndStoryIcon height={150} className="max-w-[150px]" />,
       maxWidth: 400,
       subheading: 'สร้างสรรค์เรื่องไวน์ให้เข้ากับเรื่องราวของแบรนด์',
     },
     {
       heading: 'Interactive experience for community building',
-      image: <InteractiveExperienceIcon height={200} />,
+      image: <InteractiveExperienceIcon height={180} className='max-w-[150px] md:max-w-none'  />,
       subheading: 'เปิดพื้นที่การมีส่วนร่วม เสริมสร้างแบรนด์ให้แข็งแกร่ง',
     },
     {
       heading: 'Full Support & Service',
-      image: <FullSupportServiceIcon height={200} />,
+      image: <FullSupportServiceIcon height={150} className="max-w-[150px]" />,
       maxWidth: 520,
       subheading:
         'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
@@ -85,7 +85,7 @@ export default function Collaboration() {
             gap={0}
           />
           <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
-            <div className="max-w-[60%] h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
+            <div className="max-w-[60%] lg:h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
               <div className="text-2xl md:text-3xl font-semibold uppercase">
                 {pageData.header.heading}
               </div>
@@ -101,19 +101,19 @@ export default function Collaboration() {
             </div>
             <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
           </div>
-          <div className="w-[90%] flex-col flex">
+          <div className="w-[90%] gap-4 flex-col flex">
             {pageData.details.map((e, i) => (
               <div
                 key={i}
-                className={`w-[80%] flex-row flex items-center gap-4 ${
-                  i % 2 !== 0 ? 'justify-end ml-auto' : ''
+                className={`w-full md:w-[80%] flex-row flex items-center gap-4 ${
+                  i % 2 !== 0 ? 'md:justify-end md:ml-auto' : ''
                 }`}
               >
                 <div className="max-h-[270px]">{e.image}</div>
-                <div className={`flex-col flex gap-2 ${i % 2 !== 0 ? 'ml-[-50px]' : ''}`}>
+                <div className={`flex-col flex gap-2 ${i % 2 !== 0 ? 'lg:ml-[-30px] -mt-8' : ''}`}>
                   <div className={`text-2xl md:text-3xl uppercase max-w-[420px] `}>{e.heading}</div>
                   <div
-                    className={`${iannDog.className} text-lg md:text-xl`}
+                    className={`${iannDog.className} max-w-[${e.maxWidth}] text-lg md:text-xl`}
                     style={{maxWidth: e.maxWidth}}
                   >
                     {e.subheading}

@@ -16,20 +16,20 @@ export default function Booth() {
   const content = [
     {
       heading: 'Wine by the Glass',
-      image: <WineByGlassIcon height={200} />,
+      image: <WineByGlassIcon height={150} className="max-w-[150px]" />,
       maxWidth: 300,
       subheading: 'เปิดโลกไวน์ได้โดยไม่ต้องเปิดขวด เปิดแค่ใจแล้วชิมไวน์เป็นแก้วกับเรา',
     },
     {
       heading: 'Explore a Variety of Wines',
-      image: <ExploreVarietyWinesIcon height={200} />,
+      image: <ExploreVarietyWinesIcon height={150} className="max-w-[150px]" />,
       maxWidth: 450,
       subheading:
         'จัดมาให้กับ ไวน์หลากหลายประเภท ทั้ง Sparkling , White , Rosé and Red ต่างรส ต่างองุ่น จากหลากหลายประเทศ ให้ทุกคนได้ค้นหาไวน์ที่ตัวเองชอบ',
     },
     {
       heading: 'Affordable Fun',
-      image: <AffordableFunIcon height={200} />,
+      image: <AffordableFunIcon height={150} className="max-w-[150px]" />,
       maxWidth: 300,
       subheading: 'ไวน์คุณภาพดี ราคาเป็นกันเอง สนุกกับไวน์ได้ สบายกระเป๋าด้วย ',
     },
@@ -78,12 +78,12 @@ export default function Booth() {
             arrowColor="white"
             gap={0}
           />
-          <div className="w-full flex-col flex items-center justify-center mt-8 relative gap-4">
-            <FlasksIcon width={100} height={100} className="absolute left-10 top-4" />
+          <div className="w-full flex-col flex text-center items-center justify-center mt-8 relative gap-4">
+            <FlasksIcon width={100} height={100} className="hidden md:flex absolute left-10 top-4" />
             <div className="text-2xl md:text-3xl font-semibold uppercase">
               {pageData.header.heading}
             </div>
-            <div className={`text-2xl md:text-3xl ${iannDog.className}`}>
+            <div className={`max-w-xl lg:max-w-2xl xl:max-w-none text-2xl md:text-3xl ${iannDog.className}`}>
               {pageData.header.subheading}
             </div>
           </div>

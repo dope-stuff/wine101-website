@@ -36,27 +36,27 @@ export default function WineProfileWorkshop() {
   const data = [
     {
       heading: '101 beginner friendly',
-      image: <BeginnerFriendlyIcon height={200} />,
+      image: <BeginnerFriendlyIcon height={150} className="max-w-[150px]" />,
       maxWidth: 450,
       subheading:
         'เหมาะสำหรับมือใหม่ Beginner Friendly ไม่เป็นก็เริ่มได้ เรียนรู้พื้นฐานไวน์ เริ่มจาก 0 ง่ายกว่านี้ไม่มีแล้ว',
     },
     {
       heading: 'explore your tastebuds',
-      image: <ExploreTastebudsIcon height={200} />,
+      image: <ExploreTastebudsIcon height={150} className="max-w-[150px]" />,
       maxWidth: 650,
       subheading:
         'เพราะอร่อยแต่ละคนไม่เหมือนกัน เราจัดมาให้กับ ไวน์ 4 ประเภท 7 ขวด ต่างรส ต่างองุ่น จากหลากหลายประเทศ ให้ทุกคนได้ลองและค้นหาไวน์ที่ตัวเองชอบ',
     },
     {
       heading: 'create your wine profile',
-      image: <CreateWineProfileIcon height={200} />,
+      image: <CreateWineProfileIcon height={150} className="max-w-[150px]" />,
       maxWidth: 520,
       subheading: 'เลิกงงเวลาเลือกซื้อไวน์ ทำ wine profile ของตัวเอง ครั้งหน้ารู้เลยต้องสั่งยังไง',
     },
     {
       heading: 'enjoy being yourself',
-      image: <EnjoyBeingYourselfIcon height={200} />,
+      image: <EnjoyBeingYourselfIcon height={150} className="max-w-[150px]" />,
       maxWidth: 480,
       subheading:
         'บรรยากาศเหมือนนั่งชิมกับเพื่อน ปิดมู้ดการชิมไวน์แบบซีเรียส Workshop บรรยากาศ สนุก เป็นกันเอง',
