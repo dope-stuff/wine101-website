@@ -11,7 +11,7 @@ export default function WorkShopCard({data}: WorkShopCardProps) {
     <div className="min-w-[240px] flex-col flex gap-2 p-2 border border-[#CFCFCF]">
       <div className="relative w-full h-[150px] bg-primary">
         <Image
-          className="w-full max-h-[180px] !rounded-none"
+          className="w-full max-h-[180px] object-cover !rounded-none"
           removeWrapper
           src={posters}
           alt=""

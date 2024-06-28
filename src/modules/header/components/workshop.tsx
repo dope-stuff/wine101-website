@@ -11,7 +11,7 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
         <div className={`text-2xl md:text-3xl ${iannDog.className}`}>
           เปิดประตูสู่โลกของไวน์ ตามหาไวน์ที่ตัวเองชอบ
         </div>
-        <div className="text-2xl text-center mt-4 px-4">
+        <div className="text-xl text-center mt-4 px-4">
           <p className={`${iannDog.className} mx-auto`}>
             เมื่อโลกของไวน์ทั้งซับซ้อนและน่าสับสน พันธุ์องุ่น ชื่อไวน์ เขตที่ผลิต
             ไหนจะศัพท์เฉพาะทางที่ทั้งยาก ทั้งอ่านไม่ออก ยิ่งฟังยิ่งไม่เข้าใจ จึงเกิดเป็น Wine
@@ -29,17 +29,17 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
           จองที่นั่ง
         </Link>
       </div>
-      <div className="lg:min-w-[25%] min-w-[25%] min-h-[650px] h-[650px] rotate-6 flex relative xl:pr-10">
+      <div className="lg:min-w-[25%] min-w-[25%] rotate-6 flex relative xl:pr-10">
         <Image
           removeWrapper
-          width={300}
-          className="h-full"
+          width={250}
+          className="h-full "
           src="https://i.ibb.co/tb6wBXh/wine-101-phone-outline-vertical.webp"
           alt=""
         />
         {/* {!!thumbnail && ( */}
           <iframe
-            className="!absolute top-[7px] left-[9px] w-[280px] h-[98%] rounded-[2.6rem] z-10"
+            className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
             src="https://www.youtube.com/embed/kIoGU-JO9tM"
             title="Wine1O1 - 2024 Winelentines Workshop @ Picolo Vicolo"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
