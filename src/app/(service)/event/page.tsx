@@ -13,7 +13,6 @@ import {useEffect, useState} from 'react'
 import {IMenu} from '@/lib/data/models/navbar'
 import {IEvent} from '@/lib/data/models/common'
 import {iannDog} from '@/styles/fonts'
-import FlasksIcon from '@/modules/common/images/flasks'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 
@@ -124,7 +123,7 @@ export default function WineEvent() {
             ))}
           </div>
           <div className="flex flex-col w-full pl-10">
-            <div className="uppercase text-4xl my-2">our clients</div>
+            <div className="uppercase text-4xl my-2 text-center my-4">our clients</div>
             <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
               {clients.map((c, i) => (
                 <ClientCard data={c} key={i} />
@@ -133,7 +132,6 @@ export default function WineEvent() {
           </div>
           <div className="mb-10" />
         </div>
-        {/* <Footer /> */}
       </>
     )
   )

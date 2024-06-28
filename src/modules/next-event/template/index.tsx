@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import {workshopService} from '@/lib/data/workshop.service'
 import NextEventCountDown from '@/modules/next-event/components/count-down'
+import BookNowButton from '@/modules/button/components/booknow'
 
 export default async function NextEvent() {
   const {
@@ -31,9 +32,7 @@ export default async function NextEvent() {
         <div className="w-full flex flex-1 flex-row justify-evenly">
           <NextEventCountDown date={eventDate.format('D MMMM YYYY HH:mm:ssZ')} />
         </div>
-        <button className="h-[50px] rounded-full pt-2 pb-4 px-6 text-2xl leading-8 text-white bg-primary-1">
-          Book Now!
-        </button>
+        <BookNowButton />
       </div>
     </div>
   )

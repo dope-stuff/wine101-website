@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import Image from 'next/image'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {Modal, ModalBody, ModalContent, useDisclosure} from '@nextui-org/react'
 
 interface NextEventPopupProps {
@@ -11,7 +11,21 @@ interface NextEventPopupProps {
 export default function NextEventPopup({date, countDown}: NextEventPopupProps) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure()
 
-  useEffect(() => onOpen(), [])
+  useEffect(() => {
+    onOpen()
+
+    const linkto = localStorage.getItem('bookNowLinkTo')
+    if (linkto) {
+      setBookNowLinkTo(linkto)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const [bookNowLinkTo, setBookNowLinkTo] = useState('')
+
+  const onBookNow = () => {
+    window.open(bookNowLinkTo, '_blank')
+  }
 
   return (
     <>
@@ -65,7 +79,10 @@ export default function NextEventPopup({date, countDown}: NextEventPopupProps) {
                   src="/images/common/glitter-1.svg"
                   alt=""
                 />
-                <button className="h-[50px] pt-2 pb-4 px-6 text-2xl leading-8 text-white bg-black">
+                <button
+                  className="h-[50px] pt-2 pb-4 px-6 text-2xl leading-8 text-white bg-black"
+                  onClick={onBookNow}
+                >
                   Book!
                 </button>
                 <Image

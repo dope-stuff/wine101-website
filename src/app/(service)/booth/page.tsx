@@ -56,6 +56,10 @@ export default function Booth() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const onOpenLink = (url: string) => {
+    window.open(url, '_blank')
+  }
+
   return (
     pageData && (
       <>
@@ -89,8 +93,13 @@ export default function Booth() {
             ))}
           </div>
           <div className="flex-row flex items-center justify-center gap-10">
-            <div className={`text-4xl max-w-lg text-center ${iannDog.className}`}>{pageData.cta.heading}</div>
-            <button className="uppercase border border-black bg-[#81CF8A] px-4 py-1 text-4xl rounded-full">
+            <div className={`text-4xl max-w-lg text-center ${iannDog.className}`}>
+              {pageData.cta.heading}
+            </div>
+            <button
+              className="uppercase border border-black bg-[#81CF8A] px-4 py-1 text-4xl rounded-full"
+              onClick={() => onOpenLink(pageData.cta.linkTo)}
+            >
               {pageData.cta.buttonTitle}
             </button>
           </div>

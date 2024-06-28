@@ -217,7 +217,6 @@ export default function WineWedding() {
           </div>
         </div>
         <div className="mb-10" />
-        {/* <Footer /> */}
       </>
     )
   )

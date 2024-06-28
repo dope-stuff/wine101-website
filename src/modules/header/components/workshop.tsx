@@ -1,8 +1,21 @@
-import SmartPhoneImage from '@/modules/common/images/smart-phone'
+'use client'
 import {Image, Link} from '@nextui-org/react'
 import {iannDog} from '@/styles/fonts'
+import {useEffect, useState} from 'react'
 
 export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: string}) {
+  const [bookNowLinkTo, setBookNowLinkTo] = useState('')
+
+  const onBookNow = () => {
+    window.open(bookNowLinkTo, '_blank')
+  }
+
+  useEffect(() => {
+    const linkto = localStorage.getItem('bookNowLinkTo')
+    if (linkto) {
+      setBookNowLinkTo(linkto)
+    }
+  }, [])
   return (
     <div className="w-full flex-col lg:flex-row lg:flex-nowrap flex-wrap items-center flex justify-center mt-8 gap-12">
       <div className="flex-1 flex-col flex items-center text-3xl text-center pl-4 gap-4">
@@ -23,11 +36,12 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
             และไวน์ที่ดีที่สุดคือไวน์ที่อร่อยสำหรับตัวเราเอง
           </p>
         </div>
-        <Link
+        <button
           className={`bg-[#81CF8A] rounded-full px-8 py-2 text-2xl text-black mt-6 border-black border-2 ${iannDog.className}`}
+          onClick={() => onBookNow()}
         >
           จองที่นั่ง
-        </Link>
+        </button>
       </div>
       <div className="lg:min-w-[25%] min-w-[25%] rotate-6 flex relative xl:pr-10">
         <Image
@@ -37,7 +51,7 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
           src="https://i.ibb.co/tb6wBXh/wine-101-phone-outline-vertical.webp"
           alt=""
         />
-        {/* {!!thumbnail && ( */}
+        {!!thumbnail && (
           <iframe
             className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
             src="https://www.youtube.com/embed/kIoGU-JO9tM"
@@ -46,9 +60,8 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
-        {/* )} */}
+        )}
       </div>
     </div>
   )
 }
-
