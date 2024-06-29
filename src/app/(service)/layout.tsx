@@ -43,7 +43,7 @@ const Headers = () => {
 
 export default function ServiceLayout({children}: {children: React.ReactNode}) {
   return (
-    <div className="w-screen h-screen flex flex-col overflow-auto">
+    <div className="flex flex-col overflow-auto">
       <Headers />
       {children}
     </div>
