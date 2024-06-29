@@ -17,8 +17,8 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
     }
   }, [])
   return (
-    <div className="w-full flex-col lg:flex-row lg:flex-nowrap flex-wrap items-center flex justify-center mt-8 gap-8">
-      <div className="flex-1 flex-col flex items-center text-3xl text-center pl-4 gap-4">
+    <div className="max-w-[2040px] w-full flex-col lg:flex-row lg:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
+      <div className="flex-1 flex-col flex items-center text-3xl text-center gap-4">
         <div className={`text-2xl md:text-3xl ${iannDog.className}`}>ที่แรกและที่เดียว กับ</div>
         <div className="text-2xl md:text-3xl font-semibold uppercase">‘wine profile workshop’</div>
         <div className={`text-2xl md:text-3xl ${iannDog.className}`}>
@@ -43,7 +43,7 @@ export default function WineProfileWorkshopHeader({thumbnail}: {thumbnail?: stri
           จองที่นั่ง
         </button>
       </div>
-      <div className="lg:min-w-[25%] min-w-[25%] rotate-6 flex relative xl:pr-10">
+      <div className="rotate-6 flex relative mr-8">
         <Image
           removeWrapper
           width={250}

@@ -63,27 +63,33 @@ export default function Booth() {
   return (
     pageData && (
       <>
-        <div className="w-full justify-center flex-col flex items-center mx-auto">
-          <Carousel
-            elements={pageData.banner.map((b: IMenu) => (
-              <Image
-                key={b.id}
-                removeWrapper
-                className="max-h-[70vh] w-full rounded-none object-cover"
-                src={b.mediaUrl}
-                alt={b.alt}
-              />
-            ))}
-            slidesPerView={1}
-            arrowColor="white"
-            gap={0}
-          />
+        <Carousel
+          elements={pageData.banner.map((b: IMenu) => (
+            <Image
+              key={b.id}
+              removeWrapper
+              className="max-h-[70vh] w-full rounded-none object-cover"
+              src={b.mediaUrl}
+              alt={b.alt}
+            />
+          ))}
+          slidesPerView={1}
+          arrowColor="white"
+          gap={0}
+        />
+        <div className="max-w-[2040px] first-line:w-full justify-center flex-col flex items-center mx-auto">
           <div className="w-full flex-col flex text-center items-center justify-center mt-8 relative gap-4">
-            <FlasksIcon width={100} height={100} className="hidden md:flex absolute left-10 top-4" />
+            <FlasksIcon
+              width={100}
+              height={100}
+              className="hidden md:flex absolute left-10 top-4"
+            />
             <div className="text-2xl md:text-3xl font-semibold uppercase">
               {pageData.header.heading}
             </div>
-            <div className={`max-w-xl lg:max-w-2xl xl:max-w-none text-2xl md:text-3xl ${iannDog.className}`}>
+            <div
+              className={`max-w-xl lg:max-w-2xl xl:max-w-none text-2xl md:text-3xl ${iannDog.className}`}
+            >
               {pageData.header.subheading}
             </div>
           </div>

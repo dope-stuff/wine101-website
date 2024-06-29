@@ -148,30 +148,30 @@ export default function WineWedding() {
   return (
     pageData && (
       <>
-        <div className="w-full justify-center flex-col flex items-center mx-auto gap-4">
-          <div className="w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center p-4">
-            {panels.map((panel, i) =>
-              i % 2 !== 0 ? (
-                i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black" />
-              ) : (
-                <div key={i}>{panel}</div>
-              )
-            )}
-          </div>
-          <Carousel
-            elements={pageData.banner.map((b: IMenu) => (
-              <Image
-                key={b.id}
-                removeWrapper
-                className="max-h-[70vh] w-full rounded-none object-cover"
-                src={b.mediaUrl}
-                alt={b.alt}
-              />
-            ))}
-            slidesPerView={1}
-            arrowColor="white"
-            gap={0}
-          />
+        <div className="max-w-[2040px] w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center mx-auto p-4">
+          {panels.map((panel, i) =>
+            i % 2 !== 0 ? (
+              i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black" />
+            ) : (
+              <div key={i}>{panel}</div>
+            )
+          )}
+        </div>
+        <Carousel
+          elements={pageData.banner.map((b: IMenu) => (
+            <Image
+              key={b.id}
+              removeWrapper
+              className="max-h-[70vh] w-full rounded-none object-cover"
+              src={b.mediaUrl}
+              alt={b.alt}
+            />
+          ))}
+          slidesPerView={1}
+          arrowColor="white"
+          gap={0}
+        />
+        <div className="max-w-[2040px] w-full justify-center flex-col flex items-center mx-auto gap-4">
           <div className="w-full h-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
             <div className="max-w-[60%] lg:h-full flex-col flex items-center text-3xl text-center pl-4 gap-4">
               <div className="text-2xl md:text-3xl font-semibold uppercase">
@@ -199,11 +199,11 @@ export default function WineWedding() {
               return <ServiceContentCard key={i} index={i} data={data} />
             })}
           </div>
-            <ContactFlasksButton
-              title={pageData.packagesTitle.buttonTitle}
-              linkTo={pageData.packagesTitle.linkTo}
-              bgColor="#E8C85E"
-            />
+          <ContactFlasksButton
+            title={pageData.packagesTitle.buttonTitle}
+            linkTo={pageData.packagesTitle.linkTo}
+            bgColor="#E8C85E"
+          />
           <div className="w-full flex-row flex flex-wrap gap-4 text-center my-8">
             {pageData.packages.map((pkg) => (
               <div key={pkg.id} className="flex-1 min-w-[400px] flex-col flex items-center gap-4">
@@ -215,7 +215,7 @@ export default function WineWedding() {
           </div>
         </div>
         <Consultant />
-        <div className="flex flex-col w-full pl-10">
+        <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
           <div className="uppercase text-4xl my-2">our clients</div>
           <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
             {clients.map((c, i) => (

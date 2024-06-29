@@ -117,12 +117,12 @@ export default function WineEvent() {
             </div>
             <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
           </div>
-          <div className="w-[90%] flex-col flex">
+          <div className="max-w-[2040px] w-[90%] flex-col flex">
             {contents.map((e, i) => (
               <ServiceContentCard key={i} index={i} data={e} />
             ))}
           </div>
-          <div className="flex flex-col w-full pl-10">
+          <div className="max-w-[2040px] flex flex-col w-full px-10">
             <div className="uppercase text-4xl text-center my-4">our clients</div>
             <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
               {clients.map((c, i) => (
