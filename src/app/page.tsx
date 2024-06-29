@@ -32,7 +32,7 @@ export default async function Page() {
         </div>
         <GetToKnowUsButton title={pageData.header.buttonTitle} linkTo={pageData.header.linkTo} />
         {/** products */}
-        <div className="max-w-[100vw] flex flex-row items-center justify-center gap-8">
+        <div id='our-highlights' className="max-w-[100vw] flex flex-row items-center justify-center gap-8">
           <Image width={100} height={100} src="/images/common/wine-2.svg" alt="" />
           <div className="w-[260px] text-2xl md:text-3xl text-center">{pageData.productsTitle}</div>
           <Image width={60} height={60} src="/images/common/glitter-1.svg" alt="" />
@@ -50,7 +50,7 @@ export default async function Page() {
           />
         </div>
         {/** services */}
-        <div className="flex-row flex items-center flex-nowrap gap-8 text-2xl md:text-3xl my-4 text-center">
+        <div id="our-services" className="flex-row flex items-center flex-nowrap gap-8 text-2xl md:text-3xl my-4 text-center">
           <FlasksIcon />
           {pageData.servicesTitle}
           <FlasksIcon />

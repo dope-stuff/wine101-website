@@ -1,6 +1,6 @@
 import {Image} from '@nextui-org/react'
-import BagIcon from '@/modules/common/images/bag'
 import {Product} from '@/lib/data/models/product'
+import CardWineButton from './button'
 
 interface WineCardProps {
   data: Product
@@ -49,7 +49,7 @@ export default function WineCard({data, theme}: WineCardProps) {
             {(data.variants[0].prices[0].amount / 100).toLocaleString()}{' '}
             {data.variants[0].prices[0].currency_code.toUpperCase()}
           </div>
-          <BagIcon width={20} color="black" className="text-black" />
+          <CardWineButton handle={data.handle} />
         </div>
       </div>
     </div>
