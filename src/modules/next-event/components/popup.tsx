@@ -80,7 +80,7 @@ export default function NextEventPopup({date, countDown}: NextEventPopupProps) {
                   alt=""
                 />
                 <button
-                  className="h-[50px] pt-2 pb-4 px-6 text-2xl leading-8 text-white bg-black"
+                  className="h-[50px] pt-2 pb-2 px-6 text-2xl leading-8 text-white bg-black"
                   onClick={onBookNow}
                 >
                   Book!

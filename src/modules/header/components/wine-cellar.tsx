@@ -84,7 +84,7 @@ export default function WineCellarHeader() {
           </div>
         </div>
       </div>
-      <div className="w-full uppercase text-center bg-primary text-white text-[70px] pt-2 pb-4 my-4">
+      <div className="w-full uppercase text-center bg-primary text-white text-[70px] pt-2 pb-2 my-4">
         all wines
       </div>
       <div className="w-full h-[72px] mx-auto flex-row flex items-center gap-4 px-10">

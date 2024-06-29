@@ -23,8 +23,8 @@ export default async function Page() {
   return (
     <>
       <NextEvent />
-      <div className="flex flex-col items-center gap-6">
-        <div className="w-[300px] text-2xl md:text-3xl text-center mt-4">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-[300px] text-2xl md:text-3xl text-center mt-6">
           {pageData.header.heading}
         </div>
         <div className={`max-w-[100vw] w-[500px] text-2xl text-center px-4 ${iannDog.className}`}>
