@@ -1,5 +1,4 @@
-'use client'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 import {Image} from '@nextui-org/react'
 import {workshopService} from '@/lib/data/workshop.service'
@@ -16,7 +15,12 @@ import WineProfileWorkshopHeader from '@/modules/header/components/workshop'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import FlasksIcon from '@/modules/common/images/flasks'
 
-export default function WineProfileWorkshop() {
+export default async function WineProfileWorkshop() {
+  const {data: workshops} = await workshopService.get({
+    pagination: {pageSize: 10, withCount: false},
+  })
+  const {data: pageData} = await workshopService.getPageData({populate: '*'})
+
   const banners = [
     <Image
       key="1"
@@ -63,8 +67,6 @@ export default function WineProfileWorkshop() {
     },
   ]
 
-  const [pageData, setPageData] = useState<Workshop[]>([])
-
   const comments = [
     'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
     'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
@@ -88,20 +90,10 @@ export default function WineProfileWorkshop() {
     }, [] as string[][])
   }
 
-  const getData = async () => {
-    const {data: workshop} = await workshopService.getWorkshop()
-    if (data) {
-      setPageData(workshop)
-    }
-  }
-  useEffect(() => {
-    getData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
   return (
     <div className="w-full justify-center flex-col flex items-center mx-auto">
       <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
-      {pageData[0] && <WineProfileWorkshopHeader thumbnail={pageData[0].videos} />}
+      {pageData && <WineProfileWorkshopHeader thumbnail={pageData.header.mediaUrl} />}
       <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
         <div className="flex-row flex items-center flex-nowrap gap-8 text-4xl md:text-6xl text-center my-4 mx-auto">
           <FlasksIcon className="mt-[-1rem]" />
@@ -115,8 +107,8 @@ export default function WineProfileWorkshop() {
       <div className="max-w-[2040px] flex flex-col w-full px-10">
         <div className="uppercase text-4xl my-2 mt-8">our workshop</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-          {pageData.map((ws, i) => (
-            <WorkShopCard key={i} data={ws} />
+          {workshops.map((workshop, index) => (
+            <WorkShopCard key={index} data={workshop} />
           ))}
         </div>
       </div>
