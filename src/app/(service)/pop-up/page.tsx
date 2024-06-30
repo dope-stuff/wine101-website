@@ -82,7 +82,7 @@ export default function Booth() {
             <FlasksIcon
               width={100}
               height={100}
-              className="hidden md:flex absolute left-10 top-4"
+              className="hidden md:flex absolute left-0 top-20"
             />
             <div className="text-2xl md:text-3xl font-semibold uppercase">
               {pageData.header.heading}

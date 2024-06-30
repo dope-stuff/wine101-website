@@ -103,7 +103,7 @@ export default function WineProfileWorkshop() {
       <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
       {pageData[0] && <WineProfileWorkshopHeader thumbnail={pageData[0].videos} />}
       <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
-        <div className="flex-row flex items-center flex-nowrap gap-8 text-7xl md:text-8xl text-center my-4 mx-auto">
+        <div className="flex-row flex items-center flex-nowrap gap-8 text-4xl md:text-6xl text-center my-4 mx-auto">
           <FlasksIcon className="mt-[-1rem]" />
           101Way
           <FlasksIcon className="mt-[-1rem]" />
@@ -113,14 +113,14 @@ export default function WineProfileWorkshop() {
         ))}
       </div>
       <div className="max-w-[2040px] flex flex-col w-full px-10">
-        <div className="uppercase text-4xl my-2">our workshop</div>
+        <div className="uppercase text-4xl my-2 mt-8">our workshop</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
           {pageData.map((ws, i) => (
             <WorkShopCard key={i} data={ws} />
           ))}
         </div>
       </div>
-      <div className="uppercase text-4xl my-4">how people talk about us</div>
+      <div className="uppercase text-4xl my-4 mt-8">how people talk about us</div>
       <div className="max-w-[2040px] w-[90%]">
         <Carousel
           elements={splitArray(comments).map((e, i) => (

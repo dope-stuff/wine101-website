@@ -180,7 +180,7 @@ export default function WineWedding() {
               <div className={`text-2xl md:text-3xl ${iannDog.className} w-full`}>
                 {pageData.header.subheading}
               </div>
-              <div className="flex-row flex items-center flex-nowrap gap-8 text-5xl md:text-6xl text-center my-16">
+              <div className="flex-row flex items-center flex-nowrap gap-8 text-3xl md:text-4xl text-center my-16">
                 <FlasksIcon width={100} height={100} />
                 {pageData.detailsTitle}
                 <FlasksIcon width={100} height={100} />
@@ -208,7 +208,7 @@ export default function WineWedding() {
             {pageData.packages.map((pkg) => (
               <div key={pkg.id} className="flex-1 min-w-[400px] flex-col flex items-center gap-4">
                 <Image width={400} height={300} src={pkg.mediaUrl} alt={pkg.alt} />
-                <div className="font-bold text-4xl">{pkg.heading}</div>
+                <div className="font-bold text-2xl">{pkg.heading}</div>
                 <div className={`${iannDog.className} text-xl max-w-[600px]`}>{pkg.subheading}</div>
               </div>
             ))}
@@ -216,7 +216,7 @@ export default function WineWedding() {
         </div>
         <Consultant />
         <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
-          <div className="uppercase text-4xl my-2">our clients</div>
+          <div className="uppercase text-4xl my-2 mt-8">our clients</div>
           <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
             {clients.map((c, i) => (
               <ClientCard data={c} key={i} withDetail />

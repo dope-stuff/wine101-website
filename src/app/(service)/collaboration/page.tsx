@@ -89,7 +89,7 @@ export default function Collaboration() {
               <div className="text-2xl md:text-3xl font-semibold uppercase">
                 {pageData.header.heading}
               </div>
-              <div className={`text-2xl md:text-3xl w-[80%] ${iannDog.className}`}>
+              <div className={`text-xl md:text-2xl w-[80%] ${iannDog.className}`}>
                 {pageData.header.subheading}
               </div>
               <div className="my-auto">
@@ -111,7 +111,7 @@ export default function Collaboration() {
               >
                 <div className="max-h-[270px]">{e.image}</div>
                 <div className={`flex-col flex gap-2 ${i % 2 !== 0 ? 'lg:ml-[-30px] -mt-8' : ''}`}>
-                  <div className={`text-2xl md:text-3xl uppercase max-w-[420px] `}>{e.heading}</div>
+                  <div className={`text-xl md:text-2xl uppercase max-w-[420px] `}>{e.heading}</div>
                   <div
                     className={`${iannDog.className} max-w-[${e.maxWidth}] text-lg md:text-xl`}
                     style={{maxWidth: e.maxWidth}}
@@ -123,7 +123,7 @@ export default function Collaboration() {
             ))}
           </div>
           <div className="max-w-[2040px] flex flex-col w-full px-10 mt-4">
-            <div className="uppercase text-4xl my-2">our clients</div>
+            <div className="uppercase text-4xl my-2 mt-8">our clients</div>
             <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
               {clients.map((c, i) => (
                 <ClientCard data={c} key={i} />

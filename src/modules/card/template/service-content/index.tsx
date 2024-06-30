@@ -9,7 +9,7 @@ export default function ServiceContentCard({data, index}: ServiceContentCardProp
     <div className={`flex-row flex items-center gap-4 my-2 ${index % 2 !== 0 ? 'md:justify-end md:ml-auto' : ''}`}>
       <div className="max-h-[250px]">{data.image}</div>
       <div className={`flex-col flex gap-2 ${index % 2 !== 0 ? 'max-w-xl' : ''}`}>
-        <div className="text-2xl md:text-3xl uppercase">{data.heading}</div>
+        <div className="text-xl md:text-2xl uppercase">{data.heading}</div>
         <div
           className={`${iannDog.className} text-lg md:text-xl`}
           style={{maxWidth: data.maxWidth}}
