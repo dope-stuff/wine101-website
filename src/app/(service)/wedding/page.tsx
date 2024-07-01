@@ -1,119 +1,17 @@
-'use client'
 import {Image} from '@nextui-org/react'
 import Carousel from '../../../modules/carousel/template'
-import VarietyOfServiceIcon from '@/modules/common/images/service/variety-of-service'
 import ClientCard from '../../../modules/card/template/client'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
-import HandpickQualityWinesIcon from '@/modules/common/images/service/handpick-quality-wines'
-import FullSupportService2Icon from '@/modules/common/images/service/full-support-service-2'
-import WorryFreeIcon from '@/modules/common/images/service/worry-free'
-import FreeWeddingWineAdviceIcon from '@/modules/common/images/service/free-wedding-wine-advice'
 import Consultant from '@/modules/services/components/consultant'
 import {iannDog} from '@/styles/fonts'
-import {useEffect, useState} from 'react'
-import {Wedding} from '@/lib/data/models/common'
 import {weddingService} from '@/lib/data/wedding.service'
 import {IMenu} from '@/lib/data/models/navbar'
 import FlasksIcon from '@/modules/common/images/flasks'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import ContactFlasksButton from '@/modules/button/components/contact-flasks'
+import {eventService} from '@/lib/data/event.service'
 
-export default function WineWedding() {
-  const content = [
-    {
-      heading: 'Free Wedding Wine Advice',
-      image: <FreeWeddingWineAdviceIcon height={150} className="max-w-[150px]" />,
-      maxWidth: 400,
-      subheading:
-        'มากกว่า 70 ไวน์ลิสต์ที่มี เราช่วยคัดสรรไวน์คุณภาพจากทั่วทุกมุมโลกให้คุ้มค่ากับงบประมาณ',
-    },
-    {
-      heading: 'Handpick quality wines to match your special day ',
-      image: <HandpickQualityWinesIcon height={150} className="max-w-[150px]" />,
-      maxWidth: 450,
-      subheading:
-        'ยกระดับอีเวนต์ให้พิเศษยิ่งขึ้น ด้วย Wine Activity ที่ match กับ theme อีเว้นต์ของงาน',
-    },
-    {
-      heading: 'Worry-Free',
-      image: <WorryFreeIcon height={150} className="max-w-[150px]" />,
-      maxWidth: 450,
-      subheading:
-        'Staff support ทีมงานพร้อมช่วยบริการหน้างานแบบครบวงจร Somerlier Service บริการผู้เชี่ยวชาญเรื่องไวน์ (ซอมเมอลิเยร์) ตามความต้องการ',
-    },
-    {
-      heading: 'Add on Special Wine Corner with Personalized service ',
-      image: <VarietyOfServiceIcon height={150} className="max-w-[150px]" />,
-      maxWidth: 450,
-      subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
-    },
-    {
-      heading: 'Full Support & Service',
-      image: <FullSupportService2Icon height={150} className="max-w-[150px]" />,
-      maxWidth: 450,
-      subheading: 'สามารถจัดเป็น private event, company party หรือ กิจกกรมสำหรับ team building',
-    },
-  ]
-
-  const clients = [
-    {
-      title: 'CHANG&GAM',
-      image: '',
-      date: '27 april 2024',
-      guest: 300,
-      order: ['Red 40', 'White 15', 'Sparkling 20'],
-      venue: 'xx hotel',
-    },
-    {
-      title: 'yok',
-      image: '',
-      date: '28 april 2024',
-      guest: 300,
-      order: ['Red 40', 'White 15', 'Sparkling 20'],
-      venue: 'xx hotel',
-    },
-    {
-      title: 'nan',
-      image: '',
-      date: '29 april 2024',
-      guest: 300,
-      order: ['Red 40', 'White 15', 'Sparkling 20'],
-      venue: 'xx hotel',
-    },
-    {
-      title: 'gaame',
-      image: '',
-      date: '30 april',
-      guest: 300,
-      order: ['Red 40', 'White 15', 'Sparkling 20'],
-      venue: 'xx hotel',
-    },
-    {
-      title: 'nine',
-      image: '',
-      date: '31 april 2024',
-      guest: 300,
-      order: ['Red 40', 'White 15', 'Sparkling 20'],
-      venue: 'xx hotel',
-    },
-    {
-      title: 'mhee',
-      image: '',
-      date: '32 april 2024',
-      guest: 300,
-      order: ['Red 40', 'White 15', 'Sparkling 20'],
-      venue: 'xx hotel',
-    },
-    {
-      title: 'hohoho',
-      image: '',
-      date: '33 april 2024',
-      guest: 300,
-      order: ['Red 40', 'White 15', 'Sparkling 20'],
-      venue: 'xx hotel',
-    },
-  ]
-
+export default async function Page() {
   const panels = [
     '101 wedding guide',
     '',
@@ -124,26 +22,10 @@ export default function WineWedding() {
     'our client’s review',
   ]
 
-  const [pageData, setPageData] = useState<Wedding>()
-
-  const getData = async () => {
-    const {data: collaborations} = await weddingService.getWedding()
-    if (collaborations) {
-      setPageData({
-        ...collaborations,
-        details: content.map((c, i) => ({
-          ...c,
-          subheading: collaborations.details[i].subheading,
-          heading: collaborations.details[i].heading,
-        })),
-      })
-    }
-  }
-
-  useEffect(() => {
-    getData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const [{data: pageData}, {data: events}] = await Promise.all([
+    weddingService.getPageData(),
+    eventService.get({}),
+  ])
 
   return (
     pageData && (
@@ -189,15 +71,9 @@ export default function WineWedding() {
             <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
           </div>
           <div className="w-[90%] flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
-            {pageData.details.map((e, i) => {
-              const data = {
-                heading: e.heading,
-                subheading: e.subheading,
-                image: e.image,
-                maxWidth: e.maxWidth,
-              }
-              return <ServiceContentCard key={i} index={i} data={data} />
-            })}
+            {pageData.details.map((e, i) => (
+              <ServiceContentCard key={i} index={i} data={e} />
+            ))}
           </div>
           <ContactFlasksButton
             title={pageData.packagesTitle.buttonTitle}
@@ -218,7 +94,7 @@ export default function WineWedding() {
         <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
           <div className="uppercase text-4xl my-2 mt-8">our clients</div>
           <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-            {clients.map((c, i) => (
+            {events.map((c, i) => (
               <ClientCard data={c} key={i} withDetail />
             ))}
           </div>

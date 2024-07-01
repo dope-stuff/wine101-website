@@ -1,31 +1,35 @@
+import {Event} from '@/lib/data/models/event'
 import {Image} from '@nextui-org/react'
 
 interface ClientCardProps {
-  data: {
-    title: string
-    image: string
-    date?: string
-    guest?: number
-    order?: string[]
-    venue?: string
-  }
+  data: Event
   withDetail?: boolean
 }
 export default function ClientCard({data, withDetail}: ClientCardProps) {
-  const {title, image} = data
+  const order = {
+    Sparkling: data.sparklingWineUsed,
+    Red: data.whiteWineUsed,
+    White: data.roseWineUsed,
+  }
   return (
-    <div className="min-w-[240px] flex-col flex gap-2 p-2 border border-[#CFCFCF]">
-      <div className="relative w-full h-[150px] bg-primary" />
+    <div className="w-[240px] flex-col flex gap-2 p-2 border border-[#CFCFCF]">
+      <Image removeWrapper src={data.posters} alt="" className="relative w-full h-[150px] object-cover !rounded-none" />
       <div>
-        <div>{title}</div>
+        <div>{data.name}</div>
         {withDetail && (
           <>
-            <div>{data.date}</div>
+            <div>{data.eventDate}</div>
             <div className="text-[12px] leading-4">
-              <div className="!font-sans">Guest : {data.guest}</div>
+              <div className="!font-sans">Guest : {data.totalGuests}</div>
               <div className="!font-sans">
                 Wine :{' '}
-                {data.order && data.order.map((o, i) => o + (i !== data.order!.length - 1 && '/'))}
+                {order &&
+                  Object.keys(order).map(
+                    (o, i) =>
+                      `${o} ${order[o as keyof typeof order]} ${
+                        o + (i !== Object.keys(order).length - 1 && '/')
+                      }`
+                  )}
               </div>
               <div className="!font-sans">Guest : {data.venue}</div>
             </div>

@@ -1,3 +1,4 @@
+'use client'
 import FlasksIcon from '@/modules/common/images/flasks'
 
 interface ContactFlasksButtonProps {

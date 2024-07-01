@@ -41,7 +41,7 @@ export interface IHome {
   services: IService[]
 }
 
-export interface IEvent {
+export interface ServiceResponse {
   id: number
   createdAt: string
   updatedAt: string
@@ -53,11 +53,11 @@ export interface IEvent {
   details: IMenu[]
 }
 
-export interface Wedding extends IEvent {
+export interface Wedding extends ServiceResponse {
   packages: IMenu[]
   packagesTitle: IMenu
 }
 
-export interface PopUpBooth extends IEvent {
+export interface PopUpBooth extends ServiceResponse {
   cta: IMenu
 }

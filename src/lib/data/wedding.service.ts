@@ -1,6 +1,8 @@
 import {axios} from '@/lib/data'
+import {StrapiPagination} from './models/strapi'
+import {Wedding} from './models/common'
 
 export const weddingService = {
-  getWedding: () =>
-    axios.get('/wine-wedding?populate=*').then(({data}) => data),
+  getPageData: () =>
+    axios.get<StrapiPagination<Wedding>>('/wine-wedding?populate=*').then(({data}) => data),
 }

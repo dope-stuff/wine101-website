@@ -3,9 +3,7 @@ import {useState} from 'react'
 import {Image} from '@nextui-org/react'
 import {workshopService} from '@/lib/data/workshop.service'
 
-import Carousel from '../../../modules/carousel/template'
 import Comments from '@/modules/services/components/comments'
-import WorkShopCard from '../../../modules/card/template/workshop'
 import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
 import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
 import CreateWineProfileIcon from '@/modules/common/images/service/create-wine-profile'
@@ -14,6 +12,9 @@ import {Workshop} from '@/lib/data/models/workshop'
 import WineProfileWorkshopHeader from '@/modules/header/components/workshop'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import FlasksIcon from '@/modules/common/images/flasks'
+import { IMenu } from '@/lib/data/models/navbar'
+import Carousel from '@/modules/carousel/template'
+import WorkShopCard from '@/modules/card/template/workshop'
 
 export default async function WineProfileWorkshop() {
   const {data: workshops} = await workshopService.get({
@@ -101,7 +102,7 @@ export default async function WineProfileWorkshop() {
           <FlasksIcon className="mt-[-1rem]" />
         </div>
         {data.map((e, i) => (
-          <ServiceContentCard key={i} index={i} data={e} />
+          <ServiceContentCard key={i} index={i} data={e as IMenu} />
         ))}
       </div>
       <div className="max-w-[2040px] flex flex-col w-full px-10">
