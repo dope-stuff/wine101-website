@@ -8,7 +8,6 @@ import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-frien
 import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
 import CreateWineProfileIcon from '@/modules/common/images/service/create-wine-profile'
 import EnjoyBeingYourselfIcon from '@/modules/common/images/service/enjoy-being-yourself'
-import {Workshop} from '@/lib/data/models/workshop'
 import WineProfileWorkshopHeader from '@/modules/header/components/workshop'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import FlasksIcon from '@/modules/common/images/flasks'

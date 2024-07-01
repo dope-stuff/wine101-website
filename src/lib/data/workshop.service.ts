@@ -1,6 +1,6 @@
 import {axios} from '@/lib/data'
+import {Workshop} from '@/lib/data/models/workshop'
 import {StrapiParams, StrapiPagination} from '@/lib/data/models/strapi'
-import {Workshop} from './models/workshop'
 
 export const workshopService = {
   get: (params: StrapiParams) =>
