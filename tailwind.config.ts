@@ -23,6 +23,9 @@ const config: Config = {
         'primary-1': '#be1c2d',
         'primary-2': '#e8c85e',
       },
+      gridTemplateColumns:{
+        list: 'repeat(auto-fit, 250px)'
+      }
     },
   },
 }

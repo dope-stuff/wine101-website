@@ -1,5 +1,5 @@
 import {Inter} from 'next/font/google'
-import {Image} from '@nextui-org/react'
+import {Image, Link} from '@nextui-org/react'
 import {wineColours, wineCountries, winePrices} from '@/lib/constants'
 import Container from '@/modules/container/template/container'
 import BlackWineGlassIcon from '@/modules/common/images/black-wine-glass'
@@ -27,42 +27,54 @@ export default function Layout({children}: {children: React.ReactNode}) {
             alt=""
           />
           <Menu title="about wines">
-            <div className={`ml-5 text-xl cursor-pointer ${inter.className}`}>All wine</div>
+            <Link className="text-black" href="/wine-cellar">
+              <div className={`ml-5 text-xl cursor-pointer ${inter.className}`}>All wine</div>
+            </Link>
           </Menu>
           <Menu title="country">
             <div className="grid grid-cols-2 gap-2  ml-5">
               {wineCountries.map((country, index) => (
-                <div key={index} className={`text-xl cursor-pointer ${inter.className}`}>
-                  {country.name}
-                </div>
+                <Link
+                  key={index}
+                  className="text-black"
+                  href={`/wine-cellar?country=${country.value}`}
+                >
+                  <div className={`text-xl cursor-pointer ${inter.className}`}>{country.name}</div>
+                </Link>
               ))}
             </div>
           </Menu>
           <Menu title="colour">
             <div className="flex flex-col gap-2  ml-5">
               {wineColours.map((color, index) => (
-                <div
-                  key={index}
-                  className={`flex flex-row items-center gap-2 text-xl cursor-pointer ${inter.className}`}
-                >
+                <Link key={index} className="text-black" href={`/wine-cellar?color=${color.value}`}>
                   <div
-                    className="w-[20px] h-[20px] rounded-full"
-                    style={{background: color.color}}
-                  />
-                  {color.name}
-                </div>
+                    className={`flex flex-row items-center gap-2 text-xl cursor-pointer ${inter.className}`}
+                  >
+                    <div
+                      className="w-[20px] h-[20px] rounded-full"
+                      style={{background: color.color}}
+                    />
+                    {color.name}
+                  </div>
+                </Link>
               ))}
             </div>
           </Menu>
           <Menu title="wine price">
             <div className="flex flex-col gap-2  ml-5">
               {winePrices.map((prices, index) => (
-                <div
+                <Link
                   key={index}
-                  className={`flex flex-row items-center gap-2 text-xl cursor-pointer ${inter.className}`}
+                  className="text-black"
+                  href={`/wine-cellar?prices=${prices.value}`}
                 >
-                  {prices.name}
-                </div>
+                  <div
+                    className={`flex flex-row items-center gap-2 text-xl cursor-pointer ${inter.className}`}
+                  >
+                    {prices.name}
+                  </div>
+                </Link>
               ))}
             </div>
           </Menu>
