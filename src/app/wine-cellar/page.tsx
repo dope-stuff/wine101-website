@@ -2,7 +2,6 @@ import {Product} from '@/lib/data/models/product'
 import {productService} from '@/lib/data/product.service'
 import {getProductTheme} from '@/lib/utils/getProductTheme'
 import WineCard from '@/modules/card/template/wine'
-import WineCellarHeader from '@/modules/header/components/wine-cellar'
 
 interface ProductOffset {
   products: Product[]
@@ -19,7 +18,6 @@ export default async function WineCellarPage() {
   return (
     <>
       <div className="w-full flex-col flex">
-        <WineCellarHeader />
         <div className="w-[90%] mx-auto">
           <div className="uppercase text-2xl md:text-3xl my-4">ฺBest Sellers</div>
           <div className="w-full flex-shrink-0 flex-row flex flex-wrap gap-4">
