@@ -36,7 +36,7 @@ export default function WineCard({data, theme}: WineCardProps) {
         {categories.map((c, index) => (
           <div
             key={index}
-            className="text-[14px] px-2 py-1 rounded-full whitespace-nowrap"
+            className="text-[14px] px-2 py-1 rounded-full whitespace-nowrap text-white"
             style={{backgroundColor: theme.bgColor}}
           >
             {c}
