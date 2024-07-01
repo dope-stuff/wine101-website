@@ -31,8 +31,8 @@ export default async function Page() {
           arrowColor="white"
           gap={0}
         />
-        <div className="w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
-          <div className="max-w-[60%] lg:h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
+        <div className="max-w-[2040px] w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
+          <div className="max-w-[90%] md:max-w-[60%] lg:h-full flex-col flex items-center text-3xl text-center pl-4 gap-8">
             <div className="text-2xl md:text-3xl font-semibold uppercase max-w-[600px]">
               {pageData.header.heading}
             </div>

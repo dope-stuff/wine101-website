@@ -91,7 +91,7 @@ export default async function WineProfileWorkshop() {
   }
 
   return (
-    <div className="w-full justify-center flex-col flex items-center mx-auto">
+    <div className="w-full justify-center flex-col flex items-center mx-auto gap-4">
       <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
       {pageData && <WineProfileWorkshopHeader thumbnail={pageData.header.mediaUrl} />}
       <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
@@ -112,8 +112,8 @@ export default async function WineProfileWorkshop() {
           ))}
         </div>
       </div>
-      <div className="uppercase text-4xl my-4 mt-8">how people talk about us</div>
       <div className="max-w-[2040px] w-[90%]">
+      <div className="uppercase text-4xl my-4 mt-8">how people talk about us</div>
         <Carousel
           elements={splitArray(comments).map((e, i) => (
             <Comments key={i} comments={e} />

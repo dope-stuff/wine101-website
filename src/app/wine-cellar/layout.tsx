@@ -45,7 +45,7 @@ export default function Layout({children}: {children: React.ReactNode}) {
             </div>
           </Menu>
           <Menu title="colour">
-            <div className="flex flex-col gap-2  ml-5">
+            <div className="flex flex-col gap-2 ml-5">
               {wineColours.map((color, index) => (
                 <Link key={index} className="text-black" href={`/wine-cellar?color=${color.value}`}>
                   <div

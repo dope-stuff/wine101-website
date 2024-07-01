@@ -12,9 +12,14 @@ export default function ClientCard({data, withDetail}: ClientCardProps) {
     White: data.roseWineUsed,
   }
   return (
-    <div className="w-[240px] flex-col flex gap-2 p-2 border border-[#CFCFCF]">
-      <Image removeWrapper src={data.posters} alt="" className="relative w-full h-[150px] object-cover !rounded-none" />
-      <div>
+    <div className="min-w-[240px] w-[240px] flex-col flex gap-2 p-2 border border-[#CFCFCF]">
+      <Image
+        removeWrapper
+        src={data.posters}
+        alt=""
+        className="relative w-full max-h-[150px] min-h-[150px] !object-cover !rounded-none"
+      />
+      <div className="flex flex-col h-full">
         <div>{data.name}</div>
         {withDetail && (
           <>
@@ -33,7 +38,7 @@ export default function ClientCard({data, withDetail}: ClientCardProps) {
               </div>
               <div className="!font-sans">Guest : {data.venue}</div>
             </div>
-            <div className="flex-row flex flex-nowrap gap-2 justify-end mt-4">
+            <div className="flex-row flex flex-nowrap gap-2 justify-end mt-auto">
               <div className="text-[12px]">see more photos</div>
               <a href="#">
                 <Image src="https://i.ibb.co/k2c7m2S/wine-101-camera.webp" alt="wine-101-camera" />

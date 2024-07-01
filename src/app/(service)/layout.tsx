@@ -15,7 +15,7 @@ const Headers = () => {
     {name: 'pop-up booth', path: 'pop-up'},
   ]
   return (
-    <div className="max-w-[2040px] flex flex-row w-full justify-between mx-auto px-6 py-2">
+    <div className="max-w-[2040px] flex flex-row w-full justify-between mx-auto px-6 py-2 overflow-x-auto">
       {tabs.map((tab, i) => (
         <div key={i}>
           <Link href={`/${tab.path}`} className="flex-row flex items-center gap-2 text-center">

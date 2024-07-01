@@ -9,7 +9,7 @@ interface ServiceContentCardProps {
 export default function ServiceContentCard({data, index}: ServiceContentCardProps) {
   return (
     <div
-      className={`flex-row flex items-center gap-4 my-2 ${
+      className={`flex-row flex items-center flex-wrap sm:flex-nowrap justify-center md:justify-normal gap-4 my-2 ${
         index % 2 !== 0 ? 'md:justify-end md:ml-auto' : ''
       }`}
     >
@@ -24,10 +24,10 @@ export default function ServiceContentCard({data, index}: ServiceContentCardProp
           />
         )}
       </div>
-      <div className={`flex-col flex gap-2 ${index % 2 !== 0 ? 'max-w-xl' : ''}`}>
+      <div className={`w-full flex-col flex gap-2 md:max-w-md ${index % 2 !== 0 ? 'lg:max-w-lg' : ''}`}>
         <div className="text-xl md:text-2xl uppercase">{data.heading}</div>
         <div
-          className={`${iannDog.className} text-lg md:text-xl max-w-[700px]`}
+          className={`${iannDog.className} text-lg md:text-xl max-w-xl lg:max-w-2xl`}
           // style={{maxWidth: data.maxWidth}}
         >
           {data.subheading}
