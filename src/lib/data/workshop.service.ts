@@ -5,6 +5,8 @@ import {StrapiParams, StrapiPagination} from '@/lib/data/models/strapi'
 export const workshopService = {
   get: (params: StrapiParams) =>
     axios.get<StrapiPagination<Workshop[]>>('/workshops', {params}).then(({data}) => data),
+  getOne: (params: StrapiParams, id: number) =>
+    axios.get<StrapiPagination<Workshop>>(`/workshops/${id}`, {params}).then(({data}) => data),
   getPageData: (params: StrapiParams) =>
     axios.get<StrapiPagination<WineWorkshop>>('/wine-workshop', {params}).then(({data}) => data),
 }

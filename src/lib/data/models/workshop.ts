@@ -10,9 +10,17 @@ export interface Workshop {
   number_of_guests: number
   price: number
   location: string
-  gallery: string[]
+  gallery: string
   posters: string
   videos: string
+  wine_list: {
+    id: number
+    name: string
+    display_name: string
+    grapes: string
+    redirect_url: string
+    image_url: string
+  }[]
 }
 
 export interface Testimonials {

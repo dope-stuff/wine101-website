@@ -33,7 +33,7 @@ export default function WineCard({data, theme}: WineCardProps) {
       </div>
       <div>{data.title}</div>
       <div className="flex-row flex flex-wrap items-center gap-2">
-        {categories.map((c, index) => (
+        {categories.length > 0 && categories.map((c, index) => (
           <div
             key={index}
             className="text-[14px] px-2 py-1 rounded-full whitespace-nowrap text-white"

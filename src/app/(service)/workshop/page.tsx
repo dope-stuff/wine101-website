@@ -60,7 +60,7 @@ export default async function WineProfileWorkshop() {
         </div>
       </div>
       <div className="max-w-[2040px] w-[90%]">
-        <div className="uppercase text-4xl my-4 mt-8">how people talk about us</div>
+        <div className="uppercase text-4xl my-4 text-center">how people talk about us</div>
         <Carousel
           elements={splitArray(pageData.testimonials.map((e) => e.heading)).map((e, i) => (
             <Comments key={i} comments={e} />
