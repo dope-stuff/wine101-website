@@ -1,3 +1,5 @@
+import {ServiceResponse} from './common'
+
 export interface Workshop {
   id: string
   name: string
@@ -11,4 +13,19 @@ export interface Workshop {
   gallery: string[]
   posters: string
   videos: string
+}
+
+export interface Testimonials {
+  id: number
+  alt: string
+  heading: string
+  subheading: string
+  description: string
+  buttonTitle: string
+  linkTo: string
+  mediaUrl: string
+}
+
+export interface WineWorkshop extends ServiceResponse {
+  testimonials: Testimonials[]
 }

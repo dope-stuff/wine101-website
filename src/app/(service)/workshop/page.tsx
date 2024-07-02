@@ -1,17 +1,11 @@
-import {useState} from 'react'
-
 import {Image} from '@nextui-org/react'
 import {workshopService} from '@/lib/data/workshop.service'
 
 import Comments from '@/modules/services/components/comments'
-import BeginnerFriendlyIcon from '@/modules/common/images/service/beginner-friendly'
-import ExploreTastebudsIcon from '@/modules/common/images/service/explore-tastebuds'
-import CreateWineProfileIcon from '@/modules/common/images/service/create-wine-profile'
-import EnjoyBeingYourselfIcon from '@/modules/common/images/service/enjoy-being-yourself'
 import WineProfileWorkshopHeader from '@/modules/header/components/workshop'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import FlasksIcon from '@/modules/common/images/flasks'
-import { IMenu } from '@/lib/data/models/navbar'
+import {IMenu} from '@/lib/data/models/navbar'
 import Carousel from '@/modules/carousel/template'
 import WorkShopCard from '@/modules/card/template/workshop'
 
@@ -20,66 +14,6 @@ export default async function WineProfileWorkshop() {
     pagination: {pageSize: 10, withCount: false},
   })
   const {data: pageData} = await workshopService.getPageData({populate: '*'})
-
-  const banners = [
-    <Image
-      key="1"
-      removeWrapper
-      className="max-h-[70vh] w-full rounded-none object-cover"
-      src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
-      alt=""
-    />,
-    <Image
-      key="2"
-      removeWrapper
-      className="max-h-[70vh] w-full rounded-none object-cover"
-      src="https://lh3.googleusercontent.com/pw/AP1GczNiyir4OYX1Sx9XpKHfUWG_qS-PUiDXk0qll6S-ymQaAIOPHPpWo7l8SJXu1Ic8w99B7BHiAkNDytKM0TTWIl-PcxTPsqV0_XbI6L6fTItsuiteS5Cc6FFDlxbufLBevgG57YY1dx8NlCAjwLmvzrfuYA=w1209-h907-s-no-gm?authuser=0"
-      alt=""
-    />,
-  ]
-  const data = [
-    {
-      heading: '101 beginner friendly',
-      image: <BeginnerFriendlyIcon height={150} className="max-w-[150px]" />,
-      maxWidth: 450,
-      subheading:
-        'เหมาะสำหรับมือใหม่ Beginner Friendly ไม่เป็นก็เริ่มได้ เรียนรู้พื้นฐานไวน์ เริ่มจาก 0 ง่ายกว่านี้ไม่มีแล้ว',
-    },
-    {
-      heading: 'explore your tastebuds',
-      image: <ExploreTastebudsIcon height={150} className="max-w-[150px]" />,
-      maxWidth: 650,
-      subheading:
-        'เพราะอร่อยแต่ละคนไม่เหมือนกัน เราจัดมาให้กับ ไวน์ 4 ประเภท 7 ขวด ต่างรส ต่างองุ่น จากหลากหลายประเทศ ให้ทุกคนได้ลองและค้นหาไวน์ที่ตัวเองชอบ',
-    },
-    {
-      heading: 'create your wine profile',
-      image: <CreateWineProfileIcon height={150} className="max-w-[150px]" />,
-      maxWidth: 520,
-      subheading: 'เลิกงงเวลาเลือกซื้อไวน์ ทำ wine profile ของตัวเอง ครั้งหน้ารู้เลยต้องสั่งยังไง',
-    },
-    {
-      heading: 'enjoy being yourself',
-      image: <EnjoyBeingYourselfIcon height={150} className="max-w-[150px]" />,
-      maxWidth: 480,
-      subheading:
-        'บรรยากาศเหมือนนั่งชิมกับเพื่อน ปิดมู้ดการชิมไวน์แบบซีเรียส Workshop บรรยากาศ สนุก เป็นกันเอง',
-    },
-  ]
-
-  const comments = [
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-    'คือมันกินที่งานแต่งพี่ช้างละชอบ บอกจะสั่งๆให้กุถามราคามึงแต่คือมันไม่สั่งซะที',
-  ]
 
   const splitArray = (arr: string[]): string[][] => {
     return arr.reduce((acc, curr, index) => {
@@ -92,15 +26,28 @@ export default async function WineProfileWorkshop() {
 
   return (
     <div className="w-full justify-center flex-col flex items-center mx-auto gap-4">
-      <Carousel elements={banners} slidesPerView={1} arrowColor="white" gap={0} />
-      {pageData && <WineProfileWorkshopHeader thumbnail={pageData.header.mediaUrl} />}
+      <Carousel
+        elements={pageData.banner.map((b: IMenu) => (
+          <Image
+            key={b.id}
+            removeWrapper
+            className="max-h-[70vh] w-full rounded-none object-cover"
+            src={b.mediaUrl}
+            alt={b.alt}
+          />
+        ))}
+        slidesPerView={1}
+        arrowColor="white"
+        gap={0}
+      />
+      <WineProfileWorkshopHeader data={pageData.header} />
       <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
         <div className="flex-row flex items-center flex-nowrap gap-8 text-4xl md:text-6xl text-center my-4 mx-auto">
           <FlasksIcon className="mt-[-1rem]" />
-          101Way
+          {pageData.detailsTitle}
           <FlasksIcon className="mt-[-1rem]" />
         </div>
-        {data.map((e, i) => (
+        {pageData.details.map((e, i) => (
           <ServiceContentCard key={i} index={i} data={e as IMenu} />
         ))}
       </div>
@@ -113,9 +60,9 @@ export default async function WineProfileWorkshop() {
         </div>
       </div>
       <div className="max-w-[2040px] w-[90%]">
-      <div className="uppercase text-4xl my-4 mt-8">how people talk about us</div>
+        <div className="uppercase text-4xl my-4 mt-8">how people talk about us</div>
         <Carousel
-          elements={splitArray(comments).map((e, i) => (
+          elements={splitArray(pageData.testimonials.map((e) => e.heading)).map((e, i) => (
             <Comments key={i} comments={e} />
           ))}
           slidesPerView={1}
