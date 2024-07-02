@@ -1,8 +1,9 @@
-import type {Metadata} from 'next'
-import {NextUIProvider} from '@nextui-org/react'
-import {Inter} from 'next/font/google'
-import MainLayout from '@/modules/layout/components/main'
 import './globals.css'
+import {type Metadata} from 'next'
+import {Inter} from 'next/font/google'
+import {GoogleAnalytics} from '@next/third-parties/google'
+import {NextUIProvider} from '@nextui-org/react'
+import MainLayout from '@/modules/layout/components/main'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -23,6 +24,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           </MainLayout>
         </NextUIProvider>
       </body>
+      <GoogleAnalytics gaId='G-VJZV2CC3H7' />
     </html>
   )
 }
