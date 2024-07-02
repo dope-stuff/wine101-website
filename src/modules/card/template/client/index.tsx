@@ -1,11 +1,15 @@
+'use client'
 import {Event} from '@/lib/data/models/event'
 import {Image} from '@nextui-org/react'
+import { usePathname } from 'next/navigation'
 
 interface ClientCardProps {
   data: Event
   withDetail?: boolean
 }
 export default function ClientCard({data, withDetail}: ClientCardProps) {
+  const pathname  =usePathname()
+
   const order = {
     Sparkling: data.sparklingWineUsed,
     Red: data.whiteWineUsed,
@@ -40,7 +44,7 @@ export default function ClientCard({data, withDetail}: ClientCardProps) {
             </div>
             <div className="flex-row flex flex-nowrap gap-2 justify-end mt-auto">
               <div className="text-[12px]">see more photos</div>
-              <a href="#">
+              <a href={`${pathname}/${data.id}`}>
                 <Image src="https://i.ibb.co/k2c7m2S/wine-101-camera.webp" alt="wine-101-camera" />
               </a>
             </div>

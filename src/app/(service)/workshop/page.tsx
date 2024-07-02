@@ -8,21 +8,13 @@ import FlasksIcon from '@/modules/common/images/flasks'
 import {IMenu} from '@/lib/data/models/navbar'
 import Carousel from '@/modules/carousel/template'
 import WorkShopCard from '@/modules/card/template/workshop'
+import { splitArray } from '@/lib/utils/splitArray'
 
 export default async function WineProfileWorkshop() {
   const {data: workshops} = await workshopService.get({
     pagination: {pageSize: 10, withCount: false},
   })
   const {data: pageData} = await workshopService.getPageData({populate: '*'})
-
-  const splitArray = (arr: string[]): string[][] => {
-    return arr.reduce((acc, curr, index) => {
-      if (index % 4 === 0) {
-        acc.push(arr.slice(index, index + 4))
-      }
-      return acc
-    }, [] as string[][])
-  }
 
   return (
     <div className="w-full justify-center flex-col flex items-center mx-auto gap-4">

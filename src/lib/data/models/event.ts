@@ -1,3 +1,5 @@
+import {Testimonials} from './workshop'
+
 export interface Event {
   id: number
   name: string
@@ -10,11 +12,12 @@ export interface Event {
   roseWineUsed: number
   redWineUsed: number
   testimonialsTitle: string
+  testimonials: Testimonials[]
   locationType: string
   createdAt: string
   updatedAt: string
   publishedAt: string
-  gallery: string[]
+  gallery: string | string[]
   eventDate: string
   eventTime: string
   owner: string

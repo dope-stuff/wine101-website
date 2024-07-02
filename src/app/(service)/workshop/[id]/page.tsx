@@ -5,6 +5,7 @@ import WineCard from '@/modules/card/template/wine'
 import Carousel from '@/modules/carousel/template'
 import Galleries, {CustomImage} from '@/modules/services/templates/gallery'
 import ServiceDetail from '@/modules/services/templates/service-detial'
+import {Image} from '@nextui-org/react'
 import dayjs from 'dayjs'
 
 async function GetPageData(id: number) {
@@ -13,7 +14,7 @@ async function GetPageData(id: number) {
   return pageData
 }
 
-const uniqueDimensions = [
+export const uniqueDimensions = [
   {width: 320, height: 174},
   {width: 320, height: 212},
   {width: 320, height: 213},
@@ -40,6 +41,24 @@ export default async function Page({params}: {params: any}) {
     return arr[randomIndex]
   }
 
+  const carouselElements = [
+    <iframe
+      key="video"
+      className="w-full h-[300px]"
+      src={data.videos}
+      title={data.name}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    />,
+    <Image
+      key="image"
+      removeWrapper
+      className="max-h-[70vh] w-full rounded-none object-cover"
+      src={data.posters}
+      alt=""
+    />,
+  ]
   return (
     <div className="min-w-[240px] flex-col flex gap-2 p-2">
       <div className="flex-row flex flex-nowrap gap-2 items-center">
@@ -48,17 +67,7 @@ export default async function Page({params}: {params: any}) {
         <div>{data.description}</div>
       </div>
       <ServiceDetail
-        elements={[
-          <iframe
-            key={data.id}
-            className="w-full h-[300px]"
-            src={data.videos}
-            title={data.name}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />,
-        ]}
+        elements={carouselElements}
         data={{
           name: data.name,
           details: {
