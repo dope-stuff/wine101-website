@@ -21,7 +21,6 @@ export default async function NextEvent() {
     },
   })
   const eventDate = dayjs(workshop.eventDate)
-console.log(workshop);
 
   return (
     <div className="w-full flex items-center justify-center bg-primary-2">

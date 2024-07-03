@@ -14,8 +14,6 @@ const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselP
   const containerRef = useRef<HTMLDivElement>(null)
 
   const nextSlide = () => {
-    console.log(elements.length + 1, slidesPerView)
-
     setCurrentIndex((prevIndex) =>
       Math.min(
         prevIndex + 1,
