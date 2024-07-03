@@ -28,8 +28,8 @@ export default function Galleries({images}: {images: string[]}) {
               removeWrapper
               src={image}
               alt={image}
-              height={180}
-              className="max-h-[180px] object-contain max-w-[320px] rounded-none"
+              height={240}
+              className="max-h-[240px] object-contain max-w-[320px] rounded-none"
               onClick={() => handleClick(index)}
             />
           </div>
