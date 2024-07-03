@@ -93,14 +93,14 @@ export default function OurClient({data, events, details, subdetails}: OurClient
         </div>
       )}
       {!!data.gallery && <Galleries images={`${galleries}`.split(',')} />}
-      <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
+      {events.length ? <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
         <div className="uppercase text-4xl mx-auto my-4">Explore more</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
           {events.map((c, i) => (
             <ClientCard data={c} key={i} withDetail />
           ))}
         </div>
-      </div>
+      </div> : <></>}
     </div>
   )
 }

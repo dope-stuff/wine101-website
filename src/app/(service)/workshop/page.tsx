@@ -12,6 +12,7 @@ import Comments from '@/modules/services/components/comments'
 
 export default async function WineProfileWorkshop() {
   const {data: workshops} = await workshopService.get({
+    sort: { eventDate: 'desc' },
     pagination: {pageSize: 10, withCount: false},
   })
   const {data: pageData} = await workshopService.getPageData({populate: '*'})

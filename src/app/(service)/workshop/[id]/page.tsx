@@ -16,6 +16,8 @@ export default async function Page({params}: {params: any}) {
     Number(params.id)
   )
   const {data: workshops} = await workshopService.get({
+    filters: { id: {$ne: Number(params.id)}},
+    sort: { eventDate: 'desc' },
     pagination: {pageSize: 10, withCount: false},
   })
 
