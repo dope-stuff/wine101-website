@@ -23,7 +23,7 @@ export default async function Page() {
   ]
 
   const [{data: pageData}, {data: events}] = await Promise.all([
-    weddingService.getPageData(),
+    weddingService.getPageData({populate: '*'}),
     eventService.get({filters: {type: 'WEDDING'}}),
   ])
 

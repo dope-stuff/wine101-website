@@ -9,17 +9,19 @@ interface CarouselProps {
   gap?: number
 }
 
-const Carousel = ({elements, slidesPerView = 7.5, arrowColor, gap = 16}: CarouselProps) => {
+const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const nextSlide = () => {
+    console.log(elements.length + 1, slidesPerView)
+
     setCurrentIndex((prevIndex) =>
       Math.min(
         prevIndex + 1,
         elements.length > slidesPerView && elements.length > 7
           ? elements.length + 1
-          : elements.length - slidesPerView
+          : elements.length + 1 - slidesPerView
       )
     )
   }
@@ -32,7 +34,7 @@ const Carousel = ({elements, slidesPerView = 7.5, arrowColor, gap = 16}: Carouse
     <div className="relative w-full">
       {currentIndex > 0 && (
         <button
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-50"
           onClick={prevSlide}
         >
           <ArrowRightIcon className="rotate-180" color={arrowColor} />
@@ -60,7 +62,7 @@ const Carousel = ({elements, slidesPerView = 7.5, arrowColor, gap = 16}: Carouse
       </div>
       {currentIndex < elements.length - 1 && currentIndex <= elements.length - slidesPerView && (
         <button
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-50"
           onClick={nextSlide}
         >
           <ArrowRightIcon color={arrowColor} />

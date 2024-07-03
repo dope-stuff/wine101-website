@@ -1,7 +1,10 @@
 import {axios} from '@/lib/data'
 import {Navbar, Footer} from '@/lib/data/models/navbar'
+import {StrapiParams} from './models/strapi'
 
 export const navbarService = {
-  getNavbar: () => axios.get<{data: Navbar}>('/wine-navbar?populate=*').then((res) => res.data),
-  getFooter: () => axios.get<{data: Footer}>('/wine-footer?populate=*').then((res) => res.data),
+  getNavbar: (params: StrapiParams) =>
+    axios.get<{data: Navbar}>('/wine-navbar', {params}).then((res) => res.data),
+  getFooter: (params: StrapiParams) =>
+    axios.get<{data: Footer}>('/wine-footer', {params}).then((res) => res.data),
 }

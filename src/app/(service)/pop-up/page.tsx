@@ -11,7 +11,7 @@ import {eventService} from '@/lib/data/event.service'
 
 export default async function Page() {
   const [{data: pageData}, {data: events}] = await Promise.all([
-    popUpBoothService.getPageData(),
+    popUpBoothService.getPageData({populate: '*'}),
     eventService.get({filters: {type: 'POP-UP'}}),
   ])
 

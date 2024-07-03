@@ -13,14 +13,7 @@ export interface Workshop {
   gallery: string
   posters: string
   videos: string
-  wine_list: {
-    id: number
-    name: string
-    display_name: string
-    grapes: string
-    redirect_url: string
-    image_url: string
-  }[]
+  wineList: WorkshopProduct[]
 }
 
 export interface Testimonials {
@@ -32,6 +25,24 @@ export interface Testimonials {
   buttonTitle: string
   linkTo: string
   mediaUrl: string
+}
+
+export interface WorkshopProduct {
+  id: number
+  itemName: string
+  itemDisplayName: string
+  glassPrice: number
+  bottlePrice: number
+  imageUrl: string
+  category: string
+  shortDescription: string
+  isSoldByGlass: boolean
+  grapes: string
+  country: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  linkTo: string
 }
 
 export interface WineWorkshop extends ServiceResponse {

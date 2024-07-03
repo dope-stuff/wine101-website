@@ -17,8 +17,8 @@ const inter = Inter({subsets: ['latin']})
 
 const MainLayout = async ({children}: {children: React.ReactNode}) => {
   const [{data: navbar}, {data: footer}] = await Promise.all([
-    navbarService.getNavbar(),
-    navbarService.getFooter(),
+    navbarService.getNavbar({populate: '*'}),
+    navbarService.getFooter({populate: '*'}),
   ])
 
   return (

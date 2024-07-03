@@ -1,33 +1,26 @@
 import {eventService} from '@/lib/data/event.service'
-import {Event} from '@/lib/data/models/event'
 import OurClient from '@/modules/services/components/our-client'
 
-async function GetPageData(id: number) {
-  const {data: pageData} = await eventService.getOne({populate: '*'}, Number(id))
-
-  return pageData
-}
-
 export default async function Page({params}: {params: any}) {
-  const data: Event = await GetPageData(Number(params.id))
+  const {data: event} = await eventService.getOne({populate: '*'}, Number(params.id))
   const {data: events} = await eventService.get({filters: {type: 'WEDDING'}})
 
   const details = {
-    'total guest': data.totalGuests || '-',
-    venue: data.venue || '-',
-    'theme color': data.themeColor || '-',
+    'total guest': event.totalGuests || '-',
+    venue: event.venue || '-',
+    'theme color': event.themeColor || '-',
     'total wine':
-      (data.redWineUsed || 0) +
-      (data.roseWineUsed || 0) +
-      (data.sparklingWineUsed || 0) +
-      (data.whiteWineUsed || 0),
+      (event.redWineUsed || 0) +
+      (event.roseWineUsed || 0) +
+      (event.sparklingWineUsed || 0) +
+      (event.whiteWineUsed || 0),
   }
   const subdetails = {
-    rose: data.roseWineUsed,
-    sparkling: data.sparklingWineUsed,
-    white: data.whiteWineUsed,
-    red: data.redWineUsed,
+    rose: event.roseWineUsed,
+    sparkling: event.sparklingWineUsed,
+    white: event.whiteWineUsed,
+    red: event.redWineUsed,
   }
 
-  return <OurClient data={data} events={events} details={details} subdetails={subdetails} />
+  return <OurClient data={event} events={events} details={details} subdetails={subdetails} />
 }

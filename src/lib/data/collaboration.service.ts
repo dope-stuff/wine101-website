@@ -1,8 +1,10 @@
 import {axios} from '@/lib/data'
-import { ServiceResponse } from './models/common'
-import { StrapiPagination } from './models/strapi'
+import {ServiceResponse} from './models/common'
+import {StrapiPagination, StrapiParams} from './models/strapi'
 
 export const collaborationService = {
-  getPageData: () =>
-    axios.get<StrapiPagination<ServiceResponse>>('/wine-collaboration?populate=*').then(({data}) => data),
+  getPageData: (params: StrapiParams) =>
+    axios
+      .get<StrapiPagination<ServiceResponse>>('/wine-collaboration', {params})
+      .then(({data}) => data),
 }

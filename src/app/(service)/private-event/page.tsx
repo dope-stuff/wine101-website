@@ -10,7 +10,7 @@ import ClientCard from '@/modules/card/template/client'
 
 export default async function Page() {
   const [{data: pageData}, {data: events}] = await Promise.all([
-    eventService.getPageData(),
+    eventService.getPageData({populate: '*'}),
     eventService.get({filters: {type: 'PRIVATE'}}),
   ])
 
