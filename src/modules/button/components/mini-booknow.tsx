@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function BookNowButton() {
+export default function MiniBookNowButton() {
   const [bookNowLinkTo, setBookNowLinkTo] = useState("");
 
   const onBookNow = () => {

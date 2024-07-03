@@ -1,7 +1,7 @@
 import './globals.css'
 import {type Metadata} from 'next'
 import {Inter} from 'next/font/google'
-// import {GoogleAnalytics} from '@next/third-parties/google'
+import {GoogleAnalytics} from '@next/third-parties/google'
 import {NextUIProvider} from '@nextui-org/react'
 import MainLayout from '@/modules/layout/components/main'
 
@@ -24,7 +24,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           </MainLayout>
         </NextUIProvider>
       </body>
-      {/* <GoogleAnalytics gaId='G-VJZV2CC3H7' /> */}
+      <GoogleAnalytics gaId='G-VJZV2CC3H7' />
     </html>
   )
 }

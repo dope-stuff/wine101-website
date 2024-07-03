@@ -6,8 +6,8 @@ export interface Workshop {
   createdAt: string
   updatedAt: string
   description: string
-  event_date: string
-  number_of_guests: number
+  eventDate: string
+  numberOfGuests: number
   price: number
   location: string
   gallery: string

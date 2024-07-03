@@ -1,26 +1,27 @@
 import dayjs from 'dayjs'
 import {workshopService} from '@/lib/data/workshop.service'
 import NextEventCountDown from '@/modules/next-event/components/count-down'
-import BookNowButton from '@/modules/button/components/booknow'
+import MiniBookNowButton from '@/modules/button/components/mini-booknow'
 
 export default async function NextEvent() {
   const {
     data: [workshop],
   } = await workshopService.get({
     filters: {
-      event_date: {
+      eventDate: {
         $gte: dayjs().format('YYYY-MM-DD'),
       },
     },
     sort: {
-      event_date: 'asc'
+      eventDate: 'asc'
     },
     pagination: {
       pageSize: 1,
       withCount: false,
     },
   })
-  const eventDate = dayjs(workshop.event_date)
+  const eventDate = dayjs(workshop.eventDate)
+console.log(workshop);
 
   return (
     <div className="w-full flex items-center justify-center bg-primary-2">
@@ -32,7 +33,7 @@ export default async function NextEvent() {
         <div className="w-full flex flex-1 flex-row justify-evenly">
           <NextEventCountDown date={eventDate.format('D MMMM YYYY HH:mm:ssZ')} />
         </div>
-        <BookNowButton />
+        <MiniBookNowButton />
       </div>
     </div>
   )

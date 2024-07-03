@@ -6,9 +6,14 @@ import {IMenu} from '@/lib/data/models/navbar'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import PopUpBoothButton from '@/modules/button/components/pop-up-booth'
 import Carousel from '@/modules/carousel/template'
+import ClientCard from '@/modules/card/template/client'
+import {eventService} from '@/lib/data/event.service'
 
 export default async function Page() {
-  const {data: pageData} = await popUpBoothService.getPageData()
+  const [{data: pageData}, {data: events}] = await Promise.all([
+    popUpBoothService.getPageData(),
+    eventService.get({filters: {type: 'POP-UP'}}),
+  ])
 
   return (
     <>
@@ -48,6 +53,14 @@ export default async function Page() {
             {pageData.cta.heading}
           </div>
           <PopUpBoothButton title={pageData.cta.buttonTitle} linkTo={pageData.cta.linkTo} />
+        </div>
+        <div className="max-w-[2040px] flex flex-col w-full px-10">
+          <div className="uppercase text-4xl my-4">our clients</div>
+          <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+            {events.map((c, i) => (
+              <ClientCard data={c} key={i} />
+            ))}
+          </div>
         </div>
         <div className="mb-10" />
       </div>

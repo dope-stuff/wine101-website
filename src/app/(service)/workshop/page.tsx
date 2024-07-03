@@ -1,7 +1,6 @@
 import {Image} from '@nextui-org/react'
 import {workshopService} from '@/lib/data/workshop.service'
 
-import Comments from '@/modules/services/components/comments'
 import WineProfileWorkshopHeader from '@/modules/header/components/workshop'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import FlasksIcon from '@/modules/common/images/flasks'
@@ -9,6 +8,7 @@ import {IMenu} from '@/lib/data/models/navbar'
 import Carousel from '@/modules/carousel/template'
 import WorkShopCard from '@/modules/card/template/workshop'
 import { splitArray } from '@/lib/utils/splitArray'
+import Comments from '@/modules/services/components/comments'
 
 export default async function WineProfileWorkshop() {
   const {data: workshops} = await workshopService.get({

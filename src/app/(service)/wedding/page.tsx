@@ -2,7 +2,6 @@ import {Image} from '@nextui-org/react'
 import Carousel from '../../../modules/carousel/template'
 import ClientCard from '../../../modules/card/template/client'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
-import Consultant from '@/modules/services/components/consultant'
 import {iannDog} from '@/styles/fonts'
 import {weddingService} from '@/lib/data/wedding.service'
 import {IMenu} from '@/lib/data/models/navbar'
@@ -10,6 +9,7 @@ import FlasksIcon from '@/modules/common/images/flasks'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 import {eventService} from '@/lib/data/event.service'
+import Consultant from '@/modules/services/components/consultant'
 
 export default async function Page() {
   const panels = [
@@ -24,20 +24,20 @@ export default async function Page() {
 
   const [{data: pageData}, {data: events}] = await Promise.all([
     weddingService.getPageData(),
-    eventService.get({}),
+    eventService.get({filters: {type: 'WEDDING'}}),
   ])
 
   return (
     <>
-      {/* <div className="max-w-[2040px] w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-center mx-auto p-4">
-          {panels.map((panel, i) =>
-            i % 2 !== 0 ? (
-              i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black" />
-            ) : (
-              <div key={i}>{panel}</div>
-            )
-          )}
-        </div> */}
+      <div className="max-w-[2040px] w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-center mx-auto p-4">
+        {panels.map((panel, i) =>
+          i % 2 !== 0 ? (
+            i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black" />
+          ) : (
+            <div key={i}>{panel}</div>
+          )
+        )}
+      </div>
       <Carousel
         elements={pageData.banner.map((b: IMenu) => (
           <Image

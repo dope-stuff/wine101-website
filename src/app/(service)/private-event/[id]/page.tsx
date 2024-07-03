@@ -10,7 +10,7 @@ async function GetPageData(id: number) {
 
 export default async function Page({params}: {params: any}) {
   const data: Event = await GetPageData(Number(params.id))
-  const {data: events} = await eventService.get({filters: {type: 'WEDDING'}})
+  const {data: events} = await eventService.get({filters: {type: 'PRIVATE'}})
 
   const details = {
     'total guest': data.totalGuests || '-',

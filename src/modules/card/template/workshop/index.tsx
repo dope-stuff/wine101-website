@@ -6,7 +6,7 @@ interface WorkShopCardProps {
   data: Workshop
 }
 export default function WorkShopCard({data}: WorkShopCardProps) {
-  const {name, description, event_date, posters} = data
+  const {name, description, eventDate, posters} = data
   return (
     <div className="min-w-[240px] flex-col flex gap-2 p-2 border border-[#CFCFCF]">
       <div className="relative w-full h-[200px] bg-primary">
@@ -20,11 +20,11 @@ export default function WorkShopCard({data}: WorkShopCardProps) {
       <div className="text-[14px] gap-2">
         <div className="text-lg]">{name}</div>
         <strong className="font-bold text-[#BE1C2D]">{description}</strong>
-        <div>{dayjs(event_date).format('DD MMMM YYYY')}</div>
+        <div>{dayjs(eventDate).format('DD MMMM YYYY')}</div>
       </div>
       <div className="flex-row flex flex-nowrap gap-2 justify-end mt-4">
-        <div className="text-[12px]">see more photos</div>
-        <a href={`workshop/${data.id}`}>
+        <a href={`/workshop/${data.id}`} className="text-[12px]">see more photos</a>
+        <a href={`/workshop/${data.id}`}>
           <Image src="https://i.ibb.co/k2c7m2S/wine-101-camera.webp" alt="wine-101-camera" />
         </a>
       </div>

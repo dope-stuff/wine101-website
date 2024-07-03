@@ -12,7 +12,7 @@ import ServiceContentCard from '@/modules/card/template/service-content'
 export default async function Collaboration() {
   const [{data: pageData}, {data: events}] = await Promise.all([
     collaborationService.getPageData(),
-    eventService.get({}),
+    eventService.get({filters: {type: 'COLLABORATION'}}),
   ])
 
   return (

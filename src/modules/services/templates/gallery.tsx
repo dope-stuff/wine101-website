@@ -10,20 +10,6 @@ export interface CustomImage extends Image {
   original: string
 }
 
-// const ImageComponent = (props: ThumbnailImageProps) => {
-//   const [show, setShow] = useState(false);
-
-//   if (show) {
-//     return <img {...props.imageProps} />;
-//   }
-
-//   return (
-//     <div style={{ ...props.imageProps.style, textAlign: "center" }} onMouseOver={() => setShow(true)}>
-//       Hover to show
-//     </div>
-//   );
-// };
-
 export default function Galleries({images}: {images: CustomImage[]}) {
   const [index, setIndex] = useState(-1)
 
@@ -39,12 +25,11 @@ export default function Galleries({images}: {images: CustomImage[]}) {
   const handleMoveNext = () => setIndex(nextIndex)
 
   return (
-    <div>
+    <div className='relative z-0'>
       <Gallery
         images={images}
         onClick={handleClick}
         enableImageSelection={false}
-        // thumbnailImageComponent={ImageComponent}
       />
       {!!currentImage && (
         <Lightbox

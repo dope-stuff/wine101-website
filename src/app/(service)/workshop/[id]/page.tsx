@@ -1,8 +1,7 @@
 import {Workshop} from '@/lib/data/models/workshop'
 import {workshopService} from '@/lib/data/workshop.service'
-import {getProductTheme} from '@/lib/utils/getProductTheme'
-import WineCard from '@/modules/card/template/wine'
-import Carousel from '@/modules/carousel/template'
+import BookNowButton from '@/modules/button/components/booknow'
+import WorkShopCard from '@/modules/card/template/workshop'
 import Galleries, {CustomImage} from '@/modules/services/templates/gallery'
 import ServiceDetail from '@/modules/services/templates/service-detial'
 import {Image} from '@nextui-org/react'
@@ -35,51 +34,76 @@ export const uniqueDimensions = [
 
 export default async function Page({params}: {params: any}) {
   const data: Workshop = await GetPageData(Number(params.id))
+  const {data: workshops} = await workshopService.get({
+    pagination: {pageSize: 10, withCount: false},
+  })
 
-  const getRandomElement = (arr: {width: number; height: number}[]) => {
-    const randomIndex = Math.floor(Math.random() * arr.length)
-    return arr[randomIndex]
-  }
+  const carouselElements = !!data.videos
+    ? [
+        ...data.videos
+          .split(',')
+          .map((e, i) => (
+            <iframe
+              key={i}
+              className="w-full h-[450px]"
+              src={e}
+              title={data.name}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          )),
+        !!data.posters && (
+          <Image
+            key="poster"
+            removeWrapper
+            className="max-h-[450px] w-full rounded-none object-contain bg-primary"
+            src={data.posters}
+            alt=""
+          />
+        ),
+      ]
+    : [
+        !!data.posters ? (
+          <Image
+            key="poster"
+            removeWrapper
+            className="max-h-[450px] w-full rounded-none object-contain bg-primary"
+            src={data.posters}
+            alt=""
+          />
+        ) : (
+          <Image
+            key="logo"
+            removeWrapper
+            className="max-h-[450px] w-full rounded-none object-contain bg-primary"
+            src="https://i.ibb.co/V9XQK7z/wine-1-O1-Logo-Sq.webp"
+            alt=""
+          />
+        ),
+      ]
 
-  const carouselElements = [
-    <iframe
-      key="video"
-      className="w-full h-[300px]"
-      src={data.videos}
-      title={data.name}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerPolicy="strict-origin-when-cross-origin"
-      allowFullScreen
-    />,
-    <Image
-      key="image"
-      removeWrapper
-      className="max-h-[70vh] w-full rounded-none object-cover"
-      src={data.posters}
-      alt=""
-    />,
-  ]
   return (
-    <div className="min-w-[240px] flex-col flex gap-2 p-2">
+    <div className="min-w-[240px] flex-col flex gap-4 p-2">
       <div className="flex-row flex flex-nowrap gap-2 items-center">
         <div>{data.name}</div>
         <div className="h-4 w-[2px] bg-black" />
         <div>{data.description}</div>
       </div>
       <ServiceDetail
-        elements={carouselElements}
+        elements={carouselElements as JSX.Element[]}
         data={{
           name: data.name,
           details: {
             theme: data.description,
             location: data.location,
-            date: dayjs(data.event_date).format('YYYY MMM DD'),
-            'total guest': data.number_of_guests,
+            date: dayjs(data.eventDate).format('YYYY MMM DD'),
+            'total guest': data.numberOfGuests,
           },
         }}
       />
-      <div className="max-w-[2040px] w-full flex p-4">
-        {/* <Carousel
+      {/* <div className="max-w-[2040px] w-full flex p-4">
+        <Carousel
           elements={data.wine_list.map((product: any, index: number) => (
             <WineCard
               key={index}
@@ -88,17 +112,28 @@ export default async function Page({params}: {params: any}) {
             />
           ))}
           slidesPerView={7}
-        /> */}
+        />
+      </div> */}
+      <div className="w-full flex-col flex relative">
+        <Galleries
+          images={
+            data.gallery.split(',\n').map((e) => ({
+              src: e,
+              original: e,
+              // ...getRandomElement(uniqueDimensions),
+            })) as CustomImage[]
+          }
+        />
+        <BookNowButton title="book now! Click!" className="mx-auto mt-[-2rem] relative z-50" />
       </div>
-      <Galleries
-        images={
-          data.gallery.split(',\n').map((e) => ({
-            src: e,
-            original: e,
-            // ...getRandomElement(uniqueDimensions),
-          })) as CustomImage[]
-        }
-      />
+      <div className="max-w-[2040px] flex flex-col w-full px-10">
+        <div className="uppercase text-4xl my-2 mt-8">our workshop</div>
+        <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+          {workshops.map((workshop, index) => (
+            <WorkShopCard key={index} data={workshop} />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
