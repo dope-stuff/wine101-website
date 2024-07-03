@@ -6,7 +6,6 @@ import Galleries, {CustomImage} from '../templates/gallery'
 import ServiceDetail from '../templates/service-detial'
 import ClientCard from '@/modules/card/template/client'
 import {Event} from '@/lib/data/models/event'
-import {uniqueDimensions} from '@/app/(service)/workshop/[id]/page'
 import {Image} from '@nextui-org/react'
 
 interface OurClientProps {
@@ -99,7 +98,6 @@ export default function OurClient({data, events, details, subdetails}: OurClient
             `${galleries}`.split(',').map((e) => ({
               src: e,
               original: e,
-              ...getRandomElement(uniqueDimensions),
             })) as CustomImage[]
           }
         />

@@ -13,24 +13,24 @@ async function GetPageData(id: number) {
   return pageData
 }
 
-export const uniqueDimensions = [
-  {width: 320, height: 174},
-  {width: 320, height: 212},
-  {width: 320, height: 213},
-  {width: 320, height: 183},
-  {width: 240, height: 320},
-  {width: 320, height: 190},
-  {width: 320, height: 148},
-  {width: 248, height: 320},
-  {width: 320, height: 113},
-  {width: 313, height: 320},
-  {width: 320, height: 194},
-  {width: 271, height: 320},
-  {width: 320, height: 179},
-  {width: 320, height: 215},
-  {width: 257, height: 320},
-  {width: 226, height: 320},
-]
+// export const uniqueDimensions = [
+//   {width: 320, height: 174},
+//   {width: 320, height: 212},
+//   {width: 320, height: 213},
+//   {width: 320, height: 183},
+//   {width: 240, height: 320},
+//   {width: 320, height: 190},
+//   {width: 320, height: 148},
+//   {width: 248, height: 320},
+//   {width: 320, height: 113},
+//   {width: 313, height: 320},
+//   {width: 320, height: 194},
+//   {width: 271, height: 320},
+//   {width: 320, height: 179},
+//   {width: 320, height: 215},
+//   {width: 257, height: 320},
+//   {width: 226, height: 320},
+// ]
 
 export default async function Page({params}: {params: any}) {
   const data: Workshop = await GetPageData(Number(params.id))
