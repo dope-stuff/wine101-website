@@ -5,14 +5,14 @@ import {Image} from '@nextui-org/react'
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
 
-export default function Galleries({images}: {images: string}) {
+export default function Galleries({images}: {images: string[]}) {
   const [index, setIndex] = useState(-1)
-  const galleries = images.split(',\n')
-  const currentImage = galleries[index]
-  const nextIndex = (index + 1) % galleries.length
-  const nextImage = galleries[nextIndex] || currentImage
-  const prevIndex = (index + galleries.length - 1) % galleries.length
-  const prevImage = galleries[prevIndex] || currentImage
+  
+  const currentImage = images[index]
+  const nextIndex = (index + 1) % images.length
+  const nextImage = images[nextIndex] || currentImage
+  const prevIndex = (index + images.length - 1) % images.length
+  const prevImage = images[prevIndex] || currentImage
 
   const handleClick = (index: number) => setIndex(index)
   const handleClose = () => setIndex(-1)
@@ -22,7 +22,7 @@ export default function Galleries({images}: {images: string}) {
   return (
     <div className="relative z-10">
       <div className="flex flex-wrap justify-center">
-        {galleries.map((image, index) => (
+        {images.map((image, index) => (
           <div key={index} className="m-[2px] select-none relative bg-gray-400 p-0">
             <Image
               removeWrapper

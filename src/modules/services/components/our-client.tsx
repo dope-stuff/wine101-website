@@ -2,7 +2,7 @@ import {splitArray} from '@/lib/utils/splitArray'
 import Carousel from '@/modules/carousel/template'
 import FlasksIcon from '@/modules/common/images/flasks'
 import Comments from './comments'
-import Galleries, {CustomImage} from '../templates/gallery'
+import Galleries from '../templates/gallery'
 import ServiceDetail from '../templates/service-detial'
 import ClientCard from '@/modules/card/template/client'
 import {Event} from '@/lib/data/models/event'
@@ -92,16 +92,7 @@ export default function OurClient({data, events, details, subdetails}: OurClient
           />
         </div>
       )}
-      {!!data.gallery && (
-        <Galleries
-          images={
-            `${galleries}`.split(',').map((e) => ({
-              src: e,
-              original: e,
-            })) as CustomImage[]
-          }
-        />
-      )}
+      {!!data.gallery && <Galleries images={`${galleries}`.split(',')} />}
       <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
         <div className="uppercase text-4xl mx-auto my-4">Explore more</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">

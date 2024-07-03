@@ -95,7 +95,7 @@ export default async function Page({params}: {params: any}) {
         />
       </div>
       <div className="w-full flex flex-col relative">
-        <Galleries images={workshop.gallery} />
+        <Galleries images={`${workshop.gallery}`.split(',\n')} />
         <BookNowButton title="book now! Click!" className="mx-auto mt-[-2rem] relative z-50" />
       </div>
       <div className="max-w-[2040px] flex flex-col w-full px-10">
