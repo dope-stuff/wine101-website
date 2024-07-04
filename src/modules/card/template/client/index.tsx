@@ -30,7 +30,7 @@ export default function ClientCard({data, withDetail}: ClientCardProps) {
       />
       <div className="flex flex-col h-full">
         <div>{data.name}</div>
-        {withDetail && (
+        {(
           <>
             <div>{data.eventDate}</div>
             <div className="text-[12px] leading-4">
@@ -41,7 +41,7 @@ export default function ClientCard({data, withDetail}: ClientCardProps) {
                   Object.keys(order).map(
                     (o, i) =>
                       `${o} ${order[o as keyof typeof order]} ${
-                        o + (i !== Object.keys(order).length - 1 && '/')
+                        (i !== Object.keys(order).length - 1 ? ' / ' : '')
                       }`
                   )}
               </div>

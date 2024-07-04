@@ -3,7 +3,10 @@ import OurClient from '@/modules/services/components/our-client'
 
 export default async function Page({params}: {params: any}) {
   const {data: event} = await eventService.getOne({populate: '*'}, Number(params.id))
-  const {data: events} = await eventService.get({filters: {type: 'POP-UP'}})
+  const {data: events} = await eventService.get({
+    sort: { eventDate: 'desc' },
+    filters: {type: 'POP-UP', id: {$ne: Number(params.id)}}
+  })
 
   const details = {
     'total guest': event.totalGuests || '-',

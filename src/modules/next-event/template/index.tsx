@@ -13,7 +13,7 @@ export default async function NextEvent() {
       },
     },
     sort: {
-      eventDate: 'asc'
+      eventDate: 'desc'
     },
     pagination: {
       pageSize: 1,

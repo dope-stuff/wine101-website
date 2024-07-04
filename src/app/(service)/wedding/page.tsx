@@ -24,7 +24,10 @@ export default async function Page() {
 
   const [{data: pageData}, {data: events}] = await Promise.all([
     weddingService.getPageData({populate: '*'}),
-    eventService.get({filters: {type: 'WEDDING'}}),
+    eventService.get({
+      sort: { eventDate: 'desc' },
+      filters: {type: 'WEDDING'}
+    }),
   ])
 
   return (
