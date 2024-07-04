@@ -1,12 +1,11 @@
 'use client'
-import {iannDog} from '@/styles/fonts'
 import {useEffect, useState} from 'react'
 interface BookNowButtonProps {
   title: string
   linkTo?: string
-  className?:string
+  className?: string
 }
-export default function BookNowButton({title, linkTo,className}: BookNowButtonProps) {
+export default function BookNowButton({title, linkTo, className}: BookNowButtonProps) {
   const [bookNowLinkTo, setBookNowLinkTo] = useState('')
 
   const onBookNow = (url?: string) => {
@@ -15,8 +14,7 @@ export default function BookNowButton({title, linkTo,className}: BookNowButtonPr
 
   useEffect(() => {
     const linkto = localStorage.getItem('bookNowLinkTo')
-    console.log(linkto);
-    
+
     if (linkto) {
       setBookNowLinkTo(linkto)
     }

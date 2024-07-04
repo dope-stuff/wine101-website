@@ -15,7 +15,6 @@ const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselP
   const elementRef = useRef<HTMLDivElement>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [elementWidth, setElementWidth] = useState(0)
-  const [pageCount, setPageCount] = useState(1)
 
   useEffect(() => {
     setItemsPerView(slidesPerView)
@@ -34,19 +33,24 @@ const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselP
     }
   }, [elementRef, elementWidth, gap, slidesPerView])
 
-  useEffect(() => {
-    const wide = elementWidth * elements.length
-    setPageCount(Math.ceil(wide / elementWidth) - Math.ceil(elements.length / itemsPerView))
-  }, [elementWidth, elements.length, itemsPerView])
+  // const [pageCount, setPageCount] = useState(1)
+  // useEffect(() => {
+  //   setPageCount(Math.ceil(elements.length * (1 - 1 / itemsPerView)))
+  // }, [elementWidth, elements.length, itemsPerView])
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      Math.min(
-        prevIndex + 1,
-        // elements.length > itemsPerView ? elements.length + 1 : elements.length + 1 - itemsPerView
-        pageCount
-      )
+      prevIndex + 1 === elements.length
+        ? 0
+        : Math.min(
+            prevIndex + 1,
+            Math.ceil(elements.length > 0 ? elements.length - 1 : elements.length)
+          )
     )
+
+    if (currentIndex === elements.length) {
+      setCurrentIndex(0)
+    }
   }
 
   const prevSlide = () => {
@@ -76,16 +80,15 @@ const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselP
             <div
               key={index}
               ref={elementRef}
-              className="w-full flex flex-shrink-0 relative"
-              style={{flex: `0 0 ${100 / itemsPerView}%`}}
+              className="flex-1 flex flex-shrink-0 relative"
+              style={{flex: itemsPerView ? `0 0 ${100 / itemsPerView}%` : ''}}
             >
               {element}
             </div>
           ))}
         </div>
       </div>
-      {/* {currentIndex < elements.length - 1 && currentIndex <= elements.length - itemsPerView && ( */}
-      {currentIndex < pageCount && (
+      {elements.length > 1 && (
         <button
           className="absolute right-2 top-1/2 transform -translate-y-1/2 z-50"
           onClick={nextSlide}

@@ -12,14 +12,19 @@ interface WineCardProps {
   }
 }
 export default function WineCard({data, theme}: WineCardProps) {
-  const categories = [
-    data.category,
-    data.country,
-    data.grapes,
-    data.type ? data.type.value : undefined,
-    data.tags ? data.tags[0].value : undefined,
-    data.categories ? data.categories[0].name : undefined,
-  ].filter((e) => !!e)
+  const getProductCategories = (data: any): string[] => {
+    const result = [
+      data.category,
+      data.country,
+      ...(data.grapes ? data.grapes.split(', ') : []),
+      data.type?.value,
+      data.tags?.[0]?.value,
+      ...(data.categories?.[0]?.name ? data.categories[0].name.split(', ') : []),
+      ...(data.variants?.[0]?.material ? data.variants[0].material.split(', ') : []),
+    ].filter(Boolean)
+    return result
+  }
+  const categories = getProductCategories(data)
 
   return (
     <div className="w-[250px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
@@ -36,17 +41,19 @@ export default function WineCard({data, theme}: WineCardProps) {
         />
       </div>
       <div>{data.title || data.itemDisplayName}</div>
-      <div className="flex-row flex flex-wrap items-center gap-2">
+      <div className="max-h-[240px] overflow-hidden flex-row flex flex-wrap items-center gap-2">
         {categories.length > 0 &&
-          categories.map((c, index) => (
-            <div
-              key={index}
-              className="text-[14px] px-2 py-1 rounded-full whitespace-nowrap text-white"
-              style={{backgroundColor: theme.bgColor}}
-            >
-              {c}
-            </div>
-          ))}
+          categories
+            .sort((a, b) => a.length - b.length) // Sort categories by length
+            .map((c, index) => (
+              <div
+                key={index}
+                className="text-[14px] px-2 py-1 rounded-full whitespace-nowrap text-white"
+                style={{backgroundColor: theme.bgColor}}
+              >
+                {c}
+              </div>
+            ))}
       </div>
       <div className="ml-auto mt-auto">
         <div className="flex-row flex whitespace-nowrap items-center gap-2">

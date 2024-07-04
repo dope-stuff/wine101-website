@@ -30,12 +30,13 @@ export default async function Page() {
         <div className={`max-w-[100vw] w-[500px] text-2xl text-center px-4 ${iannDog.className}`}>
           {pageData.header.subheading}
         </div>
-        <GetToKnowUsButton title={pageData.header.buttonTitle} linkTo={pageData.header.linkTo} />
-        {/** products */}
         <div
           id="our-highlights"
-          className="max-w-[100vw] flex flex-row items-center justify-center gap-8"
-        >
+          className="put this div to 1 chunck above where our-highlights stay"
+        />
+        <GetToKnowUsButton title={pageData.header.buttonTitle} linkTo={pageData.header.linkTo} />
+        {/** products */}
+        <div className="max-w-[100vw] flex flex-row items-center justify-center gap-8">
           <Image width={100} height={100} src="/images/common/wine-2.svg" alt="" />
           <div className="w-[260px] text-2xl md:text-3xl text-center">{pageData.productsTitle}</div>
           <Image width={60} height={60} src="/images/common/glitter-1.svg" alt="" />
@@ -49,7 +50,6 @@ export default async function Page() {
                 theme={getProductTheme(product.categories[0].name)}
               />
             ))}
-            slidesPerView={7}
           />
         </div>
         {/** services */}

@@ -6,6 +6,7 @@ const MainLayoutWrapper = async ({children}: {children: React.ReactElement}) => 
     navbarService.getNavbar({populate: '*'}),
     navbarService.getFooter({populate: '*'}),
   ])
+  
   return (
     <MainLayout navbar={navbar} footer={footer}>
       {children}

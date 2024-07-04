@@ -13,7 +13,11 @@ export default function WineProfileWorkshopHeader({data}: {data: IMenu}) {
         <div className="text-xl text-center mt-4 px-4">
           <p className={`${iannDog.className} mx-auto`}>{data.description}</p>
         </div>
-        <BookNowButton title={data.buttonTitle} linkTo={data.linkTo} />
+        <BookNowButton
+          title={data.buttonTitle}
+          linkTo={data.linkTo}
+          className={iannDog.className}
+        />
       </div>
       <div className="rotate-6 flex relative mr-8">
         <Image

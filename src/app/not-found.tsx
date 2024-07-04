@@ -52,7 +52,6 @@ export default async function Page() {
                 theme={getProductTheme(product.categories[0].name)}
               />
             ))}
-            slidesPerView={7}
           />
         </div>
         {/** services */}

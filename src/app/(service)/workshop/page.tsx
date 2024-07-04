@@ -20,9 +20,9 @@ export default async function WineProfileWorkshop() {
   return (
     <div className="w-full justify-center flex-col flex items-center mx-auto gap-4">
       <Carousel
-        elements={pageData.banner.map((b: IMenu) => (
+        elements={[...pageData.banner,...pageData.banner].map((b: IMenu,index) => (
           <Image
-            key={b.id}
+            key={index}
             removeWrapper
             className="max-h-[70vh] w-full rounded-none object-cover"
             src={b.mediaUrl}

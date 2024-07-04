@@ -6,6 +6,8 @@ interface ServiceDetailProps {
   data: any
 }
 export default function ServiceDetail({elements, data}: ServiceDetailProps) {
+  console.log(elements);
+  
   return (
     <div className="w-full flex-row flex-wrap lg:flex-nowrap justify-center flex gap-8 relative min-h-[300px] z-0">
       <div className="max-w-[600px]">
