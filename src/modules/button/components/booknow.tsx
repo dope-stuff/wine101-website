@@ -15,6 +15,8 @@ export default function BookNowButton({title, linkTo,className}: BookNowButtonPr
 
   useEffect(() => {
     const linkto = localStorage.getItem('bookNowLinkTo')
+    console.log(linkto);
+    
     if (linkto) {
       setBookNowLinkTo(linkto)
     }
