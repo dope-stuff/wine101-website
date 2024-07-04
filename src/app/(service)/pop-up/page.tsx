@@ -13,8 +13,8 @@ export default async function Page() {
   const [{data: pageData}, {data: events}] = await Promise.all([
     popUpBoothService.getPageData({populate: '*'}),
     eventService.get({
-      sort: { eventDate: 'desc' },
-      filters: {type: 'POP-UP'}
+      sort: {eventDate: 'desc'},
+      filters: {type: 'POP-UP'},
     }),
   ])
 
@@ -35,30 +35,32 @@ export default async function Page() {
         gap={0}
       />
       <div className="max-w-[2040px] w-full justify-center flex-col flex items-center mx-auto">
-        <div className="max-w-[90%] md:max-w-[60%] w-full flex-col flex text-center items-center justify-center mt-8 relative gap-4">
+        <div className="relative flex-row flex w-full justify-center">
           <FlasksIcon width={100} height={100} className="hidden md:flex absolute left-0 top-20" />
-          <div className="text-2xl md:text-3xl font-semibold uppercase">
-            {pageData.header.heading}
-          </div>
-          <div
-            className={`max-w-xl lg:max-w-2xl xl:max-w-none text-2xl md:text-3xl ${iannDog.className}`}
-          >
-            {pageData.header.subheading}
+          <div className="max-w-[90%] md:max-w-[60%] w-full flex-col flex text-center items-center justify-center mt-8 relative gap-4">
+            <div className="text-2xl md:text-3xl font-semibold uppercase">
+              {pageData.header.heading}
+            </div>
+            <div
+              className={`max-w-xl lg:max-w-2xl xl:max-w-none text-2xl md:text-3xl ${iannDog.className}`}
+            >
+              {pageData.header.subheading}
+            </div>
           </div>
         </div>
-        <div className="w-[90%] flex-col flex mt-8">
+        <div className="w-[90%] flex-col flex mt-8 gap-4">
           {pageData.details.map((e, i) => (
             <ServiceContentCard key={i} index={i} data={e} />
           ))}
         </div>
-        <div className="flex-row flex items-center justify-center gap-10">
+        <div className="flex-row flex items-center justify-center gap-104">
           <div className={`text-4xl max-w-lg text-center ${iannDog.className}`}>
             {pageData.cta.heading}
           </div>
           <PopUpBoothButton title={pageData.cta.buttonTitle} linkTo={pageData.cta.linkTo} />
         </div>
         <div className="max-w-[2040px] flex flex-col w-full px-10">
-          <div className="uppercase text-4xl my-4">our clients</div>
+          <div className="uppercase text-4xl my-4 text-center">our clients</div>
           <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
             {events.map((c, i) => (
               <ClientCard data={c} key={i} />

@@ -1,4 +1,4 @@
-import {Image} from '@nextui-org/react'
+import {Image, Link} from '@nextui-org/react'
 import Carousel from '../../../modules/carousel/template'
 import ClientCard from '../../../modules/card/template/client'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
@@ -10,36 +10,21 @@ import ServiceContentCard from '@/modules/card/template/service-content'
 import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 import {eventService} from '@/lib/data/event.service'
 import Consultant from '@/modules/services/components/consultant'
+import WeddingNavigator from '@/modules/services/components/wedding-navigator'
 
 export default async function Page() {
-  const panels = [
-    '101 wedding guide',
-    '',
-    'our package',
-    '',
-    'quick consult',
-    '',
-    'our client’s review',
-  ]
-
   const [{data: pageData}, {data: events}] = await Promise.all([
     weddingService.getPageData({populate: '*'}),
     eventService.get({
-      sort: { eventDate: 'desc' },
-      filters: {type: 'WEDDING'}
+      sort: {eventDate: 'desc'},
+      filters: {type: 'WEDDING'},
     }),
   ])
 
   return (
     <>
       <div className="max-w-[2040px] w-full flex-row flex flex-nowrap gap-4 justify-evenly items-center text-center mx-auto p-4">
-        {panels.map((panel, i) =>
-          i % 2 !== 0 ? (
-            i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black" />
-          ) : (
-            <div key={i}>{panel}</div>
-          )
-        )}
+        <WeddingNavigator />
       </div>
       <Carousel
         elements={pageData.banner.map((b: IMenu) => (
@@ -64,7 +49,10 @@ export default async function Page() {
             <div className={`text-2xl md:text-3xl ${iannDog.className} w-full`}>
               {pageData.header.subheading}
             </div>
-            <div className="flex-row flex items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center my-16">
+            <div
+              id="guide"
+              className="flex-row flex items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center my-16"
+            >
               <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full" />
               {pageData.detailsTitle}
               <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full" />
@@ -77,6 +65,7 @@ export default async function Page() {
             <ServiceContentCard key={i} index={i} data={e} />
           ))}
         </div>
+        <div id="package" />
         <ContactFlasksButton
           title={pageData.packagesTitle.buttonTitle}
           linkTo={pageData.packagesTitle.linkTo}
@@ -100,8 +89,9 @@ export default async function Page() {
           ))}
         </div>
       </div>
+      <div id="consult" />
       <Consultant />
-      <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
+      <div id="reviews" className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
         <div className="uppercase text-4xl my-2 mt-8">our clients</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
           {events.map((c, i) => (
