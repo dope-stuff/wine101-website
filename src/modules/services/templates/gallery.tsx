@@ -23,13 +23,13 @@ export default function Galleries({images}: {images: string[]}) {
     <div className="relative z-10">
       <div className="flex flex-wrap justify-center">
         {images.map((image, index) => (
-          <div key={index} className="m-[2px] select-none relative bg-gray-400 p-0">
+          <div key={index} className="m-[2px] select-none relative p-0">
             <Image
               removeWrapper
               src={image}
               alt={image}
               height={240}
-              className="max-h-[240px] object-contain max-w-[320px] rounded-none"
+              className="h-full max-h-[240px] object-cover max-w-[320px] rounded-none cursor-pointer"
               onClick={() => handleClick(index)}
             />
           </div>
