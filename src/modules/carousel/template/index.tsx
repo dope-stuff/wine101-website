@@ -1,6 +1,6 @@
 'use client'
 import ArrowRightIcon from '@/modules/common/images/arrow-right'
-import {useState, ReactElement, useRef} from 'react'
+import {useState, ReactElement, useRef, useEffect} from 'react'
 
 interface CarouselProps {
   elements: ReactElement[]
@@ -10,16 +10,41 @@ interface CarouselProps {
 }
 
 const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [itemsPerView, setItemsPerView] = useState(7)
   const containerRef = useRef<HTMLDivElement>(null)
+  const elementRef = useRef<HTMLDivElement>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [elementWidth, setElementWidth] = useState(0)
+  const [pageCount, setPageCount] = useState(1)
+
+  useEffect(() => {
+    setItemsPerView(slidesPerView)
+
+    if (elementRef.current) {
+      const handleResize = () => {
+        const containerWidth = elementRef.current?.clientWidth || 0
+        setElementWidth(containerWidth)
+      }
+      handleResize() // Set initial width
+      window.addEventListener('resize', handleResize)
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+  }, [elementRef, elementWidth, gap, slidesPerView])
+
+  useEffect(() => {
+    const wide = elementWidth * elements.length
+    setPageCount(Math.ceil(wide / elementWidth) - Math.ceil(elements.length / itemsPerView))
+  }, [elementWidth, elements.length, itemsPerView])
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       Math.min(
         prevIndex + 1,
-        elements.length > slidesPerView && elements.length > 7
-          ? elements.length + 1
-          : elements.length + 1 - slidesPerView
+        // elements.length > itemsPerView ? elements.length + 1 : elements.length + 1 - itemsPerView
+        pageCount
       )
     )
   }
@@ -43,22 +68,24 @@ const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselP
           ref={containerRef}
           className="flex transition-transform duration-500"
           style={{
-            transform: `translateX(-${(currentIndex / slidesPerView) * 100}%)`,
-            gap: gap,
+            transform: `translateX(-${currentIndex * (elementWidth + gap)}px)`,
+            gap,
           }}
         >
           {elements.map((element, index) => (
             <div
               key={index}
+              ref={elementRef}
               className="w-full flex flex-shrink-0 relative"
-              style={{flex: `0 0 ${100 / slidesPerView}%`}}
+              style={{flex: `0 0 ${100 / itemsPerView}%`}}
             >
               {element}
             </div>
           ))}
         </div>
       </div>
-      {currentIndex < elements.length - 1 && currentIndex <= elements.length - slidesPerView && (
+      {/* {currentIndex < elements.length - 1 && currentIndex <= elements.length - itemsPerView && ( */}
+      {currentIndex < pageCount && (
         <button
           className="absolute right-2 top-1/2 transform -translate-y-1/2 z-50"
           onClick={nextSlide}
