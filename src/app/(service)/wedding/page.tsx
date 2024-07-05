@@ -1,4 +1,4 @@
-import {Image, Link} from '@nextui-org/react'
+import {Image} from '@nextui-org/react'
 import Carousel from '../../../modules/carousel/template'
 import ClientCard from '../../../modules/card/template/client'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
@@ -11,14 +11,16 @@ import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 import {eventService} from '@/lib/data/event.service'
 import Consultant from '@/modules/services/components/consultant'
 import WeddingNavigator from '@/modules/services/components/wedding-navigator'
+import {packageService} from '@/lib/data/package.service'
 
 export default async function Page() {
-  const [{data: pageData}, {data: events}] = await Promise.all([
+  const [{data: pageData}, {data: events}, {data: packages}] = await Promise.all([
     weddingService.getPageData({populate: '*'}),
     eventService.get({
       sort: {eventDate: 'desc'},
       filters: {type: 'WEDDING'},
     }),
+    packageService.getPageData({filters: {eventType: 'WEDDING'}}),
   ])
 
   return (
@@ -90,7 +92,7 @@ export default async function Page() {
         </div>
       </div>
       <div id="consult" />
-      <Consultant />
+      <Consultant packages={packages} />
       <div id="reviews" className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
         <div className="uppercase text-4xl my-2 mt-8">our clients</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
