@@ -36,7 +36,7 @@ export default async function Page() {
       />
       <div className="max-w-[2040px] w-full justify-center flex-col flex items-center mx-auto">
         <div className="relative flex-row flex w-full justify-center">
-          <FlasksIcon width={100} height={100} className="hidden md:flex absolute left-0 top-20" />
+          <FlasksIcon width={100} height={100} className="hidden md:flex absolute right-20 top-20" />
           <div className="max-w-[90%] md:max-w-[60%] w-full flex-col flex text-center items-center justify-center mt-8 relative gap-4">
             <div className="text-2xl md:text-3xl font-semibold uppercase">
               {pageData.header.heading}

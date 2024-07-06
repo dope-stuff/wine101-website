@@ -47,6 +47,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
                 <Link
                   className="flex justify-center text-white text-lg uppercase cursor-pointer"
                   href={item.linkTo}
+                  target={item.linkTo?.includes('https') ? "_blank" : ""}
                 >
                   {item.mediaUrl && (
                     <Image className="min-w-[20px]" src={item.mediaUrl} alt={item.alt} />
