@@ -1,13 +1,13 @@
 'use client'
 import {useState} from 'react'
-import ConsultantModal from './modal'
+import PackageModal from './modal'
 import {Package} from '@/lib/data/models/package'
 
-interface ConsultantProps {
+interface PackageProps {
   packages: Package[]
 }
 
-export default function Consultant({packages}: ConsultantProps) {
+export default function WeddingPackages({packages}: PackageProps) {
   const guestNumbers = [
     {title: '150', value: 150},
     {title: '200', value: 200},
@@ -20,12 +20,12 @@ export default function Consultant({packages}: ConsultantProps) {
   const [guest, setGuest] = useState(0)
 
   return (
-    <div className="w-full h-full flex-row flex items-center flex-wrap md:flex-nowrap justify-evenly gap-10 text-center bg-[#81CF8A] p-4 pb-8 mb-10 md:mb-4 relative">
+    <div className="w-full h-full flex-row flex items-center flex-wrap md:flex-nowrap justify-evenly gap-10 text-center bg-[#81CF8A] p-4 pb-8 md:mb-4 relative">
       <div className="flex-col flex text-center text-4xl">
         <div>1o1 wedding</div>
         <div>consultant</div>
       </div>
-      <div className="flex flex-col items-center justify-center my-4">
+      <div className="flex flex-col items-center justify-center mb-4">
         <div className="text-2xl mb-4 uppercase">How many guests?</div>
         <div className="flex-row flex gap-x-8 gap-y-4 max-w-[500px] flex-wrap justify-center">
           {guestNumbers.map((guestNumber, i) => (
@@ -40,7 +40,7 @@ export default function Consultant({packages}: ConsultantProps) {
             </button>
           ))}
         </div>
-        <div className="text-2xl mb-4 uppercase">venue style</div>
+        <div className="text-2xl my-4 uppercase">venue style</div>
         <div className="flex-row flex gap-x-8 gap-y-4 max-w-[500px] flex-wrap justify-center">
           {types.map((typeElement, index) => (
             <button
@@ -54,7 +54,7 @@ export default function Consultant({packages}: ConsultantProps) {
             </button>
           ))}
         </div>
-        <ConsultantModal data={packages} filters={{guest, type}} />
+        <PackageModal data={packages} filters={{guest, type}} />
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ export default function WeddingNavigator() {
     {title: ''},
     {title: 'our package', href: 'package'},
     {title: ''},
-    {title: 'quick consult', href: 'consult'},
+    {title: 'quick consult', href: 'wedding-consult'},
     {title: ''},
     {title: 'our client’s review', href: 'reviews'},
   ]
@@ -14,7 +14,7 @@ export default function WeddingNavigator() {
     i % 2 !== 0 ? (
       i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black" />
     ) : (
-      <Link key={i} href={`/wedding/#${panel.href}`}>
+      <Link className="text-black" key={i} href={`/wedding/#${panel.href}}`}>
         {panel.title}
       </Link>
     )

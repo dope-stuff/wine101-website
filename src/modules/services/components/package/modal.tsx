@@ -8,19 +8,16 @@ import {Package} from '@/lib/data/models/package'
 import FlasksIcon from '@/modules/common/images/flasks'
 import WaitressServeIcon from '@/modules/common/images/waitress-serve'
 
-interface ConsultantModalProps {
+interface PackageModalProps {
   data: Package[]
   filters: {guest: number; type: string}
 }
 
-export default function ConsultantModal({data, filters}: ConsultantModalProps) {
+export default function PackageModal({data, filters}: PackageModalProps) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure()
-  console.log('ear', data)
-
   const [pageData, setPageData] = useState<Package>()
 
   useEffect(() => {
-    console.log(data)
     if (filters && data)
       setPageData(
         data.find(
@@ -52,7 +49,7 @@ export default function ConsultantModal({data, filters}: ConsultantModalProps) {
       </Button>
       <Modal size="2xl" backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent className="border-dashed border-5 border-black">
-          <ModalBody className='max-h-[100vh] h-full overflow-y-auto'>
+          <ModalBody className='h-full'>
             <div className="flex flex-col items-center text-xl pb-4">
               <div className="relative w-full py-4">
                 <div className={`text-4xl text-center ${ukijqolYantu.className}`}>Wine1O1</div>
@@ -68,33 +65,34 @@ export default function ConsultantModal({data, filters}: ConsultantModalProps) {
                     <div className="w-[40%] flex-col flex items-center h-full relative">
                       <div className="uppercase text-3xl">Package</div>
                       <div
-                        className={`text-[160px] leading-[120px] lowercase ${tanHarmoni.className}`}
+                        className={`text-[140px] leading-[160px] uppercase ${tanHarmoni.className}`}
                       >
                         {pageData.name}
                       </div>
-                      <div className="uppercase text-3xl">{pageData.locationType}</div>
+                      <div className="uppercase text-3xl mt-[-20px]">{pageData.locationType}</div>
                       <FlasksIcon width={50} height={50} className="absolute right-0 bottom-8" />
                     </div>
                     <div className="flex-1 flex-col flex gap-4">
                       <div>
-                        <div>~ {(pageData.minPax + pageData.maxPax) / 2} Guests</div>
+                        <span className="align-middle">~</span>{pageData.maxPax} Guests
                         <div>
                           {wineList.reduce((acc, cur) => (acc += cur.quantity || 0), 0)} bottles of
                           wine
                         </div>
-                        <div>*Maximum 15 bottles of Empress</div>
+                        <div className="text-sm">{pageData.notes}</div>
                       </div>
-                      <div>
+                      <div className="text-sm">
                         {wineList.map((e, index) => (
+                          e.quantity && e.quantity > 0? 
                           <div key={index} className="flex-row flex items-center gap-4">
                             <div className="w-[100px] uppercase">{e.name}</div>
                             <div>{e.quantity} Bottles</div>
-                          </div>
+                          </div> : <></>
                         ))}
                       </div>
                       <div className="flex-col flex items-center rounded-full py-1 px-2 text-lg text-white bg-primary-1 border-4 border-black">
-                        <div className="text-2xl">{pageData.price.toLocaleString()}</div>
-                        <div className="text-[14px]">THB</div>
+                        <div className="text-xl">{pageData.price.toLocaleString()}</div>
+                        <div className="text-sm mt-[-5px]">THB</div>
                       </div>
                     </div>
                   </div>
@@ -109,7 +107,7 @@ export default function ConsultantModal({data, filters}: ConsultantModalProps) {
                         Wine corner
                       </div>
                     </div>
-                    <div className="flex-1 flex-col flex gap-4">
+                    <div className="flex-1 flex-col flex gap-4 text-md">
                       <ul style={{listStyle: 'disc'}}>
                         <li>4 hours (half day) exclude setup</li>
                         <li>Bride & Groom wine glass team</li>
@@ -118,8 +116,8 @@ export default function ConsultantModal({data, filters}: ConsultantModalProps) {
                       </ul>
                       <div className="relative flex flex-row w-full">
                         <div className="w-full flex-col flex items-center rounded-full py-1 px-2 text-lg text-white bg-primary-1 border-4 border-black">
-                          <div className="text-2xl">{pageData.addonPrice.toLocaleString()}</div>
-                          <div className="text-[14px]">THB</div>
+                          <div className="text-xl">{pageData.addonPrice.toLocaleString()}</div>
+                          <div className="text-sm mt-[-5px]">THB</div>
                         </div>
                         <WaitressServeIcon
                           width={70}
@@ -131,18 +129,23 @@ export default function ConsultantModal({data, filters}: ConsultantModalProps) {
                   </div>
                   <button
                     className="whitespace-nowrap py-4 px-8 bg-black text-white text-2xl mt-4"
-                    onClick={() => onOpenNewTab(pageData.buttonTitle)}
+                    onClick={() => onOpenNewTab(pageData.buttonLinkTo)}
                   >
                     {pageData.buttonTitle}
                   </button>
                 </div>
               ) : (
                 <div className="text-center">
-                  <div>No Data</div>
-                  <div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem incidunt
-                    debitis cumque autem saepe obcaecati id nostrum doloremque enim reiciendis?
+                  <div className="py-2 text-lg">Looking for a Customized Package?</div>
+                  <div className="py-4 text-sm">
+                    Please contact us for a customized package. Let us help you on what you may need for your special event!
                   </div>
+                  <button
+                    className="whitespace-nowrap py-4 px-8 bg-black text-white text-2xl mt-4"
+                    onClick={() => onOpenNewTab('https://line.me/R/ti/p/@839lfzqn')}
+                  >
+                    Let&apos;s Discuss!
+                  </button>
                 </div>
               )}
             </div>

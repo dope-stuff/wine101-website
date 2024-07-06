@@ -28,7 +28,7 @@ export default async function Page() {
             Wine 404!
         </div>
         <div className={`max-w-[100vw] w-[600px] text-2xl text-center px-4 ${iannDog.className}`}>
-            We cannot find what you're looking for but...
+            We cannot find what you&apos;re looking for but...
         </div>
         <div className={`max-w-[100vw] w-[600px] text-2xl text-center px-4 ${iannDog.className}`}>
           {pageData.header.subheading}

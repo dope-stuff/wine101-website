@@ -9,7 +9,7 @@ import FlasksIcon from '@/modules/common/images/flasks'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 import {eventService} from '@/lib/data/event.service'
-import Consultant from '@/modules/services/components/consultant'
+import Package from '@/modules/services/components/package'
 import WeddingNavigator from '@/modules/services/components/wedding-navigator'
 import {packageService} from '@/lib/data/package.service'
 
@@ -91,8 +91,8 @@ export default async function Page() {
           ))}
         </div>
       </div>
-      <div id="consult" />
-      <Consultant packages={packages} />
+      <div id="wedding-consult" />
+      <Package packages={packages} />
       <div id="reviews" className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
         <div className="uppercase text-4xl my-2 mt-8">our clients</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
