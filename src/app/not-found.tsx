@@ -24,9 +24,7 @@ export default async function Page() {
     <>
       <NextEvent />
       <div className="flex flex-col items-center gap-4">
-        <div className="w-[300px] text-3xl md:text-5xl text-center mt-10">
-            Wine 404!
-        </div>
+        <div className="w-[300px] text-3xl md:text-5xl text-center mt-10">Wine 404!</div>
         <div className={`max-w-[100vw] w-[600px] text-2xl text-center px-4 ${iannDog.className}`}>
             We cannot find what you&apos;re looking for but...
         </div>

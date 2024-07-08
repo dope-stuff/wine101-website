@@ -37,25 +37,26 @@ export default function NextEventCountDown({date}: NextEventCountDownProps) {
   useEffect(() => {
     const timer = setInterval(updateCountDown, 1000)
     return () => clearInterval(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
   return (
     <>
       <NextEventPopup date={date} countDown={countDown} />
       <div className="flex flex-col items-center justify-center">
-        <div className="text-3xl">{countDown.days}</div>
+        <div className="text-3xl">{date ? countDown.days : '00'}</div>
         <div className="text-xl">DAY</div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <div className="text-3xl">{countDown.hours}</div>
+        <div className="text-3xl">{date ? countDown.hours : '00'}</div>
         <div className="text-xl">HOUR</div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <div className="text-3xl">{countDown.minutes}</div>
+        <div className="text-3xl">{date ? countDown.minutes : '00'}</div>
         <div className="text-xl">MINUTE</div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <div className="text-3xl">{countDown.seconds}</div>
+        <div className="text-3xl">{date ? countDown.seconds : '00'}</div>
         <div className="text-xl">SECOND</div>
       </div>
     </>
