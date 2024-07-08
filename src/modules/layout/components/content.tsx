@@ -12,8 +12,8 @@ import {
 } from '@nextui-org/react'
 import {Inter} from 'next/font/google'
 import {Footer, NavbarMenu as INavbarMenu, Navbar as INavbar} from '@/lib/data/models/navbar'
-import {useEffect} from 'react'
 import {useRouter} from 'next/navigation'
+import {useEffect, useReducer} from 'react'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -22,29 +22,37 @@ interface MainLayoutProps {
   navbar: INavbar
   footer: Footer
 }
+
 const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
   const router = useRouter()
+  const [isMenuOpen, setIsMenuOpen] = useReducer((current) => !current, false)
+
   useEffect(() => {
     /** set BookNowButton link to */
     if (navbar.bookNowLinkTo) {
       localStorage.setItem('bookNowLinkTo', navbar.bookNowLinkTo)
     }
   }, [navbar])
-  console.log(navbar.menu)
+  // console.log(navbar.menu)
 
-  const handleClick = (item: INavbarMenu) => {
-    if (item.linkTo) {
-      if (item.alt === 'Wine 101 Shop') {
-        window.open(item.linkTo, '_blank')
-      } else {
-        router.push(item.linkTo)
-      }
-    }
-  }
+  // const handleClick = (item: INavbarMenu) => {
+  //   if (item.linkTo) {
+  //     if (item.alt === 'Wine 101 Shop') {
+  //       window.open(item.linkTo, '_blank')
+  //     } else {
+  //       router.push(item.linkTo)
+  //     }
+  //   }
+  // }
 
   return (
     <div className="h-screen flex flex-col">
-      <Navbar maxWidth="full" style={{background: '#BE1C2D', color: '#fff'}}>
+      <Navbar
+        maxWidth="full"
+        style={{background: '#BE1C2D', color: '#fff'}}
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={setIsMenuOpen}
+      >
         <NavbarContent className="flex" justify="start">
           <NavbarBrand>
             <Link className="flex justify-center text-white text-lg uppercase" href="/">
@@ -74,12 +82,14 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
         <NavbarContent className="sm:hidden flex p-2" justify="end">
           <NavbarMenuToggle className="text-white" />
         </NavbarContent>
-        <NavbarMenu className="my-6 gap-6">
+        <NavbarMenu className="gap-6">
           {navbar.menu.map((item: INavbarMenu, index: number) => (
             <NavbarMenuItem key={index}>
-              <button
-                className="flex justify-center text-lg uppercase cursor-pointer mx-auto"
-                onClick={() => handleClick(item)}
+              <Link
+                className="flex justify-center text-lg uppercase cursor-pointer"
+                href={item.linkTo}
+                onClick={() => setIsMenuOpen()}
+                target={item.linkTo?.includes('https') ? '_blank' : ''}
               >
                 {item.mediaUrl && (
                   <div className="bg-primary-1 px-4 py-2 rounded-full">
@@ -87,7 +97,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
                   </div>
                 )}
                 {item.buttonTitle}
-              </button>
+              </Link>
             </NavbarMenuItem>
           ))}
         </NavbarMenu>
