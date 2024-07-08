@@ -13,6 +13,7 @@ import {
 import {Inter} from 'next/font/google'
 import {Footer, NavbarMenu as INavbarMenu, Navbar as INavbar} from '@/lib/data/models/navbar'
 import {useEffect} from 'react'
+import {useRouter} from 'next/navigation'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -22,12 +23,24 @@ interface MainLayoutProps {
   footer: Footer
 }
 const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
+  const router = useRouter()
   useEffect(() => {
     /** set BookNowButton link to */
     if (navbar.bookNowLinkTo) {
       localStorage.setItem('bookNowLinkTo', navbar.bookNowLinkTo)
     }
   }, [navbar])
+  console.log(navbar.menu)
+
+  const handleClick = (item: INavbarMenu) => {
+    if (item.linkTo) {
+      if (item.alt === 'Wine 101 Shop') {
+        window.open(item.linkTo, '_blank')
+      } else {
+        router.push(item.linkTo)
+      }
+    }
+  }
 
   return (
     <div className="h-screen flex flex-col">
@@ -47,7 +60,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
                 <Link
                   className="flex justify-center text-white text-lg uppercase cursor-pointer"
                   href={item.linkTo}
-                  target={item.linkTo?.includes('https') ? "_blank" : ""}
+                  target={item.linkTo?.includes('https') ? '_blank' : ''}
                 >
                   {item.mediaUrl && (
                     <Image className="min-w-[20px]" src={item.mediaUrl} alt={item.alt} />
@@ -64,9 +77,9 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
         <NavbarMenu className="my-6 gap-6">
           {navbar.menu.map((item: INavbarMenu, index: number) => (
             <NavbarMenuItem key={index}>
-              <Link
-                className="flex justify-center text-lg uppercase cursor-pointer"
-                href={item.linkTo}
+              <button
+                className="flex justify-center text-lg uppercase cursor-pointer mx-auto"
+                onClick={() => handleClick(item)}
               >
                 {item.mediaUrl && (
                   <div className="bg-primary-1 px-4 py-2 rounded-full">
@@ -74,13 +87,13 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
                   </div>
                 )}
                 {item.buttonTitle}
-              </Link>
+              </button>
             </NavbarMenuItem>
           ))}
         </NavbarMenu>
       </Navbar>
       {children}
-      <div className="flex flex-row flex-wrap justify-between md:grid md:grid-cols-5 items-start py-4 px-6 mt-auto text-white bg-primary-1">
+      <div className="flex flex-row flex-wrap justify-between md:grid md:grid-cols-5 items-start py-4 px-6 mt-auto text-white bg-primary-1 z-10">
         <div className="md:h-full w-full flex items-center justify-center">
           <Image width={200} src={footer.logo.mediaUrl} alt={navbar.logo.alt} />
         </div>

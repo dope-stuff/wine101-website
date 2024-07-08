@@ -25,7 +25,7 @@ export default async function NextEvent() {
     workshop && (
       <div className="w-full flex items-center justify-center bg-primary-2">
         <div className="w-full max-w-7xl flex flex-col md:flex-row p-4 items-center justify-between gap-4">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center text-center">
             <div className="text-3xl">OUR NEXT WORKSHOP</div>
             <div className="text-2xl">{dayjs(workshop.eventDate).format('D MMMM YYYY')}</div>
           </div>

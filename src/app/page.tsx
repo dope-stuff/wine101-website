@@ -23,7 +23,7 @@ export default async function Page() {
   return (
     <>
       <NextEvent />
-      <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4 z-0 relative">
         <div className="w-[300px] text-2xl md:text-3xl text-center mt-6">
           {pageData.header.heading}
         </div>

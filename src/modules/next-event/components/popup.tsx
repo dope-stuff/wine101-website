@@ -29,8 +29,8 @@ export default function NextEventPopup({date, countDown}: NextEventPopupProps) {
 
   return (
     <>
-      <Modal hideCloseButton backdrop="blur" size="3xl" isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent className="border-dashed border-5 border-black">
+      <Modal hideCloseButton backdrop="blur" size="3xl" className='top-0' isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent className="border-dashed border-5 border-black text-center">
           <ModalBody>
             <div className="relative flex flex-col items-center text-2xl pb-8 gap-4">
               <Image width={140} height={140} src="/images/common/logo-dark.svg" alt="" />
@@ -48,27 +48,27 @@ export default function NextEventPopup({date, countDown}: NextEventPopupProps) {
                 <Image
                   width={80}
                   height={80}
-                  className="absolute left-0"
+                  className="absolute left-0 hidden sm:flex"
                   src="/images/common/waiter-1.svg"
                   alt=""
                 />
               </div>
-              <div className="flex flex-row gap-10 my-4 py-4 px-10 rounded-full text-white bg-primary-1 border-4 border-black">
+              <div className="grid grid-cols-2 sm:flex sm:flex-row rounded-[50px] sm:rounded-full gap-10 my-4 py-4 px-10  text-white bg-primary-1 border-4 border-black relative z-10">
                 <div className="flex flex-col items-center justify-center">
-                  <div className="text-4xl">{countDown.days}</div>
-                  <div className="text-2xl">DAY</div>
+                  <div className="text-3xl sm:text-4xl">{countDown.days}</div>
+                  <div className="text-xl sm:text-2xl">DAY</div>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <div className="text-4xl">{countDown.hours}</div>
-                  <div className="text-2xl">HOUR</div>
+                  <div className="text-3xl sm:text-4xl">{countDown.hours}</div>
+                  <div className="text-xl sm:text-2xl">HOUR</div>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <div className="text-4xl">{countDown.minutes}</div>
-                  <div className="text-2xl">MINUTE</div>
+                  <div className="text-3xl sm:text-4xl">{countDown.minutes}</div>
+                  <div className="text-xl sm:text-2xl">MINUTE</div>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <div className="text-4xl">{countDown.seconds}</div>
-                  <div className="text-2xl">SECOND</div>
+                  <div className="text-3xl sm:text-4xl">{countDown.seconds}</div>
+                  <div className="text-xl sm:text-2xl">SECOND</div>
                 </div>
               </div>
               <div className="relative w-full flex flex-col items-center">
