@@ -33,17 +33,6 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
       localStorage.setItem('bookNowLinkTo', navbar.bookNowLinkTo)
     }
   }, [navbar])
-  // console.log(navbar.menu)
-
-  // const handleClick = (item: INavbarMenu) => {
-  //   if (item.linkTo) {
-  //     if (item.alt === 'Wine 101 Shop') {
-  //       window.open(item.linkTo, '_blank')
-  //     } else {
-  //       router.push(item.linkTo)
-  //     }
-  //   }
-  // }
 
   return (
     <div className="h-screen flex flex-col">

@@ -24,5 +24,5 @@ export default async function Page({params}: {params: any}) {
     white: event.whiteWineUsed,
     red: event.redWineUsed,
   }
-  return <OurClient data={event} events={events} details={details} subdetails={subdetails} />
+  return <OurClient data={event} events={events} details={details} subdetails={subdetails} hideSplash />
 }

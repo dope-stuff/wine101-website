@@ -17,7 +17,6 @@ export default async function Collaboration() {
       filters: {type: 'COLLABORATION'},
     }),
   ])
-console.log(pageData.header);
 
   return (
     <>
@@ -61,7 +60,7 @@ console.log(pageData.header);
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
-              ></iframe>
+              />
             )}
           </div>
         </div>
@@ -70,14 +69,16 @@ console.log(pageData.header);
             <ServiceContentCard key={i} index={i} data={e} />
           ))}
         </div>
-        <div className="max-w-[2040px] flex flex-col w-full px-10">
-          <div className="uppercase text-4xl my-4">our clients</div>
-          <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-            {events.map((c, i) => (
-              <ClientCard data={c} key={i} />
-            ))}
+        {events.length > 0 && (
+          <div className="max-w-[2040px] flex flex-col w-full px-10">
+            <div className="uppercase text-4xl text-center my-4">our clients</div>
+            <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+              {events.map((c, i) => (
+                <ClientCard data={c} key={i} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <div className="mb-10" />
       </div>
     </>

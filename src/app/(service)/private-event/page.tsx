@@ -49,30 +49,35 @@ export default async function Page() {
               />
             </div>
           </div>
-          {pageData.header && (
-            <iframe
-              className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
-              src={pageData.header.mediaUrl}
-              title={pageData.header.alt}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          )}
+          <div className="relative">
+            <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
+            {pageData.header && (
+              <iframe
+                className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
+                src={pageData.header.mediaUrl}
+                title={pageData.header.alt}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            )}
+          </div>
         </div>
         <div className="max-w-[2040px] w-[90%] flex-col flex">
           {pageData.details.map((e: IMenu, i: number) => (
             <ServiceContentCard key={i} index={i} data={e} />
           ))}
         </div>
-        <div className="max-w-[2040px] flex flex-col w-full px-10">
-          <div className="uppercase text-4xl text-center my-4">our clients</div>
-          <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-            {events.map((c, i) => (
-              <ClientCard data={c} key={i} />
-            ))}
+        {events.length > 0 && (
+          <div className="max-w-[2040px] flex flex-col w-full px-10">
+            <div className="uppercase text-4xl text-center my-4">our clients</div>
+            <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+              {events.map((c, i) => (
+                <ClientCard data={c} key={i} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <div className="mb-10" />
       </div>
     </>

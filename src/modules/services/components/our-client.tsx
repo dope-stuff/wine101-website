@@ -13,8 +13,9 @@ interface OurClientProps {
   events: Event[]
   details: any
   subdetails: any
+  hideSplash?: boolean
 }
-export default function OurClient({data, events, details, subdetails}: OurClientProps) {
+export default function OurClient({data, events, details, subdetails, hideSplash}: OurClientProps) {
   const galleries = data.gallery
 
   const poster = (
@@ -70,6 +71,7 @@ export default function OurClient({data, events, details, subdetails}: OurClient
         <div>{data.owner}</div>
       </div>
       <ServiceDetail
+        hideSplash
         elements={carouselElements as JSX.Element[]}
         data={{
           ...data,
@@ -93,14 +95,18 @@ export default function OurClient({data, events, details, subdetails}: OurClient
         </div>
       )}
       {!!data.gallery && <Galleries images={`${galleries}`.split(',')} />}
-      {events.length ? <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
-        <div className="uppercase text-4xl mx-auto my-4">Explore more</div>
-        <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
-          {events.map((c, i) => (
-            <ClientCard data={c} key={i} withDetail />
-          ))}
+      {events.length > 0 ? (
+        <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
+          <div className="uppercase text-4xl mx-auto my-4">Explore more</div>
+          <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+            {events.map((c, i) => (
+              <ClientCard data={c} key={i} withDetail />
+            ))}
+          </div>
         </div>
-      </div> : <></>}
+      ) : (
+        <></>
+      )}
     </div>
   )
 }

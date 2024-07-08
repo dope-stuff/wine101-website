@@ -20,7 +20,7 @@ export default function WeddingNavigator() {
 
   return panels.map((panel, i) =>
     i % 2 !== 0 ? (
-      i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black" />
+      i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black hidden sm:flex" />
     ) : (
       <button
         key={i}
