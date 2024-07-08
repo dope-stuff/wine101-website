@@ -13,10 +13,11 @@ export default async function Collaboration() {
   const [{data: pageData}, {data: events}] = await Promise.all([
     collaborationService.getPageData({populate: '*'}),
     eventService.get({
-      sort: { eventDate: 'desc' },
-      filters: {type: 'COLLABORATION'}
+      sort: {eventDate: 'desc'},
+      filters: {type: 'COLLABORATION'},
     }),
   ])
+console.log(pageData.header);
 
   return (
     <>
@@ -50,7 +51,19 @@ export default async function Collaboration() {
               />
             </div>
           </div>
-          <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
+          <div className="relative">
+            <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
+            {pageData.header && (
+              <iframe
+                className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
+                src={pageData.header.mediaUrl}
+                title={pageData.header.alt}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            )}
+          </div>
         </div>
         <div className="max-w-[2040px] w-[90%] gap-4 flex-col flex">
           {pageData.details.map((e: IMenu, i: number) => (

@@ -12,9 +12,9 @@ export default async function Page() {
   const [{data: pageData}, {data: events}] = await Promise.all([
     eventService.getPageData({populate: '*'}),
     eventService.get({
-    sort: { eventDate: 'desc' },
-    filters: {type: 'PRIVATE'}
-  }),
+      sort: {eventDate: 'desc'},
+      filters: {type: 'PRIVATE'},
+    }),
   ])
 
   return (
@@ -49,7 +49,16 @@ export default async function Page() {
               />
             </div>
           </div>
-          <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
+          {pageData.header && (
+            <iframe
+              className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
+              src={pageData.header.mediaUrl}
+              title={pageData.header.alt}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          )}
         </div>
         <div className="max-w-[2040px] w-[90%] flex-col flex">
           {pageData.details.map((e: IMenu, i: number) => (

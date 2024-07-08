@@ -60,7 +60,16 @@ export default async function Page() {
               <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full" />
             </div>
           </div>
-          <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
+          {pageData.header && (
+            <iframe
+              className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
+              src={pageData.header.mediaUrl}
+              title={pageData.header.alt}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          )}
         </div>
         <div className="max-w-[90%] w-full flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
           {pageData.details.map((e, i) => (
