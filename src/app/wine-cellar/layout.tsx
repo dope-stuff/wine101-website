@@ -20,9 +20,10 @@ export default function Layout({children}: {children: React.ReactNode}) {
   return (
     <>
       <Container>
-        <div className="flex flex-row justify-evenly">
+        <div className="flex flex-row justify-evenly flex-wrap gap-4">
           <Image
             width={180}
+            className='min-w-[180px]'
             src="https://i.ibb.co/X2Bj0sJ/wine-101-lady-standing-with-big-bottle.webp"
             alt=""
           />
