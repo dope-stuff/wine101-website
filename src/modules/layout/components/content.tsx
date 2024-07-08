@@ -12,7 +12,7 @@ import {
 } from '@nextui-org/react'
 import {Inter} from 'next/font/google'
 import {Footer, NavbarMenu as INavbarMenu, Navbar as INavbar} from '@/lib/data/models/navbar'
-import {useEffect} from 'react'
+import {useEffect, useReducer} from 'react'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -21,7 +21,10 @@ interface MainLayoutProps {
   navbar: INavbar
   footer: Footer
 }
+
 const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
+  const [isMenuOpen, setIsMenuOpen] = useReducer((current) => !current, false)
+
   useEffect(() => {
     /** set BookNowButton link to */
     if (navbar.bookNowLinkTo) {
@@ -31,7 +34,12 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
 
   return (
     <div className="h-screen flex flex-col">
-      <Navbar maxWidth="full" style={{background: '#BE1C2D', color: '#fff'}}>
+      <Navbar
+        maxWidth="full"
+        style={{background: '#BE1C2D', color: '#fff'}}
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={setIsMenuOpen}
+      >
         <NavbarContent className="flex" justify="start">
           <NavbarBrand>
             <Link className="flex justify-center text-white text-lg uppercase" href="/">
@@ -66,6 +74,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
               <Link
                 className="flex justify-center text-lg uppercase cursor-pointer"
                 href={item.linkTo}
+                onPress={() => setIsMenuOpen()}
               >
                 {item.mediaUrl && (
                   <div className="bg-primary-1 px-4 py-2 rounded-full">
