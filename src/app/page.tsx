@@ -61,7 +61,7 @@ export default async function Page() {
           {pageData.servicesTitle}
           <FlasksIcon />
         </div>
-        <div className="min-h-[400px] grid grid-cols-2 lg:grid-cols-5 gap-4 px-4 mb-4">
+        <div className="min-h-[400px] grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 px-4 mb-4">
           {pageData.services.map((data, index) => (
             <ServiceCard key={index} data={data} />
           ))}

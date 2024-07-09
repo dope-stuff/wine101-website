@@ -92,30 +92,30 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
         </NavbarMenu>
       </Navbar>
       {children}
-      <div className="flex flex-row flex-wrap justify-between md:grid md:grid-cols-5 items-start py-4 px-6 mt-auto text-white bg-primary-1 z-10">
+      <div className="flex flex-row flex-wrap justify-between md:grid md:grid-cols-5 items-start py-4 px-6 gap-4 mt-auto text-white bg-primary-1 z-10">
         <div className="md:h-full w-full flex items-center justify-center">
           <Image width={200} src={footer.logo.mediaUrl} alt={navbar.logo.alt} />
         </div>
-        <div className="flex flex-col justify-start items-start px-4">
+        <div className="flex-1 flex flex-col justify-start items-start px-4">
           <div className="text-2xl mb-2">{footer.aboutTitle}</div>
           {footer.about.map((item, index: number) => (
-            <Link href={item.linkTo} key={index} className={`text-white ${inter.className}`}>
+            <Link href={item.linkTo} key={index} className={`whitespace-nowrap text-white ${inter.className}`}>
               {item.buttonTitle}
             </Link>
           ))}
         </div>
-        <div className="flex flex-col justify-start items-start px-4">
+        <div className="flex-1 flex flex-col justify-start items-start px-4">
           <div className="text-2xl mb-2">{footer.serviceTitle}</div>
           {footer.service.map((item, index: number) => (
-            <Link href={item.linkTo} key={index} className={`text-white ${inter.className}`}>
+            <Link href={item.linkTo} key={index} className={`whitespace-nowrap text-white ${inter.className}`}>
               {item.buttonTitle}
             </Link>
           ))}
         </div>
-        <div className="flex flex-col justify-start items-start px-4">
+        <div className="flex-1 flex flex-col justify-start items-start px-4">
           <div className="text-2xl mb-2">{footer.winesTitle}</div>
           {footer.wines.map((item, index: number) => (
-            <Link href={item.linkTo} key={index} className={`text-white ${inter.className}`}>
+            <Link href={item.linkTo} key={index} className={`whitespace-nowrap text-white ${inter.className}`}>
               {item.buttonTitle}
             </Link>
           ))}

@@ -4,7 +4,7 @@ import {Link} from '@nextui-org/react'
 export default function ServiceCard({data}: {data: IService}) {
   return (
     <div
-      className="flex-1 h-full flex-col flex items-center justify-center gap-2 !bg-cover !bg-no-repeat p-4 text-center"
+      className="flex-1 min-h-[180px] h-full flex-col flex items-center justify-center gap-2 !bg-cover !bg-no-repeat p-4 text-center"
       style={{
         background: !!data.mediaUrl ? `url(${data.mediaUrl})` : '#BE1C2D',
       }}
