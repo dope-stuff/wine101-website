@@ -47,9 +47,9 @@ export default function PackageModal({data, filters}: PackageModalProps) {
       >
         consult
       </Button>
-      <Modal size="2xl" backdrop="blur" className='!mt-4' isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal placement='center' size="2xl" backdrop="blur" className='!mt-4' isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent className=" border-dashed border-5 border-black">
-          <ModalBody className='px-4 sm:px-6 h-full max-h-[95vh] overflow-auto'>
+          <ModalBody className='px-4 sm:px-6 h-full max-h-[97vh] overflow-auto'>
             <div className="flex flex-col items-center text-xl pb-4">
               <div className="relative w-full py-4">
                 <div className={`text-4xl text-center ${ukijqolYantu.className}`}>Wine1O1</div>
@@ -60,7 +60,7 @@ export default function PackageModal({data, filters}: PackageModalProps) {
                 />
               </div>
               {pageData ? (
-                <div className="w-full flex-col flex items-center text-[18px] gap-4">
+                <div className="w-full flex-col flex items-center text-[16px] sm:text-[18px] gap-4">
                   <div className="w-full flex-row flex flex-wrap justify-evenly gap-4">
                     <div className="w-[40%] min-w-[150px] flex-col flex items-center h-full relative">
                       <div className="uppercase text-2xl sm:text-3xl">Package</div>
@@ -79,7 +79,7 @@ export default function PackageModal({data, filters}: PackageModalProps) {
                           {wineList.reduce((acc, cur) => (acc += cur.quantity || 0), 0)} bottles of
                           wine
                         </div>
-                        <div className="text-sm">{pageData.notes}</div>
+                        <div className="text-xs sm:text-sm">{pageData.notes}</div>
                       </div>
                       <div className="text-sm text-start">
                         {wineList.map((e, index) => (
@@ -128,7 +128,7 @@ export default function PackageModal({data, filters}: PackageModalProps) {
                     </div>
                   </div>
                   <button
-                    className="whitespace-nowrap py-4 px-8 bg-black text-white text-2xl mt-4"
+                    className="whitespace-nowrap py-2 px-4 bg-black text-white text-xl mt-4"
                     onClick={() => onOpenNewTab(pageData.buttonLinkTo)}
                   >
                     {pageData.buttonTitle}
@@ -141,7 +141,7 @@ export default function PackageModal({data, filters}: PackageModalProps) {
                     Please contact us for a customized package. Let us help you on what you may need for your special event!
                   </div>
                   <button
-                    className="whitespace-nowrap py-4 px-8 bg-black text-white text-2xl mt-4"
+                    className="whitespace-nowrap py-2 px-4 bg-black text-white text-2xl mt-4"
                     onClick={() => onOpenNewTab('https://line.me/R/ti/p/@839lfzqn')}
                   >
                     Let&apos;s Discuss!
