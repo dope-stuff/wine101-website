@@ -28,14 +28,17 @@ export default function ServiceDetail({elements, data, hideSplash}: ServiceDetai
         ))}
         {hideSplash && (
           <>
-            <SplashColorIcon className="max-w-none right-0 bottom-[-2rem] lg:right-0 lg:bottom-[-5rem] xl:bottom-[-2.8rem] absolute -z-10" />
-            <div className="flex-col flex items-center leading-4 gap-2 right-[5rem] bottom-[1rem] lg:right-[5.5rem] lg:bottom-[-2.2rem] xl:bottom-0 absolute -z-10 text-[12px]">
+            <SplashColorIcon className="max-w-none right-0 bottom-[-4rem] lg:right-0 lg:bottom-[-5rem] xl:bottom-[-2.8rem] absolute -z-10" />
+            <div className="h-[90px] flex-col flex items-center justify-center leading-4 gap-2 right-[5rem] bottom-[-1rem] lg:right-[5.5rem] lg:bottom-[-2.2rem] xl:bottom-0 absolute -z-10 text-[12px]">
               {data.subdetails &&
-                Object.keys(data.subdetails).map((e, index) => (
-                  <div key={index}>
-                    {e} {data.subdetails[e]}
-                  </div>
-                ))}
+                Object.keys(data.subdetails).map(
+                  (e, index) =>
+                    !!data.subdetails[e] && (
+                      <div key={index}>
+                        {e} {data.subdetails[e]}
+                      </div>
+                    )
+                )}
             </div>
           </>
         )}

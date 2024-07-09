@@ -19,11 +19,11 @@ const Menu = ({children, title}: {children: React.ReactNode; title: string}) => 
 export default function Layout({children}: {children: React.ReactNode}) {
   return (
     <>
-      <Container>
+      {/* <Container className="blur-3xl">
         <div className="flex flex-row justify-evenly flex-wrap gap-4">
           <Image
             width={180}
-            className='min-w-[180px]'
+            className="min-w-[180px]"
             src="https://i.ibb.co/X2Bj0sJ/wine-101-lady-standing-with-big-bottle.webp"
             alt=""
           />
@@ -80,9 +80,10 @@ export default function Layout({children}: {children: React.ReactNode}) {
             </div>
           </Menu>
         </div>
-      </Container>
-      <div className="w-full text-center bg-primary text-white text-5xl pt-4 pb-6">ALL WINES</div>
-      <Container>{children}</Container>
+      </Container> */}
+      {/* <div className="w-full text-center bg-primary text-white text-5xl pt-4 pb-6">ALL WINES</div> */}
+      <div className="w-full text-center bg-primary absolute top-1/2 z-10 text-white text-5xl pt-4 pb-6">COMING SOON</div>
+      <Container className='h-screen overflow-hidden'>{children}</Container>
     </>
   )
 }

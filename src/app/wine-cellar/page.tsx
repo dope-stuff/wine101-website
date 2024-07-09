@@ -15,7 +15,7 @@ export default async function Page() {
 
   return (
     <>
-      <div className="w-full flex flex-col items-center">
+      <div className="w-full flex flex-col items-center blur-3xl disabled">
         <div className="text-2xl md:text-3xl my-4">Best Sellers</div>
         <div className="w-full grid grid-cols-list justify-center gap-4">
           {products.map((product, index) => (

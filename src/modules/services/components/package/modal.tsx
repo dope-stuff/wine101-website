@@ -63,16 +63,16 @@ export default function PackageModal({data, filters}: PackageModalProps) {
                 <div className="w-full flex-col flex items-center text-[18px] gap-4">
                   <div className="w-full flex-row flex flex-wrap justify-evenly gap-4">
                     <div className="w-[40%] min-w-[150px] flex-col flex items-center h-full relative">
-                      <div className="uppercase text-3xl">Package</div>
+                      <div className="uppercase text-2xl sm:text-3xl">Package</div>
                       <div
-                        className={`text-[140px] leading-[160px] uppercase ${tanHarmoni.className}`}
+                        className={`text-[120px] sm:text-[140px] leading-[140px] sm:leading-[160px] uppercase ${tanHarmoni.className}`}
                       >
                         {pageData.name}
                       </div>
-                      <div className="uppercase text-3xl mt-[-20px]">{pageData.locationType}</div>
+                      <div className="uppercase text-2xl sm:text-3xl mt-[-20px]">{pageData.locationType}</div>
                       <FlasksIcon width={50} height={50} className="absolute right-0 bottom-8 hidden sm:flex" />
                     </div>
-                    <div className="flex-1 min-w-[150px] flex-col items-center text-center sm:text-start flex gap-2 sm:gap-4">
+                    <div className="flex-1 min-w-[150px] flex-col items-center sm:items-start text-center sm:text-start flex gap-2 sm:gap-4">
                       <div>
                         <span className="align-middle">~</span>{pageData.maxPax} Guests
                         <div>
@@ -108,7 +108,7 @@ export default function PackageModal({data, filters}: PackageModalProps) {
                       </div>
                     </div>
                     <div className="flex-1 min-w-[150px] flex-col text-center sm:text-start flex gap-4 text-sm sm:text-md">
-                      <ul style={{listStyle: 'disc'}}>
+                      <ul className='sm:list-disc'>
                         <li>4 hours (half day) exclude setup</li>
                         <li>Bride & Groom wine glass team</li>
                         <li>Wine tasting activity for guest</li>
