@@ -47,9 +47,9 @@ export default function PackageModal({data, filters}: PackageModalProps) {
       >
         consult
       </Button>
-      <Modal size="2xl" backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent className="border-dashed border-5 border-black">
-          <ModalBody className='px-4 sm:px-6 h-full'>
+      <Modal size="2xl" backdrop="blur" className='!mt-4' isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent className=" border-dashed border-5 border-black">
+          <ModalBody className='px-4 sm:px-6 h-full max-h-[95vh] overflow-auto'>
             <div className="flex flex-col items-center text-xl pb-4">
               <div className="relative w-full py-4">
                 <div className={`text-4xl text-center ${ukijqolYantu.className}`}>Wine1O1</div>
