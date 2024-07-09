@@ -47,8 +47,11 @@ const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselP
             Math.ceil(elements.length > 0 ? elements.length - 1 : elements.length)
           )
     )
-
-    if (currentIndex === elements.length) {
+    if (
+      Math.ceil(elements.length - containerRef.current?.clientWidth! / elementWidth) -
+        currentIndex ===
+      0
+    ) {
       setCurrentIndex(0)
     }
   }
