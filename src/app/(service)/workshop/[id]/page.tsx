@@ -15,8 +15,6 @@ export default async function Page({params}: {params: any}) {
     {populate: {wineList: '*'}},
     Number(params.id)
   )
-  console.log(workshop)
-
   const {data: workshops} = await workshopService.get({
     filters: {id: {$ne: Number(params.id)}},
     sort: {eventDate: 'desc'},
