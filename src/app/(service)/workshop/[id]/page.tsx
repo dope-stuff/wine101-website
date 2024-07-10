@@ -15,9 +15,11 @@ export default async function Page({params}: {params: any}) {
     {populate: {wineList: '*'}},
     Number(params.id)
   )
+  console.log(workshop)
+
   const {data: workshops} = await workshopService.get({
-    filters: { id: {$ne: Number(params.id)}},
-    sort: { eventDate: 'desc' },
+    filters: {id: {$ne: Number(params.id)}},
+    sort: {eventDate: 'desc'},
     pagination: {pageSize: 10, withCount: false},
   })
 
@@ -91,7 +93,9 @@ export default async function Page({params}: {params: any}) {
             <WineCard
               key={index}
               data={{...product}}
-              theme={getProductTheme(!!product.categories ? product.categories : '')}
+              theme={getProductTheme(
+                !!product.categories ? product.categories : product.category || ''
+              )}
             />
           ))}
         />

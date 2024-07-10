@@ -27,8 +27,7 @@ export default function WineCard({data, theme}: WineCardProps) {
   const categories = getProductCategories(data)
 
   return (
-    // remove pointer-events-none if remove coming soon
-    <div className="w-[250px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white pointer-events-none">
+    <div className="w-[250px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
       <div
         className="relative w-full h-[160px] flex-row flex justify-center items-center"
         style={{backgroundColor: theme.bgColor}}
@@ -64,7 +63,7 @@ export default function WineCard({data, theme}: WineCardProps) {
               : data.bottlePrice.toLocaleString() || '-'}{' '}
             {data.variants ? data.variants[0].prices[0].currency_code.toUpperCase() : 'THB'}
           </div>
-          <CardWineButton handle={data.handle} />
+          <CardWineButton handle={!!data.handle ? data.handle : data.linkTo} />
         </div>
       </div>
     </div>

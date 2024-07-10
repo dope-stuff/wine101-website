@@ -3,7 +3,11 @@ import BagIcon from '@/modules/common/images/bag'
 
 const CardWineButton = ({handle}: {handle: string}) => {
   const onClick = () => {
-    window.open(`https://wine101.wine/products/${handle}`)
+    if (handle.includes('https')) {
+      window.open(handle, '_blank')
+    } else {
+      window.open(`https://wine101.wine/products/${handle}`)
+    }
   }
 
   return (

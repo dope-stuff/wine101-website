@@ -9,7 +9,7 @@ interface CarouselProps {
   gap?: number
 }
 
-const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselProps) => {
+const Carousel = ({elements, slidesPerView = 8, arrowColor, gap = 16}: CarouselProps) => {
   const [itemsPerView, setItemsPerView] = useState(7)
   const containerRef = useRef<HTMLDivElement>(null)
   const elementRef = useRef<HTMLDivElement>(null)
@@ -48,7 +48,7 @@ const Carousel = ({elements, slidesPerView = 7, arrowColor, gap = 16}: CarouselP
           )
     )
     if (
-      Math.ceil(elements.length - containerRef.current?.clientWidth! / elementWidth) -
+      Math.ceil(elements.length - containerRef.current?.clientWidth! / elementWidth) + 1 -
         currentIndex ===
       0
     ) {

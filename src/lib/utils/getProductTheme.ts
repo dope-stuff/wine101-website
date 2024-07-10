@@ -1,26 +1,26 @@
 export const getProductTheme = (type = '') => {
-  if (type === 'White Wine') {
+  if ('White Wine'.toLowerCase().includes(type.toLowerCase())) {
     return {
       textColor: '#AEC5A4',
       bgColor: '#90AD83',
       type: 'white',
     }
   }
-  if (type === 'Sparkling Wine (Champagne)') {
+  if ('Wine (Champagne)'.toLowerCase().includes(type.toLowerCase())) {
     return {
       textColor: '#ECCB7B',
       bgColor: '#D3AF61',
       type: 'sparkling',
     }
   }
-  if (type === 'Rosé Wine') {
+  if ('Rosé Wine'.toLowerCase().includes(type.toLowerCase())) {
     return {
       textColor: '#F88D97',
       bgColor: '#F16471',
       type: 'rose',
     }
   }
-  if (type === 'Ice Wine') {
+  if ('Ice Wine'.toLowerCase().includes(type.toLowerCase())) {
     return {
       textColor: '#8AB5CD',
       bgColor: '#6690A7',

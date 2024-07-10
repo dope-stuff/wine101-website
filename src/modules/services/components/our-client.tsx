@@ -80,7 +80,7 @@ export default function OurClient({data, events, details, subdetails, hideSplash
         }}
       />
       {data.testimonials.length > 0 && (
-        <div className="max-w-[2040px] w-full flex flex-col p-4">
+        <div className="max-w-[2040px] w-full flex flex-col p-4 relative">
           <div className="flex-row flex items-center gap-2">
             <div className="uppercase text-4xl my-4">how lovebirds talk about us</div>
             <FlasksIcon width={100} height={100} />
@@ -96,7 +96,7 @@ export default function OurClient({data, events, details, subdetails, hideSplash
       )}
       {!!data.gallery && <Galleries images={`${galleries}`.split(',')} />}
       {events.length > 0 ? (
-        <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
+        <div className="max-w-[2040px] flex flex-col w-full mx-auto px-10 relative">
           <div className="uppercase text-4xl mx-auto my-4">Explore more</div>
           <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
             {events.map((c, i) => (
