@@ -13,7 +13,7 @@ export const getProductTheme = (type = '') => {
       type: 'sparkling',
     }
   }
-  if ('Rosé Wine'.toLowerCase().includes(type.toLowerCase())) {
+  if ('Rosé Wine'.toLowerCase().includes(type.toLowerCase()) || 'Rose Wine'.toLowerCase().includes(type.toLowerCase())) {
     return {
       textColor: '#F88D97',
       bgColor: '#F16471',
