@@ -80,7 +80,7 @@ export default function OurClient({data, events, details, subdetails, hideSplash
         }}
       />
       {data.testimonials.length > 0 && (
-        <div className="max-w-[2040px] w-full flex flex-col p-4 relative">
+        <div className="max-w-[2040px] w-full mx-auto flex flex-col p-4 relative">
           <div className="flex-row flex items-center gap-2">
             <div className="uppercase text-4xl my-4">how lovebirds talk about us</div>
             <FlasksIcon width={100} height={100} />

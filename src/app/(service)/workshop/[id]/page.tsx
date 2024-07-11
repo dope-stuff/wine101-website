@@ -67,7 +67,7 @@ export default async function Page({params}: {params: any}) {
       ]
 
   return (
-    <div className="min-w-[240px] max-w-[2040px] flex-col flex mx-auto gap-4 p-2">
+    <div className="min-w-[240px] flex-col flex gap-4 p-2">
       <div className="flex-row flex flex-nowrap gap-2 items-center">
         <div>{workshop.name}</div>
         <div className="h-4 w-[2px] bg-black" />
@@ -85,7 +85,7 @@ export default async function Page({params}: {params: any}) {
           },
         }}
       />
-      <div className="w-full flex p-4 relative">
+      <div className="w-full  flex p-4 relative">
         <Carousel
           elements={workshop.wineList.map((product: any, index: number) => (
             <WineCard

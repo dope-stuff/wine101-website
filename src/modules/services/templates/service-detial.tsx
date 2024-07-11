@@ -12,10 +12,7 @@ export default function ServiceDetail({elements, data, hideSplash}: ServiceDetai
       <div className="max-w-[600px] flex w-full items-center justify-center">
         <Carousel elements={elements} slidesPerView={1} arrowColor="white" gap={0} />
       </div>
-      <div
-        className="flex-1 max-w-[600px] min-w-[35%] flex-col flex gap-8 relative mt-4 z-10 overflow-x-clip"
-        
-      >
+      <div className="flex-1 max-w-[600px] min-w-[35%] flex-col flex gap-8 relative mt-4 z-10 overflow-x-clip">
         <div className="text-3xl text-black">{data.name}</div>
         {Object.keys(data.details).map((e, index) => (
           <div key={index} className="flex-row flex items-center gap-2">
