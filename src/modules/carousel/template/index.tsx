@@ -9,7 +9,7 @@ interface CarouselProps {
   gap?: number
 }
 
-const Carousel = ({elements, slidesPerView = 8, arrowColor, gap = 16}: CarouselProps) => {
+const Carousel = ({elements, slidesPerView = 6, arrowColor, gap = 16}: CarouselProps) => {
   const [itemsPerView, setItemsPerView] = useState(7)
   const containerRef = useRef<HTMLDivElement>(null)
   const elementRef = useRef<HTMLDivElement>(null)
@@ -35,7 +35,7 @@ const Carousel = ({elements, slidesPerView = 8, arrowColor, gap = 16}: CarouselP
 
   // const [pageCount, setPageCount] = useState(1)
   // useEffect(() => {
-  //   setPageCount(Math.ceil(elements.length * (1 - 1 / itemsPerView)))
+  //   setPageCount(Math.round(elements.length * (1 - 1 / itemsPerView)))
   // }, [elementWidth, elements.length, itemsPerView])
 
   const nextSlide = () => {
@@ -44,11 +44,11 @@ const Carousel = ({elements, slidesPerView = 8, arrowColor, gap = 16}: CarouselP
         ? 0
         : Math.min(
             prevIndex + 1,
-            Math.ceil(elements.length > 0 ? elements.length - 1 : elements.length)
+            Math.round(elements.length > 0 ? elements.length - 1 : elements.length)
           )
     )
     if (
-      Math.ceil(elements.length - containerRef.current?.clientWidth! / elementWidth) + 1 -
+      Math.round(elements.length - containerRef.current?.clientWidth! / elementWidth) -
         currentIndex ===
       0
     ) {
@@ -60,6 +60,23 @@ const Carousel = ({elements, slidesPerView = 8, arrowColor, gap = 16}: CarouselP
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0))
   }
 
+  const getFirstTwoDecimal = () => {
+    const value = (elements.length - containerRef.current?.clientWidth! / (elementWidth + gap))
+      .toString()
+      .split('.')[1]
+    if (value) {
+      return Number(value.slice(0, 2)) / 100
+    }
+    return 0
+  }
+
+  const getTranslateX = () => {
+    return Math.round(elements.length - containerRef.current?.clientWidth! / elementWidth) -
+      currentIndex ===
+      0
+      ? currentIndex * (elementWidth + gap) + elementWidth * getFirstTwoDecimal()
+      : currentIndex * (elementWidth + gap)
+  }
   return (
     <div className="relative w-full">
       {currentIndex > 0 && (
@@ -75,7 +92,7 @@ const Carousel = ({elements, slidesPerView = 8, arrowColor, gap = 16}: CarouselP
           ref={containerRef}
           className="flex transition-transform duration-500"
           style={{
-            transform: `translateX(-${currentIndex * (elementWidth + gap)}px)`,
+            transform: `translateX(-${getTranslateX()}px)`,
             gap,
           }}
         >

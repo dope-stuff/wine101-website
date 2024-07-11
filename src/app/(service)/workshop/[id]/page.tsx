@@ -67,7 +67,7 @@ export default async function Page({params}: {params: any}) {
       ]
 
   return (
-    <div className="min-w-[240px] flex-col flex gap-4 p-2">
+    <div className="min-w-[240px] max-w-[2040px] flex-col flex mx-auto gap-4 p-2">
       <div className="flex-row flex flex-nowrap gap-2 items-center">
         <div>{workshop.name}</div>
         <div className="h-4 w-[2px] bg-black" />
@@ -85,7 +85,7 @@ export default async function Page({params}: {params: any}) {
           },
         }}
       />
-      <div className="max-w-[2040px] w-full flex p-4 relative">
+      <div className="w-full flex p-4 relative">
         <Carousel
           elements={workshop.wineList.map((product: any, index: number) => (
             <WineCard
@@ -102,7 +102,7 @@ export default async function Page({params}: {params: any}) {
         <Galleries images={`${workshop.gallery}`.split(',\n')} />
         <BookNowButton title="book now! Click!" className="mx-auto mt-[-2rem] relative z-50" />
       </div>
-      <div className="max-w-[2040px] flex flex-col w-full px-10">
+      <div className="flex flex-col w-full px-10">
         <div className="uppercase text-4xl my-4">our workshop</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
           {workshops.map((workshop, index) => (

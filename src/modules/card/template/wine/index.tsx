@@ -27,7 +27,7 @@ export default function WineCard({data, theme}: WineCardProps) {
   const categories = getProductCategories(data)
 
   return (
-    <div className="w-full min-w-[250px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
+    <div className="flex-1 min-w-[250px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
       <div
         className="relative w-full h-[160px] flex-row flex justify-center items-center"
         style={{backgroundColor: theme.bgColor}}

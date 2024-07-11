@@ -41,7 +41,7 @@ export default async function Page() {
           <div className="w-[260px] text-2xl md:text-3xl text-center">{pageData.productsTitle}</div>
           <Image width={60} height={60} src="/images/common/glitter-1.svg" alt="" />
         </div>
-        {/* <div className="max-w-[2000px] w-full flex p-4"> */}
+        <div className="max-w-[2040px] w-full flex p-4">
           <Carousel
             elements={products.map((product: any, index: number) => (
               <WineCard
@@ -51,7 +51,7 @@ export default async function Page() {
               />
             ))}
           />
-        {/* </div> */}
+        </div>
         {/** services */}
         <div
           id="our-services"
