@@ -1,20 +1,20 @@
 import {Inter} from 'next/font/google'
-import {Image, Link} from '@nextui-org/react'
-import {wineColours, wineCountries, winePrices} from '@/lib/constants'
+// import {Image, Link} from '@nextui-org/react'
+// import {wineColours, wineCountries, winePrices} from '@/lib/constants'
 import Container from '@/modules/container/template/container'
-import BlackWineGlassIcon from '@/modules/common/images/black-wine-glass'
+// import BlackWineGlassIcon from '@/modules/common/images/black-wine-glass'
 
-const inter = Inter({subsets: ['latin']})
+// const inter = Inter({subsets: ['latin']})
 
-const Menu = ({children, title}: {children: React.ReactNode; title: string}) => (
-  <div className="flex flex-col gap-4">
-    <div className="flex flex-row items-center text-3xl gap-2">
-      <BlackWineGlassIcon />
-      {title}
-    </div>
-    {children}
-  </div>
-)
+// const Menu = ({children, title}: {children: React.ReactNode; title: string}) => (
+//   <div className="flex flex-col gap-4">
+//     <div className="flex flex-row items-center text-3xl gap-2">
+//       <BlackWineGlassIcon />
+//       {title}
+//     </div>
+//     {children}
+//   </div>
+// )
 
 export default function Layout({children}: {children: React.ReactNode}) {
   return (

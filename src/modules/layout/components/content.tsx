@@ -34,7 +34,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
   const renderNavbarItem = (item: INavbarMenu, index: number) => (
     <NavbarItem key={index}>
       <Link
-        className="flex justify-center text-white text-lg uppercase cursor-pointer"
+        className="flex justify-center text-white text-lg uppercase"
         href={item.linkTo}
         target={item.linkTo?.includes('https') ? '_blank' : ''}
       >
@@ -63,14 +63,19 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
     <div className="h-screen flex flex-col">
       <Navbar
         maxWidth="full"
-        style={{background: '#BE1C2D', color: '#fff'}}
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={toggleMenuOpen}
+        className="bg-primary text-white"
       >
         <NavbarContent className="flex" justify="start">
           <NavbarBrand>
             <Link className="flex justify-center text-white text-lg uppercase" href="/">
-              <Image width={100} src={navbar.logo.mediaUrl} alt={navbar.logo.alt} />
+              <Image
+                loading="lazy"
+                width={100}
+                src={navbar.logo.mediaUrl}
+                alt={navbar.logo.alt || ''}
+              />
             </Link>
           </NavbarBrand>
         </NavbarContent>
@@ -91,7 +96,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
               >
                 {item.mediaUrl && (
                   <div className="bg-primary-1 px-4 py-2 rounded-full">
-                    <Image className="min-w-[20px]" src={item.mediaUrl} alt={item.alt} />
+                    <Image removeWrapper className="min-w-[20px]" src={item.mediaUrl} alt={item.alt || ''} />
                   </div>
                 )}
                 {item.buttonTitle}
@@ -115,7 +120,13 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
           <div className="flex flex-row items-center gap-2 mt-4">
             {footer.social.map((item, index: number) => (
               <Link href={item.linkTo} key={index}>
-                <Image className="w-[40px] h-[40px]" src={item.mediaUrl} alt={item.alt} />
+                <Image
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  src={item.mediaUrl}
+                  alt={item.alt || ''}
+                />
               </Link>
             ))}
           </div>

@@ -33,6 +33,8 @@ export default function WineCard({data, theme}: WineCardProps) {
         <Image
           width={100}
           height={120}
+          removeWrapper
+          loading="lazy"
           className="max-h-[160px] object-contain p-2"
           src={data.thumbnail || data.imageUrl}
           alt={data.imageUrl || ''}
