@@ -11,7 +11,9 @@ const CardWineButton = ({handle}: {handle: string}) => {
   }
 
   return (
-    <BagIcon width={20} color="black" className="text-black cursor-pointer" onClick={onClick} />
+    <button onClick={onClick}>
+      <BagIcon width={20} color="black" className="text-black cursor-pointer" />
+    </button>
   )
 }
 

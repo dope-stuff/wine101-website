@@ -23,6 +23,7 @@ export default function WeddingNavigator() {
       i !== panels.length - 1 && <div key={i} className="w-[2px] h-6 bg-black hidden sm:flex" />
     ) : (
       <button
+      id={`${panel.title}-button`}
         key={i}
         onClick={(e) => {
           e.preventDefault()

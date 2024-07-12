@@ -11,6 +11,7 @@ export default function PopUpBoothButton({title, linkTo}: PopUpBoothButtonProps)
   }
   return (
     <button
+      id="PopUpBoothButton"
       className="uppercase border border-black bg-[#81CF8A] px-4 py-1 text-4xl rounded-full"
       onClick={() => onOpenLink(linkTo)}
     >

@@ -28,9 +28,10 @@ export default function WeddingPackages({packages}: PackageProps) {
       <div className="flex flex-col items-center justify-center mb-4">
         <div className="text-2xl mb-4 uppercase">How many guests?</div>
         <div className="flex-row flex gap-x-8 gap-y-4 max-w-[500px] flex-wrap justify-center">
-          {guestNumbers.map((guestNumber, i) => (
+          {guestNumbers.map((guestNumber, index) => (
             <button
-              key={i}
+              id={`${guestNumber}-button`}
+              key={index}
               className={`${
                 guestNumber.value === guest ? 'bg-primary text-white' : 'bg-white'
               } uppercase border border-black rounded-full py-1 px-10 text-lg`}
@@ -44,6 +45,7 @@ export default function WeddingPackages({packages}: PackageProps) {
         <div className="flex-row flex gap-x-8 gap-y-4 max-w-[500px] flex-wrap justify-center">
           {types.map((typeElement, index) => (
             <button
+              id={`${typeElement}-button`}
               key={index}
               className={`${
                 typeElement === type ? 'bg-primary text-white' : 'bg-white'

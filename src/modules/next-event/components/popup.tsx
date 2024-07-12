@@ -29,7 +29,14 @@ export default function NextEventPopup({date, countDown}: NextEventPopupProps) {
 
   return (
     <>
-      <Modal hideCloseButton backdrop="blur" size="3xl" className='top-0' isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal
+        hideCloseButton
+        backdrop="blur"
+        size="3xl"
+        className="top-0"
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
         <ModalContent className="border-dashed border-5 border-black text-center">
           <ModalBody>
             <div className="relative flex flex-col items-center text-2xl pb-8 gap-4">
@@ -80,6 +87,7 @@ export default function NextEventPopup({date, countDown}: NextEventPopupProps) {
                   alt=""
                 />
                 <button
+                  id="BookButton"
                   className="h-[50px] pt-2 pb-2 px-6 text-2xl leading-8 text-white bg-black"
                   onClick={onBookNow}
                 >

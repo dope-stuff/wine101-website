@@ -23,7 +23,7 @@ export default async function Page() {
   return (
     <>
       <NextEvent />
-      <div className="flex flex-col items-center gap-4 relative text-center">
+      <div className="max-w-[2040px] mx-auto flex flex-col items-center gap-4 relative text-center">
         <div className="text-2xl md:text-3xl mt-6">{pageData.header.heading}</div>
         <div className={`max-w-[500px] text-xl md:text-2xl px-4 ${iannDog.className}`}>
           {pageData.header.subheading}
@@ -39,17 +39,15 @@ export default async function Page() {
           <div className="w-[260px] text-2xl md:text-3xl text-center">{pageData.productsTitle}</div>
           <Image width={60} height={60} src="/images/common/glitter-1.svg" alt="" />
         </div>
-        <div className="max-w-[2040px] w-full flex p-4">
-          <Carousel
-            elements={products.map((product: any, index: number) => (
-              <WineCard
-                key={index}
-                data={product}
-                theme={getProductTheme(product.categories[0].name)}
-              />
-            ))}
-          />
-        </div>
+        <Carousel
+          elements={products.map((product: any, index: number) => (
+            <WineCard
+              key={index}
+              data={product}
+              theme={getProductTheme(product.categories[0].name)}
+            />
+          ))}
+        />
         {/** services */}
         <div
           id="our-services"
@@ -59,7 +57,7 @@ export default async function Page() {
           {pageData.servicesTitle}
           <FlasksIcon />
         </div>
-        <div className="min-h-[400px] grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 px-4 mb-4">
+        <div className="w-full min-h-[400px] grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 px-4 mb-4">
           {pageData.services.map((data, index) => (
             <ServiceCard key={index} data={data} />
           ))}
