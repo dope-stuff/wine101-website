@@ -1,5 +1,6 @@
 'use client'
 import ArrowRightIcon from '@/modules/common/images/arrow-right'
+import {Button} from '@nextui-org/react'
 import {useState, ReactElement, useRef, useEffect} from 'react'
 
 interface CarouselProps {
@@ -75,12 +76,13 @@ const Carousel = ({elements, slidesPerView = 6, arrowColor, gap = 16}: CarouselP
   return (
     <div className="relative w-full">
       {currentIndex > 0 && (
-        <button
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-50"
+        <Button
+          variant="light"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-30 bg-transparent"
           onClick={prevSlide}
         >
           <ArrowRightIcon className="rotate-180" color={arrowColor} />
-        </button>
+        </Button>
       )}
       <div className="relative w-full mx-auto overflow-hidden">
         <div
@@ -104,12 +106,12 @@ const Carousel = ({elements, slidesPerView = 6, arrowColor, gap = 16}: CarouselP
         </div>
       </div>
       {elements.length > 1 && (
-        <button
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-50"
+        <Button
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-30 bg-transparent"
           onClick={nextSlide}
         >
           <ArrowRightIcon color={arrowColor} />
-        </button>
+        </Button>
       )}
     </div>
   )

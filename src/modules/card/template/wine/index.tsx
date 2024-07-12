@@ -1,3 +1,4 @@
+import {memo, useMemo} from 'react'
 import {Image} from '@nextui-org/react'
 import CardWineButton from './button'
 
@@ -9,7 +10,8 @@ interface WineCardProps {
     type: string
   }
 }
-export default function WineCard({data, theme}: WineCardProps) {
+
+const WineCard = ({data, theme}: WineCardProps) => {
   const getProductCategories = (data: any): string[] => {
     const result = [
       data.category,
@@ -22,7 +24,24 @@ export default function WineCard({data, theme}: WineCardProps) {
     ].filter(Boolean)
     return result
   }
-  const categories = getProductCategories(data)
+
+  const categories = useMemo(() => getProductCategories(data), [data])
+
+  const price = useMemo(() => {
+    if (data.variants) {
+      return (data.variants[0].prices[0].amount / 100).toLocaleString()
+    }
+    return data.bottlePrice?.toLocaleString() || '-'
+  }, [data])
+
+  const currency = useMemo(() => {
+    if (data.variants) {
+      return data.variants[0].prices[0].currency_code.toUpperCase()
+    }
+    return 'THB'
+  }, [data])
+
+  const handle = useMemo(() => (!!data.handle ? data.handle : data.linkTo), [data])
 
   return (
     <div className="flex-1 min-w-[250px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
@@ -35,10 +54,10 @@ export default function WineCard({data, theme}: WineCardProps) {
           height={120}
           className="max-h-[160px] object-contain p-2"
           src={data.thumbnail || data.imageUrl}
-          alt={data.imageUrl}
+          alt={data.imageUrl || ''}
         />
       </div>
-      <div className='text-start'>{data.title || data.itemDisplayName}</div>
+      <div className="text-start">{data.title || data.itemDisplayName}</div>
       <div className="max-h-[240px] overflow-hidden flex-row flex flex-wrap items-center gap-2">
         {categories.length > 0 &&
           categories
@@ -56,14 +75,13 @@ export default function WineCard({data, theme}: WineCardProps) {
       <div className="ml-auto mt-auto">
         <div className="flex-row flex whitespace-nowrap items-center gap-2">
           <div>
-            {data.variants
-              ? (data.variants[0].prices[0].amount / 100).toLocaleString()
-              : data.bottlePrice.toLocaleString() || '-'}{' '}
-            {data.variants ? data.variants[0].prices[0].currency_code.toUpperCase() : 'THB'}
+            {price} {currency}
           </div>
-          <CardWineButton handle={!!data.handle ? data.handle : data.linkTo} />
+          <CardWineButton handle={handle} />
         </div>
       </div>
     </div>
   )
 }
+
+export default WineCard
