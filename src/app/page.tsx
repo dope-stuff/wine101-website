@@ -23,20 +23,18 @@ export default async function Page() {
   return (
     <>
       <NextEvent />
-      <div className="flex flex-col items-center gap-4 z-0 relative">
-        <div className="w-[300px] text-2xl md:text-3xl text-center mt-6">
-          {pageData.header.heading}
-        </div>
-        <div className={`max-w-[100vw] w-[500px] text-2xl text-center px-4 ${iannDog.className}`}>
+      <div className="flex flex-col items-center gap-4 relative text-center">
+        <div className="text-2xl md:text-3xl mt-6">{pageData.header.heading}</div>
+        <div className={`max-w-[500px] text-xl md:text-2xl px-4 ${iannDog.className}`}>
           {pageData.header.subheading}
         </div>
         <div
           id="our-highlights"
-          className="put this div to 1 chunck above where our-highlights stay"
+          className="put this div to 1 chunk above where our-highlights stay"
         />
         <GetToKnowUsButton title={pageData.header.buttonTitle} linkTo={pageData.header.linkTo} />
         {/** products */}
-        <div className="max-w-[100vw] flex flex-row items-center justify-center gap-8">
+        <div className="flex flex-row items-center justify-center gap-4">
           <Image width={100} height={100} src="/images/common/wine-2.svg" alt="" />
           <div className="w-[260px] text-2xl md:text-3xl text-center">{pageData.productsTitle}</div>
           <Image width={60} height={60} src="/images/common/glitter-1.svg" alt="" />

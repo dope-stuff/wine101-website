@@ -33,11 +33,6 @@ const Carousel = ({elements, slidesPerView = 6, arrowColor, gap = 16}: CarouselP
     }
   }, [elementRef, elementWidth, gap, slidesPerView])
 
-  // const [pageCount, setPageCount] = useState(1)
-  // useEffect(() => {
-  //   setPageCount(Math.round(elements.length * (1 - 1 / itemsPerView)))
-  // }, [elementWidth, elements.length, itemsPerView])
-
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex + 1 === elements.length

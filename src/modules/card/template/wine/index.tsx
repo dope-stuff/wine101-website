@@ -1,6 +1,4 @@
 import {Image} from '@nextui-org/react'
-// import {Product} from '@/lib/data/models/product'
-// import {WorkshopProduct} from '@/lib/data/models/workshop'
 import CardWineButton from './button'
 
 interface WineCardProps {
@@ -40,7 +38,7 @@ export default function WineCard({data, theme}: WineCardProps) {
           alt={data.imageUrl}
         />
       </div>
-      <div>{data.title || data.itemDisplayName}</div>
+      <div className='text-start'>{data.title || data.itemDisplayName}</div>
       <div className="max-h-[240px] overflow-hidden flex-row flex flex-wrap items-center gap-2">
         {categories.length > 0 &&
           categories

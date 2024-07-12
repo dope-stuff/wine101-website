@@ -12,7 +12,7 @@ export default function ServiceCard({data}: {data: IService}) {
       <div className="text-xl xl:text-2xl text-white max-w-[300px]">{data.heading}</div>
       <Link
         href={data.linkTo}
-        className="bg-[#BE1C2D] text-white rounded-full px-4 py-1 text-lg z-0"
+        className="bg-[#BE1C2D] text-white rounded-full px-4 py-1 text-[16px] md:text-lg z-0"
       >
         See more
       </Link>

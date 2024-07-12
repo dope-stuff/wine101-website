@@ -4,7 +4,6 @@ import { IconProps } from "@/lib/data/models/icon";
 const FlasksIcon: React.FC<IconProps> = ({
   width = "58",
   height = "63",
-  color = "black",
   ...attributes
 }) => {
   return (
