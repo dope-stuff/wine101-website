@@ -12,7 +12,6 @@ import {
 } from '@nextui-org/react'
 import {Inter} from 'next/font/google'
 import {Footer, NavbarMenu as INavbarMenu, Navbar as INavbar} from '@/lib/data/models/navbar'
-import {useRouter} from 'next/navigation'
 import {useEffect, useReducer} from 'react'
 
 const inter = Inter({subsets: ['latin']})
@@ -24,15 +23,41 @@ interface MainLayoutProps {
 }
 
 const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
-  const router = useRouter()
-  const [isMenuOpen, setIsMenuOpen] = useReducer((current) => !current, false)
+  const [isMenuOpen, toggleMenuOpen] = useReducer((isOpen) => !isOpen, false)
 
   useEffect(() => {
-    /** set BookNowButton link to */
     if (navbar.bookNowLinkTo) {
       localStorage.setItem('bookNowLinkTo', navbar.bookNowLinkTo)
     }
   }, [navbar])
+
+  const renderNavbarItem = (item: INavbarMenu, index: number) => (
+    <NavbarItem key={index}>
+      <Link
+        className="flex justify-center text-white text-lg uppercase cursor-pointer"
+        href={item.linkTo}
+        target={item.linkTo?.includes('https') ? '_blank' : ''}
+      >
+        {item.mediaUrl && <Image className="min-w-[20px]" src={item.mediaUrl} alt={item.alt} />}
+        {item.buttonTitle}
+      </Link>
+    </NavbarItem>
+  )
+
+  const renderFooterLinks = (title: string, links: any[]) => (
+    <div className="flex-1 flex flex-col justify-start items-start px-4">
+      <div className="text-2xl mb-2">{title}</div>
+      {links.map((item, index: number) => (
+        <Link
+          href={item.linkTo}
+          key={index}
+          className={`whitespace-nowrap text-white ${inter.className}`}
+        >
+          {item.buttonTitle}
+        </Link>
+      ))}
+    </div>
+  )
 
   return (
     <div className="h-screen flex flex-col">
@@ -40,7 +65,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
         maxWidth="full"
         style={{background: '#BE1C2D', color: '#fff'}}
         isMenuOpen={isMenuOpen}
-        onMenuOpenChange={setIsMenuOpen}
+        onMenuOpenChange={toggleMenuOpen}
       >
         <NavbarContent className="flex" justify="start">
           <NavbarBrand>
@@ -50,23 +75,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
           </NavbarBrand>
         </NavbarContent>
         <NavbarContent className="hidden sm:flex gap-6" justify="end">
-          {navbar.menu.map((item: INavbarMenu, index: number) => (
-            <div key={index} className="gap-6 flex items-center">
-              {index === 4 && <div className="h-[25px] w-[1px] bg-white" />}
-              <NavbarItem>
-                <Link
-                  className="flex justify-center text-white text-lg uppercase cursor-pointer"
-                  href={item.linkTo}
-                  target={item.linkTo?.includes('https') ? '_blank' : ''}
-                >
-                  {item.mediaUrl && (
-                    <Image className="min-w-[20px]" src={item.mediaUrl} alt={item.alt} />
-                  )}
-                  {item.buttonTitle}
-                </Link>
-              </NavbarItem>
-            </div>
-          ))}
+          {navbar.menu.map(renderNavbarItem)}
         </NavbarContent>
         <NavbarContent className="sm:hidden flex p-2" justify="end">
           <NavbarMenuToggle className="text-white" />
@@ -77,7 +86,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
               <Link
                 className="flex justify-center text-lg uppercase cursor-pointer"
                 href={item.linkTo}
-                onClick={() => setIsMenuOpen()}
+                onClick={toggleMenuOpen}
                 target={item.linkTo?.includes('https') ? '_blank' : ''}
               >
                 {item.mediaUrl && (
@@ -96,30 +105,9 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
         <div className="md:h-full w-full flex items-center justify-center">
           <Image width={200} src={footer.logo.mediaUrl} alt={navbar.logo.alt} />
         </div>
-        <div className="flex-1 flex flex-col justify-start items-start px-4">
-          <div className="text-2xl mb-2">{footer.aboutTitle}</div>
-          {footer.about.map((item, index: number) => (
-            <Link href={item.linkTo} key={index} className={`whitespace-nowrap text-white ${inter.className}`}>
-              {item.buttonTitle}
-            </Link>
-          ))}
-        </div>
-        <div className="flex-1 flex flex-col justify-start items-start px-4">
-          <div className="text-2xl mb-2">{footer.serviceTitle}</div>
-          {footer.service.map((item, index: number) => (
-            <Link href={item.linkTo} key={index} className={`whitespace-nowrap text-white ${inter.className}`}>
-              {item.buttonTitle}
-            </Link>
-          ))}
-        </div>
-        <div className="flex-1 flex flex-col justify-start items-start px-4">
-          <div className="text-2xl mb-2">{footer.winesTitle}</div>
-          {footer.wines.map((item, index: number) => (
-            <Link href={item.linkTo} key={index} className={`whitespace-nowrap text-white ${inter.className}`}>
-              {item.buttonTitle}
-            </Link>
-          ))}
-        </div>
+        {renderFooterLinks(footer.aboutTitle, footer.about)}
+        {renderFooterLinks(footer.serviceTitle, footer.service)}
+        {renderFooterLinks(footer.winesTitle, footer.wines)}
         <div className="flex flex-col w-full justify-center items-center">
           <div className="text-2xl mb-2">{footer.contact.heading}</div>
           <div className={`text-white ${inter.className}`}>{footer.contact.subheading}</div>

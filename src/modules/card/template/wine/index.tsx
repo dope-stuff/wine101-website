@@ -1,4 +1,3 @@
-import {memo, useMemo} from 'react'
 import {Image} from '@nextui-org/react'
 import CardWineButton from './button'
 
@@ -10,38 +9,20 @@ interface WineCardProps {
     type: string
   }
 }
-
-const WineCard = ({data, theme}: WineCardProps) => {
+export default function WineCard({data, theme}: WineCardProps) {
   const getProductCategories = (data: any): string[] => {
     const result = [
       data.category,
       data.country,
-      ...(data.grapes ? data.grapes.split(', ') : []),
       data.type?.value,
       data.tags?.[0]?.value,
+      ...(data.grapes ? data.grapes.split(', ') : []),
       ...(data.categories?.[0]?.name ? data.categories[0].name.split(', ') : []),
       ...(data.variants?.[0]?.material ? data.variants[0].material.split(', ') : []),
     ].filter(Boolean)
     return result
   }
-
-  const categories = useMemo(() => getProductCategories(data), [data])
-
-  const price = useMemo(() => {
-    if (data.variants) {
-      return (data.variants[0].prices[0].amount / 100).toLocaleString()
-    }
-    return data.bottlePrice?.toLocaleString() || '-'
-  }, [data])
-
-  const currency = useMemo(() => {
-    if (data.variants) {
-      return data.variants[0].prices[0].currency_code.toUpperCase()
-    }
-    return 'THB'
-  }, [data])
-
-  const handle = useMemo(() => (!!data.handle ? data.handle : data.linkTo), [data])
+  const categories = getProductCategories(data)
 
   return (
     <div className="flex-1 min-w-[250px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
@@ -75,13 +56,14 @@ const WineCard = ({data, theme}: WineCardProps) => {
       <div className="ml-auto mt-auto">
         <div className="flex-row flex whitespace-nowrap items-center gap-2">
           <div>
-            {price} {currency}
+            {data.variants
+              ? (data.variants[0].prices[0].amount / 100).toLocaleString()
+              : data.bottlePrice.toLocaleString() || '-'}{' '}
+            {data.variants ? data.variants[0].prices[0].currency_code.toUpperCase() : 'THB'}
           </div>
-          <CardWineButton handle={handle} />
+          <CardWineButton handle={!!data.handle ? data.handle : data.linkTo} />
         </div>
       </div>
     </div>
   )
 }
-
-export default WineCard
