@@ -14,7 +14,7 @@ import {Inter} from 'next/font/google'
 import {Footer, NavbarMenu as INavbarMenu, Navbar as INavbar} from '@/lib/data/models/navbar'
 import {useEffect, useReducer} from 'react'
 
-const inter = Inter({subsets: ['latin']})
+const inter = Inter({subsets: ['latin'], display: 'swap'})
 
 interface MainLayoutProps {
   children: React.ReactElement
@@ -38,7 +38,9 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
         href={item.linkTo}
         target={item.linkTo?.includes('https') ? '_blank' : ''}
       >
-        {item.mediaUrl && <Image className="min-w-[20px]" src={item.mediaUrl} alt={item.alt} />}
+        {item.mediaUrl && (
+          <Image className="min-w-[20px]" src={item.mediaUrl} alt={item.alt} loading="lazy" />
+        )}
         {item.buttonTitle}
       </Link>
     </NavbarItem>
@@ -96,7 +98,13 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
               >
                 {item.mediaUrl && (
                   <div className="bg-primary-1 px-4 py-2 rounded-full">
-                    <Image removeWrapper className="min-w-[20px]" src={item.mediaUrl} alt={item.alt || ''} />
+                    <Image
+                      removeWrapper
+                      className="min-w-[20px]"
+                      src={item.mediaUrl}
+                      alt={item.alt || ''}
+                      loading="lazy"
+                    />
                   </div>
                 )}
                 {item.buttonTitle}
@@ -108,7 +116,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
       {children}
       <div className="flex flex-row flex-wrap justify-between md:grid md:grid-cols-5 items-start py-4 px-6 gap-4 mt-auto text-white bg-primary-1 z-10">
         <div className="md:h-full w-full flex items-center justify-center">
-          <Image width={200} src={footer.logo.mediaUrl} alt={navbar.logo.alt} />
+          <Image width={200} src={footer.logo.mediaUrl} alt={navbar.logo.alt} loading="lazy" />
         </div>
         {renderFooterLinks(footer.aboutTitle, footer.about)}
         {renderFooterLinks(footer.serviceTitle, footer.service)}
