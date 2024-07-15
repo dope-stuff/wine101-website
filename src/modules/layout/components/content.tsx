@@ -1,18 +1,18 @@
 'use client'
 import {
-  Image,
   Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Image,
 } from '@nextui-org/react'
 import {Inter} from 'next/font/google'
 import {Footer, NavbarMenu as INavbarMenu, Navbar as INavbar} from '@/lib/data/models/navbar'
 import {useEffect, useReducer} from 'react'
+import {RenderFooterLinks, RenderNavbarItem} from './navigation-item'
 
 const inter = Inter({subsets: ['latin'], display: 'swap'})
 
@@ -31,36 +31,6 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
     }
   }, [navbar])
 
-  const renderNavbarItem = (item: INavbarMenu, index: number) => (
-    <NavbarItem key={index}>
-      <Link
-        className="flex justify-center text-white text-lg uppercase"
-        href={item.linkTo}
-        target={item.linkTo?.includes('https') ? '_blank' : ''}
-      >
-        {item.mediaUrl && (
-          <Image className="min-w-[20px]" src={item.mediaUrl} alt={item.alt} loading="lazy" />
-        )}
-        {item.buttonTitle}
-      </Link>
-    </NavbarItem>
-  )
-
-  const renderFooterLinks = (title: string, links: any[]) => (
-    <div className="flex-1 flex flex-col justify-start items-start px-4">
-      <div className="text-2xl mb-2">{title}</div>
-      {links.map((item, index: number) => (
-        <Link
-          href={item.linkTo}
-          key={index}
-          className={`whitespace-nowrap text-white ${inter.className}`}
-        >
-          {item.buttonTitle}
-        </Link>
-      ))}
-    </div>
-  )
-
   return (
     <div className="h-screen flex flex-col">
       <Navbar
@@ -75,6 +45,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
               <Image
                 loading="lazy"
                 width={100}
+                height={65}
                 src={navbar.logo.mediaUrl}
                 alt={navbar.logo.alt || ''}
               />
@@ -82,7 +53,7 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
           </NavbarBrand>
         </NavbarContent>
         <NavbarContent className="hidden sm:flex gap-6" justify="end">
-          {navbar.menu.map(renderNavbarItem)}
+          {navbar.menu.map(RenderNavbarItem)}
         </NavbarContent>
         <NavbarContent className="sm:hidden flex p-2" justify="end">
           <NavbarMenuToggle className="text-white" />
@@ -116,11 +87,17 @@ const MainLayout = ({children, navbar, footer}: MainLayoutProps) => {
       {children}
       <div className="flex flex-row flex-wrap justify-between md:grid md:grid-cols-5 items-start py-4 px-6 gap-4 mt-auto text-white bg-primary-1 z-10">
         <div className="md:h-full w-full flex items-center justify-center">
-          <Image width={200} src={footer.logo.mediaUrl} alt={navbar.logo.alt} loading="lazy" />
+          <Image
+            width={200}
+            height={65}
+            src={footer.logo.mediaUrl}
+            alt={navbar.logo.alt}
+            loading="lazy"
+          />
         </div>
-        {renderFooterLinks(footer.aboutTitle, footer.about)}
-        {renderFooterLinks(footer.serviceTitle, footer.service)}
-        {renderFooterLinks(footer.winesTitle, footer.wines)}
+        {RenderFooterLinks(footer.aboutTitle, footer.about)}
+        {RenderFooterLinks(footer.serviceTitle, footer.service)}
+        {RenderFooterLinks(footer.winesTitle, footer.wines)}
         <div className="flex flex-col w-full justify-center items-center">
           <div className="text-2xl mb-2">{footer.contact.heading}</div>
           <div className={`text-white ${inter.className}`}>{footer.contact.subheading}</div>
