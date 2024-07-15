@@ -2,17 +2,13 @@ import Image from 'next/image'
 import {iannDog} from '@/styles/fonts'
 import {homeService} from '@/lib/data/home.service'
 import NextEvent from '@/modules/next-event/template'
-// import Carousel from '@/modules/carousel/template'
+import Carousel from '@/modules/carousel/template'
 import FlasksIcon from '@/modules/common/images/flasks'
 import ServiceCard from '@/modules/card/template/service'
-// import WineCard from '@/modules/card/template/wine'
+import WineCard from '@/modules/card/template/wine'
 import {productService} from '@/lib/data/product.service'
 import {getProductTheme} from '@/lib/utils/getProductTheme'
 import GetToKnowUsButton from '@/modules/button/components/get-to-know-us'
-import {lazy} from 'react'
-
-const WineCard = lazy(() => import('@/modules/card/template/wine'))
-const Carousel = lazy(() => import('@/modules/carousel/template'))
 
 export default async function Page() {
   const [{data: pageData}, {products}] = await Promise.all([
