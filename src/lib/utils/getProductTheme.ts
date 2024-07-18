@@ -2,13 +2,13 @@ export const getProductTheme = (type = '') => {
   if ('White Wine'.toLowerCase().includes(type.toLowerCase())) {
     return {
       textColor: '#AEC5A4',
-      bgColor: '#90AD83',
+      bgColor: '#81CF8A',
       type: 'white',
     }
   } else if ('Sparkling Wine (Champagne)'.toLowerCase().includes(type.toLowerCase())) {
     return {
       textColor: '#ECCB7B',
-      bgColor: '#D3AF61',
+      bgColor: '#E8C85E',
       type: 'sparkling',
     }
   } else if (
@@ -17,19 +17,19 @@ export const getProductTheme = (type = '') => {
   ) {
     return {
       textColor: '#F88D97',
-      bgColor: '#F16471',
+      bgColor: '#E7AF96',
       type: 'rose',
     }
   } else if ('Ice Wine'.toLowerCase().includes(type.toLowerCase())) {
     return {
       textColor: '#8AB5CD',
-      bgColor: '#6690A7',
+      bgColor: '#91A9FF',
       type: 'ice',
     }
   }
   return {
     textColor: '#B23A57',
-    bgColor: '#961937',
+    bgColor: '#E6645D',
     type: 'red',
   }
 }
