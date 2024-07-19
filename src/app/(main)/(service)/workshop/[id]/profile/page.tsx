@@ -1,5 +1,4 @@
 'use client'
-
 import {useEffect, useState} from 'react'
 import {useSearchParams} from 'next/navigation'
 import WineProfileBody from '@/modules/common/images/wine-profile/body'
@@ -12,7 +11,7 @@ import WineProfileLine3 from '@/modules/common/images/wine-profile/line3'
 import WineProfileCircle from '@/modules/common/images/wine-profile/circle'
 import {workshopService} from '@/lib/data/workshop.service'
 import {Image} from '@nextui-org/react'
-import {WorkshopProduct} from '@/lib/data/models/workshop'
+import {Perferred, WorkshopProduct, WorkShopProfile} from '@/lib/data/models/workshop'
 
 const Profile = ({params}: {params: {id: string}}) => {
   const searchParams = useSearchParams()
