@@ -48,3 +48,40 @@ export interface WorkshopProduct {
 export interface WineWorkshop extends ServiceResponse {
   testimonials: Testimonials[]
 }
+
+export interface Perferred {
+  id: number
+  acidity: string
+  body: string
+  sweetness: string
+  tannins: string
+}
+export interface WorkShopProfile {
+  id: number
+  guest_number: number
+  guest_name: string
+  guest_nickname: string
+  guest_email: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  top_grape: string
+  top_wine: string
+  favorite_wine: string
+  guest_preferred: Perferred
+  workshop: {
+    id: number
+    name: string
+    createdAt: string
+    updatedAt: string
+    description: string
+    eventDate: string
+    numberOfGuests: number
+    price: number
+    location: string
+    gallery: string
+    posters: string
+    videos: string
+    wineList: WorkshopProduct[]
+  }
+}
