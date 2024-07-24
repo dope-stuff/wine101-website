@@ -122,7 +122,7 @@ export default async function Page({params}: {params: any}) {
               <div className="text-xl">
                 {guest.guest_name} {!!guest.guest_nickname ? `(${guest.guest_nickname})` : ''}
               </div>
-              <div className="mx-auto">
+              <div className="mx-auto mt-auto">
                 <WorkshopProfileButton id={workshop.id} email={guest.guest_email} />
               </div>
             </div>
