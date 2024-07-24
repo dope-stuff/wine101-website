@@ -12,10 +12,10 @@ export default function WorkshopProfileButton({id, email}: WorkshopProfileButton
   return (
     <Button
       id="workshopProfile"
-      className="w-[150px] bg-primary-1 text-white rounded-full border border-black text-xl"
+      className="w-[150px] bg-primary-1 text-white rounded-full border border-black text-lg"
       onClick={() => router.push(`/workshop/${id}/profile?email=${email}`)}
     >
-      Profile
+     Go to Profile
     </Button>
   )
 }

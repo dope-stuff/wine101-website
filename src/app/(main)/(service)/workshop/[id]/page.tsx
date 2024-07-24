@@ -116,16 +116,18 @@ export default async function Page({params}: {params: any}) {
         </div>
       </div>
       <div className="w-full flex p-4 relative">
-        <Carousel
-          elements={profiles.map((guest: WorkShopProfile, index: number) => (
+        <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
+          {profiles.map((guest: WorkShopProfile, index: number) => (
             <div key={index} className="w-full flex flex-col gap-2 bg-[#EFEFEF] p-4 rounded-xl">
-              <div className="text-xl">{guest.guest_email}</div>
+              <div className="text-xl">
+                {guest.guest_name} {!!guest.guest_nickname ? `(${guest.guest_nickname})` : ''}
+              </div>
               <div className="mx-auto">
                 <WorkshopProfileButton id={workshop.id} email={guest.guest_email} />
               </div>
             </div>
           ))}
-        />
+        </div>
       </div>
     </div>
   )
