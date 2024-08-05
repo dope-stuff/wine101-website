@@ -1,5 +1,5 @@
 import {IMenu} from '@/lib/data/models/navbar'
-import {iannDog} from '@/styles/fonts'
+import {dbHelvethaica} from '@/styles/fonts'
 import {Image} from '@nextui-org/react'
 
 interface ServiceContentCardProps {
@@ -27,7 +27,7 @@ export default function ServiceContentCard({data, index}: ServiceContentCardProp
       <div className={`w-full flex-col flex gap-2 md:max-w-md ${index % 2 !== 0 ? 'lg:max-w-lg' : ''}`}>
         <div className="text-xl md:text-2xl uppercase">{data.heading}</div>
         <div
-          className={`${iannDog.className} text-lg md:text-xl max-w-xl lg:max-w-2xl`}
+          className={`${dbHelvethaica.className} text-lg md:text-xl max-w-xl lg:max-w-2xl`}
           // style={{maxWidth: data.maxWidth}}
         >
           {data.subheading}

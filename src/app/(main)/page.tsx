@@ -1,4 +1,4 @@
-import {iannDog} from '@/styles/fonts'
+import {dbHelvethaica} from '@/styles/fonts'
 import {homeService} from '@/lib/data/home.service'
 import NextEvent from '@/modules/next-event/template'
 import Carousel from '@/modules/carousel/template'
@@ -25,7 +25,7 @@ export default async function Page() {
       <NextEvent />
       <div className="max-w-[2040px] mx-auto flex flex-col items-center gap-4 relative text-center">
         <div className="text-2xl md:text-3xl mt-6">{pageData.header.heading}</div>
-        <div className={`max-w-[500px] text-xl md:text-2xl px-4 ${iannDog.className}`}>
+        <div className={`max-w-[500px] text-xl md:text-2xl px-4 ${dbHelvethaica.className}`}>
           {pageData.header.subheading}
         </div>
         <div

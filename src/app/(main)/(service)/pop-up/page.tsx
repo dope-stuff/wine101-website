@@ -1,6 +1,6 @@
 import {Image} from '@nextui-org/react'
 import FlasksIcon from '@/modules/common/images/flasks'
-import {iannDog} from '@/styles/fonts'
+import {dbHelvethaica} from '@/styles/fonts'
 import {popUpBoothService} from '@/lib/data/booth.service'
 import {IMenu} from '@/lib/data/models/navbar'
 import ServiceContentCard from '@/modules/card/template/service-content'
@@ -49,7 +49,7 @@ export default async function Page() {
                 {pageData.header.heading}
               </div>
               <div
-                className={`max-w-xl lg:max-w-2xl xl:max-w-none text-2xl md:text-3xl ${iannDog.className}`}
+                className={`max-w-xl lg:max-w-2xl xl:max-w-none text-2xl md:text-3xl ${dbHelvethaica.className}`}
               >
                 {pageData.header.subheading}
               </div>
@@ -75,7 +75,7 @@ export default async function Page() {
           ))}
         </div>
         <div className="flex-row flex items-center justify-center gap-104">
-          <div className={`text-4xl max-w-lg text-center ${iannDog.className}`}>
+          <div className={`text-4xl max-w-lg text-center ${dbHelvethaica.className}`}>
             {pageData.cta.heading}
           </div>
           <PopUpBoothButton title={pageData.cta.buttonTitle} linkTo={pageData.cta.linkTo} />

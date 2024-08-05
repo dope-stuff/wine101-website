@@ -1,5 +1,5 @@
 import {Image, Link} from '@nextui-org/react'
-import {iannDog} from '@/styles/fonts'
+import {dbHelvethaica} from '@/styles/fonts'
 import {IMenu} from '@/lib/data/models/navbar'
 import BookNowButton from '@/modules/button/components/booknow'
 
@@ -7,16 +7,16 @@ export default function WineProfileWorkshopHeader({data}: {data: IMenu}) {
   return (
     <div className="max-w-[2040px] w-full flex-col lg:flex-row lg:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
       <div className="flex-1 flex-col flex items-center text-3xl text-center gap-4">
-        <div className={`text-2xl md:text-3xl ${iannDog.className}`}>{data.heading}</div>
+        <div className={`text-2xl md:text-3xl ${dbHelvethaica.className}`}>{data.heading}</div>
         <div className="text-2xl md:text-3xl font-semibold uppercase">{data.alt}</div>
-        <div className={`text-2xl md:text-3xl ${iannDog.className}`}>{data.subheading}</div>
+        <div className={`text-2xl md:text-3xl ${dbHelvethaica.className}`}>{data.subheading}</div>
         <div className="text-xl text-center mt-4 px-4">
-          <p className={`${iannDog.className} mx-auto`}>{data.description}</p>
+          <p className={`${dbHelvethaica.className} mx-auto`}>{data.description}</p>
         </div>
         <BookNowButton
           title={data.buttonTitle}
           linkTo={data.linkTo}
-          className={iannDog.className}
+          className={dbHelvethaica.className}
         />
       </div>
       <div className="rotate-6 flex relative mr-8">

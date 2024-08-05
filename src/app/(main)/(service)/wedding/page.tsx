@@ -2,7 +2,7 @@ import {Image} from '@nextui-org/react'
 import Carousel from '@/modules/carousel/template'
 import ClientCard from '@/modules/card/template/client'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
-import {iannDog} from '@/styles/fonts'
+import {dbHelvethaica} from '@/styles/fonts'
 import {weddingService} from '@/lib/data/wedding.service'
 import {IMenu} from '@/lib/data/models/navbar'
 import FlasksIcon from '@/modules/common/images/flasks'
@@ -48,7 +48,7 @@ export default async function Page() {
             <div className="text-2xl md:text-3xl font-semibold uppercase">
               {pageData.header.heading}
             </div>
-            <div className={`text-2xl md:text-3xl ${iannDog.className} w-full`}>
+            <div className={`text-2xl md:text-3xl ${dbHelvethaica.className} w-full`}>
               {pageData.header.subheading}
             </div>
             <div
@@ -98,7 +98,7 @@ export default async function Page() {
                 alt={pkg.alt}
               />
               <div className="font-bold text-2xl">{pkg.heading}</div>
-              <div className={`${iannDog.className} text-xl max-w-[600px]`}>{pkg.subheading}</div>
+              <div className={`${dbHelvethaica.className} text-xl max-w-[600px]`}>{pkg.subheading}</div>
             </div>
           ))}
         </div>

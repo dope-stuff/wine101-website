@@ -1,6 +1,6 @@
 import {Image} from '@nextui-org/react'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
-import {iannDog} from '@/styles/fonts'
+import {dbHelvethaica} from '@/styles/fonts'
 import {collaborationService} from '@/lib/data/collaboration.service'
 import {IMenu} from '@/lib/data/models/navbar'
 import ContactFlasksButton from '@/modules/button/components/contact-flasks'
@@ -40,7 +40,7 @@ export default async function Collaboration() {
             <div className="text-2xl md:text-3xl font-semibold uppercase">
               {pageData.header.heading}
             </div>
-            <div className={`text-xl md:text-2xl w-[80%] ${iannDog.className}`}>
+            <div className={`text-xl md:text-2xl w-[80%] ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
             <div className="my-auto">

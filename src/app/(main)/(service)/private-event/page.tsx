@@ -2,7 +2,7 @@ import {Image} from '@nextui-org/react'
 import SmartPhoneImage from '@/modules/common/images/smart-phone'
 import {eventService} from '@/lib/data/event.service'
 import {IMenu} from '@/lib/data/models/navbar'
-import {iannDog} from '@/styles/fonts'
+import {dbHelvethaica} from '@/styles/fonts'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 import Carousel from '@/modules/carousel/template'
@@ -39,7 +39,7 @@ export default async function Page() {
             <div className="text-2xl md:text-3xl font-semibold uppercase max-w-[600px]">
               {pageData.header.heading}
             </div>
-            <div className={`text-xl md:text-2xl max-w-[700px] ${iannDog.className}`}>
+            <div className={`text-xl md:text-2xl max-w-[700px] ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
             <div className="my-auto">
