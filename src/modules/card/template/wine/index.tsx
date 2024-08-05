@@ -25,14 +25,14 @@ export default function WineCard({data, theme}: WineCardProps) {
   const categories = getProductCategories(data)
 
   return (
-    <div className="flex-1 min-w-[250px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
+    <div className="flex-1 min-w-[180px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
       <div
-        className="relative w-full h-[160px] flex-row flex justify-center items-center"
+        className="relative w-[180px] h-[180px] mx-auto flex-row flex justify-center items-center"
         style={{backgroundColor: theme.bgColor}}
       >
         <Image
-          width={100}
-          height={120}
+          width={120}
+          height={160}
           removeWrapper
           loading="lazy"
           className="max-h-[160px] object-contain p-2"

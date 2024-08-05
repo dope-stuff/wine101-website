@@ -74,7 +74,7 @@ const Carousel = ({elements, slidesPerView = 6, arrowColor, gap = 16}: CarouselP
       : currentIndex * (elementWidth + gap)
   }
   return (
-    <div className="relative w-full">
+    <div className="relative w-full px-4">
       {currentIndex > 0 && (
         <Button
           variant="light"

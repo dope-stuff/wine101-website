@@ -45,6 +45,7 @@ export default async function Page() {
               key={index}
               data={product}
               theme={getProductTheme(product.categories[0].name)}
+              
             />
           ))}
         />

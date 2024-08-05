@@ -23,7 +23,7 @@ export const RenderFooterLinks = (title: string, links: any[]) => (
 export const RenderNavbarItem = (item: INavbarMenu, index: number) => (
   <NavbarItem key={index}>
     <Link
-      className="flex justify-center text-white text-lg uppercase"
+      className={`flex justify-center text-white text-lg uppercase ${inter.className}`}
       href={item.linkTo || '#'}
       target={item.linkTo?.includes('https') ? '_blank' : ''}
     >
