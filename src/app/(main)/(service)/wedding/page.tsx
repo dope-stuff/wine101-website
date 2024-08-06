@@ -1,11 +1,9 @@
 import {Image} from '@nextui-org/react'
 import Carousel from '@/modules/carousel/template'
 import ClientCard from '@/modules/card/template/client'
-import SmartPhoneImage from '@/modules/common/images/smart-phone'
 import {dbHelvethaica} from '@/styles/fonts'
 import {weddingService} from '@/lib/data/wedding.service'
 import {IMenu} from '@/lib/data/models/navbar'
-import FlasksIcon from '@/modules/common/images/flasks'
 import ServiceContentCard from '@/modules/card/template/service-content'
 import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 import {eventService} from '@/lib/data/event.service'
@@ -43,7 +41,7 @@ export default async function Page() {
         gap={0}
       />
       <div className="max-w-[2040px] w-full justify-center flex-col flex items-center mx-auto gap-4">
-        <div className="w-full h-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
+        {/* <div className="w-full h-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
           <div className="max-w-[90%] md:max-w-[60%] lg:h-full flex-col flex items-center text-3xl text-center gap-4">
             <div className="text-2xl md:text-3xl font-semibold uppercase">
               {pageData.header.heading}
@@ -73,18 +71,51 @@ export default async function Page() {
               />
             )}
           </div>
-        </div>
-        <div className="max-w-[90%] w-full flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
-          {pageData.details.map((e, i) => (
-            <ServiceContentCard key={i} index={i} data={e} />
-          ))}
+        </div> */}
+        <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
+          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-4">
+            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
+              {pageData.header.heading}
+            </div>
+            <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div>
+            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
+              {pageData.header.subheading}
+            </div>
+            <div className="text-lg text-center mt-4 px-4">
+              <p className={`${dbHelvethaica.className} mx-auto`}>{pageData.header.description}</p>
+            </div>
+            <ContactFlasksButton
+              title={pageData.packagesTitle.buttonTitle}
+              linkTo={pageData.packagesTitle.linkTo}
+              bgColor="#E8C85E"
+            />
+            <div className="max-w-[90%] w-full flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
+              {pageData.details.map((e, i) => (
+                <ServiceContentCard key={i} index={i} data={e} />
+              ))}
+            </div>
+          </div>
+          <div className="rotate-6 md:mr-8 md:sticky md:mt-[-500px] md:top-[calc(50%-250px)]">
+            <Image
+              removeWrapper
+              width={250}
+              className="h-full "
+              src="https://i.ibb.co/tb6wBXh/wine-101-phone-outline-vertical.webp"
+              alt=""
+            />
+            {!!pageData.header.mediaUrl && (
+              <iframe
+                className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
+                src={pageData.header.mediaUrl}
+                title={pageData.header.alt}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            )}
+          </div>
         </div>
         <div id="package" />
-        <ContactFlasksButton
-          title={pageData.packagesTitle.buttonTitle}
-          linkTo={pageData.packagesTitle.linkTo}
-          bgColor="#E8C85E"
-        />
         <div className="w-full flex-row flex md:flex-nowrap flex-wrap gap-4 text-center my-8">
           {pageData.packages.map((pkg) => (
             <div
@@ -98,7 +129,9 @@ export default async function Page() {
                 alt={pkg.alt}
               />
               <div className="font-bold text-2xl">{pkg.heading}</div>
-              <div className={`${dbHelvethaica.className} text-xl max-w-[600px]`}>{pkg.subheading}</div>
+              <div className={`${dbHelvethaica.className} text-xl max-w-[600px]`}>
+                {pkg.subheading}
+              </div>
             </div>
           ))}
         </div>

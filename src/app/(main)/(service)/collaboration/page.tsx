@@ -35,13 +35,17 @@ export default async function Collaboration() {
           arrowColor="white"
           gap={0}
         />
-        <div className="max-w-[2040px] w-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
-          <div className="max-w-[90%] md:max-w-[60%] lg:h-full flex-col flex items-center text-3xl text-center gap-8">
-            <div className="text-2xl md:text-3xl font-semibold uppercase">
+        <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
+          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-4">
+            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
               {pageData.header.heading}
             </div>
-            <div className={`text-xl md:text-2xl w-[80%] ${dbHelvethaica.className}`}>
+            <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div>
+            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
+            </div>
+            <div className="text-lg text-center mt-4 px-4">
+              <p className={`${dbHelvethaica.className} mx-auto`}>{pageData.header.description}</p>
             </div>
             <div className="my-auto">
               <ContactFlasksButton
@@ -49,10 +53,21 @@ export default async function Collaboration() {
                 linkTo={pageData.header.linkTo}
               />
             </div>
+            <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
+              {pageData.details.map((e, i) => (
+                <ServiceContentCard key={i} index={i} data={e as IMenu} />
+              ))}
+            </div>
           </div>
-          <div className="relative">
-            <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
-            {pageData.header && (
+          <div className="rotate-6 md:mr-8 md:sticky md:mt-[-200px] md:top-[calc(50%-250px)]">
+            <Image
+              removeWrapper
+              width={250}
+              className="h-full "
+              src="https://i.ibb.co/tb6wBXh/wine-101-phone-outline-vertical.webp"
+              alt=""
+            />
+            {!!pageData.header.mediaUrl && (
               <iframe
                 className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
                 src={pageData.header.mediaUrl}
@@ -60,14 +75,9 @@ export default async function Collaboration() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
-              />
+              ></iframe>
             )}
           </div>
-        </div>
-        <div className="max-w-[2040px] w-[90%] gap-4 flex-col flex">
-          {pageData.details.map((e: IMenu, i: number) => (
-            <ServiceContentCard key={i} index={i} data={e} />
-          ))}
         </div>
         {events.length > 0 && (
           <div className="max-w-[2040px] flex flex-col w-full px-10">
