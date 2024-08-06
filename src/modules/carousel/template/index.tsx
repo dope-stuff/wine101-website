@@ -1,7 +1,8 @@
 'use client'
-import ArrowRightIcon from '@/modules/common/images/arrow-right'
-import {Button} from '@nextui-org/react'
+
 import {useState, ReactElement, useRef, useEffect} from 'react'
+import {Button} from '@nextui-org/react'
+import ArrowRightIcon from '@/modules/common/images/arrow-right'
 
 interface CarouselProps {
   elements: ReactElement[]
@@ -10,76 +11,57 @@ interface CarouselProps {
   gap?: number
 }
 
-const Carousel = ({elements, slidesPerView = 6, arrowColor, gap = 16}: CarouselProps) => {
-  const [itemsPerView, setItemsPerView] = useState(7)
+const Carousel = ({elements, slidesPerView, arrowColor = 'black', gap = 16}: CarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const elementRef = useRef<HTMLDivElement>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [elementWidth, setElementWidth] = useState(0)
 
   useEffect(() => {
-    setItemsPerView(slidesPerView)
-
-    if (elementRef.current) {
-      const handleResize = () => {
-        const containerWidth = elementRef.current?.clientWidth || 0
-        setElementWidth(containerWidth)
-      }
-      handleResize() // Set initial width
-      window.addEventListener('resize', handleResize)
-
-      return () => {
-        window.removeEventListener('resize', handleResize)
+    const handleResize = () => {
+      if (elementRef.current) {
+        setElementWidth(elementRef.current.clientWidth)
       }
     }
-  }, [elementRef, elementWidth, gap, slidesPerView])
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + 1 === elements.length
-        ? 0
-        : Math.min(
-            prevIndex + 1,
-            Math.round(elements.length > 0 ? elements.length - 1 : elements.length)
-          )
-    )
-    if (
-      Math.round(elements.length - containerRef.current?.clientWidth! / elementWidth) -
-        currentIndex ===
-      0
-    ) {
+    handleResize() // Set initial width
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  const calculateMaxIndex = () => {
+    const containerWidth = containerRef.current?.clientWidth || 0
+    const maxIndex = elements.length - Math.floor(containerWidth / (elementWidth + gap))
+    return maxIndex < 0 ? 0 : maxIndex
+  }
+
+  const handleNextSlide = () => {
+    const maxIndex = calculateMaxIndex()
+    if (currentIndex < calculateMaxIndex()) {
+      setCurrentIndex((prevIndex) => (prevIndex < maxIndex ? prevIndex + 1 : 0))
+    } else {
       setCurrentIndex(0)
     }
   }
 
-  const prevSlide = () => {
+  const handlePrevSlide = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0))
   }
 
-  const getFirstTwoDecimal = () => {
-    const value = (elements.length - containerRef.current?.clientWidth! / (elementWidth + gap))
-      .toString()
-      .split('.')[1]
-    if (value) {
-      return Number(value.slice(0, 2)) / 100
-    }
-    return 0
+  const getTranslateX = () => {
+    return currentIndex * (elementWidth + gap)
   }
 
-  const getTranslateX = () => {
-    return Math.round(elements.length - containerRef.current?.clientWidth! / elementWidth) -
-      currentIndex ===
-      0
-      ? currentIndex * (elementWidth + gap) + elementWidth * getFirstTwoDecimal()
-      : currentIndex * (elementWidth + gap)
-  }
   return (
     <div className="relative w-full px-4">
       {currentIndex > 0 && (
         <Button
           variant="light"
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-30 bg-transparent"
-          onClick={prevSlide}
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-50 bg-transparent"
+          onClick={handlePrevSlide}
         >
           <ArrowRightIcon className="rotate-180" color={arrowColor} />
         </Button>
@@ -97,18 +79,18 @@ const Carousel = ({elements, slidesPerView = 6, arrowColor, gap = 16}: CarouselP
             <div
               key={index}
               ref={elementRef}
-              className="flex-1 flex flex-shrink-0 relative"
-              style={{flex: itemsPerView ? `0 0 ${100 / itemsPerView}%` : ''}}
+              className="flex flex-shrink-0 relative"
+              style={{flex: slidesPerView ? `0 0 ${100 / slidesPerView}%` : '0 0 0'}}
             >
               {element}
             </div>
           ))}
         </div>
       </div>
-      {elements.length > 1 && (
+      {currentIndex < calculateMaxIndex() && (
         <Button
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-30 bg-transparent"
-          onClick={nextSlide}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-50 bg-transparent"
+          onClick={handleNextSlide}
         >
           <ArrowRightIcon color={arrowColor} />
         </Button>

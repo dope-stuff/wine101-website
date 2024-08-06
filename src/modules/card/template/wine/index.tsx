@@ -1,5 +1,8 @@
 import {Image} from '@nextui-org/react'
 import CardWineButton from './button'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({subsets: ['latin']})
 
 interface WineCardProps {
   data: any
@@ -25,7 +28,7 @@ export default function WineCard({data, theme}: WineCardProps) {
   const categories = getProductCategories(data)
 
   return (
-    <div className="flex-1 min-w-[180px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
+    <div className="flex-1 max-w-[240px] min-w-[180px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
       <div
         className="relative w-[180px] h-[180px] mx-auto flex-row flex justify-center items-center"
         style={{backgroundColor: theme.bgColor}}
@@ -40,7 +43,7 @@ export default function WineCard({data, theme}: WineCardProps) {
           alt={data.imageUrl || ''}
         />
       </div>
-      <div className="text-start">{data.title || data.itemDisplayName}</div>
+      <div className="text-start text-[12px]">{data.title || data.itemDisplayName}</div>
       <div className="max-h-[240px] overflow-hidden flex-row flex flex-wrap items-center gap-2">
         {categories.length > 0 &&
           categories
@@ -48,7 +51,7 @@ export default function WineCard({data, theme}: WineCardProps) {
             .map((c, index) => (
               <div
                 key={index}
-                className="text-[14px] px-2 py-1 rounded-full whitespace-nowrap text-white"
+                className={`text-[12px] px-2 py-1 rounded-full whitespace-nowrap text-white ${inter.className}`}
                 style={{backgroundColor: theme.bgColor}}
               >
                 {c}
@@ -56,7 +59,7 @@ export default function WineCard({data, theme}: WineCardProps) {
             ))}
       </div>
       <div className="ml-auto mt-auto">
-        <div className="flex-row flex whitespace-nowrap items-center gap-2">
+        <div className="flex-row flex text-[12px] whitespace-nowrap items-center gap-2">
           <div>
             {data.variants
               ? (data.variants[0].prices[0].amount / 100).toLocaleString()

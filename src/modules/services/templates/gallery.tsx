@@ -31,7 +31,7 @@ export default function Galleries({images}: {images: string[]}) {
 
   return (
     <div className="relative z-10">
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="flex flex-wrap justify-center gap-2 overflow-hidden">
         {images.map((image, idx) => (
           <div key={idx} className="select-none relative p-0">
             {!loadedImages[idx] ? (
