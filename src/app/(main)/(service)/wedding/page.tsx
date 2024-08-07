@@ -10,6 +10,7 @@ import {eventService} from '@/lib/data/event.service'
 import Package from '@/modules/services/components/package'
 import WeddingNavigator from '@/modules/services/components/wedding-navigator'
 import {packageService} from '@/lib/data/package.service'
+import FlasksIcon from '@/modules/common/images/flasks'
 
 export default async function Page() {
   const [{data: pageData}, {data: events}, {data: packages}] = await Promise.all([
@@ -72,29 +73,27 @@ export default async function Page() {
             )}
           </div>
         </div> */}
-        <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
-          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-4">
-            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
-              {pageData.header.heading}
-            </div>
+        <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-4">
+          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-2">
             <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div>
             <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
-            <div className="text-lg text-center mt-4 px-4">
-              <p className={`${dbHelvethaica.className} mx-auto`}>{pageData.header.description}</p>
+            <div
+              id="guide"
+              className="flex-row flex items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center"
+            >
+              <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full" />
+              {pageData.detailsTitle}
+              <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full" />
             </div>
-            <ContactFlasksButton
-              title={pageData.packagesTitle.buttonTitle}
-              linkTo={pageData.packagesTitle.linkTo}
-              bgColor="#E8C85E"
-            />
             <div className="max-w-[90%] w-full flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
               {pageData.details.map((e, i) => (
                 <ServiceContentCard key={i} index={i} data={e} />
               ))}
             </div>
           </div>
+
           <div className="rotate-6 md:mr-8 md:sticky md:mt-[-500px] md:top-[calc(50%-250px)]">
             <Image
               removeWrapper
@@ -116,6 +115,11 @@ export default async function Page() {
           </div>
         </div>
         <div id="package" />
+        <ContactFlasksButton
+          title={pageData.packagesTitle.buttonTitle}
+          linkTo={pageData.packagesTitle.linkTo}
+          bgColor="#E8C85E"
+        />
         <div className="w-full flex-row flex md:flex-nowrap flex-wrap gap-4 text-center my-8">
           {pageData.packages.map((pkg) => (
             <div

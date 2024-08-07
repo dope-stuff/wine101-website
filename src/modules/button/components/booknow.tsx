@@ -21,7 +21,7 @@ export default function BookNowButton({title, linkTo, className}: BookNowButtonP
   return (
     <button
       id="BookNowButton"
-      className={`bg-[#81CF8A] uppercase rounded-full px-8 py-2 text-3xl text-black mt-6 border-black border-2 ${className}`}
+      className={`bg-[#81CF8A] uppercase whitespace-nowrap rounded-full px-8 py-2 text-3xl text-black mt-6 border-black border-2 ${className}`}
       onClick={onBookNow}
     >
       {title}

@@ -45,7 +45,7 @@ export default function PackageModal({data, filters}: PackageModalProps) {
         className="uppercase border border-black bg-primary px-4 py-3 h-[60px] text-white text-2xl rounded-full absolute bottom-[-2rem]"
         onPress={onOpen}
       >
-        consult
+        quick check
       </Button>
       <Modal
         placement="center"

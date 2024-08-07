@@ -38,26 +38,27 @@ export default async function WineProfileWorkshop() {
       {/* <WineProfileWorkshopHeader data={pageData.header} /> */}
       <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
         <div className="flex-1 flex-col flex items-center text-2xl text-center gap-4">
-          <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
+          <div className={`text-2xl md:text-3xl ${dbHelvethaica.className}`}>
             {pageData.header.heading}
           </div>
-          <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div>
+          {/* <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div> */}
           <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
             {pageData.header.subheading}
           </div>
           <div className="text-lg text-center mt-4 px-4">
             <p className={`${dbHelvethaica.className} mx-auto`}>{pageData.header.description}</p>
           </div>
-          <BookNowButton
-            title={pageData.header.buttonTitle}
-            linkTo={pageData.header.linkTo}
-            className={dbHelvethaica.className}
-          />
+
           <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
-            <div className="flex-row flex items-center flex-nowrap gap-8 text-4xl md:text-6xl text-center my-4 mx-auto">
+            <div className="flex-row flex items-center flex-nowrap gap-4 text-4xl md:text-6xl text-center my-4 mx-auto">
               <FlasksIcon className="mt-[-1rem]" />
               {pageData.detailsTitle}
               <FlasksIcon className="mt-[-1rem]" />
+              <BookNowButton
+                title={pageData.header.buttonTitle}
+                linkTo={pageData.header.linkTo}
+                className={dbHelvethaica.className}
+              />
             </div>
             {pageData.details.map((e, i) => (
               <ServiceContentCard key={i} index={i} data={e as IMenu} />

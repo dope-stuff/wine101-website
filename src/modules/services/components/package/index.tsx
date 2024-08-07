@@ -22,8 +22,8 @@ export default function WeddingPackages({packages}: PackageProps) {
   return (
     <div className="w-full h-full flex-row flex items-center flex-wrap md:flex-nowrap justify-evenly gap-10 text-center bg-[#81CF8A] p-4 pb-8 md:mb-4 relative">
       <div className="flex-col flex text-center text-4xl">
-        <div>1o1 wedding</div>
-        <div>consultant</div>
+        <div>1o1 Wedding</div>
+        <div>Quick check</div>
       </div>
       <div className="flex flex-col items-center justify-center mb-4">
         <div className="text-2xl mb-4 uppercase">How many guests?</div>

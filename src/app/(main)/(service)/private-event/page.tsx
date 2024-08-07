@@ -7,6 +7,8 @@ import ServiceContentCard from '@/modules/card/template/service-content'
 import ContactFlasksButton from '@/modules/button/components/contact-flasks'
 import Carousel from '@/modules/carousel/template'
 import ClientCard from '@/modules/card/template/client'
+import FlasksIcon from '@/modules/common/images/flasks'
+import EventContactButton from '@/modules/button/components/event-button'
 
 export default async function Page() {
   const [{data: pageData}, {data: events}] = await Promise.all([
@@ -35,10 +37,7 @@ export default async function Page() {
           gap={0}
         />
         <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
-          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-4">
-            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
-              {pageData.header.heading}
-            </div>
+          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-2">
             <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div>
             <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
@@ -46,7 +45,7 @@ export default async function Page() {
             <div className="text-lg text-center mt-4 px-4">
               <p className={`${dbHelvethaica.className} mx-auto`}>{pageData.header.description}</p>
             </div>
-            <ContactFlasksButton
+            <EventContactButton
               title={pageData.header.buttonTitle}
               linkTo={pageData.header.linkTo}
             />
