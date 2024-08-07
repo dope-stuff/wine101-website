@@ -56,6 +56,7 @@ export interface ServiceResponse {
 export interface Wedding extends ServiceResponse {
   packages: IMenu[]
   packagesTitle: IMenu
+  consult: IMenu
 }
 
 export interface PopUpBooth extends ServiceResponse {

@@ -42,9 +42,6 @@ export default async function Page() {
             <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
-            <div className="text-lg text-center mt-4 px-4">
-              <p className={`${dbHelvethaica.className} mx-auto`}>{pageData.header.description}</p>
-            </div>
             <EventContactButton
               title={pageData.header.buttonTitle}
               linkTo={pageData.header.linkTo}

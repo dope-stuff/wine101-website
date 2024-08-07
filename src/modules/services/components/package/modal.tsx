@@ -11,9 +11,10 @@ import WaitressServeIcon from '@/modules/common/images/waitress-serve'
 interface PackageModalProps {
   data: Package[]
   filters: {guest: number; type: string}
+  buttonTitle: string
 }
 
-export default function PackageModal({data, filters}: PackageModalProps) {
+export default function PackageModal({data, filters, buttonTitle}: PackageModalProps) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure()
   const [pageData, setPageData] = useState<Package>()
 
@@ -45,7 +46,7 @@ export default function PackageModal({data, filters}: PackageModalProps) {
         className="uppercase border border-black bg-primary px-4 py-3 h-[60px] text-white text-2xl rounded-full absolute bottom-[-2rem]"
         onPress={onOpen}
       >
-        quick check
+        {buttonTitle}
       </Button>
       <Modal
         placement="center"

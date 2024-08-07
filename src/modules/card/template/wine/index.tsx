@@ -51,7 +51,7 @@ export default function WineCard({data, theme}: WineCardProps) {
             .map((c, index) => (
               <div
                 key={index}
-                className={`text-[12px] px-2 py-1 rounded-full whitespace-nowrap text-white ${inter.className}`}
+                className={`text-[10px] px-2 py-1 rounded-full whitespace-nowrap text-white ${inter.className}`}
                 style={{backgroundColor: theme.bgColor}}
               >
                 {c}

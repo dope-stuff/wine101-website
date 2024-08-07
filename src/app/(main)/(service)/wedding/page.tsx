@@ -83,18 +83,17 @@ export default async function Page() {
               id="guide"
               className="flex-row flex items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center"
             >
-              <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full" />
+              <FlasksIcon className="max-w-[75px] max-h-[75px] w-full h-full mb-[-2rem]" />
               {pageData.detailsTitle}
-              <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full" />
+              <FlasksIcon className="max-w-[75px] max-h-[75px] w-full h-full mt-[-2rem]" />
             </div>
-            <div className="max-w-[90%] w-full flex-col flex xl:mt-[-8rem] 2xl:mt-[-10rem]">
+            <div className="max-w-[90%] w-full flex-col flex">
               {pageData.details.map((e, i) => (
                 <ServiceContentCard key={i} index={i} data={e} />
               ))}
             </div>
           </div>
-
-          <div className="rotate-6 md:mr-8 md:sticky md:mt-[-500px] md:top-[calc(50%-250px)]">
+          <div className="rotate-6 md:mr-8 md:sticky md:mt-[-300px] md:top-[calc(50%-250px)]">
             <Image
               removeWrapper
               width={250}
@@ -141,7 +140,7 @@ export default async function Page() {
         </div>
       </div>
       <div id="wedding-consult" />
-      <Package packages={packages} />
+      <Package packages={packages} consult={pageData.consult} />
       <div id="reviews" className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
         <div className="uppercase text-4xl my-2 mt-8">our clients</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">

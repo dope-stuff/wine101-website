@@ -2,12 +2,15 @@
 import {useState} from 'react'
 import PackageModal from './modal'
 import {Package} from '@/lib/data/models/package'
+import {IMenu} from '@/lib/data/models/navbar'
+import FlasksIcon from '@/modules/common/images/flasks'
 
 interface PackageProps {
   packages: Package[]
+  consult: IMenu
 }
 
-export default function WeddingPackages({packages}: PackageProps) {
+export default function WeddingPackages({packages, consult}: PackageProps) {
   const guestNumbers = [
     {title: '150', value: 150},
     {title: '200', value: 200},
@@ -21,9 +24,16 @@ export default function WeddingPackages({packages}: PackageProps) {
 
   return (
     <div className="w-full h-full flex-row flex items-center flex-wrap md:flex-nowrap justify-evenly gap-10 text-center bg-[#81CF8A] p-4 pb-8 md:mb-4 relative">
-      <div className="flex-col flex text-center text-4xl">
-        <div>1o1 Wedding</div>
-        <div>Quick check</div>
+      <div
+        id="guide"
+        className="flex-row flex items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center"
+      >
+        <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full mb-[-3rem]" />
+        <div className="flex-col flex text-center text-4xl whitespace-nowrap">
+          <div>{consult.heading}</div>
+          <div>{consult.buttonTitle}</div>
+        </div>
+        <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full mt-[-3rem]" />
       </div>
       <div className="flex flex-col items-center justify-center mb-4">
         <div className="text-2xl mb-4 uppercase">How many guests?</div>
@@ -56,7 +66,7 @@ export default function WeddingPackages({packages}: PackageProps) {
             </button>
           ))}
         </div>
-        <PackageModal data={packages} filters={{guest, type}} />
+        <PackageModal buttonTitle={consult.buttonTitle} data={packages} filters={{guest, type}} />
       </div>
     </div>
   )

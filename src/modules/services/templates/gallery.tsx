@@ -6,7 +6,10 @@ import {Card, Image, Skeleton} from '@nextui-org/react'
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
 
-export default function Galleries({images}: {images: string[]}) {
+interface GalleriesProps {
+  images: string[]
+}
+export default function Galleries({images}: GalleriesProps) {
   const [index, setIndex] = useState(-1)
   const [loadedImages, setLoadedImages] = useState<boolean[]>(new Array(images.length).fill(false))
 
