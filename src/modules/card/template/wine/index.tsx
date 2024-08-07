@@ -1,6 +1,6 @@
 import {Image} from '@nextui-org/react'
 import CardWineButton from './button'
-import { Inter } from 'next/font/google'
+import {Inter} from 'next/font/google'
 
 const inter = Inter({subsets: ['latin']})
 
@@ -26,6 +26,7 @@ export default function WineCard({data, theme}: WineCardProps) {
     return result
   }
   const categories = getProductCategories(data)
+  console.log('sss', data.variants[0].prices[0])
 
   return (
     <div className="flex-1 max-w-[240px] min-w-[180px] h-full flex-col flex gap-2 p-2 border border-[#CFCFCF] bg-white">
@@ -60,12 +61,14 @@ export default function WineCard({data, theme}: WineCardProps) {
       </div>
       <div className="ml-auto mt-auto">
         <div className="flex-row flex text-[12px] whitespace-nowrap items-center gap-2">
-          <div>
-            {data.variants
-              ? (data.variants[0].prices[0].amount / 100).toLocaleString()
-              : data.bottlePrice.toLocaleString() || '-'}{' '}
-            {data.variants ? data.variants[0].prices[0].currency_code.toUpperCase() : 'THB'}
-          </div>
+          {data.variants[0].prices[0] && (
+            <div>
+              {data.variants
+                ? (data.variants[0].prices[0].amount / 100).toLocaleString()
+                : data.bottlePrice.toLocaleString() || '-'}{' '}
+              {data.variants ? data.variants[0].prices[0].currency_code.toUpperCase() : 'THB'}
+            </div>
+          )}
           <CardWineButton handle={!!data.handle ? data.handle : data.linkTo} />
         </div>
       </div>
