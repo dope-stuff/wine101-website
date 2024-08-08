@@ -50,11 +50,10 @@ export default async function WineProfileWorkshop() {
           >
             {pageData.header.description}
           </div>
-
           <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
-            <div className="flex-row flex items-center flex-nowrap gap-4 text-4xl md:text-6xl text-center my-4 mx-auto">
-              <FlasksIcon className="mt-[-1rem]" />
-              {pageData.detailsTitle}
+            <div className="flex-row items-center flex-nowrap text-4xl md:text-5xl text-center mx-auto md:flex hidden">
+              <FlasksIcon className="mb-[-1rem]" />
+              <div className='whitespace-nowrap mx-2'>{pageData.detailsTitle}</div>
               <FlasksIcon className="mt-[-1rem]" />
               <BookNowButton
                 title={pageData.header.buttonTitle}
@@ -86,17 +85,25 @@ export default async function WineProfileWorkshop() {
             ></iframe>
           )}
         </div>
-        <div
-          className={`${dbHelvethaica.className} md:hidden text-center mx-auto text-lg px-4`}
-        >
+        <div className="flex-row flex items-center flex-nowrap gap-4 text-4xl md:text-6xl text-center mx-auto md:hidden">
+          <FlasksIcon className="mt-[-1rem]" />
+          {pageData.detailsTitle}
+          <FlasksIcon className="mt-[-1rem]" />
+          <BookNowButton
+            title={pageData.header.buttonTitle}
+            linkTo={pageData.header.linkTo}
+            className={dbHelvethaica.className}
+          />
+        </div>
+        <div className={`${dbHelvethaica.className} md:hidden text-center mx-auto text-lg px-4`}>
           {pageData.header.description}
         </div>
         <div className={`text-2xl md:hidden text-center ${dbHelvethaica.className}`}>
           {pageData.header.subheading}
         </div>
         <div className={`text-3xl md:hidden text-center ${dbHelvethaica.className}`}>
-            {pageData.header.heading}
-          </div>
+          {pageData.header.heading}
+        </div>
       </div>
       <div className="max-w-[2040px] flex flex-col w-full px-10">
         <div className="uppercase text-4xl my-2 mt-8">our workshop</div>

@@ -43,10 +43,7 @@ export default async function Collaboration() {
             <div className={`text-xl md:text-2xl md:flex hidden ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
-            <div
-              className={`${dbHelvethaica.className} mx-auto text-xl text-center px-4 md:flex hidden`}
-            ></div>
-            <div className="my-auto">
+            <div className="md:flex hidden">
               <ContactFlasksButton
                 title={pageData.header.description + ' ' + pageData.header.buttonTitle}
                 linkTo={pageData.header.linkTo}
@@ -76,6 +73,12 @@ export default async function Collaboration() {
                 allowFullScreen
               ></iframe>
             )}
+          </div>
+          <div className="md:hidden mb-2">
+            <ContactFlasksButton
+              title={pageData.header.description + ' ' + pageData.header.buttonTitle}
+              linkTo={pageData.header.linkTo}
+            />
           </div>
           <div className={`text-xl md:text-2xl md:hidden ${dbHelvethaica.className}`}>
             {pageData.header.subheading}

@@ -41,18 +41,20 @@ export default async function Page() {
         arrowColor="white"
         gap={0}
       />
-      <div className="max-w-[2040px] w-full justify-center flex-col flex items-center mx-auto gap-4">
+      <div
+        id="guide"
+        className="max-w-[2040px] w-full justify-center flex-col flex items-center mx-auto gap-4"
+      >
         <div className="max-w-[2040px] h-full w-full md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-4 flex-col-reverse">
           <div className="flex-1 flex-col flex items-center text-2xl text-center gap-2">
-            <div className="text-xl md:text-2xl font-semibold uppercase md:flex hidden">
+            <div className="text-2xl font-semibold uppercase md:flex hidden">
               {pageData.header.heading}
             </div>
-            <div className={`text-xl md:text-2xl md:flex hidden ${dbHelvethaica.className}`}>
+            <div className={`text-2xl md:flex hidden ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
             <div
-              id="guide"
-              className="flex-row flex items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center"
+              className="flex-row items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center md:flex hidden"
             >
               <FlasksIcon className="max-w-[75px] max-h-[75px] w-full h-full mb-[-2rem]" />
               {pageData.detailsTitle}
@@ -83,10 +85,15 @@ export default async function Page() {
               ></iframe>
             )}
           </div>
-          <div className={`text-xl md:text-2xl text-center md:hidden ${dbHelvethaica.className}`}>
+          <div className="flex-row flex items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center md:hidden">
+            <FlasksIcon className="max-w-[75px] max-h-[75px] w-full h-full mb-[-2rem]" />
+            {pageData.detailsTitle}
+            <FlasksIcon className="max-w-[75px] max-h-[75px] w-full h-full mt-[-2rem]" />
+          </div>
+          <div className={`text-2xl text-center md:hidden ${dbHelvethaica.className}`}>
             {pageData.header.subheading}
           </div>
-          <div className="text-xl md:text-2xl text-center font-semibold uppercase md:hidden">
+          <div className="text-2xl text-center font-semibold uppercase md:hidden">
             {pageData.header.alt}
           </div>
         </div>

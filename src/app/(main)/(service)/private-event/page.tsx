@@ -44,10 +44,12 @@ export default async function Page() {
             <div className={`text-2xl md:flex hidden ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
-            <EventContactButton
-              title={pageData.header.buttonTitle}
-              linkTo={pageData.header.linkTo}
-            />
+            <div className="md:flex hidden">
+              <EventContactButton
+                title={pageData.header.buttonTitle}
+                linkTo={pageData.header.linkTo}
+              />
+            </div>
             <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
               {pageData.details.map((e, i) => (
                 <ServiceContentCard key={i} index={i} data={e as IMenu} />
@@ -72,7 +74,13 @@ export default async function Page() {
                 allowFullScreen
               ></iframe>
             )}
-          </div>{' '}
+          </div>
+          <div className="md:hidden mb-2">
+            <EventContactButton
+              title={pageData.header.buttonTitle}
+              linkTo={pageData.header.linkTo}
+            />
+          </div>
           <div className={`text-2xl text-center md:hidden ${dbHelvethaica.className}`}>
             {pageData.header.subheading}
           </div>
