@@ -35,21 +35,20 @@ export default async function Collaboration() {
           arrowColor="white"
           gap={0}
         />
-        <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
-          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-4">
-            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
+        <div className="max-w-[2040px] h-full w-full md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-4 flex-col-reverse">
+          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-2">
+            <div className="text-xl md:text-2xl font-semibold uppercase md:flex hidden">
               {pageData.header.heading}
             </div>
-            <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div>
-            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
+            <div className={`text-xl md:text-2xl md:flex hidden ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
-            <div className="text-lg text-center mt-4 px-4">
-              <p className={`${dbHelvethaica.className} mx-auto`}>{pageData.header.description}</p>
-            </div>
+            <div
+              className={`${dbHelvethaica.className} mx-auto text-xl text-center px-4 md:flex hidden`}
+            ></div>
             <div className="my-auto">
               <ContactFlasksButton
-                title={pageData.header.buttonTitle}
+                title={pageData.header.description + ' ' + pageData.header.buttonTitle}
                 linkTo={pageData.header.linkTo}
               />
             </div>
@@ -59,7 +58,7 @@ export default async function Collaboration() {
               ))}
             </div>
           </div>
-          <div className="rotate-6 md:mr-8 md:sticky md:mt-[-200px] md:top-[calc(50%-250px)]">
+          <div className="rotate-6 md:mr-8 md:sticky md:mt-[-100px] md:top-[calc(50%-250px)]">
             <Image
               removeWrapper
               width={250}
@@ -77,6 +76,12 @@ export default async function Collaboration() {
                 allowFullScreen
               ></iframe>
             )}
+          </div>
+          <div className={`text-xl md:text-2xl md:hidden ${dbHelvethaica.className}`}>
+            {pageData.header.subheading}
+          </div>
+          <div className="text-xl md:text-2xl font-semibold uppercase md:hidden">
+            {pageData.header.heading}
           </div>
         </div>
         {events.length > 0 && (

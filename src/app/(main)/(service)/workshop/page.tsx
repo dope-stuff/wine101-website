@@ -36,17 +36,19 @@ export default async function WineProfileWorkshop() {
         gap={0}
       />
       {/* <WineProfileWorkshopHeader data={pageData.header} /> */}
-      <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
-        <div className="flex-1 flex-col flex items-center text-2xl text-center gap-4">
-          <div className={`text-2xl md:text-3xl ${dbHelvethaica.className}`}>
+      <div className="max-w-[2040px] h-full w-full md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-4 flex-col-reverse">
+        <div className="flex-1 flex-col flex items-center text-2xl text-center gap-2">
+          <div className={`text-2xl md:text-3xl md:flex hidden ${dbHelvethaica.className}`}>
             {pageData.header.heading}
           </div>
           {/* <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div> */}
-          <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
+          <div className={`text-xl md:text-2xl md:flex hidden ${dbHelvethaica.className}`}>
             {pageData.header.subheading}
           </div>
-          <div className="text-lg text-center mt-4 px-4">
-            <p className={`${dbHelvethaica.className} mx-auto`}>{pageData.header.description}</p>
+          <div
+            className={`${dbHelvethaica.className} md:flex hidden mx-auto text-lg text-center px-4`}
+          >
+            {pageData.header.description}
           </div>
 
           <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
@@ -65,7 +67,7 @@ export default async function WineProfileWorkshop() {
             ))}
           </div>
         </div>
-        <div className="rotate-6 md:mr-8 md:sticky md:mt-[-500px] md:top-[calc(50%-250px)]">
+        <div className="rotate-6 md:mr-8 md:sticky md:mt-[-300px] md:top-[calc(50%-250px)]">
           <Image
             removeWrapper
             width={250}
@@ -84,6 +86,17 @@ export default async function WineProfileWorkshop() {
             ></iframe>
           )}
         </div>
+        <div
+          className={`${dbHelvethaica.className} md:hidden text-center mx-auto text-lg px-4`}
+        >
+          {pageData.header.description}
+        </div>
+        <div className={`text-2xl md:hidden text-center ${dbHelvethaica.className}`}>
+          {pageData.header.subheading}
+        </div>
+        <div className={`text-3xl md:hidden text-center ${dbHelvethaica.className}`}>
+            {pageData.header.heading}
+          </div>
       </div>
       <div className="max-w-[2040px] flex flex-col w-full px-10">
         <div className="uppercase text-4xl my-2 mt-8">our workshop</div>

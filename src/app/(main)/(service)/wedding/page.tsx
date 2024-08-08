@@ -23,7 +23,7 @@ export default async function Page() {
   ])
 
   return (
-    <>
+    <div>
       <div className="max-w-[2040px] w-full sm:flex-row sm:flex grid grid-cols-2 sm:flex-nowrap gap-4 justify-evenly items-center text-center mx-auto p-4">
         <WeddingNavigator />
       </div>
@@ -42,41 +42,12 @@ export default async function Page() {
         gap={0}
       />
       <div className="max-w-[2040px] w-full justify-center flex-col flex items-center mx-auto gap-4">
-        {/* <div className="w-full h-full flex-col lg:flex-row flex lg:items-start items-center justify-center mt-8 gap-8">
-          <div className="max-w-[90%] md:max-w-[60%] lg:h-full flex-col flex items-center text-3xl text-center gap-4">
-            <div className="text-2xl md:text-3xl font-semibold uppercase">
+        <div className="max-w-[2040px] h-full w-full md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-4 flex-col-reverse">
+          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-2">
+            <div className="text-xl md:text-2xl font-semibold uppercase md:flex hidden">
               {pageData.header.heading}
             </div>
-            <div className={`text-2xl md:text-3xl ${dbHelvethaica.className} w-full`}>
-              {pageData.header.subheading}
-            </div>
-            <div
-              id="guide"
-              className="flex-row flex items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center my-16"
-            >
-              <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full" />
-              {pageData.detailsTitle}
-              <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full" />
-            </div>
-          </div>
-          <div className="relative">
-            <SmartPhoneImage className="max-w-[250px] flex-1 h-full" />
-            {pageData.header && (
-              <iframe
-                className="!absolute top-[5px] left-[8px] w-[233px] h-[98%] rounded-[2rem] z-10"
-                src={pageData.header.mediaUrl}
-                title={pageData.header.alt}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            )}
-          </div>
-        </div> */}
-        <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-4">
-          <div className="flex-1 flex-col flex items-center text-2xl text-center gap-2">
-            <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div>
-            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
+            <div className={`text-xl md:text-2xl md:flex hidden ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
             <div
@@ -111,6 +82,12 @@ export default async function Page() {
                 allowFullScreen
               ></iframe>
             )}
+          </div>
+          <div className={`text-xl md:text-2xl text-center md:hidden ${dbHelvethaica.className}`}>
+            {pageData.header.subheading}
+          </div>
+          <div className="text-xl md:text-2xl text-center font-semibold uppercase md:hidden">
+            {pageData.header.alt}
           </div>
         </div>
         <div id="package" />
@@ -150,6 +127,6 @@ export default async function Page() {
         </div>
       </div>
       <div className="mb-10" />
-    </>
+    </div>
   )
 }

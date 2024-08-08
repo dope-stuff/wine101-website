@@ -36,10 +36,12 @@ export default async function Page() {
           arrowColor="white"
           gap={0}
         />
-        <div className="max-w-[2040px] h-full w-full flex-col md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-8">
+        <div className="max-w-[2040px] h-full w-full md:flex-row md:flex-nowrap flex-wrap items-center flex justify-center mt-8 px-4 gap-4 flex-col-reverse">
           <div className="flex-1 flex-col flex items-center text-2xl text-center gap-2">
-            <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div>
-            <div className={`text-xl md:text-2xl ${dbHelvethaica.className}`}>
+            <div className="text-2xl font-semibold uppercase md:flex hidden">
+              {pageData.header.alt}
+            </div>
+            <div className={`text-2xl md:flex hidden ${dbHelvethaica.className}`}>
               {pageData.header.subheading}
             </div>
             <EventContactButton
@@ -52,7 +54,7 @@ export default async function Page() {
               ))}
             </div>
           </div>
-          <div className="rotate-6 md:mr-8 md:sticky md:mt-[-400px] md:top-[calc(50%-250px)]">
+          <div className="rotate-6 md:mr-8 md:sticky md:mt-[-200px] md:top-[calc(50%-250px)]">
             <Image
               removeWrapper
               width={250}
@@ -70,6 +72,12 @@ export default async function Page() {
                 allowFullScreen
               ></iframe>
             )}
+          </div>{' '}
+          <div className={`text-2xl text-center md:hidden ${dbHelvethaica.className}`}>
+            {pageData.header.subheading}
+          </div>
+          <div className="text-2xl text-center font-semibold uppercase md:hidden">
+            {pageData.header.alt}
           </div>
         </div>
         {events.length > 0 && (

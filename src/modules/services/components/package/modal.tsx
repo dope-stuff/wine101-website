@@ -43,7 +43,7 @@ export default function PackageModal({data, filters, buttonTitle}: PackageModalP
   return (
     <>
       <Button
-        className="uppercase border border-black bg-primary px-4 py-3 h-[60px] text-white text-2xl rounded-full absolute bottom-[-2rem]"
+        className="uppercase border border-black bg-primary px-4 py-3 h-[60px] text-white text-xl rounded-full absolute bottom-[-2rem]"
         onPress={onOpen}
       >
         {buttonTitle}

@@ -56,7 +56,7 @@ const Carousel = ({elements, slidesPerView, arrowColor = 'black', gap = 16}: Car
   }
 
   return (
-    <div className="relative w-full px-4">
+    <div className="relative w-full">
       {currentIndex > 0 && (
         <Button
           variant="light"

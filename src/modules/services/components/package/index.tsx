@@ -28,12 +28,12 @@ export default function WeddingPackages({packages, consult}: PackageProps) {
         id="guide"
         className="flex-row flex items-center flex-nowrap gap-4 text-3xl md:text-4xl text-center"
       >
-        <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full mb-[-3rem]" />
-        <div className="flex-col flex text-center text-4xl whitespace-nowrap">
+        <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full mb-[-2rem]" />
+        <div className="flex-col flex text-center text-3xl whitespace-nowrap p-2">
           <div>{consult.heading}</div>
           <div>{consult.buttonTitle}</div>
         </div>
-        <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full mt-[-3rem]" />
+        <FlasksIcon className="max-w-[100px] max-h-[100px] w-full h-full mt-[-2rem]" />
       </div>
       <div className="flex flex-col items-center justify-center mb-4">
         <div className="text-2xl mb-4 uppercase">How many guests?</div>

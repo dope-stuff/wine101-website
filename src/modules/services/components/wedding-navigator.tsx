@@ -1,10 +1,9 @@
 'use client'
 import {useRouter} from 'next/navigation'
-import {useEffect, useRef} from 'react'
+import {scroller} from 'react-scroll'
 
 export default function WeddingNavigator() {
   const router = useRouter()
-  const buttonRef = useRef(null)
 
   const panels = [
     {title: '101 wedding guide', href: 'guide'},
@@ -17,11 +16,12 @@ export default function WeddingNavigator() {
   ]
 
   const handleClick = (href: string) => {
-    const element = document.getElementById(href)
-    if (element) {
-      element.scrollIntoView({behavior: 'smooth'})
-    }
-    router.push(`/wedding/#${href}`)
+    scroller.scrollTo(href, {
+      delay: 0,
+      smooth: 'easeInOutQuart',
+    })
+    // Use replace to prevent adding a history entry
+    router.replace(`/wedding/#${href}`)
   }
 
   return panels.map((panel, i) =>
@@ -30,7 +30,6 @@ export default function WeddingNavigator() {
     ) : (
       <button
         id={`${panel.title}-button`}
-        ref={buttonRef}
         key={i}
         onClick={(e) => {
           e.preventDefault()
