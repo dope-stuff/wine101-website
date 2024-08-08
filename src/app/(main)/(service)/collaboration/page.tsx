@@ -8,6 +8,7 @@ import {eventService} from '@/lib/data/event.service'
 import Carousel from '@/modules/carousel/template'
 import ClientCard from '@/modules/card/template/client'
 import ServiceContentCard from '@/modules/card/template/service-content'
+import EventContactButton from '@/modules/button/components/event-button'
 
 export default async function Collaboration() {
   const [{data: pageData}, {data: events}] = await Promise.all([
@@ -44,8 +45,8 @@ export default async function Collaboration() {
               {pageData.header.subheading}
             </div>
             <div className="md:flex hidden">
-              <ContactFlasksButton
-                title={pageData.header.description + ' ' + pageData.header.buttonTitle}
+              <EventContactButton
+                title={pageData.header.buttonTitle}
                 linkTo={pageData.header.linkTo}
               />
             </div>
@@ -75,8 +76,8 @@ export default async function Collaboration() {
             )}
           </div>
           <div className="md:hidden mb-2">
-            <ContactFlasksButton
-              title={pageData.header.description + ' ' + pageData.header.buttonTitle}
+            <EventContactButton
+              title={pageData.header.buttonTitle}
               linkTo={pageData.header.linkTo}
             />
           </div>

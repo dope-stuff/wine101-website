@@ -41,7 +41,6 @@ export default async function WineProfileWorkshop() {
           <div className={`text-2xl md:text-3xl md:flex hidden ${dbHelvethaica.className}`}>
             {pageData.header.heading}
           </div>
-          {/* <div className="text-xl md:text-2xl font-semibold uppercase">{pageData.header.alt}</div> */}
           <div className={`text-xl md:text-2xl md:flex hidden ${dbHelvethaica.className}`}>
             {pageData.header.subheading}
           </div>
@@ -51,7 +50,7 @@ export default async function WineProfileWorkshop() {
             {pageData.header.description}
           </div>
           <div className="max-w-[2040px] w-[90%] flex-col flex mt-4">
-            <div className="flex-row items-center flex-nowrap text-4xl md:text-5xl text-center mx-auto md:flex hidden">
+            <div className="flex-row items-center flex-wrap sm:flex-nowrap justify-center text-4xl md:text-5xl text-center mx-auto flex">
               <FlasksIcon className="mb-[-1rem]" />
               <div className='whitespace-nowrap mx-2'>{pageData.detailsTitle}</div>
               <FlasksIcon className="mt-[-1rem]" />
@@ -85,16 +84,6 @@ export default async function WineProfileWorkshop() {
             ></iframe>
           )}
         </div>
-        <div className="flex-row flex items-center flex-nowrap gap-4 text-4xl md:text-6xl text-center mx-auto md:hidden">
-          <FlasksIcon className="mt-[-1rem]" />
-          {pageData.detailsTitle}
-          <FlasksIcon className="mt-[-1rem]" />
-          <BookNowButton
-            title={pageData.header.buttonTitle}
-            linkTo={pageData.header.linkTo}
-            className={dbHelvethaica.className}
-          />
-        </div>
         <div className={`${dbHelvethaica.className} md:hidden text-center mx-auto text-lg px-4`}>
           {pageData.header.description}
         </div>
@@ -113,7 +102,7 @@ export default async function WineProfileWorkshop() {
           ))}
         </div>
       </div>
-      <div className="max-w-[2040px] w-[90%]">
+      {/* <div className="max-w-[2040px] w-[90%]">
         <div className="uppercase text-4xl my-4 text-center">how people talk about us</div>
         <Carousel
           elements={splitArray(pageData.testimonials.map((e) => e.heading)).map((e, i) => (
@@ -122,7 +111,7 @@ export default async function WineProfileWorkshop() {
           slidesPerView={1}
           gap={0}
         />
-      </div>
+      </div> */}
       <div className="mb-10" />
     </div>
   )

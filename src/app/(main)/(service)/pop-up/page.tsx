@@ -59,7 +59,7 @@ export default async function Page() {
               <ServiceContentCard key={i} index={i} data={e as IMenu} />
             ))}
           </div>
-          <div className="flex-row flex items-center justify-center gap-2">
+          <div className="flex-row flex flex-wrap items-center justify-center gap-2">
             <div className={`text-4xl max-w-md text-center ${dbHelvethaica.className}`}>
               {pageData.cta.heading}
             </div>
