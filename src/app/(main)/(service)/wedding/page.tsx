@@ -125,7 +125,7 @@ export default async function Page() {
       </div>
       <div id="wedding-consult" />
       <Package packages={packages} consult={pageData.consult} />
-      <div id="reviews" className="max-w-[2040px] flex flex-col w-full mx-auto px-10">
+      <div id="reviews" className="max-w-[2040px] flex flex-col w-full mx-auto px-10 mt-4">
         <div className="uppercase text-4xl my-2 mt-8">our clients</div>
         <div className="w-full flex-row flex flex-nowrap gap-4 overflow-auto">
           {events.map((c, i) => (
